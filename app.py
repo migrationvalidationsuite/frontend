@@ -59,7 +59,45 @@ if selected == "Home":
 
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
-    cols = st.columns(3)
+    st.markdown("---")
+st.markdown("### Why Choose Our Tool?")
+
+cols = st.columns(3)
+headings = ["Data Migration", "Validation", "Variance Monitoring"]
+descriptions = [
+    "Template-driven, secure transfers from legacy to EC.",
+    "Field-level checks to catch errors before go-live.",
+    "Automated comparisons between ECC and EC data."
+]
+icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+
+for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
+    if os.path.exists(icon):
+        with open(icon, "rb") as img_file:
+            img_data = base64.b64encode(img_file.read()).decode()
+        col.markdown(
+            f"""
+            <div style='text-align:center'>
+                <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
+                <h5>{heading}</h5>
+                <p>{desc}</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+    else:
+        col.markdown(
+            f"""
+            <div style='text-align:center'>
+                🚫<br>
+                <h5>{heading}</h5>
+                <p>{desc}</p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+   ''' cols = st.columns(3)
     with cols[0]:
         st.image("datamigration.png", width=60)
         st.markdown("**Data Migration**", unsafe_allow_html=True)
@@ -73,7 +111,7 @@ if selected == "Home":
     with cols[2]:
         st.image("pexels-divinetechygirl-1181341.jpg", width=60)
         st.markdown("**Variance Monitoring**", unsafe_allow_html=True)
-        st.write("Automated comparisons between ECC and EC data.")
+        st.write("Automated comparisons between ECC and EC data.")'''
 
     # Built for SAP section
     st.markdown("""

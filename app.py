@@ -172,7 +172,7 @@ elif selected == "Solutions":
             - Graphical dashboards to track issues
             """)
         with col2:
-            st.image("variance_monitoring.png", use_container_width=True)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":

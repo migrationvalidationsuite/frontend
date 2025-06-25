@@ -29,51 +29,45 @@ selected = option_menu(
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("## Accelerate Your SAP Employee Central Migration")
-    st.markdown("""
-        #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+    st.image("landing_hero.png", use_container_width=True)
 
-    # Use columns to control image size
-    col1, col2, col3 = st.columns([0.15, 0.7, 0.15])
-    with col2:
-        st.image("sap_migration_features.png", use_container_width=False, width=700)
+    # New SAP-aligned banner section
+    with st.container():
+        st.markdown("""
+            <div style='background-color:#0f1b4c;padding:50px;border-radius:8px;color:white'>
+                <h2 style='text-align:center;'>Built for SAP & SuccessFactors</h2>
+                <p style='text-align:center; font-size:16px;'>
+                    Our solutions are purpose-built for SAP SuccessFactors and SAP S/4HANA environments.<br>
+                    Whether you're migrating from ECC or optimizing existing EC setups, we deliver tools that support compliance, performance, and confidence at scale.
+                </p>
+                <br>
+                <div style='display:flex;justify-content:space-around;gap:30px;flex-wrap:wrap;'>
+                    <div style='flex:1;min-width:250px;'>
+                        <h4>EC Data Migration & Implementation Services</h4>
+                        <p>Streamline Employee Central migrations using best-practice templates, transformation rules, and rollback-safe utilities.</p>
+                    </div>
+                    <div style='flex:1;min-width:250px;'>
+                        <h4>Payroll Validation & Compliance Automation</h4>
+                        <p>Run pre-Go Live validations across all HR/payroll master data to catch and correct errors before they disrupt cutover.</p>
+                    </div>
+                    <div style='flex:1;min-width:250px;'>
+                        <h4>Variance Monitoring & Audit Reporting</h4>
+                        <p>Track EC vs ECC mismatches and field-level differences with dashboards that enable rapid triage and correction.</p>
+                    </div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.  
-    - ✅ Built-in Validation: Eliminate bad data before it hits production.  
-    - 📊 Variance Detection: Compare ECC and EC data at a granular level.
+    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - Built-in Validation: Eliminate bad data before it hits production  
+    - Variance Detection: Compare ECC and EC data at a granular level  
     """)
-    st.markdown("Explore the **Solutions** tab above for a detailed walkthrough.")
 
-import streamlit as st
 
-with st.container():
-    st.markdown("""
-        <div style='background-color:#0f1b4c;padding:50px;border-radius:8px;color:white'>
-            <h2 style='text-align:center;'>Built for SAP S/4HANA & Employee Central</h2>
-            <p style='text-align:center; font-size:16px;'>
-                Our solutions are purpose-built for SAP SuccessFactors and SAP S/4HANA environments.<br>
-                Whether you're migrating from ECC or optimizing existing EC setups, we deliver tools that support compliance, performance, and confidence at scale.
-            </p>
-            <br>
-            <div style='display:flex;justify-content:space-around;gap:30px;flex-wrap:wrap;'>
-                <div style='flex:1;min-width:250px;'>
-                    <h4>EC Data Migration & Implementation Services</h4>
-                    <p>Designed to streamline end-to-end migrations into Employee Central, with best-practice templates, pre-mapped configurations, and rollback-safe utilities.</p>
-                </div>
-                <div style='flex:1;min-width:250px;'>
-                    <h4>Payroll Validation & Compliance Automation</h4>
-                    <p>Automate critical validation checks across employee data, pay elements, and time data — ensuring readiness before parallel runs or cutovers.</p>
-                </div>
-                <div style='flex:1;min-width:250px;'>
-                    <h4>Variance Monitoring & Audit Reporting</h4>
-                    <p>Real-time variance dashboards and reconciliation workflows to compare EC vs ECC datasets, highlight inconsistencies, and support audit-readiness.</p>
-                </div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

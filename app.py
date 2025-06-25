@@ -66,6 +66,7 @@ if selected == "Home":
     - Built-in Validation: Eliminate bad data before it hits production  
     - Variance Detection: Compare ECC and EC data at a granular level  
     """)
+st.image("assets/sap_migration_features.png", use_container_width=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

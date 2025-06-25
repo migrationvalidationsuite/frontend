@@ -1,6 +1,4 @@
-from pathlib import Path
 
-final_code = '''
 import streamlit as st
 from streamlit_option_menu import option_menu
 import os
@@ -27,11 +25,11 @@ selected = option_menu(
 
 # --- HOME PAGE ---
 if selected == "Home":
-    st.markdown(\"""
+    st.markdown("""
     <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
         <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
-    \""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
@@ -56,11 +54,11 @@ if selected == "Home":
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
-    st.markdown(\"""
+    st.markdown("""
     - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
     - 🔍 Built-in Validation: Eliminate bad data before it hits production  
     - 📊 Variance Detection: Compare ECC and EC data at a granular level  
-    \""")
+    """)
 
     col1, col2, col3 = st.columns(3)
     specs = [
@@ -76,7 +74,7 @@ if selected == "Home":
             st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
-    st.markdown(\"""
+    st.markdown("""
     <div style="background-color:#003366;padding:30px;border-radius:10px;text-align:center;color:white">
         <h3>🌐 Built for SAP & SuccessFactors</h3>
         <p>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
@@ -96,7 +94,7 @@ if selected == "Home":
             </div>
         </div>
     </div>
-    \""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -111,7 +109,7 @@ elif selected == "Solutions":
         col1, col2 = st.columns([1, 1])
         with col1:
             st.header("📂 Employee Central Data Migration")
-            st.markdown(\"""
+            st.markdown("""
             Our tool supports secure, auditable migration of:
             - Foundation Objects (Legal Entity, Business Unit, Location)
             - Hierarchical Position Structures
@@ -121,7 +119,7 @@ elif selected == "Solutions":
             - Field-level traceability and rollback
             - Template-based uploads
             - Role-based access for audit compliance
-            \""")
+            """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
 
@@ -129,7 +127,7 @@ elif selected == "Solutions":
         col1, col2 = st.columns([1, 1])
         with col1:
             st.header("🛡️ Validation Services")
-            st.markdown(\"""
+            st.markdown("""
             Ensure every single record complies with:
             - Required field presence (null detection)
             - Data types and value formatting
@@ -139,7 +137,7 @@ elif selected == "Solutions":
             - Smart rules engine
             - Summary reports with error categorization
             - Revalidation after fixes
-            \""")
+            """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
 
@@ -147,7 +145,7 @@ elif selected == "Solutions":
         col1, col2 = st.columns([1, 1])
         with col1:
             st.header("📊 ECC to EC Variance Monitoring")
-            st.markdown(\"""
+            st.markdown("""
             After your migration, compare SAP ECC and EC data:
             - Detect mismatches in values and field formats
             - Identify extra/missing records across modules
@@ -157,14 +155,14 @@ elif selected == "Solutions":
             - Side-by-side comparisons
             - Field-level variance reports
             - Graphical dashboards to track issues
-            \""")
+            """)
         with col2:
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
-    st.markdown(\"""
+    st.markdown("""
     Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
     - **Migration Assessment**: System readiness, scope definition, and risk analysis  
@@ -173,9 +171,4 @@ elif selected == "Services":
     - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
     - **Cutover Strategy & Execution**: Phased, low-risk deployments  
     - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
-    \""")
-'''
-
-output_path = "/mnt/data/final_app.py"
-Path(output_path).write_text(final_code)
-output_path
+    """)

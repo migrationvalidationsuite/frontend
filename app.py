@@ -62,9 +62,9 @@ if selected == "Home":
 
     col1, col2, col3 = st.columns(3)
     specs = [
-        ("data_icon.png", "📄 Data Migration", "Template-driven, secure transfers from legacy to EC."),
-        ("check_icon.png", "✔️ Validation", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "📊 Variance Monitoring", "Automated comparisons between ECC and EC data.")
+        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
+        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
+        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data.")
     ]
 
     for col, (icon, heading, desc) in zip([col1, col2, col3], specs):

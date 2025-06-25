@@ -79,26 +79,30 @@ if selected == "Home":
         col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
         col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
-    st.markdown("""
-    <div style='background-color:#003366;padding:40px 0;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
-        <p style='color:white;text-align:center;'>SpinifexIT solutions are compatible with the latest versions of SAP and SAP SuccessFactors.<br>All of our products run on SAP S/4HANA and are aligned to SAP’s commitment to leave no customer behind.</p>
-        <div style='display:flex;justify-content:space-around;color:white;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4>HCM Migration & Implementation</h4>
-                <p>Designed for supporting seamless transitions to SAP environments with expert guidance and tools.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4>HR & Payroll Optimization</h4>
-                <p>Focused on enhancing efficiency and accuracy to ensure smooth operations while maintaining compliance.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4>Document Management & Storage</h4>
-                <p>Solutions for securely managing and generating critical SAP documents effortlessly.</p>
-            </div>
+    # --- SAP Compatibility / Value Proposition Section ---
+st.markdown("""
+<div style='background-color:#002B5B; padding: 40px 20px; border-radius: 10px; color: white; text-align: center;'>
+    <h2 style='font-weight: 700;'>✅ Built for Seamless SAP HCM Transformation</h2>
+    <p style='font-size: 18px; max-width: 1000px; margin: auto;'>
+        Our solution is purpose-built to support SAP Employee Central (EC) implementations with accuracy, visibility, and confidence.  
+        From data extraction to validation and go-live assurance, we streamline every phase of your transition.
+    </p>
+    <div style='display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 40px;'>
+        <div style='flex: 1 1 250px; max-width: 300px;'>
+            <h4>🔄 Automated Data Migration & Implementation</h4>
+            <p>Accelerate transitions to SAP EC with guided templates, reusable mappings, and secure, auditable processes.</p>
+        </div>
+        <div style='flex: 1 1 250px; max-width: 300px;'>
+            <h4>🛡 Smart Data Validation & Compliance</h4>
+            <p>Ensure clean, production-ready data using built-in rules, referential checks, and repeatable testing cycles.</p>
+        </div>
+        <div style='flex: 1 1 250px; max-width: 300px;'>
+            <h4>📊 Field-Level Variance Monitoring</h4>
+            <p>Compare SAP ECC and EC data in real time to detect discrepancies before they impact business-critical functions.</p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
 # NOTE: Keep the rest of Solutions & Services pages same as before
 

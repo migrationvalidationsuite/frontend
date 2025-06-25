@@ -29,16 +29,18 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
+    st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
     features = [
-        ("streamline.png", "Streamline Your SAP HCM Migration"),
-        ("testing.png", "De-Risk Parallel Testing"),
-        ("security.png", "Ensure Data Security & Governance"),
-        ("variance.png", "Monitor Field-Level Variance"),
-        ("validation.png", "Smart Validation Engine"),
-        ("confidence.png", "Enhance Stakeholder Confidence"),
+        ("streamline.png", "🚀 Streamline Your SAP HCM Migration"),
+        ("testing.png", "🧪 De-Risk Parallel Testing"),
+        ("security.png", "🔐 Ensure Data Security & Governance"),
+        ("variance.png", "📉 Monitor Field-Level Variance"),
+        ("validation.png", "✅ Smart Validation Engine"),
+        ("confidence.png", "🤝 Enhance Stakeholder Confidence"),
     ]
 
     for i in range(0, len(features), 3):
@@ -58,9 +60,9 @@ if selected == "Home":
 
     col1, col2, col3 = st.columns(3)
     cards = [
-        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
-        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data.")
+        ("data_icon.png", "📁 Data Migration", "Template-driven, secure transfers from legacy to EC."),
+        ("check_icon.png", "✔️ Validation", "Field-level checks to catch errors before go-live."),
+        ("chart_icon.png", "📊 Variance Monitoring", "Automated comparisons between ECC and EC data.")
     ]
 
     for col, (icon, heading, desc) in zip([col1, col2, col3], cards):
@@ -152,7 +154,7 @@ elif selected == "Solutions":
             - Graphical dashboards to track issues  
             """)
         with col2:
-            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
+            st.image("variance_monitoring.png", use_container_width=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
@@ -167,4 +169,3 @@ elif selected == "Services":
     - **Cutover Strategy & Execution**: Phased, low-risk deployments  
     - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)
-

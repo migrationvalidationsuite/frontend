@@ -4,7 +4,7 @@ import os
 
 st.set_page_config(
     page_title="SAP EC Migration & Monitoring",
-    page_icon="📊",
+    page_icon="📈",
     layout="wide",
     initial_sidebar_state="auto"
 )
@@ -31,9 +31,9 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
-    st.markdown("**Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.**")
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
-    # --- FEATURES: 2 ROWS OF 3 COLS ---
+    # Icons Grid (2 rows x 3 columns)
     features = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -44,36 +44,38 @@ if selected == "Home":
     ]
 
     for i in range(0, len(features), 3):
-        row = features[i:i+3]
         cols = st.columns(3)
-        for col, (icon, label) in zip(cols, row):
+        for col, (icon, text) in zip(cols, features[i:i+3]):
             if os.path.exists(icon):
-                col.image(icon, width=55)
+                col.image(icon, width=50)
             else:
-                col.markdown("🚫", unsafe_allow_html=True)
-            col.markdown(f"<p style='text-align:center;'>{label}</p>", unsafe_allow_html=True)
+                col.write("🚫")
+            col.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
-    st.subheader("💡 Why Choose Our Tool?")
+    st.markdown("### 💡 Why Choose Our Tool?")
     st.markdown("""
     - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
     - 🔍 Built-in Validation: Eliminate bad data before it hits production  
     - 📊 Variance Detection: Compare ECC and EC data at a granular level  
     """)
 
-    # --- Core Capabilities with Icons ---
     col1, col2, col3 = st.columns(3)
-    capabilities = [
-        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
-        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data."),
-    ]
-    for col, (icon, title, desc) in zip([col1, col2, col3], capabilities):
+    for col, icon, heading, desc in zip(
+        [col1, col2, col3],
+        ["data_icon.png", "check_icon.png", "chart_icon.png"],
+        ["Data Migration", "Validation", "Variance Monitoring"],
+        [
+            "Template-driven, secure transfers from legacy to EC.",
+            "Field-level checks to catch errors before go-live.",
+            "Automated comparisons between ECC and EC data."
+        ]
+    ):
         if os.path.exists(icon):
             col.image(icon, width=50)
         else:
-            col.markdown("📁", unsafe_allow_html=True)
-        col.markdown(f"<h5 style='text-align:center;'>{title}</h5>", unsafe_allow_html=True)
+            col.write("🚫")
+        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
         col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
@@ -95,7 +97,7 @@ elif selected == "Solutions":
             - Hierarchical Position Structures
             - Employee Master Data and Assignments
 
-            **Features**:
+            Features:
             - Field-level traceability and rollback
             - Template-based uploads
             - Role-based access for audit compliance
@@ -113,7 +115,7 @@ elif selected == "Solutions":
             - Data types and value formatting
             - Referential logic (e.g., manager mappings, org chart validation)
 
-            **Features**:
+            Features:
             - Smart rules engine
             - Summary reports with error categorization
             - Revalidation after fixes
@@ -124,14 +126,14 @@ elif selected == "Solutions":
     elif sol_choice == "Variance Monitoring":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("📊 ECC to EC Variance Monitoring")
+            st.header("📈 ECC to EC Variance Monitoring")
             st.markdown("""
             After your migration, compare SAP ECC and EC data:
             - Detect mismatches in values and field formats
             - Identify extra/missing records across modules
             - Focus on critical payroll-impacting fields
 
-            **Features**:
+            Features:
             - Side-by-side comparisons
             - Field-level variance reports
             - Graphical dashboards to track issues
@@ -141,19 +143,14 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.header("🛠️ End-to-End SAP HCM Migration Services")
+    st.header("🚲 End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you're migrating to Employee Central or optimizing your existing setup, our services simplify your journey:
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-    - 📋 **Migration Assessment**: System readiness, scope definition, and risk analysis  
-    - ⚙️ **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
-    - 🧪 **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
-    - 🧼 **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
-    - 🚀 **Cutover Strategy & Execution**: Phased, low-risk deployments  
-    - 🧾 **Variance & Compliance Reports**: Side-by-side views and compliance logs  
-
-    > 🧠 Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)
-    st.markdown("---")
-    st.subheader("📞 Want a Guided Demo?")
-    st.info("Use this tool live or book a session to see how it fits your transformation.")

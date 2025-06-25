@@ -42,7 +42,39 @@ if selected == "Home":
         - Mapping logic and rollback built-in  
         """)
     with col2:
-        st.image("sap_migration_features.png", use_container_width=True)
+# --- Hero Section Replacement ---
+st.markdown("""
+    <div style="background: linear-gradient(to right, #1e3c72, #2a5298); padding: 3rem 2rem; border-radius: 10px; color: white;">
+        <h2 style="text-align:center; font-size: 28px;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+    </div>
+""", unsafe_allow_html=True)
+
+st.markdown("### Accelerate your SAP migration. Simplify your transformation. Optimize business outcomes.")
+
+# --- Icon Grid (2 Rows x 3 Columns) ---
+features = [
+    ("⚙️", "Streamline Your SAP HCM Migration"),
+    ("🧪", "De-Risk Parallel Testing"),
+    ("🔐", "Ensure Data Security & Governance"),
+    ("📊", "Monitor Field-Level Variance"),
+    ("🛠️", "Smart Validation Engine"),
+    ("🤝", "Enhance Stakeholder Confidence"),
+]
+
+row1 = features[:3]
+row2 = features[3:]
+
+# First row
+cols = st.columns(3)
+for col, (icon, label) in zip(cols, row1):
+    col.markdown(f"<div style='text-align: center; font-size: 30px;'>{icon}</div>", unsafe_allow_html=True)
+    col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
+
+# Second row
+cols = st.columns(3)
+for col, (icon, label) in zip(cols, row2):
+    col.markdown(f"<div style='text-align: center; font-size: 30px;'>{icon}</div>", unsafe_allow_html=True)
+    col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")

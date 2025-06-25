@@ -1,42 +1,40 @@
-
 import streamlit as st
 from streamlit_option_menu import option_menu
-import os
+import base64
 
-st.set_page_config(
-    page_title="SAP EC Migration & Monitoring",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
+st.set_page_config(layout="wide")
 
-# --- NAVIGATION MENU ---
+# Navigation Menu
 selected = option_menu(
     menu_title=None,
     options=["Home", "Solutions", "Services"],
-    icons=["house-door-fill", "layers-fill", "tools"],
+    icons=["house", "layers", "wrench"],
+    menu_icon="cast",
+    default_index=0,
     orientation="horizontal",
     styles={
-        "container": {"padding": "0!important", "background-color": "#f0f4f8"},
-        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
-        "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
-    }
+        "container": {"padding": "0!important", "background-color": "#f8f9fa"},
+        "icon": {"color": "black", "font-size": "18px"},
+        "nav-link": {"font-size": "18px", "text-align": "center", "margin":"0px", "--hover-color": "#eee"},
+        "nav-link-selected": {"background-color": "#cfe2ff"},
+    },
 )
 
-# --- HOME PAGE ---
+# Home Page
 if selected == "Home":
+    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+
     st.markdown("""
-    <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
-        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+        <h2 style='text-align:center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
     """, unsafe_allow_html=True)
 
-    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-
+    st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
-    features = [
+    icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
         ("security.png", "Ensure Data Security & Governance"),
@@ -45,56 +43,67 @@ if selected == "Home":
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
 
-    for i in range(0, len(features), 3):
+    for i in range(0, len(icons_data), 3):
         cols = st.columns(3)
-        for col, (icon, text) in zip(cols, features[i:i+3]):
+        for col, (icon, label) in zip(cols, icons_data[i:i+3]):
             with col:
-                st.image(icon, width=60)
-                st.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
+                st.markdown(
+                    f"""
+                    <div style='text-align:center'>
+                        <img src="data:image/png;base64,{base64.b64encode(open(icon, "rb").read()).decode()}" width="50" style="display:block;margin:auto;"/>
+                        <p style="margin-top:10px;">{label}</p>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
     st.markdown("---")
-    st.markdown("### 💡 Why Choose Our Tool?")
+    st.markdown("### 🌝 Why Choose Our Tool?")
     st.markdown("""
-    - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-    - 🔍 Built-in Validation: Eliminate bad data before it hits production  
-    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
+    - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy
+    - 🔍 Built-in Validation: Eliminate bad data before it hits production
+    - 🌟 Variance Detection: Compare ECC and EC data at a granular level
     """)
 
-    col1, col2, col3 = st.columns(3)
-    specs = [
-        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
-        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data.")
-    ]
+    st.markdown("<br>", unsafe_allow_html=True)
+    cols = st.columns(3)
+    with cols[0]:
+        st.image("datamigration.png", width=60)
+        st.markdown("**Data Migration**")
+        st.write("Template-driven, secure transfers from legacy to EC.")
 
-    for col, (icon, heading, desc) in zip([col1, col2, col3], specs):
-        with col:
-            st.image(icon, width=60)
-            st.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
-            st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
+    with cols[1]:
+        st.image("validation.png", width=60)
+        st.markdown("**Validation**")
+        st.write("Field-level checks to catch errors before go-live.")
 
-    st.markdown("---")
+    with cols[2]:
+        st.image("pexels-divinetechygirl-1181341.jpg", width=60)
+        st.markdown("**Variance Monitoring**")
+        st.write("Automated comparisons between ECC and EC data.")
+
     st.markdown("""
-    <div style="background-color:#003366;padding:30px;border-radius:10px;text-align:center;color:white">
-        <h3>🌐 Built for SAP & SuccessFactors</h3>
-        <p>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <br/>
-        <div style='display:flex; justify-content:space-around;'>
-            <div style='width:30%'>
-                <h4>🛠️ SAP EC Implementation</h4>
-                <p>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
+    <div style='background-color:#002b5c;padding:40px;margin-top:40px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
+        <p style='color:white;text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>🛠️ SAP EC Implementation</h4>
+                <p style='color:white;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
             </div>
-            <div style='width:30%'>
-                <h4>📋 Data Integrity & Compliance</h4>
-                <p>Granular field-level validation ensures readiness for audits and business continuity.</p>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>📃 Data Integrity & Compliance</h4>
+                <p style='color:white;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
             </div>
-            <div style='width:30%'>
-                <h4>🗂️ Document-Ready Migrations</h4>
-                <p>Accelerate documentation processes with clean, structured output files ready for upload.</p>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>📄 Document-Ready Migrations</h4>
+                <p style='color:white;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# You can continue adding the other tabs like "Solutions" and "Services" similarly
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

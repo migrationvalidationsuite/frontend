@@ -1,80 +1,92 @@
 import streamlit as st
-from PIL import Image
-import os
+from streamlit_option_menu import option_menu
 
-# Set page config
-st.set_page_config(page_title="Quantumela: SAP EC Migration Tool", layout="wide")
+st.set_page_config(page_title="SAP EC Migration Demo", layout="wide")
 
-# Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.selectbox("Go to", ["Home", "Solutions", "Data Migration", "Validation", "Variance Monitoring"])
+# --- NAVIGATION MENU ---
+selected = option_menu(
+    menu_title=None,
+    options=["Home", "Solutions", "Insights"],
+    icons=["house", "briefcase", "lightbulb"],
+    orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important", "background-color": "#ffffff"},
+        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "black"},
+        "nav-link-selected": {"background-color": "#e6f0ff"},
+    }
+)
 
-# Image path utility
-def load_image(name):
-    return os.path.join("assets", "images", name)
-
-# --- HOME ---
-if page == "Home":
-    st.image(load_image("homepage_banner.png"), use_container_width=True)
-    st.title("Quantumela: SAP Employee Central Migration & Monitoring Suite")
-    st.subheader("Accelerate SAP EC transitions with data integrity, speed, and confidence.")
+# --- HOME PAGE ---
+if selected == "Home":
+    st.markdown("## Accelerate Your SAP Employee Central Migration")
     st.markdown("""
-    Welcome to Quantumela's streamlined migration and variance platform built for seamless SAP EC deployment.  
-    Explore our tools to ensure **accurate data migration**, **validated payrolls**, and **minimal disruption** to operations.
+        #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
+    st.image("landing_hero.png", use_container_width=True)
 
-# --- SOLUTIONS OVERVIEW ---
-elif page == "Solutions":
-    st.header("Solutions Overview")
+    st.markdown("---")
+    st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    Quantumela provides an integrated toolkit for SAP EC data workflows:
-    - 🔁 **Data Migration**: Clean, map, and migrate EC-relevant data objects.
-    - ✅ **Validation**: Automate checks and parallel testing to ensure accuracy.
-    - 📊 **Variance Monitoring**: Visualize and track key changes between pre/post migration states.
+    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
+    - ✅ Built-in Validation: Eliminate bad data before it hits production.
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level.
     """)
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.image(load_image("employee_central_migration.png"), caption="Employee Central Migration", use_container_width=True)
-    with col2:
-        st.image(load_image("validation_lifecycle.png"), caption="Validation Lifecycle", use_container_width=True)
-    with col3:
-        st.image(load_image("variance_monitoring_workflow.png"), caption="Variance Monitoring Flow", use_container_width=True)
+    st.markdown("Explore the 'Solutions' tab above for a detailed walkthrough.")
 
-# --- DATA MIGRATION ---
-elif page == "Data Migration":
-    st.header("Data Migration Services")
+# --- SOLUTIONS PAGE ---
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Variance Monitoring"],
+        icons=["upload", "check2-circle", "bar-chart-line"],
+        orientation="horizontal"
+    )
+
+    if sol_choice == "Data Migration":
+        st.header("📂 Employee Central Data Migration")
+        st.markdown("""
+        Our tool supports secure, auditable migration of:
+        - Foundation Objects (Legal Entity, Business Unit, Location)
+        - Hierarchical Position Structures
+        - Employee Master Data and Assignments
+
+        With robust templates, custom mappings, and field-level traceability.
+        """)
+        st.image("Employee_Central_Data_Migration.png", caption="Migration Flow", use_container_width=True)
+
+    elif sol_choice == "Validation":
+        st.header("✅ Validation Services")
+        st.markdown("""
+        Ensure every single record complies with:
+        - Required field presence (null detection)
+        - Data types and value formatting
+        - Referential logic (e.g., employee reports-to validation)
+        
+        Prevent downstream errors with pre-upload quality checks.
+        """)
+        st.image("validation_lifecycle.png", caption="Validation Lifecycle", use_container_width=True)
+
+    elif sol_choice == "Variance Monitoring":
+        st.header("📊 ECC to EC Variance Monitoring")
+        st.markdown("""
+        After your migration, compare SAP ECC and EC data:
+        - Detect mismatches in values and field formats
+        - Identify extra/missing records across modules
+        - Focus on critical payroll-impacting fields
+
+        Variance dashboards help you close the loop with confidence.
+        """)
+        st.image("variance_monitoring.png", caption="Variance Audit Flow", use_container_width=True)
+
+# --- INSIGHTS PAGE ---
+elif selected == "Insights":
+    st.header("📘 Insights & Use Cases")
     st.markdown("""
-    Our migration module allows you to:
-    - Transform employee master data and structure.
-    - Extract from legacy systems and prepare for EC upload.
-    - Create formatted files based on SAP data object mapping.
+    > Coming soon: Explore real-world SAP SuccessFactors projects powered by our platform.
 
-    Ensure readiness before cutover through stepwise staging and extraction reviews.
+    - How a retail company migrated 50,000+ records in 2 weeks
+    - Lessons from parallel testing in payroll-critical environments
+    - What to automate vs. manually validate in SAP EC
+
+    Bookmark this space!
     """)
-    st.image(load_image("employee_central_migration.png"), caption="Data Migration Diagram", use_container_width=True)
-
-# --- VALIDATION ---
-elif page == "Validation":
-    st.header("Validation Framework")
-    st.markdown("""
-    Validation tools compare legacy vs EC migrated records using:
-    - Parallel run payroll comparisons
-    - Object-by-object discrepancy detection
-    - Visual lifecycle tracking for approvals
-
-    This ensures **zero-data-loss** and audit-aligned accuracy.
-    """)
-    st.image(load_image("validation_lifecycle.png"), caption="Validation Lifecycle", use_container_width=True)
-
-# --- VARIANCE MONITORING ---
-elif page == "Variance Monitoring":
-    st.header("Variance Monitoring")
-    st.markdown("""
-    Monitor key attributes such as pay group, cost center, compensation, or position assignments pre and post-migration:
-    - Real-time reports of mismatches
-    - Alerting thresholds
-    - Exportable logs
-
-    Visualize what changed, when, and why—so there are no surprises post-GoLive.
-    """)
-    st.image(load_image("variance_monitoring_workflow.png"), caption="Variance Monitoring Flow", use_container_width=True)

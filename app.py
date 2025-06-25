@@ -47,6 +47,33 @@ if selected == "Home":
     """)
     st.markdown("Explore the **Solutions** tab above for a detailed walkthrough.")
 
+import streamlit as st
+
+with st.container():
+    st.markdown("""
+        <div style='background-color:#0f1b4c;padding:50px;border-radius:8px;color:white'>
+            <h2 style='text-align:center;'>Built for SAP S/4HANA & Employee Central</h2>
+            <p style='text-align:center; font-size:16px;'>
+                Our solutions are purpose-built for SAP SuccessFactors and SAP S/4HANA environments.<br>
+                Whether you're migrating from ECC or optimizing existing EC setups, we deliver tools that support compliance, performance, and confidence at scale.
+            </p>
+            <br>
+            <div style='display:flex;justify-content:space-around;gap:30px;flex-wrap:wrap;'>
+                <div style='flex:1;min-width:250px;'>
+                    <h4>EC Data Migration & Implementation Services</h4>
+                    <p>Designed to streamline end-to-end migrations into Employee Central, with best-practice templates, pre-mapped configurations, and rollback-safe utilities.</p>
+                </div>
+                <div style='flex:1;min-width:250px;'>
+                    <h4>Payroll Validation & Compliance Automation</h4>
+                    <p>Automate critical validation checks across employee data, pay elements, and time data — ensuring readiness before parallel runs or cutovers.</p>
+                </div>
+                <div style='flex:1;min-width:250px;'>
+                    <h4>Variance Monitoring & Audit Reporting</h4>
+                    <p>Real-time variance dashboards and reconciliation workflows to compare EC vs ECC datasets, highlight inconsistencies, and support audit-readiness.</p>
+                </div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

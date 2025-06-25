@@ -27,13 +27,9 @@ if selected == "Home":
     st.markdown("""
         #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
-    st.image("landing_hero.png", use_container_width=True)
 
-    # 🔽 INSERT ICON GRID SECTION HERE
+    # -- KEY BENEFITS GRID --
     st.markdown("### Key Benefits of Our Migration Platform")
-
-    cols = st.columns(3)
-
     icons = [
         ("migration.png", "Accelerated Migration", "Migrate complex org structures in record time."),
         ("testing.png", "Automated Testing", "Validate configuration and data pre-Go Live."),
@@ -44,17 +40,17 @@ if selected == "Home":
     ]
 
     for i in range(0, len(icons), 3):
-        row = st.columns(3)
-        for col, (icon_file, title, desc) in zip(row, icons[i:i+3]):
+        cols = st.columns(3)
+        for col, (icon_path, title, desc) in zip(cols, icons[i:i+3]):
             with col:
                 try:
-                    st.image(icon_file, width=60)
+                    st.image(icon_path, width=60)
                 except:
-                    st.warning(f"Missing image: {icon_file}")
+                    st.warning(f"Missing image: {icon_path}")
                 st.markdown(f"**{title}**")
                 st.caption(desc)
 
-    # ✅ CONTINUE with the rest of Home section
+    # -- WHY CHOOSE OUR TOOL --
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
     st.markdown("""
@@ -62,7 +58,6 @@ if selected == "Home":
     - ✅ Built-in Validation: Eliminate bad data before it hits production.
     - 📊 Variance Detection: Compare ECC and EC data at a granular level.
     """)
-
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -84,12 +79,14 @@ elif selected == "Solutions":
             - Employee Master Data and Assignments
 
             Features:
-            - Field-level traceability and rollback
-            - Template-based uploads
-            - Role-based access for audit compliance
+            - ✅ Field-level traceability and rollback
+            - 📁 Template-based uploads
+            - 🔒 Role-based access for audit compliance
             """)
         with col2:
-            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])
@@ -102,12 +99,14 @@ elif selected == "Solutions":
             - Referential logic (e.g., manager mappings, org chart validation)
 
             Features:
-            - Smart rules engine
-            - Summary reports with error categorization
-            - Revalidation after fixes
+            - 🧠 Smart rules engine
+            - 📋 Summary reports with error categorization
+            - 🔄 Revalidation after fixes
             """)
         with col2:
-            st.image("validation_lifecycle.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
         col1, col2 = st.columns([1, 1])
@@ -120,12 +119,14 @@ elif selected == "Solutions":
             - Focus on critical payroll-impacting fields
 
             Features:
-            - Side-by-side comparisons
-            - Field-level variance reports
-            - Graphical dashboards to track issues
+            - 🔍 Side-by-side comparisons
+            - 🧾 Field-level variance reports
+            - 📈 Graphical dashboards to track issues
             """)
         with col2:
-            st.image("variance_monitoring.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":

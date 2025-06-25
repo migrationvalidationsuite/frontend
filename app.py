@@ -1,18 +1,18 @@
+from pathlib import Path
 
+final_code = '''
 import streamlit as st
 from streamlit_option_menu import option_menu
-import base64
-
-def load_image_base64(path):
-    with open(path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
+import os
 
 st.set_page_config(
     page_title="SAP EC Migration & Monitoring",
     page_icon="📊",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="auto"
 )
 
+# --- NAVIGATION MENU ---
 selected = option_menu(
     menu_title=None,
     options=["Home", "Solutions", "Services"],
@@ -25,13 +25,13 @@ selected = option_menu(
     }
 )
 
+# --- HOME PAGE ---
 if selected == "Home":
-    st.markdown(
-        '<div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">'
-        '<h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>'
-        '</div>',
-        unsafe_allow_html=True
-    )
+    st.markdown(\"""
+    <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
+        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+    </div>
+    \""", unsafe_allow_html=True)
 
     st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
@@ -50,59 +50,132 @@ if selected == "Home":
     for i in range(0, len(features), 3):
         cols = st.columns(3)
         for col, (icon, text) in zip(cols, features[i:i+3]):
-            encoded = load_image_base64(icon)
-            col.markdown(f'''
-                <div style='text-align:center'>
-                    <img src='data:image/png;base64,{encoded}' width='50'/>
-                    <p>{text}</p>
-                </div>
-            ''', unsafe_allow_html=True)
+            with col:
+                st.image(icon, width=60)
+                st.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
-    st.markdown("""
-- ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-- 🔍 Built-in Validation: Eliminate bad data before it hits production  
-- 📊 Variance Detection: Compare ECC and EC data at a granular level  
-""")
+    st.markdown(\"""
+    - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - 🔍 Built-in Validation: Eliminate bad data before it hits production  
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
+    \""")
 
     col1, col2, col3 = st.columns(3)
-    cards = [
+    specs = [
         ("data_icon.png", "📄 Data Migration", "Template-driven, secure transfers from legacy to EC."),
         ("check_icon.png", "✔️ Validation", "Field-level checks to catch errors before go-live."),
         ("chart_icon.png", "📊 Variance Monitoring", "Automated comparisons between ECC and EC data.")
     ]
 
-    for col, (icon, heading, desc) in zip([col1, col2, col3], cards):
-        encoded = load_image_base64(icon)
-        col.markdown(f'''
-            <div style='text-align:center'>
-                <img src='data:image/png;base64,{encoded}' width='50'/>
-                <h5>{heading}</h5>
-                <p>{desc}</p>
-            </div>
-        ''', unsafe_allow_html=True)
+    for col, (icon, heading, desc) in zip([col1, col2, col3], specs):
+        with col:
+            st.image(icon, width=60)
+            st.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+            st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
-    st.markdown(
-        '''
-        <div style="background-color:#001f4d;color:white;padding:40px;text-align:center;border-radius:8px;margin-top:40px;">
-            <h3>🌐 Built for SAP & SuccessFactors</h3>
-            <p>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
-            <div style="display:flex;justify-content:center;gap:60px;flex-wrap:wrap;margin-top:30px;">
-                <div style="flex:1;min-width:250px;">
-                    <h4>🛠️ SAP EC Implementation</h4>
-                    <p>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
-                </div>
-                <div style="flex:1;min-width:250px;">
-                    <h4>📋 Data Integrity & Compliance</h4>
-                    <p>Granular field-level validation ensures readiness for audits and business continuity.</p>
-                </div>
-                <div style="flex:1;min-width:250px;">
-                    <h4>🗂️ Document-Ready Migrations</h4>
-                    <p>Accelerate documentation processes with clean, structured output files ready for upload.</p>
-                </div>
+    st.markdown("---")
+    st.markdown(\"""
+    <div style="background-color:#003366;padding:30px;border-radius:10px;text-align:center;color:white">
+        <h3>🌐 Built for SAP & SuccessFactors</h3>
+        <p>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <br/>
+        <div style='display:flex; justify-content:space-around;'>
+            <div style='width:30%'>
+                <h4>🛠️ SAP EC Implementation</h4>
+                <p>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
+            </div>
+            <div style='width:30%'>
+                <h4>📋 Data Integrity & Compliance</h4>
+                <p>Granular field-level validation ensures readiness for audits and business continuity.</p>
+            </div>
+            <div style='width:30%'>
+                <h4>🗂️ Document-Ready Migrations</h4>
+                <p>Accelerate documentation processes with clean, structured output files ready for upload.</p>
             </div>
         </div>
-        ''',
-        unsafe_allow_html=True
+    </div>
+    \""", unsafe_allow_html=True)
+
+# --- SOLUTIONS PAGE ---
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Variance Monitoring"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal"
     )
+
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📂 Employee Central Data Migration")
+            st.markdown(\"""
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
+
+            Features:
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
+            \""")
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("🛡️ Validation Services")
+            st.markdown(\"""
+            Ensure every single record complies with:
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
+
+            Features:
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
+            \""")
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
+
+    elif sol_choice == "Variance Monitoring":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📊 ECC to EC Variance Monitoring")
+            st.markdown(\"""
+            After your migration, compare SAP ECC and EC data:
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
+
+            Features:
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
+            \""")
+        with col2:
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
+
+# --- SERVICES PAGE ---
+elif selected == "Services":
+    st.header("🛠️ End-to-End SAP HCM Migration Services")
+    st.markdown(\"""
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
+    \""")
+'''
+
+output_path = "/mnt/data/final_app.py"
+Path(output_path).write_text(final_code)
+output_path

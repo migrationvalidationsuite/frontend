@@ -21,6 +21,13 @@ selected = option_menu(
     }
 )
 
+# --- HERO SECTION ---
+st.markdown("""
+<div style='background-color:#003366; padding: 2rem; border-radius: 10px;'>
+  <h1 style='color: white; text-align: center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h1>
+</div>
+""", unsafe_allow_html=True)
+
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("## Accelerate Your SAP Employee Central Migration")
@@ -28,36 +35,22 @@ if selected == "Home":
         #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
 
-    # -- KEY BENEFITS GRID --
-    st.markdown("### Key Benefits of Our Migration Platform")
-    icons = [
-        ("migration.png", "Accelerated Migration", "Migrate complex org structures in record time."),
-        ("testing.png", "Automated Testing", "Validate configuration and data pre-Go Live."),
-        ("security.png", "Enterprise-Grade Security", "Role-based access and audit logging."),
-        ("variance.png", "Variance Reporting", "Spot mismatches instantly post-migration."),
-        ("validation.png", "Field Validation", "Catch nulls, mismaps and format errors."),
-        ("confidence.png", "Implementation Confidence", "Drive success with predictable delivery.")
-    ]
+    st.image("landing_hero.png", use_container_width=True)
 
-    for i in range(0, len(icons), 3):
-        cols = st.columns(3)
-        for col, (icon_path, title, desc) in zip(cols, icons[i:i+3]):
-            with col:
-                try:
-                    st.image(icon_path, width=60)
-                except:
-                    st.warning(f"Missing image: {icon_path}")
-                st.markdown(f"**{title}**")
-                st.caption(desc)
-
-    # -- WHY CHOOSE OUR TOOL --
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
-    st.markdown("""
-    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
-    - ✅ Built-in Validation: Eliminate bad data before it hits production.
-    - 📊 Variance Detection: Compare ECC and EC data at a granular level.
-    """)
+
+    cols = st.columns(3)
+    benefits = [
+        ("migration.png", "Seamless Migration", "Template-based, role-secured data transformation for foundation, position, and EC objects."),
+        ("testing.png", "Parallel Testing Support", "Streamlined parallel test runs and output validations pre-Go Live."),
+        ("security.png", "Compliance & Security", "Full audit traceability and compliance readiness built-in.")
+    ]
+
+    for col, (icon_path, title, desc) in zip(cols, benefits):
+        col.image(icon_path, width=60)
+        col.markdown(f"**{title}**")
+        col.markdown(desc)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -79,11 +72,12 @@ elif selected == "Solutions":
             - Employee Master Data and Assignments
 
             Features:
-            - ✅ Field-level traceability and rollback
-            - 📁 Template-based uploads
-            - 🔒 Role-based access for audit compliance
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
             """)
         with col2:
+            st.image("migration.png", use_container_width=True)
             st.markdown("""
             <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)
@@ -99,11 +93,12 @@ elif selected == "Solutions":
             - Referential logic (e.g., manager mappings, org chart validation)
 
             Features:
-            - 🧠 Smart rules engine
-            - 📋 Summary reports with error categorization
-            - 🔄 Revalidation after fixes
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
             """)
         with col2:
+            st.image("validation.png", use_container_width=True)
             st.markdown("""
             <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)
@@ -119,11 +114,12 @@ elif selected == "Solutions":
             - Focus on critical payroll-impacting fields
 
             Features:
-            - 🔍 Side-by-side comparisons
-            - 🧾 Field-level variance reports
-            - 📈 Graphical dashboards to track issues
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
             """)
         with col2:
+            st.image("variance.png", use_container_width=True)
             st.markdown("""
             <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)

@@ -37,28 +37,32 @@ if selected == "Home":
 
     # Feature Table with Icons
    # Feature Table with Icons - 2 rows, 3 columns each
-features = [
-    ("streamline.png", "Streamline Your SAP HCM Migration"),
-    ("testing.png", "De-Risk Parallel Testing"),
-    ("security.png", "Ensure Data Security & Governance"),
-    ("variance.png", "Monitor Field-Level Variance"),
-    ("validation.png", "Smart Validation Engine"),
-    ("confidence.png", "Enhance Stakeholder Confidence"),
-]
+    # Feature Table with Icons - 2 rows, 3 columns each
+    features = [
+        ("streamline.png", "Streamline Your SAP HCM Migration"),
+        ("testing.png", "De-Risk Parallel Testing"),
+        ("security.png", "Ensure Data Security & Governance"),
+        ("variance.png", "Monitor Field-Level Variance"),
+        ("validation.png", "Smart Validation Engine"),
+        ("confidence.png", "Enhance Stakeholder Confidence"),
+    ]
 
-st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
 
-for i in range(0, len(features), 3):
-    row = st.columns(3)
-    for col, (icon_path, label) in zip(row, features[i:i+3]):
-        with col:
-            if os.path.exists(icon_path):
-                st.image(icon_path, width=50)
-            else:
-                st.markdown("🚫", unsafe_allow_html=True)
-            st.markdown(f"<p style='font-size:14px; font-weight:500;text-align:center'>{label}</p>", unsafe_allow_html=True)
+    for i in range(0, len(features), 3):
+        row = st.columns(3)
+        for col, (icon_path, label) in zip(row, features[i:i+3]):
+            with col:
+                if os.path.exists(icon_path):
+                    st.image(icon_path, width=50)
+                else:
+                    st.markdown("🚫", unsafe_allow_html=True)
+                st.markdown(
+                    f"<p style='font-size:14px; font-weight:500;text-align:center'>{label}</p>",
+                    unsafe_allow_html=True
+                )
 
-st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
     st.markdown("---")

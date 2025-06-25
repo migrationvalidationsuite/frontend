@@ -1,75 +1,80 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
+from PIL import Image
+import os
 
-st.set_page_config(page_title="SAP EC Migration Demo", layout="wide")
+# Set page config
+st.set_page_config(page_title="Quantumela: SAP EC Migration Tool", layout="wide")
 
-# --- NAVBAR ---
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Solutions", "Insights"],
-    icons=["house", "grid-3x3-gap", "lightbulb"],
-    orientation="horizontal",
-    default_index=0,
-    styles={
-        "container": {"padding": "0!important", "background-color": "#f9f9f9"},
-        "nav-link": {"font-size": "16px", "font-weight": "600", "color": "black"},
-        "nav-link-selected": {"background-color": "#e0e0e0"},
-    }
-)
+# Sidebar navigation
+st.sidebar.title("Navigation")
+page = st.sidebar.selectbox("Go to", ["Home", "Solutions", "Data Migration", "Validation", "Variance Monitoring"])
 
-# --- PAGE ROUTING ---
-if selected == "Home":
-    st.title("SAP EC Migration & Monitoring Tool")
-    st.subheader("Streamlined, Compliant, and Scalable HR Data Transformation")
+# Image path utility
+def load_image(name):
+    return os.path.join("assets", "images", name)
+
+# --- HOME ---
+if page == "Home":
+    st.image(load_image("homepage_banner.png"), use_container_width=True)
+    st.title("Quantumela: SAP Employee Central Migration & Monitoring Suite")
+    st.subheader("Accelerate SAP EC transitions with data integrity, speed, and confidence.")
     st.markdown("""
-        Welcome to our cloud-based platform for SAP SuccessFactors transformation. Explore tools for:
-        - Foundation & Position Data Migration
-        - Validation Rule Automation
-        - ECC-to-EC Variance Auditing
-    """)
-    st.image("landing_image.png", use_container_width=True)  # Optional
-    st.markdown("Explore more via the Solutions tab.")
-
-elif selected == "Solutions":
-    sol_choice = option_menu(
-        menu_title="Our Solutions",
-        options=["Data Migration", "Validation", "Variance Monitoring"],
-        orientation="horizontal"
-    )
-
-    if sol_choice == "Data Migration":
-        st.header("📂 Employee Central Data Migration")
-        st.markdown("""
-        Our tool supports clean, auditable migration of:
-        - Foundation Objects (Legal Entity, Business Unit, etc.)
-        - Position Hierarchies
-        - Employee Core Profiles
-        """)
-        st.image("Employee_Central_Data_Migration.png", caption="Data Migration Flow", use_container_width=True)
-
-    elif sol_choice == "Validation":
-        st.header("✅ Validation Services")
-        st.markdown("""
-        Ensure every record complies with schema rules and HR logic:
-        - Null field detection
-        - Format & Type mismatches
-        - Referential Integrity (e.g., position-to-employee links)
-        """)
-        st.image("validation_lifecycle.png", caption="Validation Flow", use_container_width=True)
-
-    elif sol_choice == "Variance Monitoring":
-        st.header("📊 ECC to EC Variance Monitoring")
-        st.markdown("""
-        Track field-level mismatches post-migration:
-        - Value Differences (before vs. after)
-        - Missing/Extra Records
-        - Formatting or Logical Gaps
-        """)
-        st.image("variance_monitoring.png", caption="Variance Workflow", use_container_width=True)
-
-elif selected == "Insights":
-    st.header("Insights & Use Cases")
-    st.markdown("""
-    Coming soon: Explore how global organizations simplify SAP transformation with our tools.
+    Welcome to Quantumela's streamlined migration and variance platform built for seamless SAP EC deployment.  
+    Explore our tools to ensure **accurate data migration**, **validated payrolls**, and **minimal disruption** to operations.
     """)
 
+# --- SOLUTIONS OVERVIEW ---
+elif page == "Solutions":
+    st.header("Solutions Overview")
+    st.markdown("""
+    Quantumela provides an integrated toolkit for SAP EC data workflows:
+    - 🔁 **Data Migration**: Clean, map, and migrate EC-relevant data objects.
+    - ✅ **Validation**: Automate checks and parallel testing to ensure accuracy.
+    - 📊 **Variance Monitoring**: Visualize and track key changes between pre/post migration states.
+    """)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.image(load_image("employee_central_migration.png"), caption="Employee Central Migration", use_container_width=True)
+    with col2:
+        st.image(load_image("validation_lifecycle.png"), caption="Validation Lifecycle", use_container_width=True)
+    with col3:
+        st.image(load_image("variance_monitoring_workflow.png"), caption="Variance Monitoring Flow", use_container_width=True)
+
+# --- DATA MIGRATION ---
+elif page == "Data Migration":
+    st.header("Data Migration Services")
+    st.markdown("""
+    Our migration module allows you to:
+    - Transform employee master data and structure.
+    - Extract from legacy systems and prepare for EC upload.
+    - Create formatted files based on SAP data object mapping.
+
+    Ensure readiness before cutover through stepwise staging and extraction reviews.
+    """)
+    st.image(load_image("employee_central_migration.png"), caption="Data Migration Diagram", use_container_width=True)
+
+# --- VALIDATION ---
+elif page == "Validation":
+    st.header("Validation Framework")
+    st.markdown("""
+    Validation tools compare legacy vs EC migrated records using:
+    - Parallel run payroll comparisons
+    - Object-by-object discrepancy detection
+    - Visual lifecycle tracking for approvals
+
+    This ensures **zero-data-loss** and audit-aligned accuracy.
+    """)
+    st.image(load_image("validation_lifecycle.png"), caption="Validation Lifecycle", use_container_width=True)
+
+# --- VARIANCE MONITORING ---
+elif page == "Variance Monitoring":
+    st.header("Variance Monitoring")
+    st.markdown("""
+    Monitor key attributes such as pay group, cost center, compensation, or position assignments pre and post-migration:
+    - Real-time reports of mismatches
+    - Alerting thresholds
+    - Exportable logs
+
+    Visualize what changed, when, and why—so there are no surprises post-GoLive.
+    """)
+    st.image(load_image("variance_monitoring_workflow.png"), caption="Variance Monitoring Flow", use_container_width=True)

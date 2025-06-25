@@ -60,13 +60,11 @@ if selected == "Home":
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
-    st.markdown(
-        "- ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-"
-        "- 🔍 Built-in Validation: Eliminate bad data before it hits production  
-"
-        "- 📊 Variance Detection: Compare ECC and EC data at a granular level"
-    )
+    st.markdown("""
+- ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+- 🔍 Built-in Validation: Eliminate bad data before it hits production  
+- 📊 Variance Detection: Compare ECC and EC data at a granular level  
+""")
 
     col1, col2, col3 = st.columns(3)
     cards = [

@@ -1,11 +1,11 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import os
 
 st.set_page_config(
     page_title="SAP EC Migration & Monitoring",
     page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="auto"
+    layout="wide"
 )
 
 # --- NAVIGATION MENU ---
@@ -29,26 +29,31 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
     features = [
-        ("streamline.png", "🚀 Streamline Your SAP HCM Migration"),
-        ("testing.png", "🧪 De-Risk Parallel Testing"),
-        ("security.png", "🔐 Ensure Data Security & Governance"),
-        ("variance.png", "📉 Monitor Field-Level Variance"),
-        ("validation.png", "✅ Smart Validation Engine"),
-        ("confidence.png", "🤝 Enhance Stakeholder Confidence"),
+        ("streamline.png", "Streamline Your SAP HCM Migration"),
+        ("testing.png", "De-Risk Parallel Testing"),
+        ("security.png", "Ensure Data Security & Governance"),
+        ("variance.png", "Monitor Field-Level Variance"),
+        ("validation.png", "Smart Validation Engine"),
+        ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
 
     for i in range(0, len(features), 3):
         cols = st.columns(3)
-        for col, (icon, text) in zip(cols, features[i:i+3]):
+        for col, (icon, label) in zip(cols, features[i:i+3]):
             with col:
-                st.image(icon, width=60)
-                st.markdown(f"<div style='text-align: center;'>{text}</div>", unsafe_allow_html=True)
+                st.markdown(f"<div style='text-align:center'>", unsafe_allow_html=True)
+                if os.path.exists(icon):
+                    st.image(icon, width=50)
+                else:
+                    st.write("🚫")
+                st.markdown(f"<p style='text-align:center; margin-top:10px'>{label}</p>", unsafe_allow_html=True)
+                st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
@@ -59,39 +64,43 @@ if selected == "Home":
     """)
 
     col1, col2, col3 = st.columns(3)
-    cards = [
-        ("data_icon.png", "📁 Data Migration", "Template-driven, secure transfers from legacy to EC."),
+    categories = [
+        ("data_icon.png", "📑 Data Migration", "Template-driven, secure transfers from legacy to EC."),
         ("check_icon.png", "✔️ Validation", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "📊 Variance Monitoring", "Automated comparisons between ECC and EC data.")
+        ("chart_icon.png", "📊 Variance Monitoring", "Automated comparisons between ECC and EC data."),
     ]
-
-    for col, (icon, heading, desc) in zip([col1, col2, col3], cards):
+    for col, (icon, title, desc) in zip([col1, col2, col3], categories):
         with col:
-            st.image(icon, width=60)
-            st.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
-            st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
+            st.markdown("<div style='text-align:center'>", unsafe_allow_html=True)
+            if os.path.exists(icon):
+                st.image(icon, width=50)
+            st.markdown(f"<h5>{title}</h5>", unsafe_allow_html=True)
+            st.markdown(f"<p>{desc}</p>", unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
+    st.markdown("<h3 style='text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>", unsafe_allow_html=True)
     st.markdown("""
-    <div style='background-color:#00264d;padding:40px;border-radius:10px;color:white;text-align:center'>
-        <h2>Built for SAP Success</h2>
-        <p>Our solutions align with the latest SAP Employee Central standards — making your migration journey smoother, smarter, and secure.</p>
-        <div style="display:flex;justify-content:space-around;flex-wrap:wrap;margin-top:30px">
-            <div style="width:30%;">
-                <h4>HCM Migration & Implementation</h4>
-                <p>Expert support for accurate and scalable SAP transitions with purpose-built tools.</p>
-            </div>
-            <div style="width:30%;">
-                <h4>Parallel Testing & Validation</h4>
-                <p>Smart validation engine to ensure pre-Go Live testing is clean, fast, and reliable.</p>
-            </div>
-            <div style="width:30%;">
-                <h4>Variance & Compliance Reporting</h4>
-                <p>Pinpoint mismatches and track key payroll-impacting fields with visual dashboards.</p>
-            </div>
-        </div>
-    </div>
+    <p style='text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
     """, unsafe_allow_html=True)
+
+    st.markdown(" ")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.markdown("""
+        <h4 style='text-align:center;'>🛠️ SAP EC Implementation</h4>
+        <p style='text-align:center;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
+        """, unsafe_allow_html=True)
+    with col2:
+        st.markdown("""
+        <h4 style='text-align:center;'>📋 Data Integrity & Compliance</h4>
+        <p style='text-align:center;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
+        """, unsafe_allow_html=True)
+    with col3:
+        st.markdown("""
+        <h4 style='text-align:center;'>📂 Document-Ready Migrations</h4>
+        <p style='text-align:center;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
+        """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -99,7 +108,8 @@ elif selected == "Solutions":
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Variance Monitoring"],
         icons=["cloud-upload", "check2-square", "bar-chart"],
-        orientation="horizontal"
+        orientation="horizontal",
+        key="solutions_nav"
     )
 
     if sol_choice == "Data Migration":
@@ -108,14 +118,14 @@ elif selected == "Solutions":
             st.header("📂 Employee Central Data Migration")
             st.markdown("""
             Our tool supports secure, auditable migration of:
-            - Foundation Objects (Legal Entity, Business Unit, Location)  
-            - Hierarchical Position Structures  
-            - Employee Master Data and Assignments  
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
 
-            **Features**:  
-            - Field-level traceability and rollback  
-            - Template-based uploads  
-            - Role-based access for audit compliance  
+            Features:
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
@@ -126,14 +136,14 @@ elif selected == "Solutions":
             st.header("🛡️ Validation Services")
             st.markdown("""
             Ensure every single record complies with:
-            - Required field presence (null detection)  
-            - Data types and value formatting  
-            - Referential logic (e.g., manager mappings, org chart validation)  
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
 
-            **Features**:  
-            - Smart rules engine  
-            - Summary reports with error categorization  
-            - Revalidation after fixes  
+            Features:
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
@@ -144,17 +154,17 @@ elif selected == "Solutions":
             st.header("📊 ECC to EC Variance Monitoring")
             st.markdown("""
             After your migration, compare SAP ECC and EC data:
-            - Detect mismatches in values and field formats  
-            - Identify extra/missing records across modules  
-            - Focus on critical payroll-impacting fields  
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
 
-            **Features**:  
-            - Side-by-side comparisons  
-            - Field-level variance reports  
-            - Graphical dashboards to track issues  
+            Features:
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
             """)
         with col2:
-            st.image("variance_monitoring.png", use_container_width=True)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":

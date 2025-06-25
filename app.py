@@ -21,36 +21,43 @@ selected = option_menu(
     }
 )
 
-# --- HERO SECTION ---
-st.markdown("""
-<div style='background-color:#003366; padding: 2rem; border-radius: 10px;'>
-  <h1 style='color: white; text-align: center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h1>
-</div>
-""", unsafe_allow_html=True)
-
 # --- HOME PAGE ---
 if selected == "Home":
-    st.markdown("## Accelerate Your SAP Employee Central Migration")
     st.markdown("""
-        #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
+    <div style='background-color:#e6f0ff;padding:2rem;border-radius:10px;'>
+        <h2 style='text-align:center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.image("landing_hero.png", use_container_width=True)
+    st.markdown("## Accelerate Your SAP Employee Central Migration")
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
 
-    cols = st.columns(3)
-    benefits = [
-        ("migration.png", "Seamless Migration", "Template-based, role-secured data transformation for foundation, position, and EC objects."),
-        ("testing.png", "Parallel Testing Support", "Streamlined parallel test runs and output validations pre-Go Live."),
-        ("security.png", "Compliance & Security", "Full audit traceability and compliance readiness built-in.")
-    ]
-
-    for col, (icon_path, title, desc) in zip(cols, benefits):
-        col.image(icon_path, width=60)
-        col.markdown(f"**{title}**")
-        col.markdown(desc)
+    st.markdown("""
+    <div style='display:flex; justify-content:center;'>
+        <table style='width:80%; border-spacing: 2rem;'>
+          <tr>
+            <td style='text-align:center;'>
+              <img src='https://cdn-icons-png.flaticon.com/512/3050/3050525.png' width='60'><br>
+              <strong>Seamless Data Transformation</strong><br>
+              Map, cleanse and migrate with accuracy.
+            </td>
+            <td style='text-align:center;'>
+              <img src='https://cdn-icons-png.flaticon.com/512/190/190411.png' width='60'><br>
+              <strong>Built-in Validation</strong><br>
+              Eliminate bad data before it hits production.
+            </td>
+            <td style='text-align:center;'>
+              <img src='https://cdn-icons-png.flaticon.com/512/2165/2165111.png' width='60'><br>
+              <strong>Variance Detection</strong><br>
+              Compare ECC and EC data at a granular level.
+            </td>
+          </tr>
+        </table>
+    </div>
+    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -70,16 +77,15 @@ elif selected == "Solutions":
             - Foundation Objects (Legal Entity, Business Unit, Location)
             - Hierarchical Position Structures
             - Employee Master Data and Assignments
-
+            
             Features:
             - Field-level traceability and rollback
             - Template-based uploads
             - Role-based access for audit compliance
             """)
         with col2:
-            st.image("migration.png", use_container_width=True)
             st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <img src='https://cdn-icons-png.flaticon.com/512/847/847969.png' width='300' style='display:block;margin:auto;'>
             """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
@@ -98,9 +104,8 @@ elif selected == "Solutions":
             - Revalidation after fixes
             """)
         with col2:
-            st.image("validation.png", use_container_width=True)
             st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <img src='https://cdn-icons-png.flaticon.com/512/190/190422.png' width='300' style='display:block;margin:auto;'>
             """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
@@ -119,16 +124,15 @@ elif selected == "Solutions":
             - Graphical dashboards to track issues
             """)
         with col2:
-            st.image("variance.png", use_container_width=True)
             st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <img src='https://cdn-icons-png.flaticon.com/512/3534/3534363.png' width='300' style='display:block;margin:auto;'>
             """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    Whether you're migrating to Employee Central or optimizing your existing setup, our services simplify your journey:
 
     - **Migration Assessment**: System readiness, scope definition, and risk analysis.
     - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC.
@@ -139,6 +143,7 @@ elif selected == "Services":
 
     > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)
+
     st.markdown("---")
     st.subheader("💡 Want a Guided Demo?")
     st.info("Use this tool live or book a session to see how it fits your transformation.")

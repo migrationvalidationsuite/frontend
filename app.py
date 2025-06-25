@@ -24,40 +24,40 @@ selected = option_menu(
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:2rem;border-radius:10px;'>
-        <h2 style='text-align:center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+    <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
+        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("## Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+    st.markdown("## 🚀 Accelerate Your SAP Employee Central Migration")
+    st.markdown("""
+    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
+    """)
+
+    # Feature Table with Icons
+    features = [
+        ("migration.png", "Streamline Your SAP HCM Migration"),
+        ("testing.png", "De-Risk Parallel Testing"),
+        ("security.png", "Ensure Data Security & Governance"),
+        ("variance.png", "Monitor Field-Level Variance"),
+        ("validation.png", "Smart Validation Engine"),
+        ("confidence.png", "Enhance Stakeholder Confidence"),
+    ]
+
+    st.markdown("<div style='text-align: center'>", unsafe_allow_html=True)
+    cols = st.columns(6)
+    for col, (icon_path, label) in zip(cols, features):
+        col.image(icon_path, width=50)
+        col.markdown(f"<p style='font-size:14px; font-weight:500'>{label}</p>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
-
     st.markdown("""
-    <div style='display:flex; justify-content:center;'>
-        <table style='width:80%; border-spacing: 2rem;'>
-          <tr>
-            <td style='text-align:center;'>
-              <img src='https://cdn-icons-png.flaticon.com/512/3050/3050525.png' width='60'><br>
-              <strong>Seamless Data Transformation</strong><br>
-              Map, cleanse and migrate with accuracy.
-            </td>
-            <td style='text-align:center;'>
-              <img src='https://cdn-icons-png.flaticon.com/512/190/190411.png' width='60'><br>
-              <strong>Built-in Validation</strong><br>
-              Eliminate bad data before it hits production.
-            </td>
-            <td style='text-align:center;'>
-              <img src='https://cdn-icons-png.flaticon.com/512/2165/2165111.png' width='60'><br>
-              <strong>Variance Detection</strong><br>
-              Compare ECC and EC data at a granular level.
-            </td>
-          </tr>
-        </table>
-    </div>
-    """, unsafe_allow_html=True)
+    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
+    - Built-in Validation: Eliminate bad data before it hits production.
+    - Variance Detection: Compare ECC and EC data at a granular level.
+    """)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -77,15 +77,16 @@ elif selected == "Solutions":
             - Foundation Objects (Legal Entity, Business Unit, Location)
             - Hierarchical Position Structures
             - Employee Master Data and Assignments
-            
+
             Features:
             - Field-level traceability and rollback
             - Template-based uploads
             - Role-based access for audit compliance
             """)
         with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
             st.markdown("""
-            <img src='https://cdn-icons-png.flaticon.com/512/847/847969.png' width='300' style='display:block;margin:auto;'>
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
@@ -104,8 +105,9 @@ elif selected == "Solutions":
             - Revalidation after fixes
             """)
         with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
             st.markdown("""
-            <img src='https://cdn-icons-png.flaticon.com/512/190/190422.png' width='300' style='display:block;margin:auto;'>
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
@@ -124,15 +126,16 @@ elif selected == "Solutions":
             - Graphical dashboards to track issues
             """)
         with col2:
+            st.image("variance_monitoring.png", use_container_width=True)
             st.markdown("""
-            <img src='https://cdn-icons-png.flaticon.com/512/3534/3534363.png' width='300' style='display:block;margin:auto;'>
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
             """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you're migrating to Employee Central or optimizing your existing setup, our services simplify your journey:
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
     - **Migration Assessment**: System readiness, scope definition, and risk analysis.
     - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC.
@@ -143,7 +146,6 @@ elif selected == "Services":
 
     > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)
-
     st.markdown("---")
     st.subheader("💡 Want a Guided Demo?")
     st.info("Use this tool live or book a session to see how it fits your transformation.")

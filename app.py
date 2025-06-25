@@ -9,26 +9,6 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-# --- Inject Basic CSS for Background & Typography ---
-st.markdown("""
-    <style>
-        body {
-            background: linear-gradient(to bottom right, #f5faff, #ffffff);
-        }
-        .main {
-            padding-top: 2rem;
-        }
-        h2, h3 {
-            color: #003366;
-        }
-        .centered {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
 # --- NAVIGATION MENU ---
 selected = option_menu(
     menu_title=None,
@@ -39,32 +19,8 @@ selected = option_menu(
         "container": {"padding": "0!important", "background-color": "#f0f4f8"},
         "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
         "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
-    }
-)
-
-# --- HOME PAGE ---
-import streamlit as st
-from streamlit_option_menu import option_menu
-import os
-
-st.set_page_config(
-    page_title="SAP EC Migration & Monitoring",
-    page_icon="📊",
-    layout="wide",
-    initial_sidebar_state="auto"
-)
-
-# --- NAVIGATION MENU ---
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Solutions", "Services"],
-    icons=["house-door-fill", "layers-fill", "tools"],
-    orientation="horizontal",
-    styles={
-        "container": {"padding": "0!important", "background-color": "#f0f4f8"},
-        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
-        "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
-    }
+    },
+    key="main_nav"
 )
 
 # --- HOME PAGE ---
@@ -124,29 +80,27 @@ if selected == "Home":
         col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="background-color:#0a1e50; padding:50px 20px; border-radius:12px; color:white; text-align:center">
-        <h2 style="color:white;">Built for SAP & SuccessFactors</h2>
-        <p style="font-size:16px; margin-bottom:40px;">
-            Our tools are compatible with the latest versions of SAP and SAP SuccessFactors.<br>
-            All our solutions align with SAP's S/4HANA strategy, ensuring no customer is left behind.
-        </p>
-
-        <div style="display:flex; justify-content:space-around; flex-wrap:wrap; text-align:left; max-width:1200px; margin:auto;">
-            <div style="flex:1; min-width:280px; margin:20px;">
-                <h4 style="color:white;">HCM Migration & Implementation Solutions</h4>
-                <p>Designed to support seamless transitions to SAP environments with expert guidance and secure tooling.</p>
+    <div style='background-color:#003366;padding:40px 0;margin-top:50px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
+        <p style='color:white;text-align:center;'>SpinifexIT solutions are compatible with the latest versions of SAP and SAP SuccessFactors.<br>All of our products run on SAP S/4HANA and are aligned to SAP’s commitment to leave no customer behind.</p>
+        <div style='display:flex;justify-content:space-around;color:white;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4>HCM Migration & Implementation</h4>
+                <p>Designed for supporting seamless transitions to SAP environments with expert guidance and tools.</p>
             </div>
-            <div style="flex:1; min-width:280px; margin:20px;">
-                <h4 style="color:white;">HR & Payroll Optimization, Transaction & Compliance Solutions</h4>
-                <p>Enhance efficiency and accuracy across your SAP HR stack while maintaining compliance and auditability.</p>
+            <div style='width:30%;text-align:center;'>
+                <h4>HR & Payroll Optimization</h4>
+                <p>Focused on enhancing efficiency and accuracy to ensure smooth operations while maintaining compliance.</p>
             </div>
-            <div style="flex:1; min-width:280px; margin:20px;">
-                <h4 style="color:white;">Document Generation Management & Storage</h4>
-                <p>Intuitive tools to create, store, and manage critical business documents securely and efficiently.</p>
+            <div style='width:30%;text-align:center;'>
+                <h4>Document Management & Storage</h4>
+                <p>Solutions for securely managing and generating critical SAP documents effortlessly.</p>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# NOTE: Keep the rest of Solutions & Services pages same as before
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
+import os
 
 st.set_page_config(layout="wide")
 
@@ -47,57 +48,45 @@ if selected == "Home":
         cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
             with col:
-                st.markdown(
-                    f"""
-                    <div style='text-align:center'>
-                        <img src="data:image/png;base64,{base64.b64encode(open(icon, "rb").read()).decode()}" width="50" style="margin:auto;"/>
-                        <p style="margin-top:10px;">{label}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    st.markdown(
+                        f"""
+                        <div style='text-align:center'>
+                            <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
+                            <p style="margin-top:10px;">{label}</p>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
-    st.markdown("---")
-st.markdown("### Why Choose Our Tool?")
 
-cols = st.columns(3)
-headings = ["Data Migration", "Validation", "Variance Monitoring"]
-descriptions = [
-    "Template-driven, secure transfers from legacy to EC.",
-    "Field-level checks to catch errors before go-live.",
-    "Automated comparisons between ECC and EC data."
-]
-icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+    cols = st.columns(3)
+    headings = ["Data Migration", "Validation", "Variance Monitoring"]
+    descriptions = [
+        "Template-driven, secure transfers from legacy to EC.",
+        "Field-level checks to catch errors before go-live.",
+        "Automated comparisons between ECC and EC data."
+    ]
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
 
-for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
-    if os.path.exists(icon):
-        with open(icon, "rb") as img_file:
-            img_data = base64.b64encode(img_file.read()).decode()
-        col.markdown(
-            f"""
-            <div style='text-align:center'>
-                <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
-                <h5>{heading}</h5>
-                <p>{desc}</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-    else:
-        col.markdown(
-            f"""
-            <div style='text-align:center'>
-                🚫<br>
-                <h5>{heading}</h5>
-                <p>{desc}</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-   
+    for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
+        if os.path.exists(icon):
+            with open(icon, "rb") as img_file:
+                img_data = base64.b64encode(img_file.read()).decode()
+            col.markdown(
+                f"""
+                <div style='text-align:center'>
+                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
+                    <h5>{heading}</h5>
+                    <p>{desc}</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
     # Built for SAP section
     st.markdown("""
@@ -121,6 +110,7 @@ for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
     </div>
     """, unsafe_allow_html=True)
 
+# --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",

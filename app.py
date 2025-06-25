@@ -30,14 +30,10 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("## 🚀 Accelerate Your SAP Employee Central Migration")
-    st.markdown("""
-    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
+    st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
+    st.markdown("**Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.**")
 
-    # Feature Table with Icons
-   # Feature Table with Icons - 2 rows, 3 columns each
-    # Feature Table with Icons - 2 rows, 3 columns each
+    # --- FEATURES: 2 ROWS OF 3 COLS ---
     features = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -47,48 +43,37 @@ if selected == "Home":
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
 
-    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
-
     for i in range(0, len(features), 3):
-        row = st.columns(3)
-        for col, (icon_path, label) in zip(row, features[i:i+3]):
-            with col:
-                if os.path.exists(icon_path):
-                    st.image(icon_path, width=50)
-                else:
-                    st.markdown("🚫", unsafe_allow_html=True)
-                st.markdown(
-                    f"<p style='font-size:14px; font-weight:500;text-align:center'>{label}</p>",
-                    unsafe_allow_html=True
-                )
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
+        row = features[i:i+3]
+        cols = st.columns(3)
+        for col, (icon, label) in zip(cols, row):
+            if os.path.exists(icon):
+                col.image(icon, width=55)
+            else:
+                col.markdown("🚫", unsafe_allow_html=True)
+            col.markdown(f"<p style='text-align:center;'>{label}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
-    st.subheader("Why Choose Our Tool?")
+    st.subheader("💡 Why Choose Our Tool?")
     st.markdown("""
-    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-    - Built-in Validation: Eliminate bad data before it hits production  
-    - Variance Detection: Compare ECC and EC data at a granular level  
+    - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - 🔍 Built-in Validation: Eliminate bad data before it hits production  
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
     """)
 
+    # --- Core Capabilities with Icons ---
     col1, col2, col3 = st.columns(3)
-    for col, icon, heading, desc in zip(
-        [col1, col2, col3],
-        ["data_icon.png", "check_icon.png", "chart_icon.png"],
-        ["Data Migration", "Validation", "Variance Monitoring"],
-        [
-            "Template-driven, secure transfers from legacy to EC.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and EC data."
-        ]
-    ):
+    capabilities = [
+        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
+        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
+        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data."),
+    ]
+    for col, (icon, title, desc) in zip([col1, col2, col3], capabilities):
         if os.path.exists(icon):
             col.image(icon, width=50)
         else:
-            col.markdown("🚫", unsafe_allow_html=True)
-        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+            col.markdown("📁", unsafe_allow_html=True)
+        col.markdown(f"<h5 style='text-align:center;'>{title}</h5>", unsafe_allow_html=True)
         col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
@@ -110,16 +95,13 @@ elif selected == "Solutions":
             - Hierarchical Position Structures
             - Employee Master Data and Assignments
 
-            Features:
+            **Features**:
             - Field-level traceability and rollback
             - Template-based uploads
             - Role-based access for audit compliance
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])
@@ -131,16 +113,13 @@ elif selected == "Solutions":
             - Data types and value formatting
             - Referential logic (e.g., manager mappings, org chart validation)
 
-            Features:
+            **Features**:
             - Smart rules engine
             - Summary reports with error categorization
             - Revalidation after fixes
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
         col1, col2 = st.columns([1, 1])
@@ -152,32 +131,29 @@ elif selected == "Solutions":
             - Identify extra/missing records across modules
             - Focus on critical payroll-impacting fields
 
-            Features:
+            **Features**:
             - Side-by-side comparisons
             - Field-level variance reports
             - Graphical dashboards to track issues
             """)
         with col2:
             st.image("variance_monitoring.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    Whether you're migrating to Employee Central or optimizing your existing setup, our services simplify your journey:
 
-    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
-    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
-    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
-    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
-    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
-    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
+    - 📋 **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - ⚙️ **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - 🧪 **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - 🧼 **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - 🚀 **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - 🧾 **Variance & Compliance Reports**: Side-by-side views and compliance logs  
 
-    > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
+    > 🧠 Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)
     st.markdown("---")
-    st.subheader("💡 Want a Guided Demo?")
+    st.subheader("📞 Want a Guided Demo?")
     st.info("Use this tool live or book a session to see how it fits your transformation.")

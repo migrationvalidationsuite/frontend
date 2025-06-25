@@ -89,16 +89,8 @@ if selected == "Home":
             "Field-level checks to catch errors before go-live.",
             "Automated comparisons between ECC and EC data."
         ]
-    ):
-        if os.path.exists(icon):
-            col.image(icon, width=50)
-        else:
-            col.markdown("🚫")
-        col.markdown(f"<h5 style='text-align:center'>{heading}</h5>", unsafe_allow_html=True)
-        col.markdown(f"<p style='text-align:center'>{desc}</p>", unsafe_allow_html=True)
-        # Built for SAP & SuccessFactors section with dark background and 3-column layout
-
-st.markdown("""
+        
+        st.markdown("""
 <div style="background-color:#0a1e50; padding:50px 20px; border-radius:12px; color:white; text-align:center">
     <h2 style="color:white;">Built for SAP & SuccessFactors</h2>
     <p style="font-size:16px; margin-bottom:40px;">
@@ -122,6 +114,14 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
+    ):
+        if os.path.exists(icon):
+            col.image(icon, width=50)
+        else:
+            col.markdown("🚫")
+        col.markdown(f"<h5 style='text-align:center'>{heading}</h5>", unsafe_allow_html=True)
+        col.markdown(f"<p style='text-align:center'>{desc}</p>", unsafe_allow_html=True)
+        # Built for SAP & SuccessFactors section with dark background and 3-column layout
 
 
 # --- SOLUTIONS PAGE ---

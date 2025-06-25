@@ -19,8 +19,7 @@ selected = option_menu(
         "container": {"padding": "0!important", "background-color": "#f0f4f8"},
         "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
         "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
-    },
-    key="main_nav"
+    }
 )
 
 # --- HOME PAGE ---
@@ -47,64 +46,61 @@ if selected == "Home":
     for i in range(0, len(features), 3):
         cols = st.columns(3)
         for col, (icon, text) in zip(cols, features[i:i+3]):
-            if os.path.exists(icon):
-                col.image(icon, width=50)
-            else:
-                col.write("🚫")
-            col.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
+            with col:
+                if os.path.exists(icon):
+                    st.image(icon, width=60)
+                else:
+                    st.markdown("<p style='font-size:50px;text-align:center;'>🚫</p>", unsafe_allow_html=True)
+                st.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
     st.markdown("""
     - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
     - 🔍 Built-in Validation: Eliminate bad data before it hits production  
-    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
+    - 🌁 Variance Detection: Compare ECC and EC data at a granular level  
     """)
 
     col1, col2, col3 = st.columns(3)
-    for col, icon, heading, desc in zip(
-        [col1, col2, col3],
-        ["data_icon.png", "check_icon.png", "chart_icon.png"],
-        ["Data Migration", "Validation", "Variance Monitoring"],
-        [
-            "Template-driven, secure transfers from legacy to EC.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and EC data."
-        ]
-    ):
-        if os.path.exists(icon):
-            col.image(icon, width=50)
-        else:
-            col.write("🚫")
-        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
-        col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
+    sections = [
+        ("data_icon.png", "Data Migration", "Template-driven, secure transfers from legacy to EC."),
+        ("check_icon.png", "Validation", "Field-level checks to catch errors before go-live."),
+        ("chart_icon.png", "Variance Monitoring", "Automated comparisons between ECC and EC data."),
+    ]
+
+    for col, (icon, heading, desc) in zip([col1, col2, col3], sections):
+        with col:
+            if os.path.exists(icon):
+                st.image(icon, width=60)
+            else:
+                st.markdown("<p style='font-size:50px;text-align:center;'>🚫</p>", unsafe_allow_html=True)
+            st.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+            st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
     # --- SAP Compatibility / Value Proposition Section ---
-st.markdown("""
-<div style='background-color:#002B5B; padding: 40px 20px; border-radius: 10px; color: white; text-align: center;'>
-    <h2 style='font-weight: 700;'>✅ Built for Seamless SAP HCM Transformation</h2>
-    <p style='font-size: 18px; max-width: 1000px; margin: auto;'>
-        Our solution is purpose-built to support SAP Employee Central (EC) implementations with accuracy, visibility, and confidence.  
-        From data extraction to validation and go-live assurance, we streamline every phase of your transition.
-    </p>
-    <div style='display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 40px;'>
-        <div style='flex: 1 1 250px; max-width: 300px;'>
-            <h4>🔄 Automated Data Migration & Implementation</h4>
-            <p>Accelerate transitions to SAP EC with guided templates, reusable mappings, and secure, auditable processes.</p>
-        </div>
-        <div style='flex: 1 1 250px; max-width: 300px;'>
-            <h4>🛡 Smart Data Validation & Compliance</h4>
-            <p>Ensure clean, production-ready data using built-in rules, referential checks, and repeatable testing cycles.</p>
-        </div>
-        <div style='flex: 1 1 250px; max-width: 300px;'>
-            <h4>📊 Field-Level Variance Monitoring</h4>
-            <p>Compare SAP ECC and EC data in real time to detect discrepancies before they impact business-critical functions.</p>
+    st.markdown("""
+    <div style='background-color:#002B5B; padding: 40px 20px; border-radius: 10px; color: white; text-align: center;'>
+        <h2 style='font-weight: 700;'>✅ Built for Seamless SAP HCM Transformation</h2>
+        <p style='font-size: 18px; max-width: 1000px; margin: auto;'>
+            Our solution is purpose-built to support SAP Employee Central (EC) implementations with accuracy, visibility, and confidence.  
+            From data extraction to validation and go-live assurance, we streamline every phase of your transition.
+        </p>
+        <div style='display: flex; justify-content: center; flex-wrap: wrap; gap: 40px; margin-top: 40px;'>
+            <div style='flex: 1 1 250px; max-width: 300px;'>
+                <h4>🔄 Automated Data Migration & Implementation</h4>
+                <p>Accelerate transitions to SAP EC with guided templates, reusable mappings, and secure, auditable processes.</p>
+            </div>
+            <div style='flex: 1 1 250px; max-width: 300px;'>
+                <h4>🚡 Smart Data Validation & Compliance</h4>
+                <p>Ensure clean, production-ready data using built-in rules, referential checks, and repeatable testing cycles.</p>
+            </div>
+            <div style='flex: 1 1 250px; max-width: 300px;'>
+                <h4>📊 Field-Level Variance Monitoring</h4>
+                <p>Compare SAP ECC and EC data in real time to detect discrepancies before they impact business-critical functions.</p>
+            </div>
         </div>
     </div>
-</div>
-""", unsafe_allow_html=True)
-
-# NOTE: Keep the rest of Solutions & Services pages same as before
+    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -112,7 +108,8 @@ elif selected == "Solutions":
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Variance Monitoring"],
         icons=["cloud-upload", "check2-square", "bar-chart"],
-        orientation="horizontal"
+        orientation="horizontal",
+        key="solutions_menu"
     )
 
     if sol_choice == "Data Migration":
@@ -171,9 +168,9 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.header("🛠️ End-to-End SAP HCM Migration Services")
+    st.header("🚲 End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    Whether you're migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
     - **Migration Assessment**: System readiness, scope definition, and risk analysis  
     - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  

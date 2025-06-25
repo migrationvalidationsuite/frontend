@@ -58,6 +58,22 @@ if selected == "Home":
     - Built-in Validation: Eliminate bad data before it hits production.
     - Variance Detection: Compare ECC and EC data at a granular level.
     """)
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.image("data_icon.png", width=50)
+    st.markdown("<h5 style='text-align:center;'>Data Migration</h5>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;'>Template-driven, secure transfers from legacy to EC.</p>", unsafe_allow_html=True)
+
+with col2:
+    st.image("check_icon.png", width=50)
+    st.markdown("<h5 style='text-align:center;'>Validation</h5>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;'>Field-level checks to catch errors before go-live.</p>", unsafe_allow_html=True)
+
+with col3:
+    st.image("chart_icon.png", width=50)
+    st.markdown("<h5 style='text-align:center;'>Variance Monitoring</h5>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;'>Automated comparisons between ECC and EC data.</p>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

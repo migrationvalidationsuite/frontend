@@ -1,18 +1,27 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-st.set_page_config(page_title="SAP EC Migration Demo", layout="wide")
+st.set_page_config(
+    page_title="SAP EC Migration & Monitoring",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# Optional CSS Styling
+with open("styles.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # --- NAVIGATION MENU ---
 selected = option_menu(
     menu_title=None,
-    options=["Home", "Solutions", "Insights"],
-    icons=["house", "briefcase", "lightbulb"],
+    options=["Home", "Solutions", "Services"],
+    icons=["house-door-fill", "layers-fill", "tools"],
     orientation="horizontal",
     styles={
-        "container": {"padding": "0!important", "background-color": "#ffffff"},
-        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "black"},
-        "nav-link-selected": {"background-color": "#e6f0ff"},
+        "container": {"padding": "0!important", "background-color": "#f0f4f8"},
+        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
+        "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
     }
 )
 
@@ -38,55 +47,88 @@ elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Variance Monitoring"],
-        icons=["upload", "check2-circle", "bar-chart-line"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
         orientation="horizontal"
     )
 
     if sol_choice == "Data Migration":
-        st.header("📂 Employee Central Data Migration")
-        st.markdown("""
-        Our tool supports secure, auditable migration of:
-        - Foundation Objects (Legal Entity, Business Unit, Location)
-        - Hierarchical Position Structures
-        - Employee Master Data and Assignments
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📂 Employee Central Data Migration")
+            st.markdown("""
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
 
-        With robust templates, custom mappings, and field-level traceability.
-        """)
-        st.image("Employee_Central_Data_Migration.png", caption="Migration Flow", use_container_width=True)
+            Features:
+            - ✅ Field-level traceability and rollback
+            - 📁 Template-based uploads
+            - 🔒 Role-based access for audit compliance
+            """)
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
-        st.header("✅ Validation Services")
-        st.markdown("""
-        Ensure every single record complies with:
-        - Required field presence (null detection)
-        - Data types and value formatting
-        - Referential logic (e.g., employee reports-to validation)
-        
-        Prevent downstream errors with pre-upload quality checks.
-        """)
-        st.image("validation_lifecycle.png", caption="Validation Lifecycle", use_container_width=True)
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("✅ Validation Services")
+            st.markdown("""
+            Ensure every single record complies with:
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
+
+            Features:
+            - 🧠 Smart rules engine
+            - 📋 Summary reports with error categorization
+            - 🔄 Revalidation after fixes
+            """)
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
-        st.header("📊 ECC to EC Variance Monitoring")
-        st.markdown("""
-        After your migration, compare SAP ECC and EC data:
-        - Detect mismatches in values and field formats
-        - Identify extra/missing records across modules
-        - Focus on critical payroll-impacting fields
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📊 ECC to EC Variance Monitoring")
+            st.markdown("""
+            After your migration, compare SAP ECC and EC data:
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
 
-        Variance dashboards help you close the loop with confidence.
-        """)
-        st.image("variance_monitoring.png", caption="Variance Audit Flow", use_container_width=True)
+            Features:
+            - 🔍 Side-by-side comparisons
+            - 🧾 Field-level variance reports
+            - 📈 Graphical dashboards to track issues
+            """)
+        with col2:
+            st.image("variance_monitoring.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
-# --- INSIGHTS PAGE ---
-elif selected == "Insights":
-    st.header("📘 Insights & Use Cases")
+# --- SERVICES PAGE ---
+elif selected == "Services":
+    st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    > Coming soon: Explore real-world SAP SuccessFactors projects powered by our platform.
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-    - How a retail company migrated 50,000+ records in 2 weeks
-    - Lessons from parallel testing in payroll-critical environments
-    - What to automate vs. manually validate in SAP EC
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis.
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC.
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live.
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files.
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments.
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs.
 
-    Bookmark this space!
+    > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)
+    st.markdown("---")
+    st.subheader("💡 Want a Guided Demo?")
+    st.info("Use this tool live or book a session to see how it fits your transformation.")

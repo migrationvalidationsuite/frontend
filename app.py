@@ -32,15 +32,19 @@ if selected == "Home":
     st.markdown("""
         #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
-    st.image("landing_hero.png", use_container_width=True)
+
+    # Optional hero banner (if using)
+    # st.image("landing_hero.png", use_container_width=True)
+
+    # Insert your Canva image
+    st.image("sap_migration_features.png", caption="", use_container_width=True)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    - Seamless data transformation with clean templates and rollback support
-    - Built-in validation engine to ensure data quality before upload
-    - Intelligent variance reports across legacy ECC and SAP EC
-    - Designed for payroll-critical data, minimizing business disruptions
+    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
+    - ✅ Built-in Validation: Eliminate bad data before it hits production.
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level.
     """)
     st.markdown("Explore the 'Solutions' tab above for a detailed walkthrough.")
 

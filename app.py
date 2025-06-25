@@ -44,6 +44,8 @@ if selected == "Home":
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
+    col.image("check_icon.png", width=50)  # Just to test if it's a file issue
+
 
     st.markdown("<div style='text-align: center'>", unsafe_allow_html=True)
     cols = st.columns(len(features))

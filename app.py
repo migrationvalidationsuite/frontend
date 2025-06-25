@@ -30,7 +30,27 @@ selected = option_menu(
 if selected == "Home":
     st.markdown("## Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
-    st.image("landing_hero.png", use_container_width=True)
+
+    col1, col2 = st.columns([1.2, 1])
+    with col1:
+        st.markdown("""
+        **What makes our migration engine stand out?**
+
+        - Built for structured and unstructured SAP data models  
+        - Role-based access to ensure security  
+        - Built-in templates for common EC foundation/employee objects  
+        - Mapping logic and rollback built-in  
+        """)
+    with col2:
+        st.image("sap_migration_features.png", use_container_width=True)
+
+    st.markdown("---")
+    st.subheader("Why Choose Our Tool?")
+    st.markdown("""
+    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - ✅ Built-in Validation: Eliminate bad data before it hits production  
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
+    """)
 
     # New SAP-aligned banner section
     with st.container():
@@ -157,4 +177,3 @@ elif selected == "Services":
     st.markdown("---")
     st.subheader("💡 Want a Guided Demo?")
     st.info("Use this tool live or book a session to see how it fits your transformation.")
-st.image("assets/sap_migration_features.png", use_container_width=True)

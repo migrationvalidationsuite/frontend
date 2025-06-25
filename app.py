@@ -97,21 +97,7 @@ for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
             unsafe_allow_html=True
         )
 
-   ''' cols = st.columns(3)
-    with cols[0]:
-        st.image("datamigration.png", width=60)
-        st.markdown("**Data Migration**", unsafe_allow_html=True)
-        st.write("Template-driven, secure transfers from legacy to EC.")
-
-    with cols[1]:
-        st.image("validation.png", width=60)
-        st.markdown("**Validation**", unsafe_allow_html=True)
-        st.write("Field-level checks to catch errors before go-live.")
-
-    with cols[2]:
-        st.image("pexels-divinetechygirl-1181341.jpg", width=60)
-        st.markdown("**Variance Monitoring**", unsafe_allow_html=True)
-        st.write("Automated comparisons between ECC and EC data.")'''
+   
 
     # Built for SAP section
     st.markdown("""

@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 # Optional CSS Styling
-# Commenting out unless file provided
+# Commented out to avoid FileNotFoundError
 # with open("styles.css") as f:
 #     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
@@ -67,8 +67,6 @@ if selected == "Home":
     - Variance Detection: Compare ECC and EC data at a granular level  
     """)
 
-
-
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(
@@ -79,78 +77,83 @@ elif selected == "Solutions":
     )
 
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([1.2, 1])
+        col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("Employee Central Data Migration")
+            st.header("📂 Employee Central Data Migration")
             st.markdown("""
-            Migrating from SAP ECC or other systems to EC? Our platform supports:
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
 
-            - Foundation Object Migration: Legal Entity, Business Unit, Location, Cost Center
-            - Position & Job Info Mapping: Custom hierarchies and structures
-            - Employee Master Data Uploads: Core data, job info, compensation, time & benefits
-
-            **Capabilities:**
-            - Role-based access and traceable logs
-            - Error highlighting before transformation
-            - Upload-ready SAP-compatible output files
+            Features:
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([1.2, 1])
+        col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("Validation Services")
+            st.header("✅ Validation Services")
             st.markdown("""
-            Ensure your data adheres to SAP EC standards:
+            Ensure every single record complies with:
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
 
-            - Format checks (date/time, strings, enumerations)
-            - Field constraints and required value enforcement
-            - Referential validations (e.g., manager exists, org units align)
-
-            **Why it matters:**
-            - Prevent upload failures
-            - Ensure reporting & compliance accuracy
-            - Reduce costly rework and post-Go Live delays
+            Features:
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
-        col1, col2 = st.columns([1.2, 1])
+        col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("ECC to EC Variance Monitoring")
+            st.header("📊 ECC to EC Variance Monitoring")
             st.markdown("""
-            Post-migration? This tool compares pre/post data for:
+            After your migration, compare SAP ECC and EC data:
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
 
-            - Field-level mismatches in values and formats
-            - Missing or extra records across modules
-            - Logic and configuration mismatches (infotype vs MDF)
-
-            **Key Benefits:**
-            - Granular insights into payroll-critical variances
-            - Audit-ready documentation
-            - Visual summary dashboards
+            Features:
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
             """)
         with col2:
             st.image("variance_monitoring.png", use_container_width=True)
+            st.markdown("""
+            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
+            """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.header("SAP EC Transformation Services")
+    st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Our team supports full lifecycle SAP EC implementations:
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-    - Project scoping, feasibility and fit-gap assessments
-    - Data audit, cleansing, enrichment and mapping strategy
-    - EC configuration and upload file generation
-    - Multi-round validations and data harmonization
-    - Pre-Go Live reconciliations and post-load fixes
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis.
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC.
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live.
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files.
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments.
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs.
 
-    **We specialize in:**
-    - Fast-track migrations for payroll or compliance-driven timelines
-    - Parallel test phase support
-    - Change tracking and variance auditing
-
-    We deliver not just a migration tool — but an end-to-end framework tailored to SAP HCM and EC best practices.
+    > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)
+    st.markdown("---")
+    st.subheader("💡 Want a Guided Demo?")
+    st.info("Use this tool live or book a session to see how it fits your transformation.")

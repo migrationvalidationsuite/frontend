@@ -8,11 +8,6 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-# Optional CSS Styling
-# Commented out to avoid FileNotFoundError
-# with open("styles.css") as f:
-#     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
 # --- NAVIGATION MENU ---
 selected = option_menu(
     menu_title=None,
@@ -28,96 +23,32 @@ selected = option_menu(
 
 # --- HOME PAGE ---
 if selected == "Home":
-    st.markdown("## Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
-
-    col1, col2 = st.columns([1.2, 1])
-    with col1:
-        st.markdown("""
-        **What makes our migration engine stand out?**
-
-        - Built for structured and unstructured SAP data models  
-        - Role-based access to ensure security  
-        - Built-in templates for common EC foundation/employee objects  
-        - Mapping logic and rollback built-in  
-        """)
-    with col2:
-# --- Hero Section Replacement ---
-st.markdown("""
-    <div style="background: linear-gradient(to right, #1e3c72, #2a5298); padding: 3rem 2rem; border-radius: 10px; color: white;">
-        <h2 style="text-align:center; font-size: 28px;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
-    </div>
-""", unsafe_allow_html=True)
-
-st.markdown("### Accelerate your SAP migration. Simplify your transformation. Optimize business outcomes.")
-
-# --- Icon Grid (2 Rows x 3 Columns) ---
-features = [
-    ("⚙️", "Streamline Your SAP HCM Migration"),
-    ("🧪", "De-Risk Parallel Testing"),
-    ("🔐", "Ensure Data Security & Governance"),
-    ("📊", "Monitor Field-Level Variance"),
-    ("🛠️", "Smart Validation Engine"),
-    ("🤝", "Enhance Stakeholder Confidence"),
-]
-
-row1 = features[:3]
-row2 = features[3:]
-
-# First row
-cols = st.columns(3)
-for col, (icon, label) in zip(cols, row1):
-    col.markdown(f"<div style='text-align: center; font-size: 30px;'>{icon}</div>", unsafe_allow_html=True)
-    col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
-
-# Second row
-cols = st.columns(3)
-for col, (icon, label) in zip(cols, row2):
-    col.markdown(f"<div style='text-align: center; font-size: 30px;'>{icon}</div>", unsafe_allow_html=True)
-    col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
-
-    st.markdown("---")
-    st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-    - ✅ Built-in Validation: Eliminate bad data before it hits production  
-    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
-    """)
+        <div style="background: linear-gradient(to right, #1e3c72, #2a5298); padding: 3rem 2rem; border-radius: 10px; color: white;">
+            <h2 style="text-align:center; font-size: 28px;">
+            Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management
+            </h2>
+        </div>
+    """, unsafe_allow_html=True)
 
-    # New SAP-aligned banner section
-    with st.container():
-        st.markdown("""
-            <div style='background-color:#0f1b4c;padding:50px;border-radius:8px;color:white'>
-                <h2 style='text-align:center;'>Built for SAP & SuccessFactors</h2>
-                <p style='text-align:center; font-size:16px;'>
-                    Our solutions are purpose-built for SAP SuccessFactors and SAP S/4HANA environments.<br>
-                    Whether you're migrating from ECC or optimizing existing EC setups, we deliver tools that support compliance, performance, and confidence at scale.
-                </p>
-                <br>
-                <div style='display:flex;justify-content:space-around;gap:30px;flex-wrap:wrap;'>
-                    <div style='flex:1;min-width:250px;'>
-                        <h4>EC Data Migration & Implementation Services</h4>
-                        <p>Streamline Employee Central migrations using best-practice templates, transformation rules, and rollback-safe utilities.</p>
-                    </div>
-                    <div style='flex:1;min-width:250px;'>
-                        <h4>Payroll Validation & Compliance Automation</h4>
-                        <p>Run pre-Go Live validations across all HR/payroll master data to catch and correct errors before they disrupt cutover.</p>
-                    </div>
-                    <div style='flex:1;min-width:250px;'>
-                        <h4>Variance Monitoring & Audit Reporting</h4>
-                        <p>Track EC vs ECC mismatches and field-level differences with dashboards that enable rapid triage and correction.</p>
-                    </div>
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
+    st.markdown("### Accelerate your SAP migration. Simplify your transformation. Optimize business outcomes.")
 
-    st.markdown("---")
-    st.subheader("Why Choose Our Tool?")
-    st.markdown("""
-    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
-    - Built-in Validation: Eliminate bad data before it hits production  
-    - Variance Detection: Compare ECC and EC data at a granular level  
-    """)
+    features = [
+        ("icons/migration.png", "Streamline Your SAP HCM Migration"),
+        ("icons/testing.png", "De-Risk Parallel Testing"),
+        ("icons/security.png", "Ensure Data Security & Governance"),
+        ("icons/variance.png", "Monitor Field-Level Variance"),
+        ("icons/validation.png", "Smart Validation Engine"),
+        ("icons/confidence.png", "Enhance Stakeholder Confidence"),
+    ]
+
+    rows = [features[:3], features[3:]]
+
+    for row in rows:
+        cols = st.columns(3)
+        for col, (icon_path, label) in zip(cols, row):
+            col.image(icon_path, width=60)
+            col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -145,9 +76,6 @@ elif selected == "Solutions":
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/1examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])
@@ -166,9 +94,6 @@ elif selected == "Solutions":
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/2examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
     elif sol_choice == "Variance Monitoring":
         col1, col2 = st.columns([1, 1])
@@ -187,9 +112,6 @@ elif selected == "Solutions":
             """)
         with col2:
             st.image("variance_monitoring.png", use_container_width=True)
-            st.markdown("""
-            <iframe width="100%" height="400" src="https://datastudio.google.com/embed/reporting/3examplepage" frameborder="0" style="border:0" allowfullscreen></iframe>
-            """, unsafe_allow_html=True)
 
 # --- SERVICES PAGE ---
 elif selected == "Services":

@@ -96,6 +96,33 @@ if selected == "Home":
             col.markdown("🚫")
         col.markdown(f"<h5 style='text-align:center'>{heading}</h5>", unsafe_allow_html=True)
         col.markdown(f"<p style='text-align:center'>{desc}</p>", unsafe_allow_html=True)
+        # Built for SAP & SuccessFactors section with dark background and 3-column layout
+
+st.markdown("""
+<div style="background-color:#0a1e50; padding:50px 20px; border-radius:12px; color:white; text-align:center">
+    <h2 style="color:white;">Built for SAP & SuccessFactors</h2>
+    <p style="font-size:16px; margin-bottom:40px;">
+        Our tools are compatible with the latest versions of SAP and SAP SuccessFactors.<br>
+        All our solutions align with SAP's S/4HANA strategy, ensuring no customer is left behind.
+    </p>
+    
+    <div style="display:flex; justify-content:space-around; flex-wrap:wrap; text-align:left; max-width:1200px; margin:auto;">
+        <div style="flex:1; min-width:280px; margin:20px;">
+            <h4 style="color:white;">HCM Migration & Implementation Solutions</h4>
+            <p>Designed to support seamless transitions to SAP environments with expert guidance and secure tooling.</p>
+        </div>
+        <div style="flex:1; min-width:280px; margin:20px;">
+            <h4 style="color:white;">HR & Payroll Optimization, Transaction & Compliance Solutions</h4>
+            <p>Enhance efficiency and accuracy across your SAP HR stack while maintaining compliance and auditability.</p>
+        </div>
+        <div style="flex:1; min-width:280px; margin:20px;">
+            <h4 style="color:white;">Document Generation Management & Storage</h4>
+            <p>Intuitive tools to create, store, and manage critical business documents securely and efficiently.</p>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

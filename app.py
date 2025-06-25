@@ -97,69 +97,79 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
-    solution_choice = option_menu(
+    sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Variance Monitoring"],
         icons=["cloud-upload", "check2-square", "bar-chart"],
-        menu_icon="cast",
-        default_index=0,
-        orientation="horizontal"
+        orientation="horizontal",
+        key="solutions_nav"
     )
 
-    if solution_choice == "Data Migration":
-        st.header("📂 Employee Central Data Migration")
-        st.image("Employee_Central_Data_Migration.png", use_container_width=True)
-        st.markdown("""
-        Our tool supports secure, auditable migration of:
-        - Foundation Objects (Legal Entity, Business Unit, Location)
-        - Hierarchical Position Structures
-        - Employee Master Data and Assignments
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📂 Employee Central Data Migration")
+            st.markdown("""
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
 
-        **Features:**
-        - Field-level traceability and rollback
-        - Template-based uploads
-        - Role-based access for audit compliance
-        """)
+            Features:
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
+            """)
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
 
-    elif solution_choice == "Validation":
-        st.header("🛡️ Validation Services")
-        st.image("validation_lifecycle.png", use_container_width=True)
-        st.markdown("""
-        Ensure every single record complies with:
-        - Required field presence (null detection)
-        - Data types and value formatting
-        - Referential logic (e.g., manager mappings, org chart validation)
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("🛡️ Validation Services")
+            st.markdown("""
+            Ensure every single record complies with:
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
 
-        **Features:**
-        - Smart rules engine
-        - Summary reports with error categorization
-        - Revalidation after fixes
-        """)
+            Features:
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
+            """)
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
 
-    elif solution_choice == "Variance Monitoring":
-        st.header("📊 ECC to EC Variance Monitoring")
-        st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
-        st.markdown("""
-        After your migration, compare SAP ECC and EC data:
-        - Detect mismatches in values and field formats
-        - Identify extra/missing records across modules
-        - Focus on critical payroll-impacting fields
+    elif sol_choice == "Variance Monitoring":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📊 ECC to EC Variance Monitoring")
+            st.markdown("""
+            After your migration, compare SAP ECC and EC data:
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
 
-        **Features:**
-        - Side-by-side comparisons
-        - Field-level variance reports
-        - Graphical dashboards to track issues
-        """)
+            Features:
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
+            """)
+        with col2:
+            st.image("variance_monitoring.png", use_container_width=True)
 
-# --- SERVICES PAGE (OPTIONAL STUB) ---
+# --- SERVICES PAGE ---
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Our services streamline your transition to SAP Employee Central with:
-    - Migration Assessments and Roadmapping
-    - Secure Data Cleansing and Transformation
-    - Parallel Testing with Payroll Precision
-    - Post-Go-Live Variance Reporting
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)

@@ -33,20 +33,20 @@ if selected == "Home":
         #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
 
-    # Optional hero banner (if using)
-    # st.image("landing_hero.png", use_container_width=True)
-
-    # Insert your Canva image
-    st.image("sap_migration_features.png", caption="", use_container_width=True)
+    # Use columns to control image size
+    col1, col2, col3 = st.columns([0.15, 0.7, 0.15])
+    with col2:
+        st.image("sap_migration_features.png", use_container_width=False, width=700)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
-    - ✅ Built-in Validation: Eliminate bad data before it hits production.
+    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.  
+    - ✅ Built-in Validation: Eliminate bad data before it hits production.  
     - 📊 Variance Detection: Compare ECC and EC data at a granular level.
     """)
-    st.markdown("Explore the 'Solutions' tab above for a detailed walkthrough.")
+    st.markdown("Explore the **Solutions** tab above for a detailed walkthrough.")
+
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

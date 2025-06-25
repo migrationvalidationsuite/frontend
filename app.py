@@ -37,15 +37,13 @@ if selected == "Home":
 
     # Feature Table with Icons
     features = [
-        ("migration.png", "Streamline Your SAP HCM Migration"),
+        ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
         ("security.png", "Ensure Data Security & Governance"),
         ("variance.png", "Monitor Field-Level Variance"),
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
-    col.image("check_icon.png", width=50)  # Just to test if it's a file issue
-
 
     st.markdown("<div style='text-align: center'>", unsafe_allow_html=True)
     cols = st.columns(len(features))
@@ -53,7 +51,7 @@ if selected == "Home":
         if os.path.exists(icon_path):
             col.image(icon_path, width=50)
         else:
-            col.write("🚫")
+            col.markdown("🚫", unsafe_allow_html=True)
         col.markdown(f"<p style='font-size:14px; font-weight:500;text-align:center'>{label}</p>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -79,7 +77,7 @@ if selected == "Home":
         if os.path.exists(icon):
             col.image(icon, width=50)
         else:
-            col.write("🚫")
+            col.markdown("🚫", unsafe_allow_html=True)
         col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
         col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 

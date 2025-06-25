@@ -1,3 +1,5 @@
+# Providing the final complete version of app.py based on all user requirements
+final_code = '''
 import streamlit as st
 from streamlit_option_menu import option_menu
 import os
@@ -25,18 +27,15 @@ selected = option_menu(
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-        <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
-            <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
-        </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='padding: 20px;'>
-        <h3>🚀 Accelerate Your SAP Employee Central Migration</h3>
-        <p><strong>Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.</strong></p>
+    <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
+        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
     """, unsafe_allow_html=True)
 
+    st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+
+    # Icons Grid (2 rows x 3 columns)
     features = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -46,57 +45,120 @@ if selected == "Home":
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
 
-    # Split into two rows with 3 columns each
-    for row in range(2):
+    for i in range(0, len(features), 3):
         cols = st.columns(3)
-        for i in range(3):
-            idx = row * 3 + i
-            if idx < len(features):
-                icon_path, label = features[idx]
-                with cols[i]:
-                    if os.path.exists(icon_path):
-                        st.image(icon_path, width=60)
-                    else:
-                        st.write("🚫")
-                    st.markdown(f"<p style='text-align:center;'>{label}</p>", unsafe_allow_html=True)
+        for col, (icon, text) in zip(cols, features[i:i+3]):
+            if os.path.exists(icon):
+                col.image(icon, width=50)
+            else:
+                col.write("🚫")
+            col.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
-
-    # WHY CHOOSE US
+    st.markdown("### 💡 Why Choose Our Tool?")
     st.markdown("""
-    <div style='padding: 10px 0;'>
-        <h4>💡 Why Choose Our Tool?</h4>
-        <ul>
-            <li>✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy</li>
-            <li>🔍 Built-in Validation: Eliminate bad data before it hits production</li>
-            <li>📊 Variance Detection: Compare ECC and EC data at a granular level</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
+    - ✅ Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - 🔍 Built-in Validation: Eliminate bad data before it hits production  
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level  
+    """)
 
     col1, col2, col3 = st.columns(3)
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-    headings = ["Data Migration", "Validation", "Variance Monitoring"]
-    descriptions = [
-        "Template-driven, secure transfers from legacy to EC.",
-        "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and EC data."
-    ]
+    for col, icon, heading, desc in zip(
+        [col1, col2, col3],
+        ["data_icon.png", "check_icon.png", "chart_icon.png"],
+        ["Data Migration", "Validation", "Variance Monitoring"],
+        [
+            "Template-driven, secure transfers from legacy to EC.",
+            "Field-level checks to catch errors before go-live.",
+            "Automated comparisons between ECC and EC data."
+        ]
+    ):
+        if os.path.exists(icon):
+            col.image(icon, width=50)
+        else:
+            col.write("🚫")
+        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+        col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
-    for col, icon, heading, desc in zip([col1, col2, col3], icons, headings, descriptions):
-        with col:
-            if os.path.exists(icon):
-                st.image(icon, width=60)
-            else:
-                st.write("📁")
-            st.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
-            st.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
+# --- SOLUTIONS PAGE ---
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Variance Monitoring"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal"
+    )
 
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📂 Employee Central Data Migration")
+            st.markdown("""
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)
+            - Hierarchical Position Structures
+            - Employee Master Data and Assignments
+
+            Features:
+            - Field-level traceability and rollback
+            - Template-based uploads
+            - Role-based access for audit compliance
+            """)
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("🛡️ Validation Services")
+            st.markdown("""
+            Ensure every single record complies with:
+            - Required field presence (null detection)
+            - Data types and value formatting
+            - Referential logic (e.g., manager mappings, org chart validation)
+
+            Features:
+            - Smart rules engine
+            - Summary reports with error categorization
+            - Revalidation after fixes
+            """)
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
+
+    elif sol_choice == "Variance Monitoring":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("📊 ECC to EC Variance Monitoring")
+            st.markdown("""
+            After your migration, compare SAP ECC and EC data:
+            - Detect mismatches in values and field formats
+            - Identify extra/missing records across modules
+            - Focus on critical payroll-impacting fields
+
+            Features:
+            - Side-by-side comparisons
+            - Field-level variance reports
+            - Graphical dashboards to track issues
+            """)
+        with col2:
+            st.image("variance_monitoring.png", use_container_width=True)
+
+# --- SERVICES PAGE ---
+elif selected == "Services":
+    st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-        <style>
-            .block-container {
-                background-color: #f8fbff;
-                padding: 2rem;
-            }
-        </style>
-    """, unsafe_allow_html=True)
+    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
+    """)
+'''
+
+with open("/mnt/data/final_app.py", "w") as f:
+    f.write(final_code)
+
+import ace_tools as tools; tools.display_file("final_app.py")

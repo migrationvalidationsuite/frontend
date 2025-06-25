@@ -1,5 +1,3 @@
-# Providing the final complete version of app.py based on all user requirements
-final_code = '''
 import streamlit as st
 from streamlit_option_menu import option_menu
 import os
@@ -10,6 +8,26 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="auto"
 )
+
+# --- Inject Basic CSS for Background & Typography ---
+st.markdown("""
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #f5faff, #ffffff);
+        }
+        .main {
+            padding-top: 2rem;
+        }
+        h2, h3 {
+            color: #003366;
+        }
+        .centered {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # --- NAVIGATION MENU ---
 selected = option_menu(
@@ -28,14 +46,13 @@ selected = option_menu(
 if selected == "Home":
     st.markdown("""
     <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
-        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+        <h2>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
-    # Icons Grid (2 rows x 3 columns)
     features = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -47,12 +64,12 @@ if selected == "Home":
 
     for i in range(0, len(features), 3):
         cols = st.columns(3)
-        for col, (icon, text) in zip(cols, features[i:i+3]):
+        for col, (icon, label) in zip(cols, features[i:i+3]):
             if os.path.exists(icon):
-                col.image(icon, width=50)
+                col.image(icon, width=60)
             else:
-                col.write("🚫")
-            col.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
+                col.markdown("🚫")
+            col.markdown(f"<p style='text-align:center; font-weight:500;'>{label}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
@@ -76,9 +93,9 @@ if selected == "Home":
         if os.path.exists(icon):
             col.image(icon, width=50)
         else:
-            col.write("🚫")
-        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
-        col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
+            col.markdown("🚫")
+        col.markdown(f"<h5 style='text-align:center'>{heading}</h5>", unsafe_allow_html=True)
+        col.markdown(f"<p style='text-align:center'>{desc}</p>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -156,9 +173,3 @@ elif selected == "Services":
     - **Cutover Strategy & Execution**: Phased, low-risk deployments  
     - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)
-'''
-
-with open("/mnt/data/final_app.py", "w") as f:
-    f.write(final_code)
-
-import ace_tools as tools; tools.display_file("final_app.py")

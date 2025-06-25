@@ -23,32 +23,46 @@ selected = option_menu(
 
 # --- HOME PAGE ---
 if selected == "Home":
+    st.markdown("## Accelerate Your SAP Employee Central Migration")
     st.markdown("""
-        <div style="background: linear-gradient(to right, #1e3c72, #2a5298); padding: 3rem 2rem; border-radius: 10px; color: white;">
-            <h2 style="text-align:center; font-size: 28px;">
-            Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management
-            </h2>
-        </div>
-    """, unsafe_allow_html=True)
+        #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
+    """)
+    st.image("landing_hero.png", use_container_width=True)
 
-    st.markdown("### Accelerate your SAP migration. Simplify your transformation. Optimize business outcomes.")
+    # 🔽 INSERT ICON GRID SECTION HERE
+    st.markdown("### Key Benefits of Our Migration Platform")
 
-    features = [
-        ("icons/migration.png", "Streamline Your SAP HCM Migration"),
-        ("icons/testing.png", "De-Risk Parallel Testing"),
-        ("icons/security.png", "Ensure Data Security & Governance"),
-        ("icons/variance.png", "Monitor Field-Level Variance"),
-        ("icons/validation.png", "Smart Validation Engine"),
-        ("icons/confidence.png", "Enhance Stakeholder Confidence"),
+    cols = st.columns(3)
+
+    icons = [
+        ("migration.png", "Accelerated Migration", "Migrate complex org structures in record time."),
+        ("testing.png", "Automated Testing", "Validate configuration and data pre-Go Live."),
+        ("security.png", "Enterprise-Grade Security", "Role-based access and audit logging."),
+        ("variance.png", "Variance Reporting", "Spot mismatches instantly post-migration."),
+        ("validation.png", "Field Validation", "Catch nulls, mismaps and format errors."),
+        ("confidence.png", "Implementation Confidence", "Drive success with predictable delivery.")
     ]
 
-    rows = [features[:3], features[3:]]
+    for i in range(0, len(icons), 3):
+        row = st.columns(3)
+        for col, (icon_file, title, desc) in zip(row, icons[i:i+3]):
+            with col:
+                try:
+                    st.image(icon_file, width=60)
+                except:
+                    st.warning(f"Missing image: {icon_file}")
+                st.markdown(f"**{title}**")
+                st.caption(desc)
 
-    for row in rows:
-        cols = st.columns(3)
-        for col, (icon_path, label) in zip(cols, row):
-            col.image(icon_path, width=60)
-            col.markdown(f"<div style='text-align: center; font-weight: 500;'>{label}</div>", unsafe_allow_html=True)
+    # ✅ CONTINUE with the rest of Home section
+    st.markdown("---")
+    st.subheader("Why Choose Our Tool?")
+    st.markdown("""
+    - 🔄 Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
+    - ✅ Built-in Validation: Eliminate bad data before it hits production.
+    - 📊 Variance Detection: Compare ECC and EC data at a granular level.
+    """)
+
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

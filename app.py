@@ -43,16 +43,42 @@ selected = option_menu(
 )
 
 # --- HOME PAGE ---
+import streamlit as st
+from streamlit_option_menu import option_menu
+import os
+
+st.set_page_config(
+    page_title="SAP EC Migration & Monitoring",
+    page_icon="📊",
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+# --- NAVIGATION MENU ---
+selected = option_menu(
+    menu_title=None,
+    options=["Home", "Solutions", "Services"],
+    icons=["house-door-fill", "layers-fill", "tools"],
+    orientation="horizontal",
+    styles={
+        "container": {"padding": "0!important", "background-color": "#f0f4f8"},
+        "nav-link": {"font-size": "18px", "font-weight": "600", "color": "#003366", "margin": "0 20px"},
+        "nav-link-selected": {"background-color": "#cce0ff", "border-radius": "8px"},
+    }
+)
+
+# --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
     <div style="background-color:#e6f0ff;padding:25px;border-radius:10px;text-align:center">
-        <h2>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+        <h2 style="color:#003366;">Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
+    # Icons Grid (2 rows x 3 columns)
     features = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -64,12 +90,12 @@ if selected == "Home":
 
     for i in range(0, len(features), 3):
         cols = st.columns(3)
-        for col, (icon, label) in zip(cols, features[i:i+3]):
+        for col, (icon, text) in zip(cols, features[i:i+3]):
             if os.path.exists(icon):
-                col.image(icon, width=60)
+                col.image(icon, width=50)
             else:
-                col.markdown("🚫")
-            col.markdown(f"<p style='text-align:center; font-weight:500;'>{label}</p>", unsafe_allow_html=True)
+                col.write("🚫")
+            col.markdown(f"<p style='text-align:center;'>{text}</p>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("### 💡 Why Choose Our Tool?")
@@ -89,40 +115,38 @@ if selected == "Home":
             "Field-level checks to catch errors before go-live.",
             "Automated comparisons between ECC and EC data."
         ]
-        
-        st.markdown("""
-<div style="background-color:#0a1e50; padding:50px 20px; border-radius:12px; color:white; text-align:center">
-    <h2 style="color:white;">Built for SAP & SuccessFactors</h2>
-    <p style="font-size:16px; margin-bottom:40px;">
-        Our tools are compatible with the latest versions of SAP and SAP SuccessFactors.<br>
-        All our solutions align with SAP's S/4HANA strategy, ensuring no customer is left behind.
-    </p>
-    
-    <div style="display:flex; justify-content:space-around; flex-wrap:wrap; text-align:left; max-width:1200px; margin:auto;">
-        <div style="flex:1; min-width:280px; margin:20px;">
-            <h4 style="color:white;">HCM Migration & Implementation Solutions</h4>
-            <p>Designed to support seamless transitions to SAP environments with expert guidance and secure tooling.</p>
-        </div>
-        <div style="flex:1; min-width:280px; margin:20px;">
-            <h4 style="color:white;">HR & Payroll Optimization, Transaction & Compliance Solutions</h4>
-            <p>Enhance efficiency and accuracy across your SAP HR stack while maintaining compliance and auditability.</p>
-        </div>
-        <div style="flex:1; min-width:280px; margin:20px;">
-            <h4 style="color:white;">Document Generation Management & Storage</h4>
-            <p>Intuitive tools to create, store, and manage critical business documents securely and efficiently.</p>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
     ):
         if os.path.exists(icon):
             col.image(icon, width=50)
         else:
-            col.markdown("🚫")
-        col.markdown(f"<h5 style='text-align:center'>{heading}</h5>", unsafe_allow_html=True)
-        col.markdown(f"<p style='text-align:center'>{desc}</p>", unsafe_allow_html=True)
-        # Built for SAP & SuccessFactors section with dark background and 3-column layout
+            col.write("🚫")
+        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+        col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
+    st.markdown("""
+    <div style="background-color:#0a1e50; padding:50px 20px; border-radius:12px; color:white; text-align:center">
+        <h2 style="color:white;">Built for SAP & SuccessFactors</h2>
+        <p style="font-size:16px; margin-bottom:40px;">
+            Our tools are compatible with the latest versions of SAP and SAP SuccessFactors.<br>
+            All our solutions align with SAP's S/4HANA strategy, ensuring no customer is left behind.
+        </p>
+
+        <div style="display:flex; justify-content:space-around; flex-wrap:wrap; text-align:left; max-width:1200px; margin:auto;">
+            <div style="flex:1; min-width:280px; margin:20px;">
+                <h4 style="color:white;">HCM Migration & Implementation Solutions</h4>
+                <p>Designed to support seamless transitions to SAP environments with expert guidance and secure tooling.</p>
+            </div>
+            <div style="flex:1; min-width:280px; margin:20px;">
+                <h4 style="color:white;">HR & Payroll Optimization, Transaction & Compliance Solutions</h4>
+                <p>Enhance efficiency and accuracy across your SAP HR stack while maintaining compliance and auditability.</p>
+            </div>
+            <div style="flex:1; min-width:280px; margin:20px;">
+                <h4 style="color:white;">Document Generation Management & Storage</h4>
+                <p>Intuitive tools to create, store, and manage critical business documents securely and efficiently.</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

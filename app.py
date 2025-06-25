@@ -1,5 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import os
 
 st.set_page_config(
     page_title="SAP EC Migration & Monitoring",
@@ -45,36 +46,40 @@ if selected == "Home":
     ]
 
     st.markdown("<div style='text-align: center'>", unsafe_allow_html=True)
-    cols = st.columns(6)
+    cols = st.columns(len(features))
     for col, (icon_path, label) in zip(cols, features):
-        col.image(icon_path, width=50)
-        col.markdown(f"<p style='font-size:14px; font-weight:500'>{label}</p>", unsafe_allow_html=True)
+        if os.path.exists(icon_path):
+            col.image(icon_path, width=50)
+        else:
+            col.write("🚫")
+        col.markdown(f"<p style='font-size:14px; font-weight:500;text-align:center'>{label}</p>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.subheader("Why Choose Our Tool?")
     st.markdown("""
-    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy.
-    - Built-in Validation: Eliminate bad data before it hits production.
-    - Variance Detection: Compare ECC and EC data at a granular level.
+    - Seamless Data Transformation: Map, cleanse, and migrate with accuracy  
+    - Built-in Validation: Eliminate bad data before it hits production  
+    - Variance Detection: Compare ECC and EC data at a granular level  
     """)
+
     col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.image("data_icon.png", width=50)
-        st.markdown("<h5 style='text-align:center;'>Data Migration</h5>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align:center;'>Template-driven, secure transfers from legacy to EC.</p>", unsafe_allow_html=True)
-
-    with col2:
-        st.image("check_icon.png", width=50)
-        st.markdown("<h5 style='text-align:center;'>Validation</h5>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align:center;'>Field-level checks to catch errors before go-live.</p>", unsafe_allow_html=True)
-
-    with col3:
-        st.image("chart_icon.png", width=50)
-        st.markdown("<h5 style='text-align:center;'>Variance Monitoring</h5>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align:center;'>Automated comparisons between ECC and EC data.</p>", unsafe_allow_html=True)
-
+    for col, icon, heading, desc in zip(
+        [col1, col2, col3],
+        ["data_icon.png", "check_icon.png", "chart_icon.png"],
+        ["Data Migration", "Validation", "Variance Monitoring"],
+        [
+            "Template-driven, secure transfers from legacy to EC.",
+            "Field-level checks to catch errors before go-live.",
+            "Automated comparisons between ECC and EC data."
+        ]
+    ):
+        if os.path.exists(icon):
+            col.image(icon, width=50)
+        else:
+            col.write("🚫")
+        col.markdown(f"<h5 style='text-align:center;'>{heading}</h5>", unsafe_allow_html=True)
+        col.markdown(f"<p style='text-align:center;'>{desc}</p>", unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -109,7 +114,7 @@ elif selected == "Solutions":
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("✅ Validation Services")
+            st.header("🛡️ Validation Services")
             st.markdown("""
             Ensure every single record complies with:
             - Required field presence (null detection)
@@ -154,12 +159,12 @@ elif selected == "Services":
     st.markdown("""
     Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-    - **Migration Assessment**: System readiness, scope definition, and risk analysis.
-    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC.
-    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live.
-    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files.
-    - **Cutover Strategy & Execution**: Phased, low-risk deployments.
-    - **Variance & Compliance Reports**: Side-by-side views and compliance logs.
+    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
+    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
+    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
+    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
+    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
 
     > Our expert-led delivery model ensures you meet tight deadlines without sacrificing quality.
     """)

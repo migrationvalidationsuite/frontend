@@ -31,7 +31,7 @@ with st.sidebar:
                 "margin": "5px",
                 "--hover-color": "#e6f0ff",
             },
-            "nav-link-selected": {"background-color": "#cce0ff", "font-weight": "bold"},
+            "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
 
@@ -50,19 +50,16 @@ if selected == "Home":
     with col2:
         st.markdown("""
         ### Purpose
-        Accelerate and de-risk SAP HCM transformations by enabling governed migration of HR data from SAP HCM to SuccessFactors. This includes:
-
+        Accelerate SAP HCM transformations with governed HR data migration. Includes:
         - Rule-based transformation & AI suggestions
-        - Pre-load validation, licensing, rollback
-        - Configurable mapping with audit logs
-        - Multi-tenant architecture for scalability
-
-        ### 🏁 Outcome
-        Deliver a secure, audit-ready, and scalable migration tool that enables:
-
-        - Reduced manual effort
-        - Embedded traceability and governance
-        - Fast, reliable deployments with minimal technical burden
+        - Pre-load validation, rollback, licensing
+        - Configurable mapping, audit logs
+        
+        ### Outcome
+        Secure, audit-ready migrations enabling:
+        - Less manual effort
+        - Built-in traceability
+        - Faster, reliable deployments
         """)
 
     st.markdown("""

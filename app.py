@@ -3,23 +3,37 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="HRSC-DaSH", page_icon="🚰")
 
-# Navigation Menu
-selected = option_menu(
-    menu_title=None,
-    options=["Home", "Solutions", "Services"],
-    icons=["house", "layers", "wrench"],
-    menu_icon="cast",
-    default_index=0,
-    orientation="horizontal",
-    styles={
-        "container": {"padding": "0!important", "background-color": "#f8f9fa", "justify-content": "flex-start"},
-        "icon": {"color": "black", "font-size": "18px"},
-        "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#eee"},
-        "nav-link-selected": {"background-color": "#cfe2ff"},
-    },
-)
+# Remove top padding to reduce white space
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- SIDEBAR NAVIGATION ---
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Navigation",
+        options=["Home", "Solutions", "Services"],
+        icons=["house", "layers", "wrench"],
+        menu_icon="cast",
+        default_index=0,
+        styles={
+            "container": {"padding": "5px", "background-color": "#f8f9fa"},
+            "icon": {"color": "#003366", "font-size": "18px"},
+            "nav-link": {
+                "font-size": "16px",
+                "text-align": "left",
+                "margin": "5px",
+                "--hover-color": "#e6f0ff",
+            },
+            "nav-link-selected": {"background-color": "#cce0ff", "font-weight": "bold"},
+        },
+    )
 
 # --- HOME PAGE ---
 if selected == "Home":
@@ -30,12 +44,33 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    with col2:
+        st.markdown("""
+        ### 🌟 Purpose
+        Accelerate and de-risk SAP HCM transformations by enabling governed migration of HR data from SAP HCM to SuccessFactors. This includes:
 
-    # Icons (2 rows x 3 columns)
+        - Rule-based transformation & AI suggestions
+        - Pre-load validation, licensing, rollback
+        - Configurable mapping with audit logs
+        - Multi-tenant architecture for scalability
+
+        ### 🏁 Outcome
+        Deliver a secure, audit-ready, and scalable migration tool that enables:
+
+        - Reduced manual effort
+        - Embedded traceability and governance
+        - Fast, reliable deployments with minimal technical burden
+        """)
+
+    st.markdown("""
+    ### 🚀 Accelerate Your SAP Employee Central Migration
+    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
+    """)
+
+    # Icons Grid
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -88,51 +123,6 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    st.markdown("---")
-    st.markdown("#### Why This Tool, Why Now?")
-    st.markdown("""
-    <table style='width:100%;text-align:left;'>
-        <tr>
-            <th style='color:red;'>Challenge</th>
-            <th style='color:green;'>Opportunity</th>
-            <th style='color:navy;'>Strategic Fit</th>
-        </tr>
-        <tr>
-            <td>SAP customers face costly, error-prone manual migrations.</td>
-            <td>Automates mapping, validation, deployment, reducing time/risk by over 50%.</td>
-            <td>Aligns with automation and governance-first data strategy.</td>
-        </tr>
-        <tr>
-            <td>Fragmented tools and inconsistent QA delay rollouts.</td>
-            <td>Configurable, repeatable pipelines for HR/payroll/time-off without hardcoding.</td>
-            <td>Transforms IT from support to enabler with faster, less disruptive delivery.</td>
-        </tr>
-        <tr>
-            <td>No rollback or audit trail risks continuity.</td>
-            <td>Built-in licensing, rollback, and pre-prod validation ensure security.</td>
-            <td>Meets audit and compliance needs for SAP cloud transition.</td>
-        </tr>
-    </table>
-    """, unsafe_allow_html=True)
-
-    st.markdown("---")
-    st.markdown("#### Purpose")
-    st.markdown("""
-    Accelerate and de-risk SAP HCM transformations by enabling governed migration of HR data from SAP HCM to SuccessFactors.
-    This includes:
-    - Rule-based transformation & AI suggestions
-    - Pre-load validation, licensing, rollback
-    - Configurable mapping with audit logs
-    - Multi-tenant architecture for scalability
-    """)
-
-    st.markdown("#### Outcome")
-    st.markdown("""
-    Deliver a secure, audit-ready, and scalable migration tool that enables:
-    - Reduced manual effort
-    - Embedded traceability and governance
-    - Fast, reliable deployments with minimal technical burden
-    """)
 
     st.markdown("#### Key Features")
     st.markdown("""

@@ -44,7 +44,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([3, 2])
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
     with col2:

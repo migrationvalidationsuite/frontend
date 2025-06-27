@@ -50,16 +50,26 @@ if selected == "Home":
     with col2:
         st.markdown("""
         #### Purpose
-        Accelerate SAP HCM transformations with governed HR data migration. Includes:
-        - Rule-based transformation & AI suggestions
-        - Pre-load validation, rollback, licensing
-        - Configurable mapping, audit logs
-        
+        Enable governed HR data migration from SAP HCM to SuccessFactors:
+        - Schema mapping & transformation engine
+        - Pre-load validation, rollback, and licensing
+        - Audit-ready configurations for scale
+
         #### Outcome
-        Secure, audit-ready migrations enabling:
-        - Less manual effort
-        - Built-in traceability
-        - Faster, reliable deployments
+        Deliver a secure, scalable migration tool with:
+        - Reduced manual effort
+        - Built-in governance and traceability
+        - Efficient, reliable deployment processes
+
+        #### Scope
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+        - Schema mapping
+        - Field-level configuration
+        - Transformation engine
+        - Validation Reports
+        - Licensing and packaging
+        - Testing (unit, integration, UAT)
+        - Deployment support
         """)
 
     st.markdown("""
@@ -120,7 +130,6 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-
     st.markdown("#### Key Features")
     st.markdown("""
     - AI-powered mapping & validation
@@ -153,7 +162,6 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-
 
 # (Solutions and Services pages remain unchanged for now unless further edits are needed)
 

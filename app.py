@@ -49,7 +49,7 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
     with col2:
         st.markdown("""
-        ### 🌟 Purpose
+        ### Purpose
         Accelerate and de-risk SAP HCM transformations by enabling governed migration of HR data from SAP HCM to SuccessFactors. This includes:
 
         - Rule-based transformation & AI suggestions
@@ -66,7 +66,7 @@ if selected == "Home":
         """)
 
     st.markdown("""
-    ### 🚀 Accelerate Your SAP Employee Central Migration
+    ### Accelerate Your SAP Employee Central Migration
     #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
     """)
 

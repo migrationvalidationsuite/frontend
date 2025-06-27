@@ -14,9 +14,9 @@ selected = option_menu(
     default_index=0,
     orientation="horizontal",
     styles={
-        "container": {"padding": "0!important", "background-color": "#f8f9fa"},
+        "container": {"padding": "0!important", "background-color": "#f8f9fa", "justify-content": "flex-start"},
         "icon": {"color": "black", "font-size": "18px"},
-        "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#eee"},
+        "nav-link": {"font-size": "18px", "text-align": "left", "margin": "0px", "--hover-color": "#eee"},
         "nav-link-selected": {"background-color": "#cfe2ff"},
     },
 )
@@ -24,18 +24,20 @@ selected = option_menu(
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
-        <h2 style='text-align:center;'>Strategic SAP On-Premise to SuccessFactors migration product </h2>
-        <h3 style='text-align:center;'>HRSC-DaSH </h3>
+    <div style='background-color:#e6f0ff;padding:10px 15px 10px 15px;border-radius:10px;'>
+        <h2 style='text-align:left;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
+        <h3 style='text-align:left;'>HRSC-DaSH</h3>
     </div>
     """, unsafe_allow_html=True)
 
     st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+    st.markdown("""
+    ### 🚀 Accelerate Your SAP Employee Central Migration
+    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
+    """)
 
+    # Icons (2 rows x 3 columns)
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -44,7 +46,6 @@ if selected == "Home":
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
-
     for i in range(0, len(icons_data), 3):
         cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
@@ -52,12 +53,15 @@ if selected == "Home":
                 if os.path.exists(icon):
                     with open(icon, "rb") as f:
                         img_data = base64.b64encode(f.read()).decode()
-                    st.markdown(f"""
+                    st.markdown(
+                        f"""
                         <div style='text-align:center'>
                             <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
                             <p style="margin-top:10px;">{label}</p>
                         </div>
-                    """, unsafe_allow_html=True)
+                        """,
+                        unsafe_allow_html=True
+                    )
 
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
@@ -75,13 +79,16 @@ if selected == "Home":
         if os.path.exists(icon):
             with open(icon, "rb") as img_file:
                 img_data = base64.b64encode(img_file.read()).decode()
-            col.markdown(f"""
+            col.markdown(
+                f"""
                 <div style='text-align:center'>
                     <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
                     <h5>{heading}</h5>
                     <p>{desc}</p>
                 </div>
-            """, unsafe_allow_html=True)
+                """,
+                unsafe_allow_html=True
+            )
 
     st.markdown("---")
     st.markdown("#### Why This Tool, Why Now?")
@@ -140,6 +147,7 @@ if selected == "Home":
     - 📈 Audit logs, rollback & monitoring
     """)
 
+    # Built for SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
@@ -160,6 +168,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # (Solutions and Services pages remain unchanged for now unless further edits are needed)
 

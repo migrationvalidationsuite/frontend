@@ -25,7 +25,8 @@ selected = option_menu(
 if selected == "Home":
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
-        <h2 style='text-align:center;'>Pioneering the Future of SAP HCM – From Data-Driven Migrations to Enterprise-Ready Variance Management</h2>
+        <h2 style='text-align:center;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
+        <h3 style='text-align:center;'>HRSC-DaSH</h3>
     </div>
     """, unsafe_allow_html=True)
 

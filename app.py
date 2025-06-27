@@ -44,12 +44,13 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([3, 2])
+      col1, col2 = st.columns([3, 2])
+
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-  with col2:
-    st.markdown("""
+    with col2:
+        st.markdown("""
         ### Purpose
         Enable governed HR data migration from SAP HCM to SuccessFactors:
         - Schema mapping & transformation engine  
@@ -71,7 +72,7 @@ if selected == "Home":
         - Licensing and packaging  
         - Testing (unit, integration, UAT)  
         - Deployment support  
-    """)
+        """)
 
     st.markdown("""
     ### Accelerate Your SAP Employee Central Migration

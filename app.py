@@ -47,6 +47,7 @@ if selected == "Home":
     col1, col2 = st.columns([3, 2])
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+
     with col2:
         st.markdown("""
         ### Purpose
@@ -71,6 +72,11 @@ if selected == "Home":
         - Testing (unit, integration, UAT)  
         - Deployment support  
         """)
+
+    st.markdown("""
+    ### Accelerate Your SAP Employee Central Migration
+    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
+    """)
 
     st.markdown("""
     ### Accelerate Your SAP Employee Central Migration

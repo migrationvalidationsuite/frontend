@@ -49,13 +49,13 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
     with col2:
         st.markdown("""
-        ### Purpose
+        #### Purpose
         Accelerate SAP HCM transformations with governed HR data migration. Includes:
         - Rule-based transformation & AI suggestions
         - Pre-load validation, rollback, licensing
         - Configurable mapping, audit logs
         
-        ### Outcome
+        #### Outcome
         Secure, audit-ready migrations enabling:
         - Less manual effort
         - Built-in traceability
@@ -123,13 +123,13 @@ if selected == "Home":
 
     st.markdown("#### Key Features")
     st.markdown("""
-    - 🧠 AI-powered mapping & validation
-    - 🔄 Drag-and-drop transformation rules
-    - ✅ Real-time preview & profiling
-    - 🛡️ Cross-object and row-level validation
-    - 📦 Export SuccessFactors-ready templates with metadata
-    - 🔐 Licensing controls & role-based access
-    - 📈 Audit logs, rollback & monitoring
+    - AI-powered mapping & validation
+    - Drag-and-drop transformation rules
+    - Real-time preview & profiling
+    - Cross-object and row-level validation
+    - Export SuccessFactors-ready templates with metadata
+    - Licensing controls & role-based access
+    - Audit logs, rollback & monitoring
     """)
 
     # Built for SAP section

@@ -45,35 +45,32 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([3, 2])
-with col1:
-    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    with col1:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    with col2:
+        st.markdown("""
+        ### Purpose
+        Enable governed HR data migration from SAP HCM to SuccessFactors:
+        - Schema mapping & transformation engine  
+        - Pre-load validation, rollback, and licensing  
+        - Audit-ready configurations for scale  
 
-with col2:
-    st.markdown("""
-    ### Purpose
-    Enable governed HR data migration from SAP HCM to SuccessFactors:
-    - Schema mapping & transformation engine  
-    - Pre-load validation, rollback, and licensing  
-    - Audit-ready configurations for scale  
+        ### Outcome
+        Deliver a secure, scalable migration tool with:
+        - Reduced manual effort  
+        - Built-in governance and traceability  
+        - Efficient, reliable deployment processes  
 
-    ### Outcome
-    Deliver a secure, scalable migration tool with:
-    - Reduced manual effort  
-    - Built-in governance and traceability  
-    - Efficient, reliable deployment processes  
-
-    ### Scope
-    This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
-    - Schema mapping  
-    - Field-level configuration  
-    - Transformation engine  
-    - Validation Reports  
-    - Licensing and packaging  
-    - Testing (unit, integration, UAT)  
-    - Deployment support  
-    """)
-
-
+        ### Scope
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+        - Schema mapping  
+        - Field-level configuration  
+        - Transformation engine  
+        - Validation Reports  
+        - Licensing and packaging  
+        - Testing (unit, integration, UAT)  
+        - Deployment support  
+        """)
 
     st.markdown("""
     ### Accelerate Your SAP Employee Central Migration

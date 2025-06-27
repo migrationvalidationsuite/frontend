@@ -16,7 +16,7 @@ selected = option_menu(
     styles={
         "container": {"padding": "0!important", "background-color": "#f8f9fa", "justify-content": "flex-start"},
         "icon": {"color": "black", "font-size": "18px"},
-        "nav-link": {"font-size": "18px", "text-align": "left", "margin": "0px", "--hover-color": "#eee"},
+        "nav-link": {"font-size": "18px", "text-align": "center", "margin": "0px", "--hover-color": "#eee"},
         "nav-link-selected": {"background-color": "#cfe2ff"},
     },
 )
@@ -24,18 +24,16 @@ selected = option_menu(
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:10px 15px 10px 15px;border-radius:10px;'>
-        <h2 style='text-align:left;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
-        <h3 style='text-align:left;'>HRSC-DaSH</h3>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+        <h2 style='text-align:center;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
+        <h3 style='text-align:center;'>HRSC-DaSH</h3>
     </div>
     """, unsafe_allow_html=True)
 
     st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-
-    st.markdown("""
-    ### 🚀 Accelerate Your SAP Employee Central Migration
-    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("### 🚀 Accelerate Your SAP Employee Central Migration")
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
     # Icons (2 rows x 3 columns)
     icons_data = [

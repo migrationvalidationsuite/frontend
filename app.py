@@ -73,6 +73,7 @@ if selected == "Home":
         - Reduced manual effort  
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
+        """)
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your SAP HCM transformation effortless.")
@@ -160,6 +161,8 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

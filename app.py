@@ -244,14 +244,14 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.header("End-to-End SAP HCM Migration Services")
+    st.markdown("## 🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
     Whether you're migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-    - **Migration Assessment**: System readiness, scope definition, and risk analysis  
-    - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
-    - **Parallel Testing Support**: Payroll and reporting checks pre-Go Live  
-    - **Data Reconciliation & Cleansing**: Ensuring consistency and clean load files  
-    - **Cutover Strategy & Execution**: Phased, low-risk deployments  
-    - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
+    - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
+    - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to EC  
+    - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
+    - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
+    - **Variance & Compliance Reports**: Monitor discrepancies and maintain audit trails  
     """)

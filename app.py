@@ -48,9 +48,23 @@ if selected == "Home":
 
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-         
-        ### Scope
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+
+    with col2:
+        st.markdown("""
+        ### Purpose  
+        Enable governed HR data migration from SAP HCM to SuccessFactors:  
+        - Schema mapping & transformation engine  
+        - Pre-load validation, rollback, and licensing  
+        - Audit-ready configurations for scale  
+
+        ### Outcome  
+        Deliver a secure, scalable migration tool with:  
+        - Reduced manual effort  
+        - Built-in governance and traceability  
+        - Efficient, reliable deployment processes  
+
+        ### Scope  
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
         - Schema mapping  
         - Field-level configuration  
         - Transformation engine  

@@ -75,7 +75,7 @@ if selected == "Home":
         """)
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and monitoring to make your SAP HCM transformation effortless.")
+    st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your SAP HCM transformation effortless.")
 
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
@@ -106,7 +106,7 @@ if selected == "Home":
     st.markdown("### Why Choose Our Tool?")
 
     cols = st.columns(3)
-    headings = ["Data Migration", "Validation", "Monitoring"]
+    headings = ["Data Migration", "Validation", "Discrepancy Analysis Report"]
     descriptions = [
         "Template-driven, secure transfers from legacy to SF.",
         "Field-level checks to catch errors before go-live.",
@@ -165,7 +165,7 @@ if selected == "Home":
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
-        options=["Data Migration", "Validation", "Monitoring"],
+        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
         icons=["cloud-upload", "check2-square", "bar-chart"],
         orientation="horizontal",
         key="solutions_nav"
@@ -207,7 +207,7 @@ elif selected == "Solutions":
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
 
-    elif sol_choice == "Monitoring":
+    elif sol_choice == "Discrepancy Analysis Report":
         col1, col2 = st.columns([1, 1])
         with col1:
             st.header("ECC to SF Monitoring")

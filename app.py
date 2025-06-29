@@ -48,7 +48,7 @@ if selected == "Home":
 
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-        
+        st.markdown("""
         ### Scope  
         This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
         - Schema mapping  

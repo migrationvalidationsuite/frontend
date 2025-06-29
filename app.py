@@ -44,7 +44,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-      col1, col2 = st.columns([3, 2])
+    col1, col2 = st.columns([3, 2])
 
     with col1:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
@@ -74,15 +74,8 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    st.markdown("""
-    ### Accelerate Your SAP Employee Central Migration
-    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
-
-    st.markdown("""
-    ### Accelerate Your SAP Employee Central Migration
-    #### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.
-    """)
+    st.markdown("### Accelerate Your SAP Employee Central Migration")
+    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
 
     # Icons Grid
     icons_data = [
@@ -139,47 +132,22 @@ if selected == "Home":
 
     st.markdown("#### Key Features")
     st.markdown("""
-    - AI-powered mapping & validation
-    - Drag-and-drop transformation rules
-    - Real-time preview & profiling
-    - Cross-object and row-level validation
-    - Export SuccessFactors-ready templates with metadata
-    - Licensing controls & role-based access
-    - Audit logs, rollback & monitoring
+    - AI-powered mapping & validation  
+    - Drag-and-drop transformation rules  
+    - Real-time preview & profiling  
+    - Cross-object and row-level validation  
+    - Export SuccessFactors-ready templates with metadata  
+    - Licensing controls & role-based access  
+    - Audit logs, rollback & monitoring  
     """)
 
-   #### Scope
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
-        - Schema mapping
-        - Field-level configuration
-        - Transformation engine
-        - Validation Reports
-        - Licensing and packaging
-        - Testing (unit, integration, UAT)
-        - Deployment support
-        """)
-        
     # Built for SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>🛠️ SAP EC Implementation</h4>
-                <p style='color:white;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>📃 Data Integrity & Compliance</h4>
-                <p style='color:white;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>📄 Document-Ready Migrations</h4>
-                <p style='color:white;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        <div style='display:flex;justify-c
+
 
 # (Solutions and Services pages remain unchanged for now unless further edits are needed)
 

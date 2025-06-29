@@ -63,7 +63,16 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
 
-
+        ### Scope
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+        - Schema mapping  
+        - Field-level configuration  
+        - Transformation engine  
+        - Validation Reports  
+        - Licensing and packaging  
+        - Testing (unit, integration, UAT)  
+        - Deployment support  
+        """)
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
@@ -135,7 +144,7 @@ if selected == "Home":
     # Built for SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'> Built for SAP & SuccessFactors</h3>
+        <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
@@ -154,10 +163,6 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# Continue with Solutions and Services sections as previously structured
-
-# (Solutions and Services pages remain unchanged for now unless further edits are needed)
-
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(
@@ -174,14 +179,14 @@ elif selected == "Solutions":
             st.header("📂 Employee Central Data Migration")
             st.markdown("""
             Our tool supports secure, auditable migration of:
-            - Foundation Objects (Legal Entity, Business Unit, Location)
-            - Hierarchical Position Structures
-            - Employee Master Data and Assignments
+            - Foundation Objects (Legal Entity, Business Unit, Location)  
+            - Hierarchical Position Structures  
+            - Employee Master Data and Assignments  
 
             Features:
-            - Field-level traceability and rollback
-            - Template-based uploads
-            - Role-based access for audit compliance
+            - Field-level traceability and rollback  
+            - Template-based uploads  
+            - Role-based access for audit compliance  
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
@@ -192,14 +197,14 @@ elif selected == "Solutions":
             st.header("🛡️ Validation Services")
             st.markdown("""
             Ensure every single record complies with:
-            - Required field presence (null detection)
-            - Data types and value formatting
-            - Referential logic (e.g., manager mappings, org chart validation)
+            - Required field presence (null detection)  
+            - Data types and value formatting  
+            - Referential logic (e.g., manager mappings, org chart validation)  
 
             Features:
-            - Smart rules engine
-            - Summary reports with error categorization
-            - Revalidation after fixes
+            - Smart rules engine  
+            - Summary reports with error categorization  
+            - Revalidation after fixes  
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
@@ -210,14 +215,14 @@ elif selected == "Solutions":
             st.header("📊 ECC to EC Variance Monitoring")
             st.markdown("""
             After your migration, compare SAP ECC and EC data:
-            - Detect mismatches in values and field formats
-            - Identify extra/missing records across modules
-            - Focus on critical payroll-impacting fields
+            - Detect mismatches in values and field formats  
+            - Identify extra/missing records across modules  
+            - Focus on critical payroll-impacting fields  
 
             Features:
-            - Side-by-side comparisons
-            - Field-level variance reports
-            - Graphical dashboards to track issues
+            - Side-by-side comparisons  
+            - Field-level variance reports  
+            - Graphical dashboards to track issues  
             """)
         with col2:
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
@@ -226,7 +231,7 @@ elif selected == "Solutions":
 elif selected == "Services":
     st.header("🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you’re migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    Whether you're migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
     - **Migration Assessment**: System readiness, scope definition, and risk analysis  
     - **Custom Configuration Mapping**: Field-by-field mapping of legacy to EC  
@@ -235,13 +240,3 @@ elif selected == "Services":
     - **Cutover Strategy & Execution**: Phased, low-risk deployments  
     - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)
-        ### Scope
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
-        - Schema mapping  
-        - Field-level configuration  
-        - Transformation engine  
-        - Validation Reports  
-        - Licensing and packaging  
-        - Testing (unit, integration, UAT)  
-        - Deployment support  
-        """)

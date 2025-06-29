@@ -63,19 +63,9 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
 
-        ### Scope
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
-        - Schema mapping  
-        - Field-level configuration  
-        - Transformation engine  
-        - Validation Reports  
-        - Licensing and packaging  
-        - Testing (unit, integration, UAT)  
-        - Deployment support  
-        """)
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
+    st.markdown("#### Purpose-built migration, validation and monitoring to make your SAP HCM transformation effortless.")
 
     # Icons Grid
     icons_data = [
@@ -107,11 +97,11 @@ if selected == "Home":
     st.markdown("### Why Choose Our Tool?")
 
     cols = st.columns(3)
-    headings = ["Data Migration", "Validation", "Variance Monitoring"]
+    headings = ["Data Migration", "Validation", "Monitoring"]
     descriptions = [
-        "Template-driven, secure transfers from legacy to EC.",
+        "Template-driven, secure transfers from legacy to SF.",
         "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and EC data."
+        "Automated comparisons between ECC and SF data."
     ]
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
 
@@ -145,7 +135,7 @@ if selected == "Home":
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
-        <p style='color:white;text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>🛠️ SAP EC Implementation</h4>
@@ -167,7 +157,7 @@ if selected == "Home":
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
-        options=["Data Migration", "Validation", "Variance Monitoring"],
+        options=["Data Migration", "Validation", "Monitoring"],
         icons=["cloud-upload", "check2-square", "bar-chart"],
         orientation="horizontal",
         key="solutions_nav"
@@ -209,10 +199,10 @@ elif selected == "Solutions":
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
 
-    elif sol_choice == "Variance Monitoring":
+    elif sol_choice == "Monitoring":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("📊 ECC to EC Variance Monitoring")
+            st.header("📊 ECC to SF Monitoring")
             st.markdown("""
             After your migration, compare SAP ECC and EC data:
             - Detect mismatches in values and field formats  
@@ -221,7 +211,7 @@ elif selected == "Solutions":
 
             Features:
             - Side-by-side comparisons  
-            - Field-level variance reports  
+            - Field-level reports  
             - Graphical dashboards to track issues  
             """)
         with col2:

@@ -146,8 +146,24 @@ if selected == "Home":
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is fully compatible with modern SAP and SuccessFactors ecosystems, designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-c
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>🛠️ SAP EC Implementation</h4>
+                <p style='color:white;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>📃 Data Integrity & Compliance</h4>
+                <p style='color:white;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>📄 Document-Ready Migrations</h4>
+                <p style='color:white;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
+# Continue with Solutions and Services sections as previously structured
 
 # (Solutions and Services pages remain unchanged for now unless further edits are needed)
 

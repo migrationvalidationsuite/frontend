@@ -63,6 +63,16 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
 
+        ### Scope
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+        - Schema mapping  
+        - Field-level configuration  
+        - Transformation engine  
+        - Validation Reports  
+        - Licensing and packaging  
+        - Testing (unit, integration, UAT)  
+        - Deployment support  
+        """)
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and monitoring to make your SAP HCM transformation effortless.")
@@ -131,22 +141,22 @@ if selected == "Home":
     - Audit logs, rollback & monitoring  
     """)
 
-    # Built for SAP section
+    # Built for SAP section (no emojis in HTML to prevent Unicode issues)
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>🌐 Built for SAP & SuccessFactors</h3>
+        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>🛠️ SAP EC Implementation</h4>
+                <h4 style='color:white;'>SAP EC Implementation</h4>
                 <p style='color:white;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
             </div>
             <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>📃 Data Integrity & Compliance</h4>
+                <h4 style='color:white;'>Data Integrity & Compliance</h4>
                 <p style='color:white;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
             </div>
             <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>📄 Document-Ready Migrations</h4>
+                <h4 style='color:white;'>Document-Ready Migrations</h4>
                 <p style='color:white;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
             </div>
         </div>
@@ -166,7 +176,7 @@ elif selected == "Solutions":
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("📂 Employee Central Data Migration")
+            st.header("Employee Central Data Migration")
             st.markdown("""
             Our tool supports secure, auditable migration of:
             - Foundation Objects (Legal Entity, Business Unit, Location)  
@@ -184,7 +194,7 @@ elif selected == "Solutions":
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("🛡️ Validation Services")
+            st.header("Validation Services")
             st.markdown("""
             Ensure every single record complies with:
             - Required field presence (null detection)  
@@ -202,9 +212,9 @@ elif selected == "Solutions":
     elif sol_choice == "Monitoring":
         col1, col2 = st.columns([1, 1])
         with col1:
-            st.header("📊 ECC to SF Monitoring")
+            st.header("ECC to SF Monitoring")
             st.markdown("""
-            After your migration, compare SAP ECC and EC data:
+            After your migration, compare SAP ECC and SF data:
             - Detect mismatches in values and field formats  
             - Identify extra/missing records across modules  
             - Focus on critical payroll-impacting fields  
@@ -219,7 +229,7 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.header("🛠️ End-to-End SAP HCM Migration Services")
+    st.header("End-to-End SAP HCM Migration Services")
     st.markdown("""
     Whether you're migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 

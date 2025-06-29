@@ -63,16 +63,7 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
 
-        ### Scope
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
-        - Schema mapping  
-        - Field-level configuration  
-        - Transformation engine  
-        - Validation Reports  
-        - Licensing and packaging  
-        - Testing (unit, integration, UAT)  
-        - Deployment support  
-        """)
+
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and variance monitoring to make your SAP HCM transformation effortless.")
@@ -244,3 +235,13 @@ elif selected == "Services":
     - **Cutover Strategy & Execution**: Phased, low-risk deployments  
     - **Variance & Compliance Reports**: Side-by-side views and compliance logs  
     """)
+        ### Scope
+        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:
+        - Schema mapping  
+        - Field-level configuration  
+        - Transformation engine  
+        - Validation Reports  
+        - Licensing and packaging  
+        - Testing (unit, integration, UAT)  
+        - Deployment support  
+        """)

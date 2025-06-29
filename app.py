@@ -236,10 +236,10 @@ elif selected == "Services":
         Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
         - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
-        - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to EC  
+        - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
         - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
         - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
         - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
-        - **Variance & Compliance Reports**: Monitor discrepancies and maintain audit trails  
+        - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
         """
     )

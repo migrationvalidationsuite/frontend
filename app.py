@@ -246,7 +246,7 @@ elif selected == "Solutions":
 elif selected == "Services":
     st.markdown("## 🛠️ End-to-End SAP HCM Migration Services")
     st.markdown("""
-    Whether you're migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
     - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
     - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to EC  

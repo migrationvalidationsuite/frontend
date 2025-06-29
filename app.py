@@ -74,25 +74,9 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    with col2:
-        st.markdown("""
-        ### Purpose
-        Enable governed HR data migration from SAP HCM to SuccessFactors:
-        - Schema mapping & transformation engine  
-        - Pre-load validation, rollback, and licensing  
-        - Audit-ready configurations for scale  
-
-        ### Outcome
-        Deliver a secure, scalable migration tool with:
-        - Reduced manual effort  
-        - Built-in governance and traceability  
-        - Efficient, reliable deployment processes  
-
-
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and monitoring to make your SAP HCM transformation effortless.")
 
-    # Icons Grid
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -108,7 +92,7 @@ if selected == "Home":
                 if os.path.exists(icon):
                     with open(icon, "rb") as f:
                         img_data = base64.b64encode(f.read()).decode()
-                    st.markdown(
+                    col.markdown(
                         f"""
                         <div style='text-align:center'>
                             <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
@@ -156,7 +140,6 @@ if selected == "Home":
     - Audit logs, rollback & monitoring  
     """)
 
-    # Built for SAP section (no emojis in HTML to prevent Unicode issues)
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -244,7 +227,7 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.markdown("## 🛠️ End-to-End SAP HCM Migration Services")
+    st.markdown("## End-to-End SAP HCM Migration Services")
     st.markdown(
         """
         Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
@@ -257,4 +240,3 @@ elif selected == "Services":
         - **Variance & Compliance Reports**: Monitor discrepancies and maintain audit trails  
         """
     )
-

@@ -146,8 +146,8 @@ if selected == "Home":
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>SAP EC Implementation</h4>
-                <p style='color:white;'>Expert-driven configuration and deployment strategies tailored to Employee Central.</p>
+                <h4 style='color:white;'>Data Migration Made Easy</h4>
+                <p style='color:white;'>Designed to support smooth data preparation and migration for SAP environments.</p>
             </div>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Data Integrity & Compliance</h4>

@@ -40,12 +40,15 @@ st.markdown(f"""
             z-index: -1;
         }}
         .block-container {{
+            z-index: 1;
+            position: relative;
             padding-top: 2rem;
         }}
     </style>
     <div class="background"></div>
     <div class="overlay"></div>
 """, unsafe_allow_html=True)
+
 
 # --- SIDEBAR ---
 with st.sidebar:

@@ -7,42 +7,33 @@ from streamlit_option_menu import option_menu
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
 # --- BACKGROUND IMAGE ---
-def set_bg_from_local(image_file):
-    with open(image_file, "rb") as file:
-        encoded = base64.b64encode(file.read()).decode()
-    css = f"""
-    <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded}");
-            background-size: cover;
-            background-attachment: fixed;
-        }}
-    </style>
-    """
-    st.markdown(css, unsafe_allow_html=True)
-
-set_bg_from_local("pexels-cookiecutter-1148820.jpg")
-
-# --- CUSTOM STYLE ---
-st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-        .mvs-banner {
-            background-color: #e6f0ff;
-            padding: 30px 60px;
-            border-radius: 10px;
-            text-align: center;
-            margin: auto;
-            margin-bottom: 30px;
-            width: 90%;
-        }
-        .mvs-banner h2 {
-            margin-bottom: 5px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+page_bg_img = f"""
+<style>
+    .stApp {{
+        background-image: url("pexels-cookiecutter-1148820.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+    }}
+    .banner {{
+        background-color: #e6f0ff;
+        padding: 30px;
+        border-radius: 15px;
+        width: 80%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 30px;
+        text-align: center;
+    }}
+    .content-container {{
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 30px;
+        border-radius: 12px;
+        width: 90%;
+        margin: auto;
+    }}
+</style>
+"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # --- SIDEBAR NAVIGATION ---
 with st.sidebar:
@@ -67,17 +58,17 @@ with st.sidebar:
 
 # --- HOME PAGE ---
 if selected == "Home":
-    # Banner
     st.markdown("""
-        <div class='mvs-banner'>
+        <div class='banner'>
             <h2>Migration and Validation Suite</h2>
-            <h4>MVS</h4> 
+            <h4>MVS</h4>
         </div>
     """, unsafe_allow_html=True)
 
-    # Section 1: Content + Image
-    col_left, col_right = st.columns([2, 1])
-    with col_left:
+    st.markdown("<div class='content-container'>", unsafe_allow_html=True)
+
+    col1, col2 = st.columns([2, 1])
+    with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
 
@@ -85,20 +76,17 @@ if selected == "Home":
         st.markdown("""
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
-
         - **Pre-Migration Validation & Licensing**  
           Detects issues early and estimates licensing needs for cloud/S/4HANA.
-
         - **Rollback & Recovery**  
           Enables safe, reversible test and production loads.
-
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
         """)
-    with col_right:
-        st.image("pexels-divinetechygirl-1181263.jpg", width=350)
+    with col2:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-    # Supported Migration Paths
+    # --- Supported Migration Paths under image ---
     st.markdown("**Supported Migration Paths:**")
     st.markdown("""
     - SAP HCM → SuccessFactors  
@@ -106,13 +94,14 @@ if selected == "Home":
     - Legacy HR Systems → SAP Cloud or On-Prem
     """)
 
-    # Centered YouTube Video
+    # --- Embedded YouTube video centered and smaller ---
     st.markdown("""
-    <div style='display: flex; justify-content: center;'>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" 
-        frameborder="0" allowfullscreen></iframe>
-    </div>
+        <div style='text-align:center; padding-top:20px;'>
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
+        </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # SOLUTIONS PAGE is in your full version. Let me know if you want that included too.
 

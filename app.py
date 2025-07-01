@@ -7,7 +7,7 @@ from streamlit_option_menu import option_menu
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
 # --- CUSTOM STYLE ---
-st.markdown(\"""
+st.markdown("""
     <style>
         .block-container {
             padding-top: 1rem;
@@ -26,7 +26,7 @@ st.markdown(\"""
             background-attachment: fixed;
         }
     </style>
-\""", unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 # --- SIDEBAR NAVIGATION ---
 with st.sidebar:

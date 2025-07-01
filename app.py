@@ -84,14 +84,13 @@ if selected == "Home":
 
         - **Safe Rollback**  
           Enables reversible test and production runs.
+
         - **Audit-Ready**  
           Tracks rule logic, configs, and data actions.
-
 
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
         - Legacy HR Systems → SAP Cloud or On-Prem
-        """)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)

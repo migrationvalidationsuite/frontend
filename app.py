@@ -76,19 +76,17 @@ if selected == "Home":
 
         **Key Capabilities:**
 
-        - **Schema Mapping & Transformation**  
-          Aligns and converts source structures into SAP-ready formats.
+        - **Mapping & Transformation**  
+          Converts source structures into SAP-ready formats.
 
-        - **Pre-Migration Validation & Licensing**  
-          Detects issues early and estimates licensing needs for cloud/S/4HANA.
+        - **Validation & Licensing**  
+          Identifies issues early and ensures cloud/S/4HANA readiness.
 
-        - **Rollback & Recovery**  
-          Enables safe, reversible test and production loads.
+        - **Safe Rollback**  
+          Enables reversible test and production runs.
+        - **Audit-Ready**  
+          Tracks rule logic, configs, and data actions.
 
-        - **Audit-Ready Tracking**  
-          Full traceability of rule logic, configurations, and actions.
-
-        **Supported Migration Paths:**
 
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  

@@ -226,26 +226,40 @@ Supports region-specific validation logic to align with country-specific complia
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
             
     # --- DISCREPANCY ANALYSIS ---
-    elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([3, 2])
-        with col1:
-            st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
-            st.markdown("""
-            Verifies that migrated data is accurate, complete, and consistent in the target system.
+    
+elif sol_choice == "Discrepancy Analysis Report":
+    col1, col2 = st.columns([3, 2])
+    with col1:
+        st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
+        st.markdown("""
+        Our monitoring framework ensures that migrated data is complete, accurate, and consistent in the target system—whether you're moving to SuccessFactors, S/4HANA, or modernizing from legacy platforms. This enables clean cutovers, audit readiness, and operational continuity post-go-live.
 
-            **What We Monitor:**
-            - Field-Level Accuracy  
-            - Record Completeness  
-            - Critical Field Checks  
-            """)
+        **What We Monitor:**
 
-        with col2:
-            st.markdown("### Key Features")
-            st.markdown("""
-            - Source-to-Target Comparisons  
-            - Discrepancy Reports  
-            - Visual Dashboards  
-            - Audit Trail  
-            """)
-            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
+        - **Field-Level Accuracy**  
+          Flags mismatches in key values and formats between source and target.
+
+        - **Record Completeness**  
+          Identifies extra or missing records in critical HR data objects.
+
+        - **Business-Critical Fields**  
+          Validates payroll, time, and org data essential for HR operations.
+
+        **Key Features:**
+
+        - **Source-to-Target Comparisons**  
+          Compare source, transformation, and post-load outputs.
+
+        - **Discrepancy Reports**  
+          Highlight mismatches in a structured, actionable format.
+
+        - **Visual Dashboards**  
+          Monitor reconciliation progress and module-level coverage.
+
+        - **Audit Logs**  
+          Track all checks and fixes for governance and compliance.
+        """)
+
+    with col2:
+        st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
 

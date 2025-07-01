@@ -172,8 +172,6 @@ if selected == "Home":
 
 
 # --- SOLUTIONS PAGE ---
-elif selected = "Solutions"  # You can change this to dynamic selection logic
-
 if selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",

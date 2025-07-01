@@ -152,6 +152,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
@@ -164,7 +165,7 @@ elif selected == "Solutions":
 
     # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([3, 3.2])
+        col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
@@ -197,69 +198,56 @@ elif selected == "Solutions":
     elif sol_choice == "Validation":
         col1, col2 = st.columns([3, 2])
         with col1:
-            st.markdown("## Validation: Accuracy from Source to Target")
+            st.markdown("## Validation Services: Ensuring Data Accuracy from Source to Target")
             st.markdown("""
-            Ensures data is mapped, transformed, and loaded correctly across all stages of migration.
+            Our validation services ensure HR data is correctly mapped, transformed, and loaded across every migration stage. We validate data between source systems, load files, and reporting outputs to confirm consistency and production readiness.
 
             **What We Validate:**
-            - Required Fields: Flags missing/null critical values  
-            - Data Format & Types: Enforces SAP/SF standards  
-            - Mapping Accuracy: Validates transformation rules  
-            - Source-to-File Match: Ensures load files mirror source  
-            - Post-Load Check: Confirms final system reflects expected results
-            
-Hierarchical Validation Support
-Validates relationships between positions, org units, and cost centers for structural integrity.
-
-Localized Rule Extensions
-Supports region-specific validation logic to align with country-specific compliance needs.
+            - Required Fields: Detect missing/null values in critical fields  
+            - Format Compliance: Enforce expected types and structures  
+            - Mapping Accuracy: Verify source-to-target alignment  
+            - Source-to-File Match: Ensure extracted data mirrors load-ready files  
+            - Post-Load Validation: Confirm target system reflects intended records  
+            - Change Monitoring: Identify and isolate high-impact issues  
             """)
 
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Rules-Based Engine  
-            - Exception Reporting  
-            - Revalidation Workflow  
-            - Audit Logs  
+            - Rules-Based Validation Engine  
+            - Categorized Exception Reporting  
+            - Iterative Revalidation Workflow  
+            - Full Audit Logging for Compliance  
+            - Support for Foundation, Position & Employee Data  
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
-            
+
     # --- DISCREPANCY ANALYSIS ---
-    
-elif sol_choice == "Discrepancy Analysis Report":
-    col1, col2 = st.columns([3, 2])
-    with col1:
-        st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
-        st.markdown("""
-        Our monitoring framework ensures that migrated data is complete, accurate, and consistent in the target system—whether you're moving to SuccessFactors, S/4HANA, or modernizing from legacy platforms. This enables clean cutovers, audit readiness, and operational continuity post-go-live.
+    elif sol_choice == "Discrepancy Analysis Report":
+        col1, col2 = st.columns([3, 2])
+        with col1:
+            st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
+            st.markdown("""
+            Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
 
-        **What We Monitor:**
+            **What We Monitor:**
+            - Field-Level Accuracy: Detect mismatches in critical values  
+            - Record Completeness: Spot missing/extra records  
+            - Business-Critical Fields: Focus on payroll, time, and org structures  
+            - Change Tracking: View changes before/after load  
 
-        - **Field-Level Accuracy**  
-          Flags mismatches in key values and formats between source and target.
+            **Supported Scenarios:**
+            - SAP HCM → SuccessFactors  
+            - SAP HCM → S/4HANA  
+            - Legacy Systems → SAP Targets  
+            """)
 
-        - **Record Completeness**  
-          Identifies extra or missing records in critical HR data objects.
-
-        - **Business-Critical Fields**  
-          Validates payroll, time, and org data essential for HR operations.
-
-        **Key Features:**
-
-        - **Source-to-Target Comparisons**  
-          Compare source, transformation, and post-load outputs.
-
-        - **Discrepancy Reports**  
-          Highlight mismatches in a structured, actionable format.
-
-        - **Visual Dashboards**  
-          Monitor reconciliation progress and module-level coverage.
-
-        - **Audit Logs**  
-          Track all checks and fixes for governance and compliance.
-        """)
-
-    with col2:
-        st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
-
+        with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Source-to-Target Comparisons  
+            - Discrepancy Summary Reports  
+            - Visual Reconciliation Dashboards  
+            - Logged Issues for Governance & Audit  
+            """)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)

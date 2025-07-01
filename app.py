@@ -93,11 +93,14 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- MVS Summary + Feature Icons ---
+# MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
         <h3>Migration and Validation Suite (MVS)</h3>
+        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+
+        <h4>Key Capabilities:</h4>
         <ul>
             <li>AI-powered mapping & validation</li>
             <li>Drag-and-drop transformation rules</li>

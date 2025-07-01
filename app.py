@@ -35,7 +35,6 @@ with st.sidebar:
         },
     )
 
-# --- HOME PAGE ---
 if selected == "Home":
     # --- Header Banner ---
     st.markdown("""
@@ -45,7 +44,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Image and Summary Section ---
+    # --- Image and Capability Summary ---
     col_left, col_right = st.columns([2, 3])
     with col_left:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
@@ -75,11 +74,11 @@ if selected == "Home":
         - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
         """)
 
-    # --- Video Row (Optional) ---
+    # --- Optional Video Below ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- Accelerate Section with Icon Grid ---
+    # --- Accelerate Section ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
@@ -108,6 +107,32 @@ if selected == "Home":
                         """,
                         unsafe_allow_html=True
                     )
+
+    # --- Why Choose Our Tool Section (no headings) ---
+    st.markdown("---")
+    st.markdown("### Why Choose Our Tool?")
+
+    cols = st.columns(3)
+    descriptions = [
+        "Template-driven, secure transfers from legacy to SF.",
+        "Field-level checks to catch errors before go-live.",
+        "Automated comparisons between ECC and SF data."
+    ]
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+
+    for col, icon, desc in zip(cols, icons, descriptions):
+        if os.path.exists(icon):
+            with open(icon, "rb") as img_file:
+                img_data = base64.b64encode(img_file.read()).decode()
+            col.markdown(
+                f"""
+                <div style='text-align:center'>
+                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
+                    <p>{desc}</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
     # --- MVS Summary at Bottom ---
     st.markdown("---")

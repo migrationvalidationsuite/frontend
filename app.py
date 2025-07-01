@@ -74,15 +74,7 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
         """)
-        
-        st.markdown("### 🎥 See It In Action")
-        st.markdown("""
-        <iframe width="100%" height="315"
-        src="https://www.youtube.com/embed/abc123XYZ"
-        title="Tool Demo Video" frameborder="0"
-        allowfullscreen></iframe>
-        """, unsafe_allow_html=True)
-    
+           
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")

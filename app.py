@@ -65,7 +65,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     # --- Main section (text left, image/video right) ---
-    col1, col2 = st.columns([3, 2])
+    col1, col2 = st.columns([3, 2.3])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")

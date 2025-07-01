@@ -78,23 +78,22 @@ if selected == "Home":
         - Deployment support  
         """)
 
-   # --- Spacer for visual gap ---
-st.markdown("<br><hr><br>", unsafe_allow_html=True)
+    # --- Spacer and Image/Video Section ---
+    st.markdown("<br><hr><br>", unsafe_allow_html=True)
 
-# --- Two-column layout for Image and Video ---
-img_col, vid_col = st.columns([2, 1])
+    img_col, vid_col = st.columns([2, 1])
 
-with img_col:
-    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    with img_col:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-with vid_col:
-    st.video("https://youtu.be/vnikhnk8rCk")
+    with vid_col:
+        st.video("https://youtu.be/vnikhnk8rCk")
 
-
-
+    # --- Feature Headers ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
+    # --- Icon Grid Section ---
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -103,6 +102,7 @@ with vid_col:
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
+
     for i in range(0, len(icons_data), 3):
         cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
@@ -120,6 +120,7 @@ with vid_col:
                         unsafe_allow_html=True
                     )
 
+    # --- Why Choose Section ---
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
 
@@ -147,6 +148,7 @@ with vid_col:
                 unsafe_allow_html=True
             )
 
+    # --- Key Features Section ---
     st.markdown("#### Key Features")
     st.markdown("""
     - AI-powered mapping & validation  
@@ -158,6 +160,7 @@ with vid_col:
     - Audit logs, rollback & monitoring  
     """)
 
+    # --- Blue Background Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>

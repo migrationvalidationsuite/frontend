@@ -208,7 +208,7 @@ elif selected == "Solutions":
             - Source-to-File Match: Ensures load files mirror source  
             - Post-Load Check: Confirms final system reflects expected results
             - Hierarchical Validation Support
-            -     Validates relationships between positions, org units, and cost centers for structural integrity.
+            - Validates relationships between positions, org units, and cost centers for structural integrity.
 
 Localized Rule Extensions
 Supports region-specific validation logic to align with country-specific compliance needs.

@@ -4,6 +4,7 @@ import base64
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+
 # --- BACKGROUND IMAGE SETUP ---
 def set_bg_from_local(image_file):
     with open(image_file, "rb") as file:
@@ -24,14 +25,13 @@ def set_bg_from_local(image_file):
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(255, 255, 255, 0.85); /* translucent white overlay */
+                background-color: rgba(255, 255, 255, 0.85);
                 z-index: -1;
             }}
         </style>
     """
     st.markdown(css, unsafe_allow_html=True)
 
-# ✅ Call function here with your preferred image
 set_bg_from_local("pexels-cookiecutter-1148820.jpg")
 
 st.markdown("""
@@ -42,6 +42,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -62,9 +63,8 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME --------------------
+# -------------------- HOME PAGE --------------------
 if selected == "Home":
-    # Header banner
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
     <div style='max-width:900px;margin:auto;'>
@@ -74,31 +74,23 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-
-    # Overview + image/video
     col_text, col_img = st.columns([3, 2])
-
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
         **Key Capabilities:**
-
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
-
         - **Pre-Migration Validation & Licensing**  
           Detects issues early and estimates licensing needs for cloud/S/4HANA.
-
         - **Rollback & Recovery**  
           Enables safe, reversible test and production loads.
-
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
 
         **Supported Migration Paths:**
-
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
         - Legacy HR Systems → SAP Cloud or On-Prem
@@ -108,7 +100,6 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
@@ -148,7 +139,6 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
-    # Blue SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -170,8 +160,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-
-# --- SOLUTIONS PAGE ---
+# -------------------- SOLUTIONS PAGE --------------------
 if selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
@@ -181,14 +170,13 @@ if selected == "Solutions":
         key="solutions_nav"
     )
 
-    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
             A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
-            
+
             **Supported Scenarios:**
             - SAP On-Premise → SuccessFactors (EC, Payroll)
             - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
@@ -212,7 +200,6 @@ if selected == "Solutions":
             """)
             st.image("datamig_img.png", use_container_width=True)
 
-    # --- VALIDATION ---
     elif sol_choice == "Validation":
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -238,7 +225,6 @@ if selected == "Solutions":
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
-    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -261,4 +247,3 @@ if selected == "Solutions":
             - Audit Trail: Logged results for governance and compliance  
             """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
-

@@ -165,7 +165,7 @@ elif selected == "Solutions":
 
     # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([2.3, 3])
+        col1, col2 = st.columns([2.1, 3])
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""

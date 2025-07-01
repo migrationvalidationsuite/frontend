@@ -83,6 +83,21 @@ if selected == "Home":
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
+     cols = st.columns(3)
+        for col, (icon, label) in zip(cols, icons_data[i:i+3]):
+            with col:
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    col.markdown(
+                        f"""
+                        <div style='text-align:center'>
+                            <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
+                            <p style="margin-top:10px;">{label}</p>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
     # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
     st.markdown("""
     <br>
@@ -110,21 +125,6 @@ if selected == "Home":
 
     # --- Icon Features Section ---
     for i in range(0, len(icons_data), 3):
-        cols = st.columns(3)
-        for col, (icon, label) in zip(cols, icons_data[i:i+3]):
-            with col:
-                if os.path.exists(icon):
-                    with open(icon, "rb") as f:
-                        img_data = base64.b64encode(f.read()).decode()
-                    col.markdown(
-                        f"""
-                        <div style='text-align:center'>
-                            <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
-                            <p style="margin-top:10px;">{label}</p>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
 
     # --- Why Choose Our Tool Section ---
     cols = st.columns(3)

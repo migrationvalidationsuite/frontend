@@ -42,13 +42,15 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Text Left, Image + Video Right ---
+    # --- Overview Section ---
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+
+        **Key Capabilities:**
 
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
@@ -74,8 +76,8 @@ if selected == "Home":
         st.video("https://youtu.be/vnikhnk8rCk")
 
     # --- Accelerate Section ---
-    st.markdown("### Accelerate HR Data Migration across SAP landscapes")
-    st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
+    st.markdown("### Accelerate Your SAP Employee Central Migration")
+    st.markdown("#### Purpose-built to streamline migration, validation, and variance reporting for SAP HR and Payroll data.")
 
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
@@ -119,10 +121,10 @@ if selected == "Home":
         <li>Licensing controls & role-based access</li>
         <li>Audit logs, rollback & monitoring</li>
     </ul>
-
     """, unsafe_allow_html=True)
 
-    # --- 3-Icon Feature Strip ---
+    # --- Core Functional Benefits Icons ---
+    st.markdown("### Core Functional Benefits")
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [

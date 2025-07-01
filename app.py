@@ -5,35 +5,6 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE SETUP ---
-def set_bg_from_local(image_file):
-    with open(image_file, "rb") as file:
-        encoded = base64.b64encode(file.read()).decode()
-    css = f"""
-        <style>
-            .stApp {{
-                background-image: url("data:image/jpg;base64,{encoded}");
-                background-size: cover;
-                background-attachment: fixed;
-                background-position: center;
-                position: relative;
-            }}
-            .stApp::before {{
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(255, 255, 255, 0.85);
-                z-index: -1;
-            }}
-        </style>
-    """
-    st.markdown(css, unsafe_allow_html=True)
-
-set_bg_from_local("pexels-cookiecutter-1148820.jpg")
-
 st.markdown("""
     <style>
         .block-container {
@@ -42,13 +13,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR NAV ---
+# --- SIDEBAR ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Home", "Solutions"],
         icons=["house", "layers"],
-        menu_icon="cast",
         default_index=0,
         styles={
             "container": {"padding": "5px", "background-color": "#f8f9fa"},
@@ -63,7 +33,7 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME PAGE --------------------
+# -------------------- HOME --------------------
 if selected == "Home":
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
@@ -74,6 +44,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
+    # Overview
     col_text, col_img = st.columns([3, 2])
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
@@ -81,16 +52,21 @@ if selected == "Home":
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
         **Key Capabilities:**
+
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
+
         - **Pre-Migration Validation & Licensing**  
           Detects issues early and estimates licensing needs for cloud/S/4HANA.
+
         - **Rollback & Recovery**  
           Enables safe, reversible test and production loads.
+
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
 
         **Supported Migration Paths:**
+
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
         - Legacy HR Systems → SAP Cloud or On-Prem
@@ -100,6 +76,7 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
+    # MVS Summary
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
@@ -139,6 +116,7 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
+    # Blue section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -160,8 +138,8 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# -------------------- SOLUTIONS PAGE --------------------
-if selected == "Solutions":
+# -------------------- SOLUTIONS --------------------
+elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
@@ -170,6 +148,7 @@ if selected == "Solutions":
         key="solutions_nav"
     )
 
+    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -200,12 +179,13 @@ if selected == "Solutions":
             """)
             st.image("datamig_img.png", use_container_width=True)
 
+    # --- VALIDATION ---
     elif sol_choice == "Validation":
         col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Validation: Accuracy from Source to Target")
             st.markdown("""
-            Ensures data is mapped, transformed, and loaded correctly across all stages of migration, with comparisons between source, files, and system outputs.
+            Ensures data is mapped, transformed, and loaded correctly across all stages of migration.
 
             **What We Validate:**
             - Required Fields: Flags missing/null critical values  
@@ -218,32 +198,33 @@ if selected == "Solutions":
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Rules-Based Engine: Supports complex business logic  
-            - Exception Reporting: Highlights and categorizes errors  
-            - Revalidation Workflow: Iterative checks for SIT/UAT  
-            - Audit Logs: Full traceability for compliance
+            - Rules-Based Engine  
+            - Exception Reporting  
+            - Revalidation Workflow  
+            - Audit Logs  
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
+    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
         col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
-            Verifies that migrated data is accurate, complete, and consistent in the target system post-load, supporting operational readiness.
+            Verifies that migrated data is accurate, complete, and consistent in the target system.
 
             **What We Monitor:**
-            - Field-Level Accuracy: Detects mismatches in key values  
-            - Record Completeness: Flags missing/extra records  
-            - Critical Field Checks: Focus on payroll, time, org data  
+            - Field-Level Accuracy  
+            - Record Completeness  
+            - Critical Field Checks  
             """)
 
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Source-to-Target Comparisons: Full visibility across extracts, loads, reports  
-            - Discrepancy Reports: Actionable summaries of mismatches  
-            - Visual Dashboards: Track reconciliation status in real time  
-            - Audit Trail: Logged results for governance and compliance  
+            - Source-to-Target Comparisons  
+            - Discrepancy Reports  
+            - Visual Dashboards  
+            - Audit Trail  
             """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)

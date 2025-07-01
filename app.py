@@ -1,40 +1,4 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
-import base64
-import os
-
-st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
-
-st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 1rem;
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-with st.sidebar:
-    selected = option_menu(
-        menu_title="Navigation",
-        options=["Home", "Solutions"],
-        icons=["house", "layers"],
-        menu_icon="cast",
-        default_index=0,
-        styles={
-            "container": {"padding": "5px", "background-color": "#f8f9fa"},
-            "icon": {"color": "#003366", "font-size": "18px"},
-            "nav-link": {
-                "font-size": "16px",
-                "text-align": "left",
-                "margin": "5px",
-                "--hover-color": "#e6f0ff",
-            },
-            "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
-        },
-    )
-
-# -------------------- HOME --------------------
-import streamlit as st
 import base64
 import os
 from streamlit_option_menu import option_menu

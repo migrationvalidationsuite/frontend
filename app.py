@@ -3,7 +3,7 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-st.set_page_config(layout="wide", page_title="MVS", page_icon="🚰")
+st.set_page_config(layout="wide", page_title="MVS", page_icon="😰")
 
 # Remove top padding to reduce white space
 st.markdown("""
@@ -55,19 +55,18 @@ if selected == "Home":
         **Key Capabilities**
 
         **Intelligent Schema Mapping & Transformation Engine**  
-        Automatically aligns and transforms source data structures to target SAP data models, ensuring consistency across SAP HCM, SuccessFactors, and S/4HANA environments.
+        Automatically aligns and transforms source data structures to target SAP data models.
 
         **Pre-Migration Validation & Licensing Insights**  
-        Identify data quality issues early through pre-load checks, dependency analysis, and license usage forecasting to optimize cloud and S/4HANA transitions.
+        Identify data quality issues early through pre-load checks and license forecasting.
 
         **Rollback & Recovery Framework**  
-        Built-in rollback mechanisms ensure safe and reversible data loads - enabling risk-free migration cycles and test iterations.
+        Built-in rollback mechanisms ensure safe and reversible data loads.
 
         **Audit-Ready Configuration & Tracking**  
-        Full traceability of migration steps, rule application, and user actions to meet compliance and audit standards across industries.
+        Full traceability of migration steps and rule application.
 
         **Flexible Deployment**  
-        Supports migration scenarios including:  
         - On-Premise SAP HCM → SuccessFactors (Cloud)  
         - On-Premise SAP HCM → SAP S/4HANA  
         - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
@@ -76,7 +75,6 @@ if selected == "Home":
     st.markdown("<br>", unsafe_allow_html=True)
     st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- Accelerate Section ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
@@ -106,7 +104,6 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    # --- Why Choose Our Tool (no headings) ---
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
 
@@ -132,7 +129,6 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    # --- MVS Summary at Bottom ---
     st.markdown("---")
     st.markdown("## Migration and Validation Suite (MVS)")
     st.markdown("""
@@ -144,9 +140,9 @@ if selected == "Home":
     - Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.  
     - Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.  
     - Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.  
-    - Licensing & Packaging - Analyze license impact and segment data packages for different SAP platforms.  
+    - Licensing & Packaging - Analyze license impact and segment data packages.  
     - Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.  
-    - Deployment Support - Smooth migration execution with rollback capabilities, versioning, and audit trail.
+    - Deployment Support - Smooth migration execution with rollback, versioning, and audit trail.
 
     **Supported Migration Paths**
 
@@ -155,7 +151,6 @@ if selected == "Home":
     - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
     """)
 
-    # --- Blue CTA Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -163,97 +158,19 @@ if selected == "Home":
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Data Migration Made Easy</h4>
-                <p style='color:white;'>Designed to support smooth data preparation and migration for SAP environments.</p>
+                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
             </div>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Data Integrity & Compliance</h4>
-                <p style='color:white;'>Granular field-level validation ensures readiness for audits and business continuity.</p>
+                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
             </div>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Document-Ready Migrations</h4>
-                <p style='color:white;'>Accelerate documentation processes with clean, structured output files ready for upload.</p>
+                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-# --- SOLUTIONS PAGE ---
-elif selected == "Solutions":
-    sol_choice = option_menu(
-        menu_title="Our Solutions",
-        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
-        icons=["cloud-upload", "check2-square", "bar-chart"],
-        orientation="horizontal",
-        key="solutions_nav"
-    )
-
-    if sol_choice == "Data Migration":
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.header("Employee Central Data Migration")
-            st.markdown("""
-            Our tool supports secure, auditable migration of:
-            - Foundation Objects (Legal Entity, Business Unit, Location)  
-            - Hierarchical Position Structures  
-            - Employee Master Data and Assignments  
-
-            Features:
-            - Field-level traceability and rollback  
-            - Template-based uploads  
-            - Role-based access for audit compliance  
-            """)
-        with col2:
-            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
-
-    elif sol_choice == "Validation":
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.header("Validation Services")
-            st.markdown("""
-            Ensure every single record complies with:
-            - Required field presence (null detection)  
-            - Data types and value formatting  
-            - Referential logic (e.g., manager mappings, org chart validation)  
-
-            Features:
-            - Smart rules engine  
-            - Summary reports with error categorization  
-            - Revalidation after fixes  
-            """)
-        with col2:
-            st.image("validation_lifecycle.png", use_container_width=True)
-
-    elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.header("ECC to SF Monitoring")
-            st.markdown("""
-            After your migration, compare SAP ECC and SF data:
-            - Detect mismatches in values and field formats  
-            - Identify extra/missing records across modules  
-            - Focus on critical payroll-impacting fields  
-
-            Features:
-            - Side-by-side comparisons  
-            - Field-level reports  
-            - Graphical dashboards to track issues  
-            """)
-        with col2:
-            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
-
-# --- SERVICES PAGE ---
-elif selected == "Services":
-    st.markdown("## End-to-End SAP HCM and SuccessFactors Migration Services")
-    st.markdown("""
-    Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
-
-    - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
-    - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
-    - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
-    - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
-    - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
-    - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
-    """)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

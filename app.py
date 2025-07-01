@@ -231,13 +231,13 @@ elif selected == "Solutions":
             Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
 
             **What We Monitor:**
-            - Field-Level Accuracy: Detect mismatches in critical values  
-            - Record Completeness: Spot missing/extra records  
-            - Business-Critical Fields: Focus on payroll, time, and org structures  
-            - Change Tracking: View changes before/after load
-        We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
-        Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
+            - **Field-Level Accuracy:** Detect mismatches in critical values  
+            - **Record Completeness:** Spot missing/extra records  
+            - **Business-Critical Fields:** Focus on payroll, time, and org structures  
+            - **Change Tracking:** View changes before/after load  
 
+            We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
+            Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
             """)
 
         with col2:

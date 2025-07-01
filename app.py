@@ -6,34 +6,19 @@ from streamlit_option_menu import option_menu
 # --- PAGE CONFIG ---
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- CUSTOM CSS ---
+# --- CUSTOM STYLE ---
 st.markdown("""
     <style>
         .block-container {
             padding-top: 1rem;
         }
-
-        body {
-            background-image: url('pexels-googledeepmind-17483873.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-        }
-
-        .overlay {
-            background-color: rgba(255, 255, 255, 0.85);
-            padding: 2rem;
-            border-radius: 12px;
-        }
-
         .mvs-banner {
             background-color: #e6f0ff;
-            padding: 20px 50px;
+            padding: 20px 40px;
             border-radius: 12px;
-            margin-bottom: 30px;
             text-align: center;
             width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 20px auto;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -68,8 +53,6 @@ if selected == "Home":
         </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div class='overlay'>", unsafe_allow_html=True)
-
     col_left, col_right = st.columns([2, 3])
     with col_left:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
@@ -90,18 +73,18 @@ if selected == "Home":
           Full traceability of rule logic, configurations, and actions.
         """)
 
+        st.markdown("**Supported Migration Paths:**")
+        st.markdown("""
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
+        """)
+
     with col_right:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-    st.markdown("**Supported Migration Paths:**")
     st.markdown("""
-    - SAP HCM → SuccessFactors  
-    - SAP HCM → S/4HANA  
-    - Legacy HR Systems → SAP Cloud or On-Prem
-    """)
-
-    st.markdown("""
-        <div style='text-align:center; margin-top:30px;'>
+        <div style='text-align:center; margin-top:40px;'>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
         </div>
     """, unsafe_allow_html=True)
@@ -163,8 +146,6 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-    st.markdown("</div>", unsafe_allow_html=True)  # Close .overlay
 
 # --- SOLUTIONS PAGE ---
 selected = "Solutions"  # You can change this to dynamic selection logic

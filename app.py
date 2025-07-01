@@ -70,31 +70,33 @@ if selected == "Home":
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
-        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("""
-        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
-        **Key Capabilities:**
+    st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+    st.markdown("""
+    Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
-        - **Mapping & Transformation**  
-          Converts legacy structures to SAP-ready formats.
+    **Key Capabilities:**
 
-        - **Validation & Licensing**  
-          Catches issues early, ensures system readiness.
+    - **Mapping & Transformation**  
+      Converts legacy structures to SAP-ready formats.
 
-        - **Safe Rollback**  
-          Supports reversible test and live loads.
+    - **Validation & Licensing**  
+      Catches issues early, ensures system readiness.
 
-        - **Audit-Ready**  
-          Logs rules, configurations, and actions.
+    - **Safe Rollback**  
+      Supports reversible test and live loads.
 
-        &nbsp;
-
-        <div style='margin-left:20px'>
+    - **Audit-Ready**  
+      Logs rules, configurations, and actions.
+    """)
+    
+    st.markdown("""
+    <div style='margin-left:20px'>
         <b>Migration Paths:</b><br>
         - SAP HCM → SuccessFactors<br>
         - SAP HCM → S/4HANA<br>
         - Legacy HR → SAP Cloud or On-Prem
-        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)

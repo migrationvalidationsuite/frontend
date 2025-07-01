@@ -165,7 +165,7 @@ elif selected == "Solutions":
 
     # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 3.2)
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
@@ -196,7 +196,7 @@ elif selected == "Solutions":
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 2.3])
         with col1:
             st.markdown("## Validation Services: Ensuring Data Accuracy from Source to Target")
             st.markdown("""
@@ -224,7 +224,7 @@ elif selected == "Solutions":
 
     # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 1.8])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
@@ -236,11 +236,6 @@ elif selected == "Solutions":
             - Business-Critical Fields: Focus on payroll, time, and org structures  
             - Change Tracking: View changes before/after load  
 
-            **Supported Scenarios:**
-            - SAP HCM → SuccessFactors  
-            - SAP HCM → S/4HANA  
-            - Legacy Systems → SAP Targets  
-            """)
 
         with col2:
             st.markdown("### Key Features")

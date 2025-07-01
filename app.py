@@ -101,9 +101,6 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    st.markdown("---")
-    st.markdown("### Why Choose Our Tool?")
-
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [
@@ -126,26 +123,7 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    st.markdown("""
-    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
-        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Migration Made Easy</h4>
-                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Integrity & Compliance</h4>
-                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Document-Ready Migrations</h4>
-                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
-            </div>
-        </div>
-    </div>
-    <br>
+    
     <h3>Migration and Validation Suite (MVS)</h3>
     <p>A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes, including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.</p>
     <h4>Key Capabilities:</h4>
@@ -165,6 +143,26 @@ if selected == "Home":
         <li>Legacy/Non-SAP Systems → SAP HCM or SuccessFactors</li>
     </ul>
     """, unsafe_allow_html=True)
+    <br>
+    st.markdown("""
+    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
+        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Migration Made Easy</h4>
+                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Integrity & Compliance</h4>
+                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Document-Ready Migrations</h4>
+                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
+            </div>
+        </div>
+    </div>
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

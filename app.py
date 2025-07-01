@@ -24,13 +24,13 @@ st.markdown(f"""
             background-size: cover;
             background-position: center;
             border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 40px;
+            padding: 80px;
+            margin-bottom: 80px;
         }}
         .custom-overlay {{
             background-color: rgba(255, 255, 255, 0.85);
-            padding: 30px;
-            border-radius: 10px;
+            padding: 50px;
+            border-radius: 40px;
         }}
     </style>
 """, unsafe_allow_html=True)

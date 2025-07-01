@@ -245,6 +245,8 @@ elif selected == "Services":
         """
     )
 
-st.markdown("---")
-st.markdown("## 🧪 Demo")
-demo_module.render_demo()
+    # ✅ This part must be indented to be part of the "Services" page
+    st.markdown("---")
+    st.markdown("## 🧪 Demo")
+    demo_module.render_demo()
+

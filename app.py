@@ -3,7 +3,7 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-st.set_page_config(layout="wide", page_title="HRSC-DaSH", page_icon="🚰")
+st.set_page_config(layout="wide", page_title="MVS", page_icon="🚰")
 
 # Remove top padding to reduce white space
 st.markdown("""
@@ -38,9 +38,9 @@ with st.sidebar:
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
-        <h2 style='text-align:center;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
-        <h3 style='text-align:center;'>HRSC-DaSH</h3>
+<div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+    <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+    <h3 style='text-align:center;'>MVS</h3> 
     </div>
     """, unsafe_allow_html=True)
 
@@ -63,7 +63,7 @@ if selected == "Home":
     with col2:
         st.markdown("""
         ### Purpose  
-        Enable governed HR data migration from SAP HCM to SuccessFactors:  
+        Enable governed HR data migration from Legacy HR Systems to SuccessFactors and S4HANA:  
         - Schema mapping & transformation engine  
         - Pre-load validation, rollback, and licensing  
         - Audit-ready configurations for scale  
@@ -76,8 +76,10 @@ if selected == "Home":
         """)
         st.video("https://youtu.be/vnikhnk8rCk")
 
+
+
     st.markdown("### Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your SAP HCM transformation effortless.")
+    st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
@@ -146,6 +148,7 @@ if selected == "Home":
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <p style='color:white;text-align:center;'>* Upgrading the tool to include all feature releases *</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Data Migration Made Easy</h4>
@@ -162,6 +165,8 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
@@ -229,16 +234,16 @@ elif selected == "Solutions":
 
 # --- SERVICES PAGE ---
 elif selected == "Services":
-    st.markdown("## End-to-End SAP HCM Migration Services")
+    st.markdown("## End-to-End SAP HCM and SuccessFactors Migration Services")
     st.markdown(
         """
         Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
         - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
-        - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to EC  
+        - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
         - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
         - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
         - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
-        - **Variance & Compliance Reports**: Monitor discrepancies and maintain audit trails  
+        - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
         """
-    )
+    ) for some reason its no updating from Strategic SAP On-Premise to SuccessFactors migration product to Migration Validation Suite even though i changed it in the code

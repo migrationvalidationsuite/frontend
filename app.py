@@ -3,9 +3,8 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-st.set_page_config(layout="wide", page_title="MVS", page_icon="👩‍💻")
+st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# Remove top padding to reduce white space
 st.markdown("""
     <style>
         .block-container {
@@ -14,7 +13,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -35,7 +33,6 @@ with st.sidebar:
         },
     )
 
-# --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
@@ -104,6 +101,16 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
+    st.markdown("---")
+    st.markdown("### Why Choose Our Tool?")
+
+    cols = st.columns(3)
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+    descriptions = [
+        "Template-driven, secure transfers from legacy to SF.",
+        "Field-level checks to catch errors before go-live.",
+        "Automated comparisons between ECC and SF data."
+    ]
 
     for col, icon, desc in zip(cols, icons, descriptions):
         if os.path.exists(icon):
@@ -119,58 +126,6 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    st.markdown("---")
-    st.markdown("## Migration and Validation Suite (MVS)")
-    st.markdown("""
-    A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes - including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.
-
-    **Key Capabilities**
-
-    - Schema Mapping - Align source and target data models across SAP and non-SAP environments.  
-    - Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.  
-    - Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.  
-    - Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.  
-    - Licensing & Packaging - Analyze license impact and segment data packages.  
-    - Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.  
-    - Deployment Support - Smooth migration execution with rollback, versioning, and audit trail.
-
-    **Supported Migration Paths**
-
-    - SAP On-Premise HCM → SuccessFactors (Employee Central, etc.)  
-    - SAP On-Premise HCM → SAP S/4HANA  
-    - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
-    """)
-    st.markdown("---")
-    st.markdown("### Why Choose Our Tool?")
-
-    cols = st.columns(3)
-    descriptions = [
-        "Template-driven, secure transfers from legacy to SF.",
-        "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and SF data."
-    ]
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-
-    st.markdown("""
-    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
-        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Migration Made Easy</h4>
-                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Integrity & Compliance</h4>
-                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Document-Ready Migrations</h4>
-                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

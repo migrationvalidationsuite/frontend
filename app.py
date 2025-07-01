@@ -1,33 +1,41 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 import base64
+from streamlit_option_menu import option_menu
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- CUSTOM STYLE ---
-st.markdown("""
+# --- EMBED BACKGROUND IMAGE AS BASE64 ---
+def get_base64_bg(image_file):
+    with open(image_file, "rb") as f:
+        data = base64.b64encode(f.read()).decode()
+    return data
+
+bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
+
+# --- CUSTOM CSS FOR SECTION ONLY ---
+st.markdown(f"""
     <style>
-        .block-container {
+        .block-container {{
             padding-top: 1rem;
-        }
-        .custom-bg {
-            background-image: url("pexels-googledeepmind-17483873.jpg");
+        }}
+        .custom-section {{
+            background-image: url("data:image/jpeg;base64,{bg_image_base64}");
             background-size: cover;
             background-position: center;
+            border-radius: 12px;
             padding: 40px;
-            border-radius: 10px;
             margin-bottom: 40px;
-        }
-        .overlay {
+        }}
+        .custom-overlay {{
             background-color: rgba(255, 255, 255, 0.85);
             padding: 30px;
             border-radius: 10px;
-        }
+        }}
     </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR ---
+# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -47,20 +55,20 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME --------------------
+# -------------------- HOME PAGE --------------------
 if selected == "Home":
-    # Header banner
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-    <div style='max-width:900px;margin:auto;'>
-        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-        <h3 style='text-align:center;'>MVS</h3> 
-    </div>
-    </div>
+        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+        <div style='max-width:900px;margin:auto;'>
+            <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+            <h3 style='text-align:center;'>MVS</h3> 
+        </div>
+        </div>
     """, unsafe_allow_html=True)
 
-    # --- MAIN PANEL WITH BACKGROUND IMAGE ---
-    st.markdown("<div class='custom-bg'><div class='overlay'>", unsafe_allow_html=True)
+    # ✅ This section will now show background with overlay
+    st.markdown("<div class='custom-section'><div class='custom-overlay'>", unsafe_allow_html=True)
+
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
@@ -88,6 +96,8 @@ if selected == "Home":
         st.video("https://youtu.be/vnikhnk8rCk")
 
     st.markdown("</div></div>", unsafe_allow_html=True)
+
+# Add the rest of your content as needed...
 
     # MVS Summary
     left_col, right_col = st.columns([3, 1])

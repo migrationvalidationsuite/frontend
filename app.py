@@ -192,7 +192,7 @@ elif selected == "Solutions":
             """)
             st.markdown("#### Support for Parallel Testing & Revalidation")
             st.markdown("""
-            - We support Parallel Testing to validate payroll outputs and reports before Go Live.  
+            - We support Parallel Testing to validate outputs and reports before Go Live.  
             - Revalidation loops and Discrepancy Monitoring are built in for compliance.  
             - Our Compliance Reports help stakeholders stay informed with audit trails and validation checkpoints.  
             """)

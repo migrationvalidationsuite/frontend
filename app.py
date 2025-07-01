@@ -137,7 +137,13 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-elif selected == "Solutions":
+import streamlit as st
+from streamlit_option_menu import option_menu
+
+# --- SOLUTIONS PAGE ---
+selected = "Solutions"  # You can change this to dynamic selection logic
+
+if selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
@@ -146,25 +152,26 @@ elif selected == "Solutions":
         key="solutions_nav"
     )
 
-    # --- DATA MIGRATION PAGE ---
+    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([1.4, 1])
+        col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
             A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
-
+            
             **Supported Scenarios:**
-            - SAP On-Premise → SuccessFactors (EC, Payroll)  
-            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
+            - SAP On-Premise → SuccessFactors (EC, Payroll)
+            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
             - Legacy/Non-SAP → SAP HCM or SuccessFactors
 
             **We Migrate:**
-            - Foundation Objects: Legal entities, locations, cost centers  
-            - Org & Position Hierarchies: Structures, reporting lines, org charts  
-            - Employee Master Data: Personal, job, and pay info  
+            - Foundation Objects: Legal entities, locations, cost centers
+            - Org & Position Hierarchies: Structures, reporting lines, org charts
+            - Employee Master Data: Personal, job, and pay info
             - Payroll & Time Data: Optional for testing and continuity
             """)
+
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
@@ -172,13 +179,13 @@ elif selected == "Solutions":
             - Template Uploads: Pre-configured formats reduce errors  
             - Role-Based Access: GDPR/SOX-compliant  
             - Validation Reports: Catch issues pre–go-live  
-            - Rule Engine: Reusable, localized transformation logic  
+            - Rule Engine: Reusable, localized transformation logic
             """)
-            st.image("datamig_img.png", use_container_width=True)
+            st.image("datamig_img.png", use_column_width=True)
 
-    # --- VALIDATION PAGE ---
+    # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([1.4, 1])
+        col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Validation: Accuracy from Source to Target")
             st.markdown("""
@@ -191,19 +198,20 @@ elif selected == "Solutions":
             - Source-to-File Match: Ensures load files mirror source  
             - Post-Load Check: Confirms final system reflects expected results  
             """)
+
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
             - Rules-Based Engine: Supports complex business logic  
             - Exception Reporting: Highlights and categorizes errors  
             - Revalidation Workflow: Iterative checks for SIT/UAT  
-            - Audit Logs: Full traceability for compliance  
+            - Audit Logs: Full traceability for compliance
             """)
-            st.image("validation_lifecycle.png", use_container_width=True)
+            st.image("validation_lifecycle.png", use_column_width=False, width=350)
 
-    # --- DISCREPANCY REPORT PAGE ---
+    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([1.4, 1])
+        col1, col2 = st.columns([3, 2])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
@@ -214,6 +222,7 @@ elif selected == "Solutions":
             - Record Completeness: Flags missing/extra records  
             - Critical Field Checks: Focus on payroll, time, org data  
             """)
+
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
@@ -222,5 +231,5 @@ elif selected == "Solutions":
             - Visual Dashboards: Track reconciliation status in real time  
             - Audit Trail: Logged results for governance and compliance  
             """)
-            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_column_width=False, width=350)
 

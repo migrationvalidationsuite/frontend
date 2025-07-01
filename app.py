@@ -196,7 +196,7 @@ elif selected == "Solutions":
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([3, 2.8])
+        col1, col2 = st.columns([3, 2.7])
         with col1:
             st.markdown("## Validation Services: Ensuring Data Accuracy from Source to Target")
             st.markdown("""
@@ -224,7 +224,7 @@ elif selected == "Solutions":
 
     # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([3, 3])
+        col1, col2 = st.columns([3, 2.7])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""

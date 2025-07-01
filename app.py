@@ -146,7 +146,6 @@ if selected == "Home":
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <p style='color:white;text-align:center;'>* Upgrading the tool to include all feature releases *</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
                 <h4 style='color:white;'>Data Migration Made Easy</h4>

@@ -73,15 +73,13 @@ if selected == "Home":
         st.markdown("**Key Capabilities:**")
         st.markdown("""
         - **Schema Mapping & Transformation**  
-          Aligns and converts source structures into SAP-ready formats.
+          Seamlessly aligns and converts source structures into SAP-ready formats across platforms.
         - **Pre-Migration Validation & Licensing**  
-          Detects issues early and estimates licensing needs for cloud/S/4HANA.
-        - **Rollback & Recovery**  
-          Enables safe, reversible test and production loads.
-        - **Audit-Ready Tracking**  
-          Full traceability of rule logic, configurations, and actions.
+          Identifies data issues early and forecasts licensing needs for cloud or S/4HANA adoption.
+        - **Rollback & Audit-Ready Tracking**  
+          Enables safe, reversible data loads with full traceability of rules, configurations, and actions.
         """)
-
+ 
         st.markdown("**Supported Migration Paths:**")
         st.markdown("""
         - SAP HCM → SuccessFactors  

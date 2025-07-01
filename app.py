@@ -143,9 +143,9 @@ if selected == "Home":
 
 
 # --- SOLUTIONS PAGE ---
-selected = "Solutions"  # You can change this to dynamic selection logic
+elif selected = "Solutions"  # You can change this to dynamic selection logic
 
-elif selected == "Solutions":
+if selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Discrepancy Analysis Report"],

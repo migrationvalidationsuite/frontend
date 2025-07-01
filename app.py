@@ -181,7 +181,7 @@ if selected == "Solutions":
             - Validation Reports: Catch issues pre–go-live  
             - Rule Engine: Reusable, localized transformation logic
             """)
-            st.image("datamig_img.png", use_column_width=True)
+            st.image("datamig_img.png", use_container_width=True)
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":
@@ -207,7 +207,7 @@ if selected == "Solutions":
             - Revalidation Workflow: Iterative checks for SIT/UAT  
             - Audit Logs: Full traceability for compliance
             """)
-            st.image("validation_lifecycle.png", use_column_width=False, width=350)
+            st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
     # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
@@ -231,5 +231,5 @@ if selected == "Solutions":
             - Visual Dashboards: Track reconciliation status in real time  
             - Audit Trail: Logged results for governance and compliance  
             """)
-            st.image("pexels-divinetechygirl-1181341.jpg", use_column_width=False, width=350)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
 

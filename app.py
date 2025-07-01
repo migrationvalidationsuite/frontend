@@ -137,8 +137,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# --- SOLUTIONS PAGE ---
-if selected == "Solutions":
+elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
@@ -147,23 +146,24 @@ if selected == "Solutions":
         key="solutions_nav"
     )
 
+    # --- DATA MIGRATION PAGE ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([1.5, 2])
+        col1, col2 = st.columns([1.4, 1])
         with col1:
-            st.header("Data Migration: End-to-End SAP HR Transformation")
+            st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
             A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
             **Supported Scenarios:**
             - SAP On-Premise → SuccessFactors (EC, Payroll)  
             - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
-            - Legacy/Non-SAP → SAP HCM or SuccessFactors  
+            - Legacy/Non-SAP → SAP HCM or SuccessFactors
 
             **We Migrate:**
             - Foundation Objects: Legal entities, locations, cost centers  
             - Org & Position Hierarchies: Structures, reporting lines, org charts  
             - Employee Master Data: Personal, job, and pay info  
-            - Payroll & Time Data: Optional for testing and continuity  
+            - Payroll & Time Data: Optional for testing and continuity
             """)
         with col2:
             st.markdown("### Key Features")
@@ -176,10 +176,11 @@ if selected == "Solutions":
             """)
             st.image("datamig_img.png", use_container_width=True)
 
+    # --- VALIDATION PAGE ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([1.5, 2])
+        col1, col2 = st.columns([1.4, 1])
         with col1:
-            st.header("Validation: Accuracy from Source to Target")
+            st.markdown("## Validation: Accuracy from Source to Target")
             st.markdown("""
             Ensures data is mapped, transformed, and loaded correctly across all stages of migration, with comparisons between source, files, and system outputs.
 
@@ -200,10 +201,11 @@ if selected == "Solutions":
             """)
             st.image("validation_lifecycle.png", use_container_width=True)
 
+    # --- DISCREPANCY REPORT PAGE ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([1.5, 2])
+        col1, col2 = st.columns([1.4, 1])
         with col1:
-            st.header("Discrepancy Analysis: Reconciliation Across Systems")
+            st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
             Verifies that migrated data is accurate, complete, and consistent in the target system post-load, supporting operational readiness.
 

@@ -34,6 +34,7 @@ with st.sidebar:
     )
 
 if selected == "Home":
+    # --- Header Banner ---
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
@@ -41,6 +42,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
+    # --- Image + Overview ---
     col_left, col_right = st.columns([2, 3])
     with col_left:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
@@ -69,9 +71,11 @@ if selected == "Home":
         - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
         """)
 
+    # --- Video ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.video("https://youtu.be/vnikhnk8rCk")
 
+    # --- Accelerate Section ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
@@ -83,7 +87,9 @@ if selected == "Home":
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
-     cols = st.columns(3)
+
+    for i in range(0, len(icons_data), 3):
+        cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
             with col:
                 if os.path.exists(icon):
@@ -98,7 +104,8 @@ if selected == "Home":
                         """,
                         unsafe_allow_html=True
                     )
-    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
+
+    # --- MVS Summary ---
     st.markdown("""
     <br>
     <h3>Migration and Validation Suite (MVS)</h3>
@@ -123,10 +130,7 @@ if selected == "Home":
     </ul>
     """, unsafe_allow_html=True)
 
-    # --- Icon Features Section ---
-    for i in range(0, len(icons_data), 3):
-
-    # --- Why Choose Our Tool Section ---
+    # --- Why Choose Our Tool (3 features under MVS) ---
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [
@@ -149,7 +153,7 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    # --- BLUE SECTION ---
+    # --- Blue SAP Block ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>

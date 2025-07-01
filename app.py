@@ -59,7 +59,7 @@ if selected == "Home":
         """)
 
     with col_right:
-    st.image("pexels-divinetechygirl-1181263.jpg", width=450)
+        st.image("pexels-divinetechygirl-1181263.jpg", width=450)
 
     # --- SUPPORTED MIGRATION PATHS BELOW IMAGE ---
     st.markdown("<br>", unsafe_allow_html=True)

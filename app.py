@@ -63,7 +63,7 @@ if selected == "Home":
     with col2:
         st.markdown("""
         ### Purpose  
-        Enable governed HR data migration from Legacy HR Systems to SuccessFactors and S4HANA:  
+        Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
         - Schema mapping & transformation engine  
         - Pre-load validation, rollback, and licensing  
         - Audit-ready configurations for scale  

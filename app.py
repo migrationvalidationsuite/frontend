@@ -83,9 +83,7 @@ if selected == "Home":
         ("validation.png", "Smart Validation Engine"),
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
-
-
-            )    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
+    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
     st.markdown("""
     <br>
     <h3>Migration and Validation Suite (MVS)</h3>

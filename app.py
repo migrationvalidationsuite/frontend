@@ -92,7 +92,7 @@ if selected == "Home":
         st.video("https://youtu.be/vnikhnk8rCk")
 
 # MVS Summary + Icons
-    left_col, right_col = st.columns([3, 1])
+    left_col, right_col = st.columns([3, 1.8])
     with left_col:
         st.markdown("""
         <h3>Migration and Validation Suite (MVS)</h3>
@@ -164,7 +164,7 @@ elif selected == "Solutions":
 
     # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 2.5])
         with col1:
             st.markdown("## Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
@@ -195,7 +195,7 @@ elif selected == "Solutions":
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 1.5])
         with col1:
             st.markdown("## Validation: Accuracy from Source to Target")
             st.markdown("""
@@ -221,7 +221,7 @@ elif selected == "Solutions":
 
     # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([3, 2])
+        col1, col2 = st.columns([3, 1.5])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""

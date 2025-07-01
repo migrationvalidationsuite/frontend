@@ -38,36 +38,36 @@ with st.sidebar:
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
         <h3 style='text-align:center;'>MVS</h3> 
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Purpose, Outcome, Scope Side-by-Side ---
-    col1, col2, col3 = st.columns(3)
+    # --- Three-column layout for Purpose, Outcome, Scope ---
+    top_col1, top_col2, top_col3 = st.columns(3)
 
-    with col1:
+    with top_col1:
+        st.markdown("### Purpose")
         st.markdown("""
-        ### Purpose  
         Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
         - Schema mapping & transformation engine  
         - Pre-load validation, rollback, and licensing  
         - Audit-ready configurations for scale  
         """)
 
-    with col2:
+    with top_col2:
+        st.markdown("### Outcome")
         st.markdown("""
-        ### Outcome  
         Deliver a secure, scalable migration tool with:  
         - Reduced manual effort  
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
         """)
 
-    with col3:
+    with top_col3:
+        st.markdown("### Scope")
         st.markdown("""
-        ### Scope  
         This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
         - Schema mapping  
         - Field-level configuration  
@@ -78,9 +78,17 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    # --- Image and Video Below ---
-    st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
-    st.video("https://youtu.be/vnikhnk8rCk")
+    # --- Spacer and image + video row ---
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    bottom_col1, bottom_col2 = st.columns([2, 1])
+
+    with bottom_col1:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+
+    with bottom_col2:
+        st.video("https://youtu.be/vnikhnk8rCk")
+
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")

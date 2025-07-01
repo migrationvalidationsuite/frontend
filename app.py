@@ -36,7 +36,7 @@ with st.sidebar:
 if selected == "Home":
     # --- Header Banner ---
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='background-color:#e6f0ff;padding:15px 40px;border-radius:10px;margin-bottom:20px;max-width:80%;margin-left:auto;margin-right:auto;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
         <h3 style='text-align:center;'>MVS</h3> 
     </div>
@@ -75,77 +75,47 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- Accelerate Section ---
-    st.markdown("### Accelerate Your SAP Employee Central Migration")
-    st.markdown("#### Purpose-built to streamline migration, validation, and variance reporting for SAP HR and Payroll data.")
+    # --- MVS Summary with Icons to the Right ---
+    left_col, right_col = st.columns([3, 1])
 
-    icons_data = [
-        ("streamline.png", "Streamline Your SAP HCM Migration"),
-        ("testing.png", "De-Risk Parallel Testing"),
-        ("security.png", "Ensure Data Security & Governance"),
-        ("variance.png", "Monitor Field-Level Variance"),
-        ("validation.png", "Smart Validation Engine"),
-        ("confidence.png", "Enhance Stakeholder Confidence"),
-    ]
+    with left_col:
+        st.markdown("""
+        <h3>Migration and Validation Suite (MVS)</h3>
+        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
 
-    for i in range(0, len(icons_data), 3):
-        cols = st.columns(3)
-        for col, (icon, label) in zip(cols, icons_data[i:i+3]):
-            with col:
-                if os.path.exists(icon):
-                    with open(icon, "rb") as f:
-                        img_data = base64.b64encode(f.read()).decode()
-                    col.markdown(
-                        f"""
-                        <div style='text-align:center'>
-                            <img src="data:image/png;base64,{img_data}" width="50" style="margin:auto;"/>
-                            <p style="margin-top:10px;">{label}</p>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+        <h4>Key Capabilities:</h4>
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Drag-and-drop transformation rules</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Export SuccessFactors-ready templates with metadata</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+        </ul>
+        """, unsafe_allow_html=True)
 
-    # --- MVS Summary Section ---
-    st.markdown("""
-    <br>
-    <h3>Migration and Validation Suite (MVS)</h3>
-    <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+    with right_col:
+        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+        descriptions = [
+            "Template-driven, secure transfers from legacy to SF.",
+            "Field-level checks to catch errors before go-live.",
+            "Automated comparisons between ECC and SF data."
+        ]
 
-    <h4>Key Capabilities:</h4>
-    <ul>
-        <li>AI-powered mapping & validation</li>
-        <li>Drag-and-drop transformation rules</li>
-        <li>Real-time preview & profiling</li>
-        <li>Cross-object and row-level validation</li>
-        <li>Export SuccessFactors-ready templates with metadata</li>
-        <li>Licensing controls & role-based access</li>
-        <li>Audit logs, rollback & monitoring</li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # --- Core Functional Benefits Icons ---
-    st.markdown("### Core Functional Benefits")
-    cols = st.columns(3)
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-    descriptions = [
-        "Template-driven, secure transfers from legacy to SF.",
-        "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and SF data."
-    ]
-
-    for col, icon, desc in zip(cols, icons, descriptions):
-        if os.path.exists(icon):
-            with open(icon, "rb") as img_file:
-                img_data = base64.b64encode(img_file.read()).decode()
-            col.markdown(
-                f"""
-                <div style='text-align:center'>
-                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
-                    <p>{desc}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
+        for icon, desc in zip(icons, descriptions):
+            if os.path.exists(icon):
+                with open(icon, "rb") as f:
+                    img_data = base64.b64encode(f.read()).decode()
+                right_col.markdown(
+                    f"""
+                    <div style='text-align:center; margin-bottom:20px;'>
+                        <img src="data:image/png;base64,{img_data}" width="50"/>
+                        <p style="margin-top:10px;">{desc}</p>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
     # --- Blue Background SAP Section ---
     st.markdown("""

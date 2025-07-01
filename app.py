@@ -1,60 +1,17 @@
 import streamlit as st
-import base64
 from streamlit_option_menu import option_menu
+import base64
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE SETUP ---
-def get_base64_bg(image_file):
-    with open(image_file, "rb") as f:
-        data = base64.b64encode(f.read()).decode()
-    return data
-
-bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
-
-# --- BACKGROUND + OVERLAY STYLE ---
-st.markdown(f"""
-    <style>
-        .stApp {{
-            position: relative;
-        }}
-        .background {{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-image: url("data:image/jpeg;base64,{bg_image_base64}");
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }}
-        .overlay {{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            z-index: -1;
-        }}
-        .block-container {{
-            padding-top: 1rem !important;
-            position: relative;
-            z-index: 1;
-        }}
-    </style>
-    <div class="background"></div>
-    <div class="overlay"></div>
-""", unsafe_allow_html=True)
-
-# --- SIDEBAR NAV ---
+# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Home", "Solutions"],
         icons=["house", "layers"],
+        menu_icon="cast",
         default_index=0,
         styles={
             "container": {"padding": "5px", "background-color": "#f8f9fa"},
@@ -69,8 +26,9 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME PAGE --------------------
+# -------------------- HOME --------------------
 if selected == "Home":
+    # Header banner
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;margin-top:-40px;'>
             <div style='max-width:900px;margin:auto;'>
@@ -114,7 +72,7 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-# -------------------- SOLUTIONS PAGE --------------------
+# -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",

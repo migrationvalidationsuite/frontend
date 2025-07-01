@@ -2,6 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
 import os
+import demo_module
 
 st.set_page_config(layout="wide", page_title="HRSC-DaSH", page_icon="🚰")
 
@@ -243,3 +244,7 @@ elif selected == "Services":
         - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
         """
     )
+
+st.markdown("---")
+st.markdown("## 🧪 Demo")
+demo_module.render_demo()

@@ -3,7 +3,7 @@ from streamlit_option_menu import option_menu
 import base64
 import os
 
-st.set_page_config(layout="wide", page_title="MVS", page_icon="😰")
+st.set_page_config(layout="wide", page_title="MVS", page_icon="👩‍💻")
 
 # Remove top padding to reduce white space
 st.markdown("""

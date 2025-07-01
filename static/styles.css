@@ -1,0 +1,190 @@
+/* General Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9; /* Light Grey Background */
+    color: #333; /* Dark Grey Text */
+    min-height: 100vh; /* Ensure body takes full height */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #003366; /* Dark Blue */
+    color: #ffffff; /* White Text */
+    text-align: center;
+    padding: 1.5em 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+.container {
+    flex: 1;
+    padding: 2em;
+    text-align: center;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.big-button {
+    display: block;
+    width: 250px;
+    height: auto; /* Change height to auto to fit content */
+    padding: 20px; /* Add padding for better spacing */
+    text-align: center;
+    font-size: 1.6em;
+    color: #ffffff; /* White Text */
+    background-color: #007bff; /* Primary Blue */
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.big-button:hover {
+    background-color: #0056b3; /* Darker Blue */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.file-button {
+    margin: 0.5em 0;
+}
+
+.file-button a {
+    display: inline-block;
+    width: 250px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.2em;
+    color: #ffffff; /* White Text */
+    background-color: #007bff; /* Primary Blue */
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 0.5em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.file-button a:hover {
+    background-color: #0056b3; /* Darker Blue */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #ffffff; /* White Text */
+    background-color: #dc3545; /* Red */
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 0.5em;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333; /* Darker Red */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+a.back-button, a.view-button {
+    display: inline-block;
+    text-align: center;
+    font-size: 1em;
+    color: #007bff; /* Blue */
+    text-decoration: none;
+    border: 1px solid #007bff; /* Blue Border */
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a.back-button:hover, a.view-button:hover {
+    background-color: #007bff; /* Blue */
+    color: #ffffff; /* White Text */
+}
+
+footer {
+    background-color: #ffffff; /* White Background */
+    color: #003366; /* Dark Blue Text */
+    text-align: center;
+    padding: 1em 0;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.footer-logo {
+    height: 40px;
+    margin-top: 10px;
+}
+
+/* Ensure .container is centered */
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Additional responsive styling */
+@media (max-width: 600px) {
+    .big-button {
+        width: 200px;
+        height: 100px;
+        font-size: 1.4em;
+    }
+    .file-button a {
+        width: 200px;
+        height: 50px;
+        font-size: 1em;
+    }
+}
+
+.highlight {
+    background-color: #ffcccc;
+}
+
+header {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space out elements */
+    align-items: center; /* Center items vertically */
+    padding: 10px; /* Add some padding */
+    text-align: center; /* Center text */
+}
+
+.header-text {
+    flex-grow: 1; /* Allow this div to take available space */
+    display: flex;
+    flex-direction: column; /* Stack title and subtitle vertically */
+    align-items: center; /* Center align the text */
+}
+
+.header-logo {
+    height: 40px; /* Adjust height for smaller logo */
+    margin-left: 20px; /* Space between text and logo */
+}
+
+.check-requirements-button {
+    background-color: #007BFF; /* Change to your desired color */
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px; /* Add some spacing */
+}

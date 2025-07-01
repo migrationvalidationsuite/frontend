@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Migration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #0073e6;
+            color: white;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #005bb5;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #0073e6;
+            color: white;
+        }
+
+        .dropdown-btn::after {
+            content: " \25BC";
+            font-size: 14px;
+            margin-left: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown:hover .dropdown-btn::after {
+            transform: rotate(180deg);
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        }
+
+        .content-container h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            background-color: #0073e6;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button-container a:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0073e6;
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer img {
+            max-height: 50px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <h1>Data Migration and Validation Suite</h1>
+        <a href="{{ url_for('home') }}" style="margin-left: 20px; color: white; text-decoration: none; font-size: 18px;">Home</a>
+        <div class="dropdown" style="margin-left: 20px;">
+            <button class="dropdown-btn">Offerings</button>
+            <div class="dropdown-content">
+                <a href="{{ url_for('data_migration_page') }}">Data Migration</a>
+                <a href="{{ url_for('validation_page') }}">Validation</a>
+                <a href="{{ url_for('variance_monitor_page') }}">Variance Monitor</a>
+            </div>
+        </div>
+    </div>
+    <img src="{{ url_for('static', filename='logo.jpg') }}" alt="Company Logo">
+</header>
+<div class="container">
+    <h2>Comparison Results</h2>
+
+    <h3>File Summary</h3>
+    <p><strong>Rows in Loadsheet:</strong> {{ stats.loadsheet_rows }}</p>
+    <p><strong>Columns in Loadsheet:</strong> {{ stats.loadsheet_columns }}</p>
+    <p><strong>Rows in Extracted File:</strong> {{ stats.extracted_rows }}</p>
+    <p><strong>Columns in Extracted File:</strong> {{ stats.extracted_columns }}</p>
+
+    <h3>Rows in Loadsheet Missing in Extracted File</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                {% for col in unique_in_loadsheet.columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in unique_in_loadsheet.itertuples(index=False) %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Rows in Extracted File Missing in Loadsheet</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+            <tr>
+                {% for col in unique_in_extracted.columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in unique_in_extracted.itertuples(index=False) %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ url_for('validation_comparison') }}" class="button">Go Back</a>
+</div>
+</body>
+</html>

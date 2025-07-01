@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variance Monitor Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container label {
+            font-size: 16px;
+            margin-top: 15px;
+            display: block;
+        }
+
+        .form-container select,
+        .form-container input[type="number"],
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            background-color: #0073e6;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <h2>Select Variance Options</h2>
+    <form action="{{ url_for('process_variance_selection') }}" method="post">
+
+        <label for="comparison">Select Comparison Type:</label>
+        <select name="comparison" id="comparison" required>
+            <option value="exact">Exact Match</option>
+            <option value="percentage">Tolerance Threshold</option>
+        </select>
+
+        <div id="percentage-input" style="display: none;">
+            <label for="percentage">Enter Percentage (0-100):</label>
+            <input type="number" name="percentage" id="percentage" min="0" max="100">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    // Show/hide percentage input based on selection
+    document.getElementById('comparison').addEventListener('change', function () {
+        const percentageInput = document.getElementById('percentage-input');
+        if (this.value === 'percentage') {
+            percentageInput.style.display = 'block';
+            document.getElementById('percentage').setAttribute('required', true);
+        } else {
+            percentageInput.style.display = 'none';
+            document.getElementById('percentage').removeAttribute('required');
+        }
+    });
+</script>
+</body>
+</html>

@@ -85,7 +85,7 @@ if selected == "Home":
     img_col, vid_col = st.columns([2, 1])
 
     with img_col:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
     with vid_col:
         st.video("https://youtu.be/vnikhnk8rCk")

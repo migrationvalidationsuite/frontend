@@ -74,7 +74,7 @@ if selected == "Home":
         st.video("https://youtu.be/vnikhnk8rCk")
 
     # --- Accelerate Section ---
-    st.markdown("### Accelerate Your SAP Employee Central Migration")
+    st.markdown("### Accelerate HR Data Migration across SAP landscapes")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
     icons_data = [

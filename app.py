@@ -44,10 +44,10 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Three-column layout for Purpose, Outcome, Scope ---
-    top_col1, top_col2, top_col3 = st.columns(3)
+    # --- Top 3-column layout for Purpose, Outcome, Scope ---
+    col1, col2, col3 = st.columns(3)
 
-    with top_col1:
+    with col1:
         st.markdown("### Purpose")
         st.markdown("""
         Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
@@ -56,7 +56,7 @@ if selected == "Home":
         - Audit-ready configurations for scale  
         """)
 
-    with top_col2:
+    with col2:
         st.markdown("### Outcome")
         st.markdown("""
         Deliver a secure, scalable migration tool with:  
@@ -65,7 +65,7 @@ if selected == "Home":
         - Efficient, reliable deployment processes  
         """)
 
-    with top_col3:
+    with col3:
         st.markdown("### Scope")
         st.markdown("""
         This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
@@ -78,16 +78,18 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    # --- Spacer and image + video row ---
-    st.markdown("<br>", unsafe_allow_html=True)
+    # --- Spacer for visual gap ---
+    st.markdown("<br><hr><br>", unsafe_allow_html=True)
 
-    bottom_col1, bottom_col2 = st.columns([2, 1])
+    # --- Two-column layout for Image and Video ---
+    img_col, vid_col = st.columns([2, 1])
 
-    with bottom_col1:
+    with img_col:
         st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
 
-    with bottom_col2:
+    with vid_col:
         st.video("https://youtu.be/vnikhnk8rCk")
+
 
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")

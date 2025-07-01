@@ -151,3 +151,94 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+# -------------------- SOLUTIONS --------------------
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal",
+        key="solutions_nav"
+    )
+
+    # --- DATA MIGRATION ---
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([3, 2])
+        with col1:
+            st.markdown("## Data Migration: End-to-End SAP HR Transformation")
+            st.markdown("""
+            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+
+            **Supported Scenarios:**
+            - SAP On-Premise → SuccessFactors (EC, Payroll)
+            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
+            - Legacy/Non-SAP → SAP HCM or SuccessFactors
+
+            **We Migrate:**
+            - Foundation Objects: Legal entities, locations, cost centers
+            - Org & Position Hierarchies: Structures, reporting lines, org charts
+            - Employee Master Data: Personal, job, and pay info
+            - Payroll & Time Data: Optional for testing and continuity
+            """)
+
+        with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Field-Level Traceability: Logged transformations with rollback  
+            - Template Uploads: Pre-configured formats reduce errors  
+            - Role-Based Access: GDPR/SOX-compliant  
+            - Validation Reports: Catch issues pre–go-live  
+            - Rule Engine: Reusable, localized transformation logic
+            """)
+            st.image("datamig_img.png", use_container_width=True)
+
+    # --- VALIDATION ---
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([3, 2])
+        with col1:
+            st.markdown("## Validation: Accuracy from Source to Target")
+            st.markdown("""
+            Ensures data is mapped, transformed, and loaded correctly across all stages of migration.
+
+            **What We Validate:**
+            - Required Fields: Flags missing/null critical values  
+            - Data Format & Types: Enforces SAP/SF standards  
+            - Mapping Accuracy: Validates transformation rules  
+            - Source-to-File Match: Ensures load files mirror source  
+            - Post-Load Check: Confirms final system reflects expected results  
+            """)
+
+        with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Rules-Based Engine  
+            - Exception Reporting  
+            - Revalidation Workflow  
+            - Audit Logs  
+            """)
+            st.image("validation_lifecycle.png", use_container_width=False, width=350)
+
+    # --- DISCREPANCY ANALYSIS ---
+    elif sol_choice == "Discrepancy Analysis Report":
+        col1, col2 = st.columns([3, 2])
+        with col1:
+            st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
+            st.markdown("""
+            Verifies that migrated data is accurate, complete, and consistent in the target system.
+
+            **What We Monitor:**
+            - Field-Level Accuracy  
+            - Record Completeness  
+            - Critical Field Checks  
+            """)
+
+        with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Source-to-Target Comparisons  
+            - Discrepancy Reports  
+            - Visual Dashboards  
+            - Audit Trail  
+            """)
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
+

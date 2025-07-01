@@ -38,9 +38,9 @@ with st.sidebar:
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
-        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-        <h3 style='text-align:center;'>MVS</h3>
+<div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+    <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+    <h3 style='text-align:center;'>MVS</h3> 
     </div>
     """, unsafe_allow_html=True)
 

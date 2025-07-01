@@ -91,8 +91,6 @@ if selected == "Home":
     st.video("https://youtu.be/vnikhnk8rCk")
 
 
-
-
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 

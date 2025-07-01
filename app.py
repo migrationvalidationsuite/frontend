@@ -59,10 +59,11 @@ if selected == "Home":
         """)
 
     with col_right:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    st.image("pexels-divinetechygirl-1181263.jpg", width=450)
 
-    # --- SUPPORTED MIGRATION PATHS ---
-    st.markdown("**Supported Migration Paths:**")
+    # --- SUPPORTED MIGRATION PATHS BELOW IMAGE ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("**Supported Migration Paths:**", unsafe_allow_html=True)
     st.markdown("""
     - SAP HCM → SuccessFactors  
     - SAP HCM → S/4HANA  

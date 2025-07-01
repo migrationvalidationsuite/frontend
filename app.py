@@ -42,7 +42,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Text on Left, Image on Right ---
+    # --- Text Left, Image + Video Right ---
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
@@ -73,10 +73,7 @@ if selected == "Home":
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-
-    # --- Video Section ---
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.video("https://youtu.be/vnikhnk8rCk")
+        st.video("https://youtu.be/vnikhnk8rCk")
 
     # --- Accelerate Section ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
@@ -116,13 +113,13 @@ if selected == "Home":
 
     <h4>Key Capabilities:</h4>
     <ul>
-        <li>Schema Mapping</li>
-        <li>Field-Level Configuration</li>
-        <li>Transformation Engine</li>
-        <li>Validation Reports</li>
-        <li>Licensing & Packaging</li>
-        <li>Testing Enablement</li>
-        <li>Deployment Support</li>
+        <li>AI-powered mapping & validation</li>
+        <li>Drag-and-drop transformation rules</li>
+        <li>Real-time preview & profiling</li>
+        <li>Cross-object and row-level validation</li>
+        <li>Export SuccessFactors-ready templates with metadata</li>
+        <li>Licensing controls & role-based access</li>
+        <li>Audit logs, rollback & monitoring</li>
     </ul>
 
     <h4>Supported Migration Paths:</h4>
@@ -133,7 +130,7 @@ if selected == "Home":
     </ul>
     """, unsafe_allow_html=True)
 
-    # --- Why Choose Our Tool (3 Feature Icons) ---
+    # --- 3-Icon Feature Strip ---
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [
@@ -177,6 +174,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(

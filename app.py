@@ -78,17 +78,18 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    # --- Spacer for visual gap ---
-    st.markdown("<br><hr><br>", unsafe_allow_html=True)
+   # --- Spacer for visual gap ---
+st.markdown("<br><hr><br>", unsafe_allow_html=True)
 
-    # --- Two-column layout for Image and Video ---
-    img_col, vid_col = st.columns([2, 1])
+# --- Two-column layout for Image and Video ---
+img_col, vid_col = st.columns([2, 1])
 
-    with img_col:
+with img_col:
     st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-    with vid_col:
+with vid_col:
     st.video("https://youtu.be/vnikhnk8rCk")
+
 
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")

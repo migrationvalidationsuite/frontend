@@ -16,8 +16,8 @@ st.markdown("""
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Solutions", "Services"],
-        icons=["house", "layers", "wrench"],
+        options=["Home", "Solutions"],
+        icons=["house", "layers"],
         menu_icon="cast",
         default_index=0,
         styles={
@@ -33,16 +33,20 @@ with st.sidebar:
         },
     )
 
+# -------------------- HOME --------------------
 if selected == "Home":
-    # --- Header Banner ---
+    # Header banner
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px 40px;border-radius:10px;margin-bottom:20px;max-width:80%;margin-left:auto;margin-right:auto;'>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='max-width:900px;margin:auto;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
         <h3 style='text-align:center;'>MVS</h3> 
     </div>
+    </div>
     """, unsafe_allow_html=True)
 
-    # --- Overview Section ---
+
+    # Overview + image/video
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
@@ -75,9 +79,8 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- MVS Summary with Icons to the Right ---
+    # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
-
     with left_col:
         st.markdown("""
         <h3>Migration and Validation Suite (MVS)</h3>
@@ -102,7 +105,6 @@ if selected == "Home":
             "Field-level checks to catch errors before go-live.",
             "Automated comparisons between ECC and SF data."
         ]
-
         for icon, desc in zip(icons, descriptions):
             if os.path.exists(icon):
                 with open(icon, "rb") as f:
@@ -117,7 +119,7 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
-    # --- Blue Background SAP Section ---
+    # Blue SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -139,7 +141,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# --- SOLUTIONS PAGE ---
+# -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
@@ -164,6 +166,12 @@ elif selected == "Solutions":
             - Template-based uploads  
             - Role-based access for audit compliance  
             """)
+            st.markdown("#### More Than Just Data Transfer")
+            st.markdown("""
+            - We begin with a Migration Assessment to evaluate system readiness, define project scope, and flag risks early.  
+            - Every Custom Configuration Mapping is handled field-by-field from legacy SAP to SuccessFactors, ensuring accuracy and compliance.  
+            - Our phased Cutover Strategy & Execution minimizes disruption with low-risk, controlled deployments.  
+            """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
 
@@ -181,6 +189,12 @@ elif selected == "Solutions":
             - Smart rules engine  
             - Summary reports with error categorization  
             - Revalidation after fixes  
+            """)
+            st.markdown("#### Support for Parallel Testing & Revalidation")
+            st.markdown("""
+            - We support Parallel Testing to validate payroll outputs and reports before Go Live.  
+            - Revalidation loops and Discrepancy Monitoring are built in for compliance.  
+            - Our Compliance Reports help stakeholders stay informed with audit trails and validation checkpoints.  
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
@@ -200,19 +214,10 @@ elif selected == "Solutions":
             - Field-level reports  
             - Graphical dashboards to track issues  
             """)
+            st.markdown("#### Built-In Cleansing & Reconciliation")
+            st.markdown("""
+            - We help you perform Data Reconciliation & Cleansing to ensure your records are consistent and load-ready.  
+            - Post-migration, our tools generate Discrepancy & Compliance Reports for continuity across HR/payroll.  
+            """)
         with col2:
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
-
-# --- SERVICES PAGE ---
-elif selected == "Services":
-    st.markdown("## End-to-End SAP HCM and SuccessFactors Migration Services")
-    st.markdown("""
-    Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
-
-    - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
-    - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
-    - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
-    - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
-    - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
-    - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
-    """)

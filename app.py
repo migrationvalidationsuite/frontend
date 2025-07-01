@@ -55,24 +55,20 @@ if selected == "Home":
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
         **Key Capabilities:**
-
-        - **Schema Mapping & Transformation**  
+        - **Schema Mapping & Validation**  
           Aligns and converts source structures into SAP-ready formats.
 
-        - **Pre-Migration Validation & Licensing**  
-          Detects issues early and estimates licensing needs for cloud/S/4HANA.
+        - **Pre-Migration Checks & Rollback**  
+          Early validation, license estimation, and safe, reversible loads.
 
-        - **Rollback & Recovery**  
-          Enables safe, reversible test and production loads.
-
-        - **Audit-Ready Tracking**  
-          Full traceability of rule logic, configurations, and actions.
+        - **Audit-Ready Configuration**  
+          Full traceability of rules, configs, and load steps.
 
         **Supported Migration Paths:**
-
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
         - Legacy HR Systems → SAP Cloud or On-Prem
+
         """)
 
     with col_img:

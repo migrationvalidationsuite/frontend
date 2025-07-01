@@ -2,10 +2,13 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import base64
 import os
+import subprocess
+import time
+import requests
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="🚰")
 
-# Remove top padding to reduce white space
+# Remove top padding
 st.markdown("""
     <style>
         .block-container {
@@ -34,6 +37,34 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
+
+    # --- FLASK DEMO LAUNCHER SECTION ---
+    st.markdown("---")
+    st.header("🧪 Flask Demo")
+
+    flask_url = "http://localhost:5000/"
+
+    if st.button("🚀 Launch Flask App"):
+        st.info("🔍 Checking if Flask server is already running...")
+
+        try:
+            response = requests.get(flask_url)
+            if response.status_code == 200:
+                st.success("✅ Flask is already running.")
+            else:
+                raise Exception("Flask running but not responding correctly.")
+        except:
+            try:
+                st.warning("⚠️ Flask not running. Attempting to start app.py...")
+                subprocess.Popen(["python3", "app.py"],
+                                 stdout=subprocess.DEVNULL,
+                                 stderr=subprocess.DEVNULL)
+                time.sleep(3)
+                st.success("✅ Flask app.py launched successfully.")
+            except Exception as e:
+                st.error(f"❌ Error launching Flask: {e}")
+
+        st.markdown(f"[🔗 Open Flask App in browser]({flask_url})")
 
 # --- HOME PAGE ---
 if selected == "Home":
@@ -74,15 +105,6 @@ if selected == "Home":
         - Built-in governance and traceability  
         - Efficient, reliable deployment processes  
         """)
-        
-        st.markdown("### 🎥 See It In Action")
-        st.markdown("""
-        <iframe width="100%" height="315"
-        src="https://www.youtube.com/embed/vnikhnk8rCk"
-        title="Tool Demo Video" frameborder="0"
-        allowfullscreen></iframe>
-        """, unsafe_allow_html=True)
-    
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
@@ -171,8 +193,6 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

@@ -122,12 +122,6 @@ if selected == "Home":
         <li>Audit logs, rollback & monitoring</li>
     </ul>
 
-    <h4>Supported Migration Paths:</h4>
-    <ul>
-        <li>SAP HCM → SuccessFactors</li>
-        <li>SAP HCM → S/4HANA</li>
-        <li>Legacy HR → SAP (Cloud or On-Prem)</li>
-    </ul>
     """, unsafe_allow_html=True)
 
     # --- 3-Icon Feature Strip ---

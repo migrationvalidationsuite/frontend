@@ -1,17 +1,60 @@
 import streamlit as st
-from streamlit_option_menu import option_menu
 import base64
+from streamlit_option_menu import option_menu
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- SIDEBAR NAVIGATION ---
+# --- BACKGROUND IMAGE as base64 ---
+def get_base64_bg(image_file):
+    with open(image_file, "rb") as f:
+        data = base64.b64encode(f.read()).decode()
+    return data
+
+bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
+
+# --- Inject background and overlay
+st.markdown(f"""
+    <style>
+        .stApp {{
+            position: relative;
+        }}
+        .background {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: url("data:image/jpeg;base64,{bg_image_base64}");
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }}
+        .overlay {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255,255,255,0.85);
+            z-index: -1;
+        }}
+        .block-container {{
+            padding-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }}
+    </style>
+    <div class="background"></div>
+    <div class="overlay"></div>
+""", unsafe_allow_html=True)
+
+# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
         options=["Home", "Solutions"],
         icons=["house", "layers"],
-        menu_icon="cast",
         default_index=0,
         styles={
             "container": {"padding": "5px", "background-color": "#f8f9fa"},
@@ -30,23 +73,23 @@ with st.sidebar:
 if selected == "Home":
     # Header banner
     st.markdown("""
-        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;margin-top:-40px;'>
-            <div style='max-width:900px;margin:auto;'>
-                <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-                <h3 style='text-align:center;'>MVS</h3> 
-            </div>
+        <div style='background-color:#e6f0ff;padding:10px 30px;border-radius:10px;margin-bottom:20px;margin-top:-30px;max-width:900px;margin-left:auto;margin-right:auto;'>
+            <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+            <h4 style='text-align:center;'>MVS</h4> 
         </div>
     """, unsafe_allow_html=True)
 
+    # Main section
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
-
-        st.markdown("**Key Capabilities:**")
         st.markdown("""
-        - **Mapping & Transformation**  
+        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+
+        **Key Capabilities:**
+
+        - **Schema Mapping & Transformation**  
           Converts source structures into SAP-ready formats.
 
         - **Validation & Licensing**  
@@ -57,20 +100,19 @@ if selected == "Home":
 
         - **Audit-Ready**  
           Tracks rule logic, configs, and data actions.
-        """)
 
-        st.markdown("**Supported Migration Paths:**", unsafe_allow_html=True)
-        st.markdown("""
-        <div style='padding-left:15px;'>
-        - SAP HCM → SuccessFactors<br>
-        - SAP HCM → S/4HANA<br>
-        - Legacy HR Systems → SAP Cloud or On-Prem
-        </div>
-        """, unsafe_allow_html=True)
+        **Supported Migration Paths:**
+        &nbsp;&nbsp;&nbsp;&nbsp;- SAP HCM → SuccessFactors  
+        &nbsp;&nbsp;&nbsp;&nbsp;- SAP HCM → S/4HANA  
+        &nbsp;&nbsp;&nbsp;&nbsp;- Legacy HR Systems → SAP Cloud or On-Prem
+        """)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
+
+# Continue your other sections (Solutions, etc.) here...
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

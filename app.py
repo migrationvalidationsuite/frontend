@@ -4,37 +4,51 @@ from streamlit_option_menu import option_menu
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
-# --- REMOVE TOP WHITE SPACE ---
-st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 0.5rem !important;
-        }
-        header {visibility: hidden;}
-    </style>
-""", unsafe_allow_html=True)
 
-
-# --- BACKGROUND IMAGE ---
-def set_background(image_file):
+# --- BACKGROUND IMAGE SETUP ---
+def get_base64_bg(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
-    st.markdown(f"""
-        <style>
-            .stApp {{
-                background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
-                            url("data:image/jpeg;base64,{data}");
-                background-size: cover;
-                background-attachment: fixed;
-                background-position: center;
-            }}
-        </style>
-    """, unsafe_allow_html=True)
+    return data
 
-# Set the background
-set_background("pexels-googledeepmind-17483873.jpg")
+bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
 
-# --- SIDEBAR ---
+st.markdown(f"""
+    <style>
+        .stApp {{
+            position: relative;
+        }}
+        .background {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-image: url("data:image/jpeg;base64,{bg_image_base64}");
+            background-size: cover;
+            background-position: center;
+            z-index: -2;
+        }}
+        .overlay {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: -1;
+        }}
+        .block-container {{
+            padding-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }}
+    </style>
+    <div class="background"></div>
+    <div class="overlay"></div>
+""", unsafe_allow_html=True)
+
+# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -53,116 +67,53 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
-    # -------------------- HOME --------------------
+
+# -------------------- HOME --------------------
 if selected == "Home":
-    # Header banner
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:20px;margin-bottom:10px;'>
-    <div style='max-width:900px;margin:auto;'>
-        <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
-        <h3 style='text-align:center;'>MVS (Migration Validation Suite)</h3> 
-    </div>
-    </div>
+        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;margin-top:-40px;'>
+            <div style='max-width:900px;margin:auto;'>
+                <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+                <h3 style='text-align:center;'>MVS</h3> 
+            </div>
+        </div>
     """, unsafe_allow_html=True)
 
-
-    # Overview + image/video
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
-    st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-    st.markdown("""
-    Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
 
-    **Key Capabilities:**
+        st.markdown("**Key Capabilities:**")
+        st.markdown("""
+        - **Mapping & Transformation**  
+          Converts source structures into SAP-ready formats.
 
-    - **Mapping & Transformation**  
-      Converts legacy structures to SAP-ready formats.
+        - **Validation & Licensing**  
+          Identifies issues early and ensures cloud/S/4HANA readiness.
 
-    - **Validation & Licensing**  
-      Catches issues early, ensures system readiness.
+        - **Safe Rollback**  
+          Enables reversible test and production runs.
 
-    - **Safe Rollback**  
-      Supports reversible test and live loads.
+        - **Audit-Ready**  
+          Tracks rule logic, configs, and data actions.
+        """)
 
-    - **Audit-Ready**  
-      Logs rules, configurations, and actions.
-    """)
-    
-    st.markdown("""
-    <div style='margin-left:20px'>
-        <b>Migration Paths:</b><br>
-        - SAP HCM → SuccessFactors<br>
-        - SAP HCM → S/4HANA<br>
-        - Legacy HR → SAP Cloud or On-Prem
-    </div>
-    """, unsafe_allow_html=True)
+        st.markdown("**Supported Migration Paths:**", unsafe_allow_html=True)
+        st.markdown("""
+        <div style='padding-left:15px;'>
+        - SAP HCM → SuccessFactors  \n
+        - SAP HCM → S/4HANA  \n
+        - Legacy HR Systems → SAP Cloud or On-Prem
+        </div>
+        """, unsafe_allow_html=True)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # MVS Summary + Icons
-    left_col, right_col = st.columns([3, 1])
-    with left_col:
-        st.markdown("""
-        <h3>Migration and Validation Suite (MVS)</h3>
-        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-
-        <h4>Key Capabilities:</h4>
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors-ready templates with metadata</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-        </ul>
-        """, unsafe_allow_html=True)
-
-    with right_col:
-        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-        descriptions = [
-            "Template-driven, secure transfers from legacy to SF.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and SF data."
-        ]
-        for icon, desc in zip(icons, descriptions):
-            if os.path.exists(icon):
-                with open(icon, "rb") as f:
-                    img_data = base64.b64encode(f.read()).decode()
-                right_col.markdown(
-                    f"""
-                    <div style='text-align:center; margin-bottom:20px;'>
-                        <img src="data:image/png;base64,{img_data}" width="50"/>
-                        <p style="margin-top:10px;">{desc}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
-
-    # Blue SAP section
-    st.markdown("""
-    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
-        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Migration Made Easy</h4>
-                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Integrity & Compliance</h4>
-                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Document-Ready Migrations</h4>
-                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+# ✅ Your solutions and other sections can follow here as before
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

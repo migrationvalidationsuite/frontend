@@ -4,6 +4,16 @@ from streamlit_option_menu import option_menu
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+# --- REMOVE TOP WHITE SPACE ---
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 0.5rem !important;
+        }
+        header {visibility: hidden;}
+    </style>
+""", unsafe_allow_html=True)
+
 
 # --- BACKGROUND IMAGE ---
 def set_background(image_file):

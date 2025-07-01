@@ -1,14 +1,11 @@
-
-
 import streamlit as st
 import base64
 import os
 from streamlit_option_menu import option_menu
 
-# --- PAGE CONFIG ---
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- CUSTOM STYLE ---
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
         .block-container {
@@ -16,16 +13,11 @@ st.markdown("""
         }
         .mvs-banner {
             background-color: #e6f0ff;
-            padding: 10px 30px;
+            padding: 15px 25px;
             border-radius: 10px;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        .stApp {
-            background-image: url('pexels-cookiecutter-1148820.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            width: fit-content;
+            margin: auto;
+            margin-bottom: 30px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -55,13 +47,14 @@ with st.sidebar:
 if selected == "Home":
     st.markdown("""
         <div class='mvs-banner'>
-            <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-            <h4 style='text-align:center;'>MVS</h4> 
+            <h2>Migration and Validation Suite</h2>
+            <h4>MVS</h4> 
         </div>
     """, unsafe_allow_html=True)
 
-    col_left, col_right = st.columns([2, 3])
-    with col_left:
+    # Top section with text + image + migration paths
+    col1, col2 = st.columns([2, 3])
+    with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
 
@@ -80,7 +73,7 @@ if selected == "Home":
           Full traceability of rule logic, configurations, and actions.
         """)
 
-    with col_right:
+    with col2:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.markdown("**Supported Migration Paths:**")
         st.markdown("""
@@ -89,12 +82,14 @@ if selected == "Home":
         - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
+    # --- VIDEO CENTERED ---
     st.markdown("""
-        <div style='text-align:center;'>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
+        <div style='text-align:center; margin-top:30px;'>
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
         </div>
     """, unsafe_allow_html=True)
 
+    # --- MIGRATION AND VALIDATION SUITE (with icons on right) ---
     col_main, col_icons = st.columns([3, 1])
     with col_main:
         st.markdown("### Migration and Validation Suite (MVS)")
@@ -112,13 +107,12 @@ if selected == "Home":
         - Audit logs, rollback & monitoring  
         """)
 
-    icons = [
-        ("data_icon.png", "Template-driven, secure transfers from legacy to SF."),
-        ("check_icon.png", "Field-level checks to catch errors before go-live."),
-        ("chart_icon.png", "Automated comparisons between ECC and SF data.")
-    ]
-
     with col_icons:
+        icons = [
+            ("data_icon.png", "Template-driven, secure transfers from legacy to SF."),
+            ("check_icon.png", "Field-level checks to catch errors before go-live."),
+            ("chart_icon.png", "Automated comparisons between ECC and SF data.")
+        ]
         for icon_file, caption in icons:
             if os.path.exists(icon_file):
                 with open(icon_file, "rb") as img_file:
@@ -132,6 +126,7 @@ if selected == "Home":
                     """, unsafe_allow_html=True
                 )
 
+    # --- BLUE SECTION ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>

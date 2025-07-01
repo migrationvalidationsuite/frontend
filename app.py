@@ -6,7 +6,7 @@ from streamlit_option_menu import option_menu
 # --- PAGE CONFIG ---
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE AS BASE64 ---
+# --- Convert local image to base64 for background ---
 def get_base64_bg(file_path):
     with open(file_path, "rb") as f:
         data = f.read()
@@ -17,10 +17,12 @@ bg_base64 = get_base64_bg("pexels-cookiecutter-1148820.jpg")
 # --- CUSTOM STYLE ---
 st.markdown(f"""
     <style>
-        .block-container {{
-            padding-top: 1rem;
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{bg_base64}");
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
         }}
-
         .main-banner {{
             background-color: #e6f0ff;
             padding: 15px 0;
@@ -29,18 +31,10 @@ st.markdown(f"""
             text-align: center;
             margin-bottom: 30px;
         }}
-
-        body {{
-            background-image: url("data:image/jpeg;base64,{bg_base64}");
-            background-size: cover;
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-        }}
-
-        .video-center {{
+        .video-container {{
             display: flex;
             justify-content: center;
-            padding-top: 20px;
+            padding-top: 10px;
         }}
     </style>
 """, unsafe_allow_html=True)
@@ -105,9 +99,9 @@ if selected == "Home":
     - Legacy HR Systems → SAP Cloud or On-Prem
     """)
 
-    # --- EMBEDDED VIDEO CENTERED ---
+    # --- VIDEO DIRECTLY UNDER IMAGE (centered) ---
     st.markdown("""
-        <div class="video-center">
+        <div class="video-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
         </div>
     """, unsafe_allow_html=True)

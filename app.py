@@ -13,6 +13,7 @@ def get_base64_bg(image_file):
 
 bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
 
+# --- BACKGROUND + OVERLAY STYLE ---
 st.markdown(f"""
     <style>
         .stApp {{
@@ -39,7 +40,7 @@ st.markdown(f"""
             z-index: -1;
         }}
         .block-container {{
-            padding-top: 1rem;
+            padding-top: 1rem !important;
             position: relative;
             z-index: 1;
         }}
@@ -68,7 +69,7 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME --------------------
+# -------------------- HOME PAGE --------------------
 if selected == "Home":
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;margin-top:-40px;'>
@@ -103,8 +104,8 @@ if selected == "Home":
         st.markdown("**Supported Migration Paths:**", unsafe_allow_html=True)
         st.markdown("""
         <div style='padding-left:15px;'>
-        - SAP HCM → SuccessFactors  \n
-        - SAP HCM → S/4HANA  \n
+        - SAP HCM → SuccessFactors<br>
+        - SAP HCM → S/4HANA<br>
         - Legacy HR Systems → SAP Cloud or On-Prem
         </div>
         """, unsafe_allow_html=True)
@@ -113,9 +114,7 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-# ✅ Your solutions and other sections can follow here as before
-
-# -------------------- SOLUTIONS --------------------
+# -------------------- SOLUTIONS PAGE --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
@@ -125,7 +124,6 @@ elif selected == "Solutions":
         key="solutions_nav"
     )
 
-    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -156,7 +154,6 @@ elif selected == "Solutions":
             """)
             st.image("datamig_img.png", use_container_width=True)
 
-    # --- VALIDATION ---
     elif sol_choice == "Validation":
         col1, col2 = st.columns([3, 2])
         with col1:
@@ -182,7 +179,6 @@ elif selected == "Solutions":
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
-    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
         col1, col2 = st.columns([3, 2])
         with col1:

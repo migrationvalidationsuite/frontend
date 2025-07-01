@@ -34,88 +34,151 @@ with st.sidebar:
     )
 
 # -------------------- HOME --------------------
+import streamlit as st
+import base64
+import os
+from streamlit_option_menu import option_menu
+
+# --- PAGE CONFIG ---
+st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+
+# --- CUSTOM CSS ---
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+
+        body {
+            background-image: url('pexels-googledeepmind-17483873.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .mvs-banner {
+            background-color: #e6f0ff;
+            padding: 20px 50px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- SIDEBAR NAVIGATION ---
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Navigation",
+        options=["Home", "Solutions"],
+        icons=["house", "layers"],
+        menu_icon="cast",
+        default_index=0,
+        styles={
+            "container": {"padding": "5px", "background-color": "#f8f9fa"},
+            "icon": {"color": "#003366", "font-size": "18px"},
+            "nav-link": {
+                "font-size": "16px",
+                "text-align": "left",
+                "margin": "5px",
+                "--hover-color": "#e6f0ff",
+            },
+            "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
+        },
+    )
+
+# --- HOME PAGE ---
 if selected == "Home":
-    # Header banner
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-    <div style='max-width:900px;margin:auto;'>
-        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-        <h3 style='text-align:center;'>MVS</h3> 
-    </div>
-    </div>
+        <div class='mvs-banner'>
+            <h2>Migration and Validation Suite</h2>
+            <h4>MVS</h4>
+        </div>
     """, unsafe_allow_html=True)
 
+    st.markdown("<div class='overlay'>", unsafe_allow_html=True)
 
-    # Overview + image/video
-    col_text, col_img = st.columns([3, 2])
-
-    with col_text:
+    col_left, col_right = st.columns([2, 3])
+    with col_left:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("""
-        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
 
-        **Key Capabilities:**
-        - **Schema Mapping & Validation**  
+        st.markdown("**Key Capabilities:**")
+        st.markdown("""
+        - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
 
-        - **Pre-Migration Checks & Rollback**  
-          Early validation, license estimation, and safe, reversible loads.
+        - **Pre-Migration Validation & Licensing**  
+          Detects issues early and estimates licensing needs for cloud/S/4HANA.
 
-        - **Audit-Ready Configuration**  
-          Full traceability of rules, configs, and load steps.
+        - **Rollback & Recovery**  
+          Enables safe, reversible test and production loads.
 
-        **Supported Migration Paths:**
-        - SAP HCM → SuccessFactors  
-        - SAP HCM → S/4HANA  
-        - Legacy HR Systems → SAP Cloud or On-Prem
-
+        - **Audit-Ready Tracking**  
+          Full traceability of rule logic, configurations, and actions.
         """)
 
-    with col_img:
+    with col_right:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-        st.video("https://youtu.be/vnikhnk8rCk")
 
-    # MVS Summary + Icons
-    left_col, right_col = st.columns([3, 1])
-    with left_col:
+    st.markdown("**Supported Migration Paths:**")
+    st.markdown("""
+    - SAP HCM → SuccessFactors  
+    - SAP HCM → S/4HANA  
+    - Legacy HR Systems → SAP Cloud or On-Prem
+    """)
+
+    st.markdown("""
+        <div style='text-align:center; margin-top:30px;'>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
+        </div>
+    """, unsafe_allow_html=True)
+
+    col_main, col_icons = st.columns([3, 1])
+    with col_main:
+        st.markdown("### Migration and Validation Suite (MVS)")
         st.markdown("""
-        <h3>Migration and Validation Suite (MVS)</h3>
-        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+        """)
+        st.markdown("**Key Capabilities:**")
+        st.markdown("""
+        - AI-powered mapping & validation  
+        - Drag-and-drop transformation rules  
+        - Real-time preview & profiling  
+        - Cross-object and row-level validation  
+        - Export SuccessFactors-ready templates with metadata  
+        - Licensing controls & role-based access  
+        - Audit logs, rollback & monitoring  
+        """)
 
-        <h4>Key Capabilities:</h4>
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors-ready templates with metadata</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-        </ul>
-        """, unsafe_allow_html=True)
+    icons = [
+        ("data_icon.png", "Template-driven, secure transfers from legacy to SF."),
+        ("check_icon.png", "Field-level checks to catch errors before go-live."),
+        ("chart_icon.png", "Automated comparisons between ECC and SF data.")
+    ]
 
-    with right_col:
-        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-        descriptions = [
-            "Template-driven, secure transfers from legacy to SF.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and SF data."
-        ]
-        for icon, desc in zip(icons, descriptions):
-            if os.path.exists(icon):
-                with open(icon, "rb") as f:
-                    img_data = base64.b64encode(f.read()).decode()
-                right_col.markdown(
+    with col_icons:
+        for icon_file, caption in icons:
+            if os.path.exists(icon_file):
+                with open(icon_file, "rb") as img_file:
+                    img_data = base64.b64encode(img_file.read()).decode()
+                st.markdown(
                     f"""
                     <div style='text-align:center; margin-bottom:20px;'>
-                        <img src="data:image/png;base64,{img_data}" width="50"/>
-                        <p style="margin-top:10px;">{desc}</p>
+                        <img src="data:image/png;base64,{img_data}" width="50" />
+                        <p style='font-size:14px;'>{caption}</p>
                     </div>
-                    """,
-                    unsafe_allow_html=True
+                    """, unsafe_allow_html=True
                 )
 
-    # Blue SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -137,8 +200,7 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-import streamlit as st
-from streamlit_option_menu import option_menu
+    st.markdown("</div>", unsafe_allow_html=True)  # Close .overlay
 
 # --- SOLUTIONS PAGE ---
 selected = "Solutions"  # You can change this to dynamic selection logic

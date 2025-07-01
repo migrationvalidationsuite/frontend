@@ -104,16 +104,6 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    st.markdown("---")
-    st.markdown("### Why Choose Our Tool?")
-
-    cols = st.columns(3)
-    descriptions = [
-        "Template-driven, secure transfers from legacy to SF.",
-        "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and SF data."
-    ]
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
 
     for col, icon, desc in zip(cols, icons, descriptions):
         if os.path.exists(icon):
@@ -150,6 +140,16 @@ if selected == "Home":
     - SAP On-Premise HCM → SAP S/4HANA  
     - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
     """)
+    st.markdown("---")
+    st.markdown("### Why Choose Our Tool?")
+
+    cols = st.columns(3)
+    descriptions = [
+        "Template-driven, secure transfers from legacy to SF.",
+        "Field-level checks to catch errors before go-live.",
+        "Automated comparisons between ECC and SF data."
+    ]
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
 
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>

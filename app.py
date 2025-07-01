@@ -5,7 +5,7 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- EMBED BACKGROUND IMAGE AS BASE64 ---
+# --- BACKGROUND IMAGE as base64 ---
 def get_base64_bg(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
@@ -13,29 +13,41 @@ def get_base64_bg(image_file):
 
 bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
 
-# --- CUSTOM CSS FOR SECTION ONLY ---
+# --- CSS: true background layer with white overlay on top ---
 st.markdown(f"""
     <style>
-        .block-container {{
-            padding-top: 1rem;
+        .stApp {{
+            position: relative;
         }}
-        .custom-section {{
+        .background {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
             background-image: url("data:image/jpeg;base64,{bg_image_base64}");
             background-size: cover;
             background-position: center;
-            border-radius: 12px;
-            padding: 80px;
-            margin-bottom: 80px;
+            z-index: -2;
         }}
-        .custom-overlay {{
+        .overlay {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
             background-color: rgba(255, 255, 255, 0.85);
-            padding: 50px;
-            border-radius: 40px;
+            z-index: -1;
+        }}
+        .block-container {{
+            padding-top: 2rem;
         }}
     </style>
+    <div class="background"></div>
+    <div class="overlay"></div>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR NAV ---
+# --- SIDEBAR ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -55,20 +67,19 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME PAGE --------------------
+# -------------------- HOME --------------------
 if selected == "Home":
+    # Header banner
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-        <div style='max-width:900px;margin:auto;'>
-            <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-            <h3 style='text-align:center;'>MVS</h3> 
-        </div>
+            <div style='max-width:900px;margin:auto;'>
+                <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+                <h3 style='text-align:center;'>MVS</h3> 
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # ✅ This section will now show background with overlay
-    st.markdown("<div class='custom-section'><div class='custom-overlay'>", unsafe_allow_html=True)
-
+    # Main section on top of background
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
@@ -94,6 +105,7 @@ if selected == "Home":
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
+
 
     st.markdown("</div></div>", unsafe_allow_html=True)
 

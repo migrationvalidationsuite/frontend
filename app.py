@@ -40,7 +40,7 @@ if selected == "Home":
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
         <h2 style='text-align:center;'>Strategic SAP On-Premise to SuccessFactors migration product</h2>
-        <h3 style='text-align:center;'>HRSC-DaSH</h3>
+        <h3 style='text-align:center;'>MVS</h3>
     </div>
     """, unsafe_allow_html=True)
 

@@ -50,8 +50,6 @@ if selected == "Home":
         st.markdown("""
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
-        **Key Capabilities:**
-
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
 

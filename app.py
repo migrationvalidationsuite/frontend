@@ -5,50 +5,24 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE as base64 ---
-def get_base64_bg(image_file):
+# --- BACKGROUND IMAGE ---
+def set_background(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
-    return data
+    st.markdown(f"""
+        <style>
+            .stApp {{
+                background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
+                            url("data:image/jpeg;base64,{data}");
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }}
+        </style>
+    """, unsafe_allow_html=True)
 
-bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
-
-# --- CSS: true background layer with white overlay on top ---
-st.markdown(f"""
-    <style>
-        .stApp {{
-            position: relative;
-        }}
-        .background {{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-image: url("data:image/jpeg;base64,{bg_image_base64}");
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
-        }}
-        .overlay {{
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.85);
-            z-index: -1;
-        }}
-        .block-container {{
-            z-index: 1;
-            position: relative;
-            padding-top: 2rem;
-        }}
-    </style>
-    <div class="background"></div>
-    <div class="overlay"></div>
-""", unsafe_allow_html=True)
-
+# Set the background
+set_background("pexels-googledeepmind-17483873.jpg")
 
 # --- SIDEBAR ---
 with st.sidebar:
@@ -72,7 +46,6 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
-    # Header banner
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
             <div style='max-width:900px;margin:auto;'>
@@ -82,9 +55,7 @@ if selected == "Home":
         </div>
     """, unsafe_allow_html=True)
 
-    # Main section on top of background
     col_text, col_img = st.columns([3, 2])
-
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
@@ -109,19 +80,11 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-
-    st.markdown("</div></div>", unsafe_allow_html=True)
-
-# Add the rest of your content as needed...
-
-    # MVS Summary
+    # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
         <h3>Migration and Validation Suite (MVS)</h3>
-        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-
-        <h4>Key Capabilities:</h4>
         <ul>
             <li>AI-powered mapping & validation</li>
             <li>Drag-and-drop transformation rules</li>
@@ -154,7 +117,6 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
-    # Blue section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -175,7 +137,6 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(

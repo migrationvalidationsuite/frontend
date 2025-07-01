@@ -141,74 +141,85 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-# -------------------- SOLUTIONS --------------------
-
-# -------------------- SOLUTIONS --------------------
+# --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
-    st.markdown("## Data Migration: End-to-End SAP HR Transformation")
-    st.markdown("A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.")
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal",
+        key="solutions_nav"
+    )
 
-    st.markdown("### Supported Scenarios:")
-    st.markdown("""
-    - SAP On-Premise → SuccessFactors (EC, Payroll)  
-    - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
-    - Legacy/Non-SAP → SAP HCM or SuccessFactors  
-    """)
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("Data Migration: End-to-End SAP HR Transformation")
+            st.markdown("""
+            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-    st.markdown("### We Migrate:")
-    st.markdown("""
-    - **Foundation Objects:** Legal entities, locations, cost centers  
-    - **Org & Position Hierarchies:** Structures, reporting lines, org charts  
-    - **Employee Master Data:** Personal, job, and pay info  
-    - **Payroll & Time Data:** Optional for testing and continuity  
-    """)
+            **Supported Scenarios:**
+            - SAP On-Premise → SuccessFactors (EC, Payroll)
+            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
+            - Legacy/Non-SAP → SAP HCM or SuccessFactors
 
-    st.markdown("### Key Features:")
-    st.markdown("""
-    - **Field-Level Traceability:** Logged transformations with rollback  
-    - **Template Uploads:** Pre-configured formats reduce errors  
-    - **Role-Based Access:** GDPR/SOX-compliant  
-    - **Validation Reports:** Catch issues pre–go-live  
-    - **Rule Engine:** Reusable, localized transformation logic  
-    """)
+            **We Migrate:**
+            - Foundation Objects: Legal entities, locations, cost centers
+            - Org & Position Hierarchies: Structures, reporting lines, org charts
+            - Employee Master Data: Personal, job, and pay info
+            - Payroll & Time Data: Optional for testing and continuity
 
-    st.markdown("---")
-    st.markdown("## Validation: Accuracy from Source to Target")
-    st.markdown("Ensures data is mapped, transformed, and loaded correctly across all stages of migration, with comparisons between source, files, and system outputs.")
+            **Key Features:**
+            - Field-Level Traceability: Logged transformations with rollback
+            - Template Uploads: Pre-configured formats reduce errors
+            - Role-Based Access: GDPR/SOX-compliant
+            - Validation Reports: Catch issues pre–go-live
+            - Rule Engine: Reusable, localized transformation logic
+            """)
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
 
-    st.markdown("### What We Validate:")
-    st.markdown("""
-    - **Required Fields:** Flags missing/null critical values  
-    - **Data Format & Types:** Enforces SAP/SF standards  
-    - **Mapping Accuracy:** Validates transformation rules  
-    - **Source-to-File Match:** Ensures load files mirror source  
-    - **Post-Load Check:** Confirms final system reflects expected results  
-    """)
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("Validation: Accuracy from Source to Target")
+            st.markdown("""
+            Ensures data is mapped, transformed, and loaded correctly across all stages of migration, with comparisons between source, files, and system outputs.
 
-    st.markdown("### Key Features:")
-    st.markdown("""
-    - **Rules-Based Engine:** Supports complex business logic  
-    - **Exception Reporting:** Highlights and categorizes errors  
-    - **Revalidation Workflow:** Iterative checks for SIT/UAT  
-    - **Audit Logs:** Full traceability for compliance  
-    """)
+            **What We Validate:**
+            - Required Fields: Flags missing/null critical values
+            - Data Format & Types: Enforces SAP/SF standards
+            - Mapping Accuracy: Validates transformation rules
+            - Source-to-File Match: Ensures load files mirror source
+            - Post-Load Check: Confirms final system reflects expected results
 
-    st.markdown("---")
-    st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
-    st.markdown("Verifies that migrated data is accurate, complete, and consistent in the target system post-load, supporting operational readiness.")
+            **Key Features:**
+            - Rules-Based Engine: Supports complex business logic
+            - Exception Reporting: Highlights and categorizes errors
+            - Revalidation Workflow: Iterative checks for SIT/UAT
+            - Audit Logs: Full traceability for compliance
+            """)
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
 
-    st.markdown("### What We Monitor:")
-    st.markdown("""
-    - **Field-Level Accuracy:** Detects mismatches in key values  
-    - **Record Completeness:** Flags missing/extra records  
-    - **Critical Field Checks:** Focus on payroll, time, org data  
-    """)
+    elif sol_choice == "Discrepancy Analysis Report":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("Discrepancy Analysis: Reconciliation Across Systems")
+            st.markdown("""
+            Verifies that migrated data is accurate, complete, and consistent in the target system post-load, supporting operational readiness.
 
-    st.markdown("### Key Features:")
-    st.markdown("""
-    - **Source-to-Target Comparisons:** Full visibility across extracts, loads, reports  
-    - **Discrepancy Reports:** Actionable summaries of mismatches  
-    - **Visual Dashboards:** Track reconciliation status in real time  
-    - **Audit Trail:** Logged results for governance and compliance  
-    """)
+            **What We Monitor:**
+            - Field-Level Accuracy: Detects mismatches in key values
+            - Record Completeness: Flags missing/extra records
+            - Critical Field Checks: Focus on payroll, time, org data
+
+            **Key Features:**
+            - Source-to-Target Comparisons: Full visibility across extracts, loads, reports
+            - Discrepancy Reports: Actionable summaries of mismatches
+            - Visual Dashboards: Track reconciliation status in real time
+            - Audit Trail: Logged results for governance and compliance
+            """)
+        with col2:
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
 

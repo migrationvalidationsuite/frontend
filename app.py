@@ -124,7 +124,6 @@ st.markdown("""
     </div>
 </div>
 """, unsafe_allow_html=True)
-
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(

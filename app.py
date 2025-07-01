@@ -4,13 +4,13 @@ from streamlit_option_menu import option_menu
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+
 # --- REMOVE TOP WHITE SPACE ---
 st.markdown("""
     <style>
         .block-container {
             padding-top: 0.5rem !important;
         }
-        header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 
@@ -30,10 +30,9 @@ def set_background(image_file):
         </style>
     """, unsafe_allow_html=True)
 
-# Set the background
 set_background("pexels-googledeepmind-17483873.jpg")
 
-# --- SIDEBAR ---
+# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -55,6 +54,7 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
+    # --- Header banner ---
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
             <div style='max-width:900px;margin:auto;'>
@@ -64,6 +64,7 @@ if selected == "Home":
         </div>
     """, unsafe_allow_html=True)
 
+    # --- Main section (text left, image/video right) ---
     col1, col2 = st.columns([2, 1])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
@@ -81,7 +82,6 @@ if selected == "Home":
           Full traceability of rule logic, configurations, and actions.
         """)
 
-        # --- Supported Migration Paths under image ---
         st.markdown("**Supported Migration Paths:**")
         st.markdown("""
         - SAP HCM → SuccessFactors  
@@ -89,11 +89,11 @@ if selected == "Home":
         - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
-        with col_img:
-            st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-            st.video("https://youtu.be/vnikhnk8rCk")
+    with col2:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+        st.video("https://youtu.be/vnikhnk8rCk")
 
-    # MVS Summary + Icons
+    # --- MVS Summary + Feature Icons ---
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
@@ -130,6 +130,7 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
+    # --- Blue SAP section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>

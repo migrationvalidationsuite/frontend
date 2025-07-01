@@ -43,19 +43,22 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
-
-# -------------------- HOME --------------------
+    # -------------------- HOME --------------------
 if selected == "Home":
+    # Header banner
     st.markdown("""
-        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-            <div style='max-width:900px;margin:auto;'>
-                <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-                <h3 style='text-align:center;'>MVS</h3> 
-            </div>
-        </div>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='max-width:900px;margin:auto;'>
+        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+        <h3 style='text-align:center;'>MVS</h3> 
+    </div>
+    </div>
     """, unsafe_allow_html=True)
 
+
+    # Overview + image/video
     col_text, col_img = st.columns([3, 2])
+
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
@@ -74,6 +77,12 @@ if selected == "Home":
 
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
+
+        **Supported Migration Paths:**
+
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
     with col_img:
@@ -85,6 +94,9 @@ if selected == "Home":
     with left_col:
         st.markdown("""
         <h3>Migration and Validation Suite (MVS)</h3>
+        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+
+        <h4>Key Capabilities:</h4>
         <ul>
             <li>AI-powered mapping & validation</li>
             <li>Drag-and-drop transformation rules</li>
@@ -117,6 +129,7 @@ if selected == "Home":
                     unsafe_allow_html=True
                 )
 
+    # Blue SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -137,6 +150,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(

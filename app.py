@@ -5,10 +5,24 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
+# --- CUSTOM STYLE ---
 st.markdown("""
     <style>
         .block-container {
             padding-top: 1rem;
+        }
+        .custom-bg {
+            background-image: url("pexels-googledeepmind-17483873.jpg");
+            background-size: cover;
+            background-position: center;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 10px;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -35,6 +49,7 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
+    # Header banner
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
     <div style='max-width:900px;margin:auto;'>
@@ -44,8 +59,10 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # Overview
+    # --- MAIN PANEL WITH BACKGROUND IMAGE ---
+    st.markdown("<div class='custom-bg'><div class='overlay'>", unsafe_allow_html=True)
     col_text, col_img = st.columns([3, 2])
+
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
@@ -64,17 +81,13 @@ if selected == "Home":
 
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
-
-        **Supported Migration Paths:**
-
-        - SAP HCM → SuccessFactors  
-        - SAP HCM → S/4HANA  
-        - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
+
+    st.markdown("</div></div>", unsafe_allow_html=True)
 
     # MVS Summary
     left_col, right_col = st.columns([3, 1])

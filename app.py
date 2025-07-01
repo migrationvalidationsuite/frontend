@@ -13,6 +13,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -33,93 +34,82 @@ with st.sidebar:
         },
     )
 
-# -------------------- HOME --------------------
 if selected == "Home":
-    # Header banner
+    # --- TITLE HEADER ---
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-    <div style='max-width:900px;margin:auto;'>
-        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-        <h3 style='text-align:center;'>MVS</h3> 
-    </div>
+    <div style='background-color:#e6f0ff;padding:10px 40px;border-radius:8px;margin-bottom:20px;text-align:center;max-width:1000px;margin-left:auto;margin-right:auto;'>
+        <h2 style='margin-bottom:5px;'>Migration and Validation Suite</h2>
+        <h3 style='margin:0;'>MVS</h3>
     </div>
     """, unsafe_allow_html=True)
 
+    # --- INTRO SECTION ---
+    col_left, col_right = st.columns([2, 3])
 
-    # Overview + image/video
-    col_text, col_img = st.columns([3, 2])
-
-    with col_text:
-        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+    with col_left:
         st.markdown("""
+        ### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
         **Key Capabilities:**
-
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
-
         - **Pre-Migration Validation & Licensing**  
           Detects issues early and estimates licensing needs for cloud/S/4HANA.
-
         - **Rollback & Recovery**  
           Enables safe, reversible test and production loads.
-
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
 
         **Supported Migration Paths:**
-
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
         - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
-    with col_img:
+    with col_right:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-    # MVS Summary + Icons
-    left_col, right_col = st.columns([3, 1])
-    with left_col:
-        st.markdown("""
-        <h3>Migration and Validation Suite (MVS)</h3>
-        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+    # --- SUITE OVERVIEW ---
+    st.markdown("""
+    <br>
+    <h3>Migration and Validation Suite (MVS)</h3>
+    <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
 
-        <h4>Key Capabilities:</h4>
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors-ready templates with metadata</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-        </ul>
-        """, unsafe_allow_html=True)
+    <h4>Key Capabilities:</h4>
+    <ul>
+        <li>AI-powered mapping & validation</li>
+        <li>Drag-and-drop transformation rules</li>
+        <li>Real-time preview & profiling</li>
+        <li>Cross-object and row-level validation</li>
+        <li>Export SuccessFactors-ready templates with metadata</li>
+        <li>Licensing controls & role-based access</li>
+        <li>Audit logs, rollback & monitoring</li>
+    </ul>
+    """, unsafe_allow_html=True)
 
-    with right_col:
-        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-        descriptions = [
-            "Template-driven, secure transfers from legacy to SF.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and SF data."
-        ]
-        for icon, desc in zip(icons, descriptions):
-            if os.path.exists(icon):
-                with open(icon, "rb") as f:
-                    img_data = base64.b64encode(f.read()).decode()
-                right_col.markdown(
-                    f"""
-                    <div style='text-align:center; margin-bottom:20px;'>
-                        <img src="data:image/png;base64,{img_data}" width="50"/>
-                        <p style="margin-top:10px;">{desc}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
+    # --- ICON ROW UNDER SUITE ---
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+    descriptions = [
+        "Template-driven, secure transfers from legacy to SF.",
+        "Field-level checks to catch errors before go-live.",
+        "Automated comparisons between ECC and SF data."
+    ]
 
-    # Blue SAP section
+    cols = st.columns(3)
+    for col, icon, desc in zip(cols, icons, descriptions):
+        if os.path.exists(icon):
+            with open(icon, "rb") as img_file:
+                img_data = base64.b64encode(img_file.read()).decode()
+            col.markdown(f"""
+                <div style='text-align:center'>
+                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;" />
+                    <p>{desc}</p>
+                </div>
+            """, unsafe_allow_html=True)
+
+    # --- BLUE SECTION ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -139,6 +129,11 @@ if selected == "Home":
             </div>
         </div>
     </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <hr>
+    <p style='text-align:center;font-size:16px;margin-top:40px;'>Explore each module above to see how we make your SAP HCM transformation seamless.</p>
     """, unsafe_allow_html=True)
 
 # -------------------- SOLUTIONS --------------------

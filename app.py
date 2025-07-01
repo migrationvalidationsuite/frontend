@@ -224,7 +224,7 @@ elif selected == "Solutions":
 
     # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([3, 2.7])
+        col1, col2 = st.columns([3, 2.6])
         with col1:
             st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
@@ -235,8 +235,8 @@ elif selected == "Solutions":
             - Record Completeness: Spot missing/extra records  
             - Business-Critical Fields: Focus on payroll, time, and org structures  
             - Change Tracking: View changes before/after load
-            We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
-            Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
+        We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
+        Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
 
             """)
 

@@ -1,4 +1,5 @@
-corrected_full_code = '''
+
+
 import streamlit as st
 import base64
 import os
@@ -151,9 +152,8 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-'''
 
-# -------------------- SOLUTIONS --------------------
+# --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
@@ -173,16 +173,15 @@ elif selected == "Solutions":
             - Hierarchical Position Structures  
             - Employee Master Data and Assignments  
 
-            Features:
+            **Features:**
             - Field-level traceability and rollback  
             - Template-based uploads  
             - Role-based access for audit compliance  
-            """)
-            st.markdown("#### More Than Just Data Transfer")
-            st.markdown("""
-            - We begin with a Migration Assessment to evaluate system readiness, define project scope, and flag risks early.  
-            - Every Custom Configuration Mapping is handled field-by-field from legacy SAP to SuccessFactors, ensuring accuracy and compliance.  
-            - Our phased Cutover Strategy & Execution minimizes disruption with low-risk, controlled deployments.  
+
+            **More Than Just Data Transfer**
+            - Migration Assessment to evaluate system readiness and flag risks early  
+            - Field-by-field Custom Configuration Mapping  
+            - Phased Cutover Strategy for low-risk deployment  
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
@@ -192,21 +191,20 @@ elif selected == "Solutions":
         with col1:
             st.header("Validation Services")
             st.markdown("""
-            Ensure every single record complies with:
-            - Required field presence (null detection)  
-            - Data types and value formatting  
-            - Referential logic (e.g., manager mappings, org chart validation)  
+            Ensure every record complies with:
+            - Required field presence  
+            - Data types and format  
+            - Referential logic (e.g., manager and org chart validation)
 
-            Features:
+            **Features:**
             - Smart rules engine  
-            - Summary reports with error categorization  
+            - Summary reports with error categories  
             - Revalidation after fixes  
-            """)
-            st.markdown("#### Support for Parallel Testing & Revalidation")
-            st.markdown("""
-            - We support Parallel Testing to validate outputs and reports before Go Live.  
-            - Revalidation loops and Discrepancy Monitoring are built in for compliance.  
-            - Our Compliance Reports help stakeholders stay informed with audit trails and validation checkpoints.  
+
+            **Support for Parallel Testing & Revalidation**
+            - Validate outputs before Go Live  
+            - Built-in discrepancy monitoring  
+            - Audit-ready compliance reports  
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
@@ -216,20 +214,20 @@ elif selected == "Solutions":
         with col1:
             st.header("ECC to SF Monitoring")
             st.markdown("""
-            After your migration, compare SAP ECC and SF data:
-            - Detect mismatches in values and field formats  
-            - Identify extra/missing records across modules  
-            - Focus on critical payroll-impacting fields  
+            Post-migration comparison of SAP ECC and SuccessFactors data to:
 
-            Features:
+            - Detect value mismatches and format discrepancies  
+            - Identify extra or missing records  
+            - Focus on payroll-impacting fields  
+
+            **Features:**
             - Side-by-side comparisons  
             - Field-level reports  
-            - Graphical dashboards to track issues  
-            """)
-            st.markdown("#### Built-In Cleansing & Reconciliation")
-            st.markdown("""
-            - We help you perform Data Reconciliation & Cleansing to ensure your records are consistent and load-ready.  
-            - Post-migration, our tools generate Discrepancy & Compliance Reports for continuity across HR/payroll.  
+            - Visual dashboards
+
+            **Built-In Cleansing & Reconciliation**
+            - Reconcile data before monitoring  
+            - Generate compliance and discrepancy reports  
             """)
         with col2:
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)

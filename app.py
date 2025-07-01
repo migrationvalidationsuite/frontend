@@ -152,32 +152,32 @@ elif selected == "Solutions":
     )
 
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([1, 1])
-        with col1:
-            st.header("Data Migration: End-to-End SAP HR Transformation")
-            st.markdown("""
-            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        st.header("Data Migration: End-to-End SAP HR Transformation")
+        st.markdown("""
+        A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-            **Supported Scenarios:**
-            - SAP On-Premise → SuccessFactors (EC, Payroll)  
-            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
-            - Legacy/Non-SAP → SAP HCM or SuccessFactors  
+        **Supported Scenarios:**
+        - SAP On-Premise → SuccessFactors (EC, Payroll)  
+        - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
+        - Legacy/Non-SAP → SAP HCM or SuccessFactors  
 
-            **We Migrate:**
-            - Foundation Objects: Legal entities, locations, cost centers  
-            - Org & Position Hierarchies: Structures, reporting lines, org charts  
-            - Employee Master Data: Personal, job, and pay info  
-            - Payroll & Time Data: Optional for testing and continuity  
+        **We Migrate:**
+        - Foundation Objects: Legal entities, locations, cost centers  
+        - Org & Position Hierarchies: Structures, reporting lines, org charts  
+        - Employee Master Data: Personal, job, and pay info  
+        - Payroll & Time Data: Optional for testing and continuity  
 
-            **Key Features:**
-            - Field-Level Traceability: Logged transformations with rollback  
-            - Template Uploads: Pre-configured formats reduce errors  
-            - Role-Based Access: GDPR/SOX-compliant  
-            - Validation Reports: Catch issues pre–go-live  
-            - Rule Engine: Reusable, localized transformation logic  
-            """)
-        with col2:
-            st.image("datamig_img.png", use_container_width=True)
+        **Key Features:**
+        - Field-Level Traceability: Logged transformations with rollback  
+        - Template Uploads: Pre-configured formats reduce errors  
+        - Role-Based Access: GDPR/SOX-compliant  
+        - Validation Reports: Catch issues pre–go-live  
+        - Rule Engine: Reusable, localized transformation logic  
+        """)
+    with col2:
+        st.image("datamig_img.png", use_container_width=True)
 
 
     elif sol_choice == "Validation":

@@ -151,76 +151,80 @@ elif selected == "Solutions":
         key="solutions_nav"
     )
 
+    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.header("Data Migration: End-to-End SAP HR Transformation")
-        st.markdown("""
-        A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+        col1, col2 = st.columns([2, 1])
+        with col1:
+            st.header("Data Migration: End-to-End SAP HR Transformation")
+            st.markdown("""
+            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-        **Supported Scenarios:**
-        - SAP On-Premise → SuccessFactors (EC, Payroll)  
-        - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
-        - Legacy/Non-SAP → SAP HCM or SuccessFactors  
+            **Supported Scenarios:**
+            - SAP On-Premise → SuccessFactors (EC, Payroll)  
+            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
+            - Legacy/Non-SAP → SAP HCM or SuccessFactors  
 
-        **We Migrate:**
-        - Foundation Objects: Legal entities, locations, cost centers  
-        - Org & Position Hierarchies: Structures, reporting lines, org charts  
-        - Employee Master Data: Personal, job, and pay info  
-        - Payroll & Time Data: Optional for testing and continuity  
+            **We Migrate:**
+            - Foundation Objects: Legal entities, locations, cost centers  
+            - Org & Position Hierarchies: Structures, reporting lines, org charts  
+            - Employee Master Data: Personal, job, and pay info  
+            - Payroll & Time Data: Optional for testing and continuity  
+            """)
+        with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Field-Level Traceability: Logged transformations with rollback  
+            - Template Uploads: Pre-configured formats reduce errors  
+            - Role-Based Access: GDPR/SOX-compliant  
+            - Validation Reports: Catch issues pre–go-live  
+            - Rule Engine: Reusable, localized transformation logic  
+            """)
+            st.image("datamig_img.png", use_container_width=True)
 
-        **Key Features:**
-        - Field-Level Traceability: Logged transformations with rollback  
-        - Template Uploads: Pre-configured formats reduce errors  
-        - Role-Based Access: GDPR/SOX-compliant  
-        - Validation Reports: Catch issues pre–go-live  
-        - Rule Engine: Reusable, localized transformation logic  
-        """)
-    with col2:
-        st.image("datamig_img.png", use_container_width=True)
-
-
+    # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([2, 1])
         with col1:
             st.header("Validation: Accuracy from Source to Target")
             st.markdown("""
             Ensures data is mapped, transformed, and loaded correctly across all stages of migration, with comparisons between source, files, and system outputs.
 
             **What We Validate:**
-            - Required Fields: Flags missing/null critical values
-            - Data Format & Types: Enforces SAP/SF standards
-            - Mapping Accuracy: Validates transformation rules
-            - Source-to-File Match: Ensures load files mirror source
-            - Post-Load Check: Confirms final system reflects expected results
-
-            **Key Features:**
-            - Rules-Based Engine: Supports complex business logic
-            - Exception Reporting: Highlights and categorizes errors
-            - Revalidation Workflow: Iterative checks for SIT/UAT
-            - Audit Logs: Full traceability for compliance
+            - Required Fields: Flags missing/null critical values  
+            - Data Format & Types: Enforces SAP/SF standards  
+            - Mapping Accuracy: Validates transformation rules  
+            - Source-to-File Match: Ensures load files mirror source  
+            - Post-Load Check: Confirms final system reflects expected results  
             """)
         with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Rules-Based Engine: Supports complex business logic  
+            - Exception Reporting: Highlights and categorizes errors  
+            - Revalidation Workflow: Iterative checks for SIT/UAT  
+            - Audit Logs: Full traceability for compliance  
+            """)
             st.image("validation_lifecycle.png", use_container_width=True)
 
+    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([1, 1])
+        col1, col2 = st.columns([2, 1])
         with col1:
             st.header("Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
             Verifies that migrated data is accurate, complete, and consistent in the target system post-load, supporting operational readiness.
 
             **What We Monitor:**
-            - Field-Level Accuracy: Detects mismatches in key values
-            - Record Completeness: Flags missing/extra records
-            - Critical Field Checks: Focus on payroll, time, org data
-
-            **Key Features:**
-            - Source-to-Target Comparisons: Full visibility across extracts, loads, reports
-            - Discrepancy Reports: Actionable summaries of mismatches
-            - Visual Dashboards: Track reconciliation status in real time
-            - Audit Trail: Logged results for governance and compliance
+            - Field-Level Accuracy: Detects mismatches in key values  
+            - Record Completeness: Flags missing/extra records  
+            - Critical Field Checks: Focus on payroll, time, org data  
             """)
         with col2:
+            st.markdown("### Key Features")
+            st.markdown("""
+            - Source-to-Target Comparisons: Full visibility across extracts, loads, reports  
+            - Discrepancy Reports: Actionable summaries of mismatches  
+            - Visual Dashboards: Track reconciliation status in real time  
+            - Audit Trail: Logged results for governance and compliance  
+            """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
-

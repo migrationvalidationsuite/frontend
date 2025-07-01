@@ -5,7 +5,7 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE as base64 ---
+# --- BACKGROUND IMAGE SETUP ---
 def get_base64_bg(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
@@ -13,7 +13,6 @@ def get_base64_bg(image_file):
 
 bg_image_base64 = get_base64_bg("pexels-googledeepmind-17483873.jpg")
 
-# --- Inject background and overlay
 st.markdown(f"""
     <style>
         .stApp {{
@@ -36,7 +35,7 @@ st.markdown(f"""
             left: 0;
             height: 100%;
             width: 100%;
-            background-color: rgba(255,255,255,0.85);
+            background-color: rgba(255, 255, 255, 0.85);
             z-index: -1;
         }}
         .block-container {{
@@ -71,25 +70,24 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
-    # Header banner
     st.markdown("""
-        <div style='background-color:#e6f0ff;padding:10px 30px;border-radius:10px;margin-bottom:20px;margin-top:-30px;max-width:900px;margin-left:auto;margin-right:auto;'>
-            <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-            <h4 style='text-align:center;'>MVS</h4> 
+        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;margin-top:-40px;'>
+            <div style='max-width:900px;margin:auto;'>
+                <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+                <h3 style='text-align:center;'>MVS</h3> 
+            </div>
         </div>
     """, unsafe_allow_html=True)
 
-    # Main section
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
+
+        st.markdown("**Key Capabilities:**")
         st.markdown("""
-        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
-
-        **Key Capabilities:**
-
-        - **Schema Mapping & Transformation**  
+        - **Mapping & Transformation**  
           Converts source structures into SAP-ready formats.
 
         - **Validation & Licensing**  
@@ -100,18 +98,22 @@ if selected == "Home":
 
         - **Audit-Ready**  
           Tracks rule logic, configs, and data actions.
-
-        **Supported Migration Paths:**
-        &nbsp;&nbsp;&nbsp;&nbsp;- SAP HCM → SuccessFactors  
-        &nbsp;&nbsp;&nbsp;&nbsp;- SAP HCM → S/4HANA  
-        &nbsp;&nbsp;&nbsp;&nbsp;- Legacy HR Systems → SAP Cloud or On-Prem
         """)
+
+        st.markdown("**Supported Migration Paths:**", unsafe_allow_html=True)
+        st.markdown("""
+        <div style='padding-left:15px;'>
+        - SAP HCM → SuccessFactors  \n
+        - SAP HCM → S/4HANA  \n
+        - Legacy HR Systems → SAP Cloud or On-Prem
+        </div>
+        """, unsafe_allow_html=True)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/vnikhnk8rCk")
 
-# Continue your other sections (Solutions, etc.) here...
+# ✅ Your solutions and other sections can follow here as before
 
 
 # -------------------- SOLUTIONS --------------------

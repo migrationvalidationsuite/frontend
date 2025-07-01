@@ -84,6 +84,32 @@ if selected == "Home":
         ("confidence.png", "Enhance Stakeholder Confidence"),
     ]
 
+
+            )
+    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
+    st.markdown("""
+    <br>
+    <h3>Migration and Validation Suite (MVS)</h3>
+    <p>A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes, including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.</p>
+
+    <h4>Key Capabilities:</h4>
+    <ul>
+        <li>Schema Mapping - Align source and target data models across SAP and non-SAP environments.</li>
+        <li>Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.</li>
+        <li>Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.</li>
+        <li>Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.</li>
+        <li>Licensing & Packaging - Analyze license impact and segment data packages for different SAP platforms.</li>
+        <li>Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.</li>
+        <li>Deployment Support - Smooth migration execution with rollback capabilities, versioning, and audit trail.</li>
+    </ul>
+
+    <h4>Supported Migration Paths:</h4>
+    <ul>
+        <li>SAP On-Premise HCM → SuccessFactors (Employee Central, etc.)</li>
+        <li>SAP On-Premise HCM → SAP S/4HANA</li>
+        <li>Legacy/Non-SAP Systems → SAP HCM or SuccessFactors</li>
+    </ul>
+    """, unsafe_allow_html=True)
     for i in range(0, len(icons_data), 3):
         cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
@@ -121,32 +147,6 @@ if selected == "Home":
                 </div>
                 """,
                 unsafe_allow_html=True
-            )
-    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
-    st.markdown("""
-    <br>
-    <h3>Migration and Validation Suite (MVS)</h3>
-    <p>A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes, including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.</p>
-
-    <h4>Key Capabilities:</h4>
-    <ul>
-        <li>Schema Mapping - Align source and target data models across SAP and non-SAP environments.</li>
-        <li>Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.</li>
-        <li>Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.</li>
-        <li>Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.</li>
-        <li>Licensing & Packaging - Analyze license impact and segment data packages for different SAP platforms.</li>
-        <li>Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.</li>
-        <li>Deployment Support - Smooth migration execution with rollback capabilities, versioning, and audit trail.</li>
-    </ul>
-
-    <h4>Supported Migration Paths:</h4>
-    <ul>
-        <li>SAP On-Premise HCM → SuccessFactors (Employee Central, etc.)</li>
-        <li>SAP On-Premise HCM → SAP S/4HANA</li>
-        <li>Legacy/Non-SAP Systems → SAP HCM or SuccessFactors</li>
-    </ul>
-    """, unsafe_allow_html=True)
-
     # --- BLUE SECTION ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>

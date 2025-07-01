@@ -159,25 +159,26 @@ elif selected == "Solutions":
             A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
             **Supported Scenarios:**
-            - SAP On-Premise → SuccessFactors (EC, Payroll)
-            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
-            - Legacy/Non-SAP → SAP HCM or SuccessFactors
+            - SAP On-Premise → SuccessFactors (EC, Payroll)  
+            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)  
+            - Legacy/Non-SAP → SAP HCM or SuccessFactors  
 
             **We Migrate:**
-            - Foundation Objects: Legal entities, locations, cost centers
-            - Org & Position Hierarchies: Structures, reporting lines, org charts
-            - Employee Master Data: Personal, job, and pay info
-            - Payroll & Time Data: Optional for testing and continuity
+            - Foundation Objects: Legal entities, locations, cost centers  
+            - Org & Position Hierarchies: Structures, reporting lines, org charts  
+            - Employee Master Data: Personal, job, and pay info  
+            - Payroll & Time Data: Optional for testing and continuity  
 
             **Key Features:**
-            - Field-Level Traceability: Logged transformations with rollback
-            - Template Uploads: Pre-configured formats reduce errors
-            - Role-Based Access: GDPR/SOX-compliant
-            - Validation Reports: Catch issues pre–go-live
-            - Rule Engine: Reusable, localized transformation logic
+            - Field-Level Traceability: Logged transformations with rollback  
+            - Template Uploads: Pre-configured formats reduce errors  
+            - Role-Based Access: GDPR/SOX-compliant  
+            - Validation Reports: Catch issues pre–go-live  
+            - Rule Engine: Reusable, localized transformation logic  
             """)
         with col2:
-            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+            st.image("datamig_img.png", use_container_width=True)
+
 
     elif sol_choice == "Validation":
         col1, col2 = st.columns([1, 1])

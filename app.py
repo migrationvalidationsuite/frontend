@@ -142,7 +142,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
 # --- SOLUTIONS PAGE ---
-elif selected == "Solutions":
+if selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
         options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
@@ -151,9 +151,8 @@ elif selected == "Solutions":
         key="solutions_nav"
     )
 
-    # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
-        col1, col2 = st.columns([2, 1])
+        col1, col2 = st.columns([1.5, 2])
         with col1:
             st.header("Data Migration: End-to-End SAP HR Transformation")
             st.markdown("""
@@ -181,9 +180,8 @@ elif selected == "Solutions":
             """)
             st.image("datamig_img.png", use_container_width=True)
 
-    # --- VALIDATION ---
     elif sol_choice == "Validation":
-        col1, col2 = st.columns([2, 1])
+        col1, col2 = st.columns([1.5, 2])
         with col1:
             st.header("Validation: Accuracy from Source to Target")
             st.markdown("""
@@ -206,9 +204,8 @@ elif selected == "Solutions":
             """)
             st.image("validation_lifecycle.png", use_container_width=True)
 
-    # --- DISCREPANCY ANALYSIS ---
     elif sol_choice == "Discrepancy Analysis Report":
-        col1, col2 = st.columns([2, 1])
+        col1, col2 = st.columns([1.5, 2])
         with col1:
             st.header("Discrepancy Analysis: Reconciliation Across Systems")
             st.markdown("""
@@ -228,3 +225,4 @@ elif selected == "Solutions":
             - Audit Trail: Logged results for governance and compliance  
             """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
+

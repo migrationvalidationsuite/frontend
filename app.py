@@ -35,8 +35,8 @@ with st.sidebar:
         },
     )
 
+# --- HOME PAGE ---
 if selected == "Home":
-    # --- Header Banner ---
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
@@ -44,7 +44,6 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Image and Capability Summary ---
     col_left, col_right = st.columns([2, 3])
     with col_left:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
@@ -74,7 +73,6 @@ if selected == "Home":
         - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
         """)
 
-    # --- Optional Video Below ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.video("https://youtu.be/vnikhnk8rCk")
 
@@ -108,7 +106,7 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    # --- Why Choose Our Tool Section (no headings) ---
+    # --- Why Choose Our Tool (no headings) ---
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
 
@@ -157,35 +155,7 @@ if selected == "Home":
     - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
     """)
 
-    # --- Why Choose Our Tool Section ---
-
-    cols = st.columns(3)
-
-descriptions = [
-    "Template-driven, secure transfers from legacy to SF.",
-    "Field-level checks to catch errors before go-live.",
-    "Automated comparisons between ECC and SF data."
-]
-
-icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-
-for col, icon, desc in zip(cols, icons, descriptions):
-    if os.path.exists(icon):
-        with open(icon, "rb") as img_file:
-            img_data = base64.b64encode(img_file.read()).decode()
-        col.markdown(
-            f"""
-            <div style='text-align:center'>
-                <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
-                <p>{desc}</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
-
-
-    # --- Blue Background Section ---
+    # --- Blue CTA Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -206,6 +176,84 @@ for col, icon, desc in zip(cols, icons, descriptions):
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# --- SOLUTIONS PAGE ---
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal",
+        key="solutions_nav"
+    )
+
+    if sol_choice == "Data Migration":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("Employee Central Data Migration")
+            st.markdown("""
+            Our tool supports secure, auditable migration of:
+            - Foundation Objects (Legal Entity, Business Unit, Location)  
+            - Hierarchical Position Structures  
+            - Employee Master Data and Assignments  
+
+            Features:
+            - Field-level traceability and rollback  
+            - Template-based uploads  
+            - Role-based access for audit compliance  
+            """)
+        with col2:
+            st.image("Employee_Central_Data_Migration.png", use_container_width=True)
+
+    elif sol_choice == "Validation":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("Validation Services")
+            st.markdown("""
+            Ensure every single record complies with:
+            - Required field presence (null detection)  
+            - Data types and value formatting  
+            - Referential logic (e.g., manager mappings, org chart validation)  
+
+            Features:
+            - Smart rules engine  
+            - Summary reports with error categorization  
+            - Revalidation after fixes  
+            """)
+        with col2:
+            st.image("validation_lifecycle.png", use_container_width=True)
+
+    elif sol_choice == "Discrepancy Analysis Report":
+        col1, col2 = st.columns([1, 1])
+        with col1:
+            st.header("ECC to SF Monitoring")
+            st.markdown("""
+            After your migration, compare SAP ECC and SF data:
+            - Detect mismatches in values and field formats  
+            - Identify extra/missing records across modules  
+            - Focus on critical payroll-impacting fields  
+
+            Features:
+            - Side-by-side comparisons  
+            - Field-level reports  
+            - Graphical dashboards to track issues  
+            """)
+        with col2:
+            st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)
+
+# --- SERVICES PAGE ---
+elif selected == "Services":
+    st.markdown("## End-to-End SAP HCM and SuccessFactors Migration Services")
+    st.markdown("""
+    Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+
+    - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
+    - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
+    - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
+    - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
+    - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
+    """)
 
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":

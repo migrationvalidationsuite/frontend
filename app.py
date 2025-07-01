@@ -48,7 +48,7 @@ if selected == "Home":
     # Header banner
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:20px;margin-bottom:10px;'>
-    <div style='max-width:90px;margin:auto;'>
+    <div style='max-width:900px;margin:auto;'>
         <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
         <h3 style='text-align:center;'>MVS (Migration Validation Suite)</h3> 
     </div>

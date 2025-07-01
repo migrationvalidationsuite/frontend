@@ -42,69 +42,39 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Image + Overview ---
-    col_left, col_right = st.columns([2, 3])
-    with col_left:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-    with col_right:
+    # --- Text on Left, Image on Right ---
+    col_text, col_img = st.columns([3, 2])
+
+    with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
-        Covering SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
-        **Key Capabilities**
+        **Key Capabilities:**
 
-        **Intelligent Schema Mapping & Transformation Engine**  
-        Automatically aligns and transforms source data structures to target SAP data models.
+        - **Schema Mapping & Transformation**  
+          Aligns and converts source structures into SAP-ready formats.
 
-        **Pre-Migration Validation & Licensing Insights**  
-        Identify data quality issues early through pre-load checks and license forecasting.
+        - **Pre-Migration Validation & Licensing**  
+          Detects issues early and estimates licensing needs for cloud/S/4HANA.
 
-        **Rollback & Recovery Framework**  
-        Built-in rollback mechanisms ensure safe and reversible data loads.
+        - **Rollback & Recovery**  
+          Enables safe, reversible test and production loads.
 
-        **Audit-Ready Configuration & Tracking**  
-        Full traceability of migration steps and rule application.
+        - **Audit-Ready Tracking**  
+          Full traceability of rule logic, configurations, and actions.
 
-        **Flexible Deployment**  
-        - On-Premise SAP HCM → SuccessFactors (Cloud)  
-        - On-Premise SAP HCM → SAP S/4HANA  
-        - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
+        **Supported Migration Paths:**
+
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
-# --- Text on Left, Larger Image on Right ---
-col_text, col_img = st.columns([3, 2])
+    with col_img:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
 
-with col_text:
-    st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-    st.markdown("""
-    Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
-
-    **Key Capabilities:**
-
-    - **Schema Mapping & Transformation**  
-      Aligns and converts source structures into SAP-ready formats.
-
-    - **Pre-Migration Validation & Licensing**  
-      Detects issues early and estimates licensing needs for cloud/S/4HANA.
-
-    - **Rollback & Recovery**  
-      Enables safe, reversible test and production loads.
-
-    - **Audit-Ready Tracking**  
-      Full traceability of rule logic, configurations, and actions.
-
-    **Supported Migration Paths:**
-
-    - SAP HCM → SuccessFactors  
-    - SAP HCM → S/4HANA  
-    - Legacy HR Systems → SAP Cloud or On-Prem
-    """)
-
-with col_img:
-    st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-
-
-    # --- Video ---
+    # --- Video Section ---
     st.markdown("<br>", unsafe_allow_html=True)
     st.video("https://youtu.be/vnikhnk8rCk")
 
@@ -138,32 +108,32 @@ with col_img:
                         unsafe_allow_html=True
                     )
 
-    # --- MVS Summary ---
+    # --- MVS Summary Section ---
     st.markdown("""
     <br>
     <h3>Migration and Validation Suite (MVS)</h3>
-    <p>A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes, including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.</p>
+    <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
 
     <h4>Key Capabilities:</h4>
     <ul>
-        <li>Schema Mapping - Align source and target data models across SAP and non-SAP environments.</li>
-        <li>Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.</li>
-        <li>Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.</li>
-        <li>Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.</li>
-        <li>Licensing & Packaging - Analyze license impact and segment data packages for different SAP platforms.</li>
-        <li>Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.</li>
-        <li>Deployment Support - Smooth migration execution with rollback capabilities, versioning, and audit trail.</li>
+        <li>Schema Mapping</li>
+        <li>Field-Level Configuration</li>
+        <li>Transformation Engine</li>
+        <li>Validation Reports</li>
+        <li>Licensing & Packaging</li>
+        <li>Testing Enablement</li>
+        <li>Deployment Support</li>
     </ul>
 
     <h4>Supported Migration Paths:</h4>
     <ul>
-        <li>SAP On-Premise HCM → SuccessFactors (Employee Central, etc.)</li>
-        <li>SAP On-Premise HCM → SAP S/4HANA</li>
-        <li>Legacy/Non-SAP Systems → SAP HCM or SuccessFactors</li>
+        <li>SAP HCM → SuccessFactors</li>
+        <li>SAP HCM → S/4HANA</li>
+        <li>Legacy HR → SAP (Cloud or On-Prem)</li>
     </ul>
     """, unsafe_allow_html=True)
 
-    # --- Why Choose Our Tool (3 features under MVS) ---
+    # --- Why Choose Our Tool (3 Feature Icons) ---
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [
@@ -186,7 +156,7 @@ with col_img:
                 unsafe_allow_html=True
             )
 
-    # --- Blue SAP Block ---
+    # --- Blue Background SAP Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -207,7 +177,6 @@ with col_img:
         </div>
     </div>
     """, unsafe_allow_html=True)
-
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(

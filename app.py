@@ -44,10 +44,28 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([3, 2])
+    # --- Purpose, Outcome, Scope Side-by-Side ---
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+        st.markdown("""
+        ### Purpose  
+        Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
+        - Schema mapping & transformation engine  
+        - Pre-load validation, rollback, and licensing  
+        - Audit-ready configurations for scale  
+        """)
+
+    with col2:
+        st.markdown("""
+        ### Outcome  
+        Deliver a secure, scalable migration tool with:  
+        - Reduced manual effort  
+        - Built-in governance and traceability  
+        - Efficient, reliable deployment processes  
+        """)
+
+    with col3:
         st.markdown("""
         ### Scope  
         This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
@@ -60,21 +78,9 @@ if selected == "Home":
         - Deployment support  
         """)
 
-    with col2:
-        st.markdown("""
-        ### Purpose  
-        Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
-        - Schema mapping & transformation engine  
-        - Pre-load validation, rollback, and licensing  
-        - Audit-ready configurations for scale  
-
-        ### Outcome  
-        Deliver a secure, scalable migration tool with:  
-        - Reduced manual effort  
-        - Built-in governance and traceability  
-        - Efficient, reliable deployment processes  
-        """)
-        st.video("https://youtu.be/vnikhnk8rCk")
+    # --- Image and Video Below ---
+    st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+    st.video("https://youtu.be/vnikhnk8rCk")
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")

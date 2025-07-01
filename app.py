@@ -37,6 +37,7 @@ with st.sidebar:
 
 # --- HOME PAGE ---
 if selected == "Home":
+    # --- Header Banner ---
     st.markdown("""
     <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
@@ -44,56 +45,44 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-    # --- Top 3-column layout for Purpose, Outcome, Scope ---
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.markdown("### Purpose")
-        st.markdown("""
-        Enable governed HR and Payroll migration from SAP ECC to SuccessFactors (Employee Central and Employee Central Payroll), as well as to the S/4HANA Payroll system:  
-        - Schema mapping & transformation engine  
-        - Pre-load validation, rollback, and licensing  
-        - Audit-ready configurations for scale  
-        """)
-
-    with col2:
-        st.markdown("### Outcome")
-        st.markdown("""
-        Deliver a secure, scalable migration tool with:  
-        - Reduced manual effort  
-        - Built-in governance and traceability  
-        - Efficient, reliable deployment processes  
-        """)
-
-    with col3:
-        st.markdown("### Scope")
-        st.markdown("""
-        This tool facilitates the end-to-end transfer of SAP On-Premise data to SuccessFactors, including:  
-        - Schema mapping  
-        - Field-level configuration  
-        - Transformation engine  
-        - Validation Reports  
-        - Licensing and packaging  
-        - Testing (unit, integration, UAT)  
-        - Deployment support  
-        """)
-
-    # --- Spacer and Image/Video Section ---
-    st.markdown("<br><hr><br>", unsafe_allow_html=True)
-
-    img_col, vid_col = st.columns([2, 1])
-
-    with img_col:
+    # --- Image and Summary Section ---
+    col_left, col_right = st.columns([2, 3])
+    with col_left:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+    with col_right:
+        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+        st.markdown("""
+        Covering SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
 
-    with vid_col:
-        st.video("https://youtu.be/vnikhnk8rCk")
+        **Key Capabilities**
 
-    # --- Feature Headers ---
+        **Intelligent Schema Mapping & Transformation Engine**  
+        Automatically aligns and transforms source data structures to target SAP data models, ensuring consistency across SAP HCM, SuccessFactors, and S/4HANA environments.
+
+        **Pre-Migration Validation & Licensing Insights**  
+        Identify data quality issues early through pre-load checks, dependency analysis, and license usage forecasting to optimize cloud and S/4HANA transitions.
+
+        **Rollback & Recovery Framework**  
+        Built-in rollback mechanisms ensure safe and reversible data loads - enabling risk-free migration cycles and test iterations.
+
+        **Audit-Ready Configuration & Tracking**  
+        Full traceability of migration steps, rule application, and user actions to meet compliance and audit standards across industries.
+
+        **Flexible Deployment**  
+        Supports migration scenarios including:  
+        - On-Premise SAP HCM → SuccessFactors (Cloud)  
+        - On-Premise SAP HCM → SAP S/4HANA  
+        - Legacy HR Systems → SAP HCM (On-Prem or Cloud)
+        """)
+
+    # --- Video Row (Optional) ---
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.video("https://youtu.be/vnikhnk8rCk")
+
+    # --- Accelerate Section with Icon Grid ---
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
 
-    # --- Icon Grid Section ---
     icons_data = [
         ("streamline.png", "Streamline Your SAP HCM Migration"),
         ("testing.png", "De-Risk Parallel Testing"),
@@ -120,7 +109,7 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    # --- Why Choose Section ---
+    # --- Why Choose Our Tool Section ---
     st.markdown("---")
     st.markdown("### Why Choose Our Tool?")
 
@@ -148,17 +137,29 @@ if selected == "Home":
                 unsafe_allow_html=True
             )
 
-    # --- Key Features Section ---
-    st.markdown("#### Key Features")
+    # --- MVS Summary at Bottom ---
+    st.markdown("---")
+    st.markdown("## Migration and Validation Suite (MVS)")
     st.markdown("""
-    - AI-powered mapping & validation  
-    - Drag-and-drop transformation rules  
-    - Real-time preview & profiling  
-    - Cross-object and row-level validation  
-    - Export SuccessFactors-ready templates with metadata  
-    - Licensing controls & role-based access  
-    - Audit logs, rollback & monitoring  
+    A robust and scalable solution for orchestrating end-to-end HR data migrations across hybrid landscapes - including SAP On-Premise, SAP S/4HANA, SuccessFactors, and legacy (non-SAP) systems.
+
+    **Key Capabilities**
+
+    - Schema Mapping - Align source and target data models across SAP and non-SAP environments.  
+    - Field-Level Configuration - Tailor field-level mappings and transformation logic to business needs.  
+    - Transformation Engine - Apply configurable rules to standardize, enrich, and convert data for target platforms.  
+    - Validation Reports - Ensure data completeness, quality, and readiness with real-time pre- and post-load checks.  
+    - Licensing & Packaging - Analyze license impact and segment data packages for different SAP platforms.  
+    - Testing Enablement - Support across unit, integration, and user acceptance testing (UAT) phases.  
+    - Deployment Support - Smooth migration execution with rollback capabilities, versioning, and audit trail.
+
+    **Supported Migration Paths**
+
+    - SAP On-Premise HCM → SuccessFactors (Employee Central, etc.)  
+    - SAP On-Premise HCM → SAP S/4HANA  
+    - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
     """)
+
 
     # --- Blue Background Section ---
     st.markdown("""

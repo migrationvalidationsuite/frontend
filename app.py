@@ -4,6 +4,35 @@ import base64
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+# --- BACKGROUND IMAGE SETUP ---
+def set_bg_from_local(image_file):
+    with open(image_file, "rb") as file:
+        encoded = base64.b64encode(file.read()).decode()
+    css = f"""
+        <style>
+            .stApp {{
+                background-image: url("data:image/jpg;base64,{encoded}");
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+                position: relative;
+            }}
+            .stApp::before {{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.85); /* translucent white overlay */
+                z-index: -1;
+            }}
+        </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
+# ✅ Call function here with your preferred image
+set_bg_from_local("pexels-cookiecutter-1148820.jpg")
 
 st.markdown("""
     <style>

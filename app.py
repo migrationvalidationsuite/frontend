@@ -73,24 +73,28 @@ if selected == "Home":
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("""
         Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
-
         **Key Capabilities:**
 
         - **Mapping & Transformation**  
-          Converts source structures into SAP-ready formats.
+          Converts legacy structures to SAP-ready formats.
 
         - **Validation & Licensing**  
-          Identifies issues early and ensures cloud/S/4HANA readiness.
+          Catches issues early, ensures system readiness.
 
         - **Safe Rollback**  
-          Enables reversible test and production runs.
+          Supports reversible test and live loads.
 
         - **Audit-Ready**  
-          Tracks rule logic, configs, and data actions.
+          Logs rules, configurations, and actions.
 
-        - SAP HCM → SuccessFactors  
-        - SAP HCM → S/4HANA  
-        - Legacy HR Systems → SAP Cloud or On-Prem
+        &nbsp;
+
+        <div style='margin-left:20px'>
+        <b>Migration Paths:</b><br>
+        - SAP HCM → SuccessFactors<br>
+        - SAP HCM → S/4HANA<br>
+        - Legacy HR → SAP Cloud or On-Prem
+        </div>
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)

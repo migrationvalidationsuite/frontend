@@ -1,41 +1,18 @@
 import streamlit as st
-import os
-import base64
 from streamlit_option_menu import option_menu
+import base64
+import os
 
-# --- PAGE CONFIG ---
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE ---
-page_bg_img = f"""
-<style>
-    .stApp {{
-        background-image: url("pexels-cookiecutter-1148820.jpg");
-        background-size: cover;
-        background-attachment: fixed;
-    }}
-    .banner {{
-        background-color: #e6f0ff;
-        padding: 30px;
-        border-radius: 15px;
-        width: 80%;
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 30px;
-        text-align: center;
-    }}
-    .content-container {{
-        background-color: rgba(255, 255, 255, 0.85);
-        padding: 30px;
-        border-radius: 12px;
-        width: 90%;
-        margin: auto;
-    }}
-</style>
-"""
-st.markdown(page_bg_img, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -56,91 +33,93 @@ with st.sidebar:
         },
     )
 
-# --- HOME PAGE ---
+# -------------------- HOME --------------------
 if selected == "Home":
+    # Header banner
     st.markdown("""
-        <div class='banner'>
-            <h2>Migration and Validation Suite</h2>
-            <h4>MVS</h4>
-        </div>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='max-width:900px;margin:auto;'>
+        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+        <h3 style='text-align:center;'>MVS</h3> 
+    </div>
+    </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("<div class='content-container'>", unsafe_allow_html=True)
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
+    # Overview + image/video
+    col_text, col_img = st.columns([3, 2])
+
+    with col_text:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
-
-        st.markdown("**Key Capabilities:**")
         st.markdown("""
+        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+
+        **Key Capabilities:**
+
         - **Schema Mapping & Transformation**  
           Aligns and converts source structures into SAP-ready formats.
+
         - **Pre-Migration Validation & Licensing**  
           Detects issues early and estimates licensing needs for cloud/S/4HANA.
+
         - **Rollback & Recovery**  
           Enables safe, reversible test and production loads.
+
         - **Audit-Ready Tracking**  
           Full traceability of rule logic, configurations, and actions.
+
+        **Supported Migration Paths:**
+
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
         """)
-    with col2:
+
+    with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+        st.video("https://youtu.be/vnikhnk8rCk")
 
-    # --- Supported Migration Paths under image ---
-    st.markdown("**Supported Migration Paths:**")
-    st.markdown("""
-    - SAP HCM → SuccessFactors  
-    - SAP HCM → S/4HANA  
-    - Legacy HR Systems → SAP Cloud or On-Prem
-    """)
-
-    # --- Embedded YouTube video centered and smaller ---
-    st.markdown("""
-        <div style='text-align:center; padding-top:20px;'>
-            <iframe width="640" height="360" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
-        </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# SOLUTIONS PAGE is in your full version. Let me know if you want that included too.
-
-    # Core MVS Section
-    col_left, col_right = st.columns([3, 1])
-    with col_left:
-        st.markdown("### Migration and Validation Suite (MVS)")
-        st.markdown("A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.")
-        st.markdown("**Key Capabilities:**")
+    # MVS Summary + Icons
+    left_col, right_col = st.columns([3, 1])
+    with left_col:
         st.markdown("""
-        - AI-powered mapping & validation  
-        - Drag-and-drop transformation rules  
-        - Real-time preview & profiling  
-        - Cross-object and row-level validation  
-        - Export SuccessFactors-ready templates with metadata  
-        - Licensing controls & role-based access  
-        - Audit logs, rollback & monitoring  
-        """)
+        <h3>Migration and Validation Suite (MVS)</h3>
+        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
 
-    with col_right:
-        icons = [
-            ("data_icon.png", "Template-driven, secure transfers from legacy to SF."),
-            ("check_icon.png", "Field-level checks to catch errors before go-live."),
-            ("chart_icon.png", "Automated comparisons between ECC and SF data.")
+        <h4>Key Capabilities:</h4>
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Drag-and-drop transformation rules</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Export SuccessFactors-ready templates with metadata</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+        </ul>
+        """, unsafe_allow_html=True)
+
+    with right_col:
+        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+        descriptions = [
+            "Template-driven, secure transfers from legacy to SF.",
+            "Field-level checks to catch errors before go-live.",
+            "Automated comparisons between ECC and SF data."
         ]
-        for icon_file, caption in icons:
-            if os.path.exists(icon_file):
-                with open(icon_file, "rb") as img_file:
-                    img_data = base64.b64encode(img_file.read()).decode()
-                st.markdown(
+        for icon, desc in zip(icons, descriptions):
+            if os.path.exists(icon):
+                with open(icon, "rb") as f:
+                    img_data = base64.b64encode(f.read()).decode()
+                right_col.markdown(
                     f"""
                     <div style='text-align:center; margin-bottom:20px;'>
-                        <img src="data:image/png;base64,{img_data}" width="50" />
-                        <p style='font-size:14px;'>{caption}</p>
+                        <img src="data:image/png;base64,{img_data}" width="50"/>
+                        <p style="margin-top:10px;">{desc}</p>
                     </div>
-                    """, unsafe_allow_html=True
+                    """,
+                    unsafe_allow_html=True
                 )
 
-    # Blue Section
+    # Blue SAP section
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
@@ -161,7 +140,8 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-# --- SOLUTIONS PAGE ---
+
+# -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
         menu_title="Our Solutions",
@@ -181,15 +161,16 @@ elif selected == "Solutions":
             - Hierarchical Position Structures  
             - Employee Master Data and Assignments  
 
-            **Features:**
+            Features:
             - Field-level traceability and rollback  
             - Template-based uploads  
             - Role-based access for audit compliance  
-
-            **More Than Just Data Transfer**
-            - Migration Assessment to evaluate system readiness and flag risks early  
-            - Field-by-field Custom Configuration Mapping  
-            - Phased Cutover Strategy for low-risk deployment  
+            """)
+            st.markdown("#### More Than Just Data Transfer")
+            st.markdown("""
+            - We begin with a Migration Assessment to evaluate system readiness, define project scope, and flag risks early.  
+            - Every Custom Configuration Mapping is handled field-by-field from legacy SAP to SuccessFactors, ensuring accuracy and compliance.  
+            - Our phased Cutover Strategy & Execution minimizes disruption with low-risk, controlled deployments.  
             """)
         with col2:
             st.image("Employee_Central_Data_Migration.png", use_container_width=True)
@@ -199,20 +180,21 @@ elif selected == "Solutions":
         with col1:
             st.header("Validation Services")
             st.markdown("""
-            Ensure every record complies with:
-            - Required field presence  
-            - Data types and format  
-            - Referential logic (e.g., manager and org chart validation)
+            Ensure every single record complies with:
+            - Required field presence (null detection)  
+            - Data types and value formatting  
+            - Referential logic (e.g., manager mappings, org chart validation)  
 
-            **Features:**
+            Features:
             - Smart rules engine  
-            - Summary reports with error categories  
+            - Summary reports with error categorization  
             - Revalidation after fixes  
-
-            **Support for Parallel Testing & Revalidation**
-            - Validate outputs before Go Live  
-            - Built-in discrepancy monitoring  
-            - Audit-ready compliance reports  
+            """)
+            st.markdown("#### Support for Parallel Testing & Revalidation")
+            st.markdown("""
+            - We support Parallel Testing to validate payroll outputs and reports before Go Live.  
+            - Revalidation loops and Discrepancy Monitoring are built in for compliance.  
+            - Our Compliance Reports help stakeholders stay informed with audit trails and validation checkpoints.  
             """)
         with col2:
             st.image("validation_lifecycle.png", use_container_width=True)
@@ -222,20 +204,20 @@ elif selected == "Solutions":
         with col1:
             st.header("ECC to SF Monitoring")
             st.markdown("""
-            Post-migration comparison of SAP ECC and SuccessFactors data to:
+            After your migration, compare SAP ECC and SF data:
+            - Detect mismatches in values and field formats  
+            - Identify extra/missing records across modules  
+            - Focus on critical payroll-impacting fields  
 
-            - Detect value mismatches and format discrepancies  
-            - Identify extra or missing records  
-            - Focus on payroll-impacting fields  
-
-            **Features:**
+            Features:
             - Side-by-side comparisons  
             - Field-level reports  
-            - Visual dashboards
-
-            **Built-In Cleansing & Reconciliation**
-            - Reconcile data before monitoring  
-            - Generate compliance and discrepancy reports  
+            - Graphical dashboards to track issues  
+            """)
+            st.markdown("#### Built-In Cleansing & Reconciliation")
+            st.markdown("""
+            - We help you perform Data Reconciliation & Cleansing to ensure your records are consistent and load-ready.  
+            - Post-migration, our tools generate Discrepancy & Compliance Reports for continuity across HR/payroll.  
             """)
         with col2:
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=True)

@@ -109,34 +109,6 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
-    # --- Why Choose Our Tool Section ---
-    st.markdown("---")
-    st.markdown("### Why Choose Our Tool?")
-
-    cols = st.columns(3)
-    headings = ["Data Migration", "Validation", "Discrepancy Analysis Report"]
-    descriptions = [
-        "Template-driven, secure transfers from legacy to SF.",
-        "Field-level checks to catch errors before go-live.",
-        "Automated comparisons between ECC and SF data."
-    ]
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-
-    for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
-        if os.path.exists(icon):
-            with open(icon, "rb") as img_file:
-                img_data = base64.b64encode(img_file.read()).decode()
-            col.markdown(
-                f"""
-                <div style='text-align:center'>
-                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
-                    <h5>{heading}</h5>
-                    <p>{desc}</p>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
     # --- MVS Summary at Bottom ---
     st.markdown("---")
     st.markdown("## Migration and Validation Suite (MVS)")
@@ -159,6 +131,27 @@ if selected == "Home":
     - SAP On-Premise HCM → SAP S/4HANA  
     - Legacy/Non-SAP Systems → SAP HCM or SuccessFactors
     """)
+
+    # --- Why Choose Our Tool Section ---
+
+    cols = st.columns(3)
+    headings = ["Template-driven, secure transfers from legacy to SF.", "Field-level checks to catch errors before go-live.", "Automated comparisons between ECC and SF data."]]
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+
+    for col, icon, heading, desc in zip(cols, icons, headings, descriptions):
+        if os.path.exists(icon):
+            with open(icon, "rb") as img_file:
+                img_data = base64.b64encode(img_file.read()).decode()
+            col.markdown(
+                f"""
+                <div style='text-align:center'>
+                    <img src="data:image/png;base64,{img_data}" width="50" style="margin-bottom:10px;"/>
+                    <h5>{heading}</h5>
+                    <p>{desc}</p>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 
 
     # --- Blue Background Section ---

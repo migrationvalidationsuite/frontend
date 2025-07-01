@@ -38,9 +38,9 @@ with st.sidebar:
 # --- HOME PAGE ---
 if selected == "Home":
     st.markdown("""
-<div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
-    <h2 style='text-align:center;'>Migration and Validation Suite</h2>
-    <h3 style='text-align:center;'>MVS</h3> 
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;'>
+        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+        <h3 style='text-align:center;'>MVS</h3> 
     </div>
     """, unsafe_allow_html=True)
 
@@ -75,8 +75,6 @@ if selected == "Home":
         - Efficient, reliable deployment processes  
         """)
         st.video("https://youtu.be/vnikhnk8rCk")
-
-
 
     st.markdown("### Accelerate Your SAP Employee Central Migration")
     st.markdown("#### Purpose-built migration, validation and discrepancy analysis to make your HR Data Migration and Payroll effortless.")
@@ -166,8 +164,6 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-
-
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(
@@ -235,15 +231,13 @@ elif selected == "Solutions":
 # --- SERVICES PAGE ---
 elif selected == "Services":
     st.markdown("## End-to-End SAP HCM and SuccessFactors Migration Services")
-    st.markdown(
-        """
-        Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
+    st.markdown("""
+    Whether you are migrating to Employee Central or optimizing your existing setup, our services are tailored to simplify your journey:
 
-        - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
-        - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
-        - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
-        - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
-        - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
-        - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
-        """
-    ) for some reason its no updating from Strategic SAP On-Premise to SuccessFactors migration product to Migration Validation Suite even though i changed it in the code
+    - **Migration Assessment**: Evaluate system readiness, define project scope, and analyze risks  
+    - **Custom Configuration Mapping**: Field-by-field transformation from legacy SAP to SF  
+    - **Parallel Testing Support**: Validate payroll and reporting pre-Go Live  
+    - **Data Reconciliation & Cleansing**: Ensure consistency and load accuracy  
+    - **Cutover Strategy & Execution**: Execute phased and low-risk deployments  
+    - **Discrepancy Analysis & Compliance Reports**: Monitor discrepancies and maintain audit trails  
+    """)

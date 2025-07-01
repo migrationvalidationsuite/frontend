@@ -5,7 +5,6 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BASIC STYLING ---
 st.markdown("""
     <style>
         .block-container {
@@ -14,7 +13,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# --- SIDEBAR NAV ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -35,17 +33,20 @@ with st.sidebar:
         },
     )
 
-# --- HOME PAGE ---
+# -------------------- HOME --------------------
 if selected == "Home":
     # Header banner
     st.markdown("""
-    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;max-width:1000px;margin-left:auto;margin-right:auto;'>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='max-width:900px;margin:auto;'>
         <h2 style='text-align:center;'>Migration and Validation Suite</h2>
         <h3 style='text-align:center;'>MVS</h3> 
     </div>
+    </div>
     """, unsafe_allow_html=True)
 
-    # Overview and image/video side by side
+
+    # Overview + image/video
     col_text, col_img = st.columns([3, 2])
 
     with col_text:
@@ -56,16 +57,16 @@ if selected == "Home":
         **Key Capabilities:**
 
         - **Schema Mapping & Transformation**  
-          Align and convert source structures into SAP-ready formats.
+          Aligns and converts source structures into SAP-ready formats.
 
         - **Pre-Migration Validation & Licensing**  
-          Detect issues early and estimate licensing needs for cloud/S/4HANA.
+          Detects issues early and estimates licensing needs for cloud/S/4HANA.
 
         - **Rollback & Recovery**  
-          Safely test and reverse production loads.
+          Enables safe, reversible test and production loads.
 
         - **Audit-Ready Tracking**  
-          Trace every rule, configuration, and transformation.
+          Full traceability of rule logic, configurations, and actions.
 
         **Supported Migration Paths:**
 
@@ -139,6 +140,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # --- SOLUTIONS PAGE ---
 selected = "Solutions"  # You can change this to dynamic selection logic

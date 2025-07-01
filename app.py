@@ -85,8 +85,7 @@ if selected == "Home":
     ]
 
 
-            )
-    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
+            )    # --- MVS SUMMARY SECTION (comes AFTER blue section) ---
     st.markdown("""
     <br>
     <h3>Migration and Validation Suite (MVS)</h3>
@@ -110,6 +109,8 @@ if selected == "Home":
         <li>Legacy/Non-SAP Systems → SAP HCM or SuccessFactors</li>
     </ul>
     """, unsafe_allow_html=True)
+
+    # --- Icon Features Section ---
     for i in range(0, len(icons_data), 3):
         cols = st.columns(3)
         for col, (icon, label) in zip(cols, icons_data[i:i+3]):
@@ -127,6 +128,7 @@ if selected == "Home":
                         unsafe_allow_html=True
                     )
 
+    # --- Why Choose Our Tool Section ---
     cols = st.columns(3)
     icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
     descriptions = [
@@ -147,6 +149,8 @@ if selected == "Home":
                 </div>
                 """,
                 unsafe_allow_html=True
+            )
+
     # --- BLUE SECTION ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>

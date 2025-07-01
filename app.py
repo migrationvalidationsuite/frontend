@@ -1,42 +1,18 @@
-
 import streamlit as st
-import os
-import base64
 from streamlit_option_menu import option_menu
+import base64
+import os
 
-# --- PAGE CONFIG ---
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- BACKGROUND IMAGE STYLE ---
-st.markdown(
-    """
+st.markdown("""
     <style>
-        .stApp {
-            background-image: url('pexels-cookiecutter-1148820.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-        }
-        .banner {
-            background-color: #e6f0ff;
-            padding: 30px;
-            border-radius: 15px;
-            width: 90%;
-            margin: 20px auto 40px auto;
-            text-align: center;
-        }
-        .content-container {
-            background-color: rgba(255, 255, 255, 0.92);
-            padding: 35px;
-            border-radius: 12px;
-            width: 92%;
-            margin: auto;
+        .block-container {
+            padding-top: 1rem;
         }
     </style>
-    """,
-    unsafe_allow_html=True
-)
+""", unsafe_allow_html=True)
 
-# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -57,56 +33,51 @@ with st.sidebar:
         },
     )
 
-# --- HOME PAGE ---
+# -------------------- HOME --------------------
 if selected == "Home":
-    st.markdown(
-        """
-        <div class='banner'>
-            <h2>Migration and Validation Suite</h2>
-            <h4>MVS</h4>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    st.markdown("<div class='content-container'>", unsafe_allow_html=True)
-
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
-
-        st.markdown("**Key Capabilities:**")
-        st.markdown("""
-        - **Schema Mapping & Transformation**  
-          Aligns and converts source structures into SAP-ready formats.
-        - **Pre-Migration Validation & Licensing**  
-          Detects issues early and estimates licensing needs for cloud/S/4HANA.
-        - **Rollback & Recovery**  
-          Enables safe, reversible test and production loads.
-        - **Audit-Ready Tracking**  
-          Full traceability of rule logic, configurations, and actions.
-        """)
-
-    with col2:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-
-    # Supported Migration Paths
-    st.markdown("**Supported Migration Paths:**")
+    # Header banner
     st.markdown("""
-    - SAP HCM → SuccessFactors  
-    - SAP HCM → S/4HANA  
-    - Legacy HR Systems → SAP Cloud or On-Prem
-    """)
-
-    # Video under the image
-    st.markdown("""
-        <div style='text-align:center; padding-top:20px;'>
-            <iframe width="640" height="360" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
-        </div>
+    <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+    <div style='max-width:900px;margin:auto;'>
+        <h2 style='text-align:center;'>Migration and Validation Suite</h2>
+        <h3 style='text-align:center;'>MVS</h3> 
+    </div>
+    </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("</div>", unsafe_allow_html=True)
+
+    # Overview + image/video
+    col_text, col_img = st.columns([3, 2])
+
+    with col_text:
+        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+        st.markdown("""
+        Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.
+
+        **Key Capabilities:**
+
+        - **Schema Mapping & Transformation**  
+          Aligns and converts source structures into SAP-ready formats.
+
+        - **Pre-Migration Validation & Licensing**  
+          Detects issues early and estimates licensing needs for cloud/S/4HANA.
+
+        - **Rollback & Recovery**  
+          Enables safe, reversible test and production loads.
+
+        - **Audit-Ready Tracking**  
+          Full traceability of rule logic, configurations, and actions.
+
+        **Supported Migration Paths:**
+
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
+        """)
+
+    with col_img:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+        st.video("https://youtu.be/vnikhnk8rCk")
 
     # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])

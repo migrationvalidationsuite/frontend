@@ -81,13 +81,13 @@ if selected == "Home":
           Full traceability of rule logic, configurations, and actions.
         """)
 
-    # --- Supported Migration Paths under image ---
-    st.markdown("**Supported Migration Paths:**")
-    st.markdown("""
-    - SAP HCM → SuccessFactors  
-    - SAP HCM → S/4HANA  
-    - Legacy HR Systems → SAP Cloud or On-Prem
-    """)
+        # --- Supported Migration Paths under image ---
+        st.markdown("**Supported Migration Paths:**")
+        st.markdown("""
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Prem
+        """)
 
     with col_img:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)

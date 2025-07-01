@@ -89,9 +89,9 @@ if selected == "Home":
         - Legacy HR Systems → SAP Cloud or On-Prem
         """)
 
-    with col_img:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-        st.video("https://youtu.be/vnikhnk8rCk")
+        with col_img:
+            st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+            st.video("https://youtu.be/vnikhnk8rCk")
 
     # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])

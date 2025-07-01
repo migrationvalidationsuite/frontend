@@ -111,6 +111,64 @@ if selected == "Home":
             <iframe width="560" height="315" src="https://www.youtube.com/embed/vnikhnk8rCk" frameborder="0" allowfullscreen></iframe>
         </div>
     """, unsafe_allow_html=True)
+
+
+    # Core MVS Section
+    col_left, col_right = st.columns([3, 1])
+    with col_left:
+        st.markdown("### Migration and Validation Suite (MVS)")
+        st.markdown("A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.")
+        st.markdown("**Key Capabilities:**")
+        st.markdown("""
+        - AI-powered mapping & validation  
+        - Drag-and-drop transformation rules  
+        - Real-time preview & profiling  
+        - Cross-object and row-level validation  
+        - Export SuccessFactors-ready templates with metadata  
+        - Licensing controls & role-based access  
+        - Audit logs, rollback & monitoring  
+        """)
+
+    with col_right:
+        icons = [
+            ("data_icon.png", "Template-driven, secure transfers from legacy to SF."),
+            ("check_icon.png", "Field-level checks to catch errors before go-live."),
+            ("chart_icon.png", "Automated comparisons between ECC and SF data.")
+        ]
+        for icon_file, caption in icons:
+            if os.path.exists(icon_file):
+                with open(icon_file, "rb") as img_file:
+                    img_data = base64.b64encode(img_file.read()).decode()
+                st.markdown(
+                    f"""
+                    <div style='text-align:center; margin-bottom:20px;'>
+                        <img src="data:image/png;base64,{img_data}" width="50" />
+                        <p style='font-size:14px;'>{caption}</p>
+                    </div>
+                    """, unsafe_allow_html=True
+                )
+
+    # Blue Section
+    st.markdown("""
+    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
+        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Migration Made Easy</h4>
+                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Integrity & Compliance</h4>
+                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Document-Ready Migrations</h4>
+                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 # --- SOLUTIONS PAGE ---
 elif selected == "Solutions":
     sol_choice = option_menu(

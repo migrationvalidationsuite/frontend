@@ -79,7 +79,7 @@ if selected == "Home":
         - **Rollback & Audit-Ready Tracking**  
           Enables safe, reversible data loads with full traceability of rules, configurations, and actions.
         """)
- 
+
         st.markdown("**Supported Migration Paths:**")
         st.markdown("""
         - SAP HCM → SuccessFactors  
@@ -89,9 +89,9 @@ if selected == "Home":
 
     with col2:
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
-        st.video("https://youtu.be/vnikhnk8rCk")
+        st.video("https://youtu.be/o_PcYfH36TI")
 
-# MVS Summary + Icons
+    # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
@@ -235,7 +235,7 @@ elif selected == "Solutions":
             - Record Completeness: Spot missing/extra records  
             - Business-Critical Fields: Focus on payroll, time, and org structures  
             - Change Tracking: View changes before/after load  
-
+            """)
 
         with col2:
             st.markdown("### Key Features")

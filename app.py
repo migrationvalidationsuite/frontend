@@ -135,6 +135,7 @@ if selected == "Home":
                 st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
 
     with col2:
+        
         st.markdown("#### Key Capabilities:")
         st.markdown("""
         <ul>

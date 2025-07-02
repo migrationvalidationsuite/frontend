@@ -91,36 +91,37 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
-    # MVS Summary + Icons
-    left_col, right_col = st.columns([1, 3])
-    with left_col:
+        # MVS Summary + Icons and Text Side-by-Side
+        st.markdown("### Why MVS works")
+
+        st.markdown("""
+        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        """, unsafe_allow_html=True)
+
+        st.markdown("#### Key Capabilities:")
+
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
             "Template-driven, secure transfers from legacy to SF.",
             "Detailed checks at the field level to catch issues throughout the migration process.",
             "Automated comparisons between source and target systems."
         ]
-        for icon, desc in zip(icons, descriptions):
-            if os.path.exists(icon):
-                with open(icon, "rb") as f:
-                    img_data = base64.b64encode(f.read()).decode()
-                right_col.markdown(
-                    f"""
-                    <div style='text-align:center; margin-bottom:20px;'>
-                        <img src="data:image/png;base64,{img_data}" width="50"/>
-                        <p style="margin-top:10px;">{desc}</p>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )
 
+            for icon, desc in zip(icons, descriptions):
+            icon_col, text_col = st.columns([1, 6])
+            with icon_col:
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    st.markdown(
+                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
+                        unsafe_allow_html=True
+                    )
+            with text_col:
+                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
 
-    with right_col:
+        # Continue with the feature list
         st.markdown("""
-        <h3>Why MVS works</h3>
-        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-
-        <h4>Key Capabilities:</h4>
         <ul>
             <li>AI-powered mapping & validation</li>
             <li>Drag-and-drop transformation rules</li>

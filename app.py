@@ -109,14 +109,14 @@ if selected == "Home":
     # --- Why MVS Works (Icons LEFT, Capabilities RIGHT) ---
     col1, col2 = st.columns([3, 2.5])
     with col1:
-        st.markdown("### Why MVS works")
+        st.markdown("### Why MVS?")
         st.markdown("""
-        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        <p>MVS is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
         """, unsafe_allow_html=True)
 
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
-            "Template-driven, secure transfers from legacy to SF.",
+            "Template-driven, secure transfers between systems.",
             "Detailed checks at the field level to catch issues throughout the migration process.",
             "Automated comparisons between source and target systems."
         ]
@@ -192,7 +192,7 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 
 **What We Migrate & Validate:**
 - **Foundation Data:** Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects  
-- **Position Structures:** Hierarchies, reporting lines, position classifications, and relationships  
+- **Position Data:** Hierarchies, reporting lines, position classifications, and relationships  
 - **Employee Master Data:** Personal details, assignments, and job- and pay-related data  
 - **Payroll & Time Data:** Including attendance, leave, and absence records  
 
@@ -202,11 +202,11 @@ We also **validate and compare payroll results** across systems to ensure accura
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-- **Field-Level Traceability:** Logged transformations with rollback  
-- **Template Uploads:** Pre-configured formats reduce errors  
-- **Role-Based Access:** GDPR/SOX-compliant  
-- **Validation Reports:** Catch issues pre–go-live  
-- **Rule Engine:** Reusable, localized transformation logic
+- **Transformation Engine:** Transformation engine with rollback support  
+- **Template Uploads:** Pre-configured mapping, reduced effort
+- **Role-Based Access:** Permission management based on user roles
+- **Validation Reports:** Identifies issues throughout each stage of the migration process
+- **Rule Engine:** Reusable, localized logic
 
 **Supported Scenarios:**
 - SAP ECC → SuccessFactors (EC, Time, Payroll)
@@ -252,7 +252,7 @@ Our validation services ensure HR data is correctly mapped, transformed, and loa
         with col1:
             st.markdown("## Reconciliation Across Systems")
             st.markdown("""
-Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
+Our monitoring validates accurate data loads post-migration–across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
 
 **What We Monitor:**
 - **Field-Level Accuracy:** Detect mismatches in critical values  

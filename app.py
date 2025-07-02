@@ -84,7 +84,7 @@ if selected == "Home":
         st.markdown("""
         - SAP HCM → SuccessFactors  
         - SAP HCM → S/4HANA  
-        - Legacy HR Systems → SAP Cloud or On-Prem
+        - Legacy HR Systems → SAP Cloud or On-Premise
         """)
 
     with col2:
@@ -134,7 +134,7 @@ if selected == "Home":
     # --- Blue SAP section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP on premise & cloud</h3>
+        <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>
@@ -173,7 +173,7 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 
 **Supported Scenarios:**
 - SAP ECC → SuccessFactors (EC, Time, Payroll)
-- SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
+- SAP ECC → S/4HANA (HCM, Payroll, PA (Personnel Administration), OM (Organizational Management))
 - Legacy/Non-SAP → SAP HCM and SuccessFactors
 
 **What We Migrate & Validate:**

@@ -187,11 +187,6 @@ elif selected == "Solutions":
             st.markdown("""
 A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-**Supported Scenarios:**
-- SAP ECC → SuccessFactors (EC, Time, Payroll)
-- SAP ECC → S/4HANA (HCM, Payroll, PA (Personnel Administration), OM (Organizational Management))
-- Legacy/Non-SAP → SAP HCM and SuccessFactors
-
 **What We Migrate & Validate:**
 - **Foundation Data:** Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects  
 - **Position Structures:** Hierarchies, reporting lines, position classifications, and relationships  
@@ -209,6 +204,11 @@ We also **validate and compare payroll results** across systems to ensure accura
 - **Role-Based Access:** GDPR/SOX-compliant  
 - **Validation Reports:** Catch issues pre–go-live  
 - **Rule Engine:** Reusable, localized transformation logic
+
+**Supported Scenarios:**
+- SAP ECC → SuccessFactors (EC, Time, Payroll)
+- SAP ECC → S/4HANA (HCM, Payroll, PA (Personnel Administration), OM (Organizational Management))
+- Legacy/Non-SAP → SAP HCM and SuccessFactors
             """)
             st.image("datamig_img.png", use_container_width=True)
             st.image("edmdr.png", use_container_width=True)

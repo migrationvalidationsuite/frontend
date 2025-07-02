@@ -211,6 +211,7 @@ We also **validate and compare payroll results** across systems to ensure accura
 - **Rule Engine:** Reusable, localized transformation logic
             """)
             st.image("datamig_img.png", use_container_width=True)
+            st.image("edmdr.png", use_container_width=True)
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":

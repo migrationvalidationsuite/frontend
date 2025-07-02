@@ -167,20 +167,21 @@ elif selected == "Solutions":
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([2.9, 3])
         with col1:
-            st.markdown("## Data Migration: End-to-End SAP HR Transformation")
+            st.markdown("##End-to-End SAP HR Transformation Journey")
             st.markdown("""
             A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
             **Supported Scenarios:**
-            - SAP On-Premise → SuccessFactors (EC, Payroll)
-            - SAP On-Premise → S/4HANA (HCM, Payroll, OM)
-            - Legacy/Non-SAP → SAP HCM or SuccessFactors
+            - SAP ECC → SuccessFactors (EC, Time, Payroll)
+            - SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
+            - Legacy/Non-SAP → SAP HCM and SuccessFactors
 
-            **We Migrate:**
-            - Foundation Objects: Legal entities, locations, cost centers
-            - Org & Position Hierarchies: Structures, reporting lines, org charts
-            - Employee Master Data: Personal, job, and pay info
-            - Payroll & Time Data: Optional for testing and continuity
+            **What We Migrate & Validate:**
+            - Foundation Data: Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects
+            - Position Structures: Hierarchies, reporting lines, position classifications, and relationships
+            - Employee Master Data: Personal details, assignments, and job- and pay-related data
+            - Employee Master Data: Personal details, assignments, and job- and pay-related data
+            We also validate and compare payroll results across systems to ensure accuracy and consistency post-migration.
             """)
 
         with col2:

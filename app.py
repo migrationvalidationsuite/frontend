@@ -5,16 +5,22 @@ import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# --- REMOVE TOP WHITE SPACE ---
+# --- REMOVE TOP WHITE SPACE & MAKE RESPONSIVE ---
 st.markdown("""
     <style>
         .block-container {
             padding-top: 0.5rem !important;
         }
+        @media (max-width: 768px) {
+            .block-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
     </style>
 """, unsafe_allow_html=True)
 
-# --- BACKGROUND IMAGE ---
+# --- BACKGROUND IMAGE SETUP ---
 def set_background(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
@@ -51,6 +57,15 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
+
+    # 🚀 DEMO BUTTON (Placeholder)
+    st.markdown("""
+        <div style="margin-top:100px;text-align:center;">
+            <button style="background-color:#003366;color:white;padding:10px 20px;border:none;border-radius:5px;font-size:16px;">
+                🚀 Launch Demo
+            </button>
+        </div>
+    """, unsafe_allow_html=True)
 
 # -------------------- HOME --------------------
 if selected == "Home":

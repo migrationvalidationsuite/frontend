@@ -211,8 +211,9 @@ We also **validate and compare payroll results** across systems to ensure accura
 - Legacy/Non-SAP → SAP HCM and SuccessFactors
             """)
             st.image("datamig_img.png", use_container_width=True)
-    
-    st.image("edmdr.png", use_container_width=True)
+
+        # ✅ Add image BELOW the columns, only during Data Migration
+        st.image("edmdr.png", use_container_width=True)
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":

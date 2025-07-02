@@ -167,31 +167,32 @@ elif selected == "Solutions":
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([2.9, 3])
         with col1:
-            st.markdown("##End-to-End SAP HR Transformation Journey")
+            st.markdown("## End-to-End SAP HR Transformation Journey")
             st.markdown("""
-            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-            **Supported Scenarios:**
-            - SAP ECC → SuccessFactors (EC, Time, Payroll)
-            - SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
-            - Legacy/Non-SAP → SAP HCM and SuccessFactors
+**Supported Scenarios:**
+- SAP ECC → SuccessFactors (EC, Time, Payroll)
+- SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
+- Legacy/Non-SAP → SAP HCM and SuccessFactors
 
-            **What We Migrate & Validate:**
-            - Foundation Data: Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects
-            - Position Structures: Hierarchies, reporting lines, position classifications, and relationships
-            - Employee Master Data: Personal details, assignments, and job- and pay-related data
-            - Employee Master Data: Personal details, assignments, and job- and pay-related data
-        We also validate and compare payroll results across systems to ensure accuracy and consistency post-migration.
+**What We Migrate & Validate:**
+- **Foundation Data:** Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects  
+- **Position Structures:** Hierarchies, reporting lines, position classifications, and relationships  
+- **Employee Master Data:** Personal details, assignments, and job- and pay-related data  
+- **Payroll & Time Data:** Including attendance, leave, and absence records  
+
+We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
             """)
 
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Field-Level Traceability: Logged transformations with rollback  
-            - Template Uploads: Pre-configured formats reduce errors  
-            - Role-Based Access: GDPR/SOX-compliant  
-            - Validation Reports: Catch issues pre–go-live  
-            - Rule Engine: Reusable, localized transformation logic
+- **Field-Level Traceability:** Logged transformations with rollback  
+- **Template Uploads:** Pre-configured formats reduce errors  
+- **Role-Based Access:** GDPR/SOX-compliant  
+- **Validation Reports:** Catch issues pre–go-live  
+- **Rule Engine:** Reusable, localized transformation logic
             """)
             st.image("datamig_img.png", use_container_width=True)
 

@@ -200,7 +200,7 @@ We also **validate and compare payroll results** across systems to ensure accura
     elif sol_choice == "Validation":
         col1, col2 = st.columns([3, 2.7])
         with col1:
-            st.markdown("## Validation Services: Ensuring Data Accuracy from Source to Target")
+            st.markdown("## Ensuring Data Accuracy Between Systems")
             st.markdown("""
             Our validation services ensure HR data is correctly mapped, transformed, and loaded across every migration stage. We validate data between source systems, load files, and reporting outputs to confirm consistency and production readiness.
 
@@ -220,7 +220,7 @@ We also **validate and compare payroll results** across systems to ensure accura
             - Categorized Exception Reporting  
             - Iterative Revalidation Workflow  
             - Full Audit Logging for Compliance  
-            - Support for Foundation, Position & Employee Data  
+            - Support for all Employee Information  
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
@@ -228,7 +228,7 @@ We also **validate and compare payroll results** across systems to ensure accura
     elif sol_choice == "Discrepancy Analysis Report":
         col1, col2 = st.columns([3, 2.6])
         with col1:
-            st.markdown("## Discrepancy Analysis: Reconciliation Across Systems")
+            st.markdown("## Reconciliation Across Systems")
             st.markdown("""
             Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
 

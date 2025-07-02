@@ -140,14 +140,13 @@ if selected == "Home":
         st.markdown("""
         <ul>
             <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
             <li>Real-time preview & profiling</li>
             <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
             <li>Licensing controls & role-based access</li>
             <li>Audit logs, rollback & monitoring</li>
             <li>Designed to reduce manual effort and shorten project timelines</li>
             <li>Supports stakeholder collaboration with clear audit and status visibility</li>
+            <li>Ability to easily create and manage transformation rules with an intuitive, interactive interface</li>
         </ul>
         """, unsafe_allow_html=True)
 
@@ -205,7 +204,7 @@ We also **validate and compare payroll results** across systems to ensure accura
 - **Transformation Engine:** Transformation engine with rollback support  
 - **Template Uploads:** Pre-configured mapping, reduced effort
 - **Role-Based Access:** Permission management based on user roles
-- **Validation Reports:** Identifies issues throughout each stage of the migration process
+- **Validation Reports:** Flags issues across all stages
 - **Rule Engine:** Reusable, localized logic
 
 **Supported Scenarios:**

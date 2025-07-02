@@ -93,7 +93,6 @@ if selected == "Home":
 
         # MVS Summary + Icons and Text Side-by-Side
         st.markdown("### Why MVS works")
-
         st.markdown("""
         <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
         """, unsafe_allow_html=True)
@@ -107,7 +106,7 @@ if selected == "Home":
             "Automated comparisons between source and target systems."
         ]
 
-            for icon, desc in zip(icons, descriptions):
+        for icon, desc in zip(icons, descriptions):
             icon_col, text_col = st.columns([1, 6])
             with icon_col:
                 if os.path.exists(icon):
@@ -120,7 +119,6 @@ if selected == "Home":
             with text_col:
                 st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
 
-        # Continue with the feature list
         st.markdown("""
         <ul>
             <li>AI-powered mapping & validation</li>

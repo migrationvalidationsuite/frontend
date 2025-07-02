@@ -68,14 +68,14 @@ if selected == "Home":
     col1, col2 = st.columns([3, 2.3])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
-        st.markdown("Supports SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
+        st.markdown("Supports Migration for SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
 
-        st.markdown("**Key Capabilities:**")
+        st.markdown("**Power your transformation with:**")
         st.markdown("""
         - **Schema Mapping & Transformation**  
           Seamlessly aligns and converts source structures into SAP-ready formats across platforms.
-        - **Pre-Migration Validation & Licensing**  
-          Identifies data issues early and forecasts licensing needs for cloud or S/4HANA adoption.
+        - **Pre-Migration Validation**  
+          Identifies data issues early on through audit trials for cloud and S/4HANA adoption.
         - **Rollback & Audit-Ready Tracking**  
           Enables safe, reversible data loads with full traceability of rules, configurations, and actions.
         """)
@@ -95,8 +95,8 @@ if selected == "Home":
     left_col, right_col = st.columns([3, 1])
     with left_col:
         st.markdown("""
-        <h3>Migration and Validation Suite (MVS)</h3>
-        <p>A robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        <h3>Why MVS works</h3>
+        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
 
         <h4>Key Capabilities:</h4>
         <ul>
@@ -104,7 +104,7 @@ if selected == "Home":
             <li>Drag-and-drop transformation rules</li>
             <li>Real-time preview & profiling</li>
             <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors-ready templates with metadata</li>
+            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
             <li>Licensing controls & role-based access</li>
             <li>Audit logs, rollback & monitoring</li>
         </ul>
@@ -114,8 +114,8 @@ if selected == "Home":
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
             "Template-driven, secure transfers from legacy to SF.",
-            "Field-level checks to catch errors before go-live.",
-            "Automated comparisons between ECC and SF data."
+            "Detailed checks at the field level to catch issues throughout the migration process.",
+            "Automated comparisons between source and target systems."
         ]
         for icon, desc in zip(icons, descriptions):
             if os.path.exists(icon):
@@ -134,7 +134,7 @@ if selected == "Home":
     # --- Blue SAP section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP & SuccessFactors</h3>
+        <h3 style='color:white;text-align:center;'>Built for SAP on premise & cloud</h3>
         <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
         <div style='display:flex;justify-content:space-around;margin-top:30px;'>
             <div style='width:30%;text-align:center;'>

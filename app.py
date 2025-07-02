@@ -80,7 +80,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     # --- Top section: Migration Benefits (text + image/video) ---
-    col1, col2 = st.columns([3, 2.9])
+    col1, col2 = st.columns([3, 2.4])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports Migration for SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")

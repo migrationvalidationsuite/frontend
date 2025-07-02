@@ -91,45 +91,49 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
-        # MVS Summary + Icons and Text Side-by-Side
-        st.markdown("### Why MVS works")
-        st.markdown("""
-        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-        """, unsafe_allow_html=True)
+# --- Split Section: Icons (left) + Bullet Capabilities (right) ---
+col1, col2 = st.columns([2.5, 3])
 
-        st.markdown("#### Key Capabilities:")
+with col1:
+    st.markdown("### Why MVS works")
+    st.markdown("""
+    <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+    """, unsafe_allow_html=True)
 
-        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-        descriptions = [
-            "Template-driven, secure transfers from legacy to SF.",
-            "Detailed checks at the field level to catch issues throughout the migration process.",
-            "Automated comparisons between source and target systems."
-        ]
+    # Icon + Description list
+    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+    descriptions = [
+        "Template-driven, secure transfers from legacy to SF.",
+        "Detailed checks at the field level to catch issues throughout the migration process.",
+        "Automated comparisons between source and target systems."
+    ]
 
-        for icon, desc in zip(icons, descriptions):
-            icon_col, text_col = st.columns([1, 6])
-            with icon_col:
-                if os.path.exists(icon):
-                    with open(icon, "rb") as f:
-                        img_data = base64.b64encode(f.read()).decode()
-                    st.markdown(
-                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
-                        unsafe_allow_html=True
-                    )
-            with text_col:
-                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
+    for icon, desc in zip(icons, descriptions):
+        icon_col, text_col = st.columns([1, 6])
+        with icon_col:
+            if os.path.exists(icon):
+                with open(icon, "rb") as f:
+                    img_data = base64.b64encode(f.read()).decode()
+                st.markdown(
+                    f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
+                    unsafe_allow_html=True
+                )
+        with text_col:
+            st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
 
-        st.markdown("""
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-        </ul>
-        """, unsafe_allow_html=True)
+with col2:
+    st.markdown("#### Key Capabilities:")
+    st.markdown("""
+    <ul>
+        <li>AI-powered mapping & validation</li>
+        <li>Drag-and-drop transformation rules</li>
+        <li>Real-time preview & profiling</li>
+        <li>Cross-object and row-level validation</li>
+        <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
+        <li>Licensing controls & role-based access</li>
+        <li>Audit logs, rollback & monitoring</li>
+    </ul>
+    """, unsafe_allow_html=True)
 
     # --- Blue SAP section ---
     st.markdown("""

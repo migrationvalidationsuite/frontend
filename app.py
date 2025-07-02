@@ -181,7 +181,7 @@ elif selected == "Solutions":
             - Position Structures: Hierarchies, reporting lines, position classifications, and relationships
             - Employee Master Data: Personal details, assignments, and job- and pay-related data
             - Employee Master Data: Personal details, assignments, and job- and pay-related data
-            We also validate and compare payroll results across systems to ensure accuracy and consistency post-migration.
+        We also validate and compare payroll results across systems to ensure accuracy and consistency post-migration.
             """)
 
         with col2:

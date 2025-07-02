@@ -80,7 +80,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     # --- Top section: Migration Benefits (text + image/video) ---
-    col1, col2 = st.columns([3, 2.4])
+    col1, col2 = st.columns([3, 2.5])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports Migration for SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
@@ -146,6 +146,8 @@ if selected == "Home":
             <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
             <li>Licensing controls & role-based access</li>
             <li>Audit logs, rollback & monitoring</li>
+            <li>Designed to reduce manual effort and shorten project timelines</li>
+            <li>Supports stakeholder collaboration with clear audit and status visibility</li>
         </ul>
         """, unsafe_allow_html=True)
 

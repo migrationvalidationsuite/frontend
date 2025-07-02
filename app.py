@@ -92,24 +92,7 @@ if selected == "Home":
         st.video("https://youtu.be/o_PcYfH36TI")
 
     # MVS Summary + Icons
-    right_col, left_col = st.columns([1, 3])
-    with right_col:
-        st.markdown("""
-        <h3>Why MVS works</h3>
-        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-
-        <h4>Key Capabilities:</h4>
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Drag-and-drop transformation rules</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-        </ul>
-        """, unsafe_allow_html=True)
-
+    left_col, right_col = st.columns([1, 3])
     with left_col:
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
@@ -130,6 +113,24 @@ if selected == "Home":
                     """,
                     unsafe_allow_html=True
                 )
+
+
+    with right_col:
+        st.markdown("""
+        <h3>Why MVS works</h3>
+        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+
+        <h4>Key Capabilities:</h4>
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Drag-and-drop transformation rules</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+        </ul>
+        """, unsafe_allow_html=True)
 
     # --- Blue SAP section ---
     st.markdown("""

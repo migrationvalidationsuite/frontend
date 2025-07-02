@@ -64,7 +64,7 @@ if selected == "Home":
         </div>
     """, unsafe_allow_html=True)
 
-    # --- Main section (text left, image/video right) ---
+    # --- Top section: Migration Benefits (text + image/video) ---
     col1, col2 = st.columns([3, 2.5])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
@@ -91,51 +91,49 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
-# --- Split Section: Icons (left) + Bullet Capabilities (right) ---
-col1, col2 = st.columns([2.5, 3])
+    # --- Why MVS Works (Icons LEFT, Capabilities RIGHT) ---
+    col1, col2 = st.columns([2.5, 3])
+    with col1:
+        st.markdown("### Why MVS works")
+        st.markdown("""
+        <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        """, unsafe_allow_html=True)
 
-with col1:
-    st.markdown("### Why MVS works")
-    st.markdown("""
-    <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-    """, unsafe_allow_html=True)
+        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+        descriptions = [
+            "Template-driven, secure transfers from legacy to SF.",
+            "Detailed checks at the field level to catch issues throughout the migration process.",
+            "Automated comparisons between source and target systems."
+        ]
 
-    # Icon + Description list
-    icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-    descriptions = [
-        "Template-driven, secure transfers from legacy to SF.",
-        "Detailed checks at the field level to catch issues throughout the migration process.",
-        "Automated comparisons between source and target systems."
-    ]
+        for icon, desc in zip(icons, descriptions):
+            icon_col, text_col = st.columns([1, 6])
+            with icon_col:
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    st.markdown(
+                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
+                        unsafe_allow_html=True
+                    )
+            with text_col:
+                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
 
-    for icon, desc in zip(icons, descriptions):
-        icon_col, text_col = st.columns([1, 6])
-        with icon_col:
-            if os.path.exists(icon):
-                with open(icon, "rb") as f:
-                    img_data = base64.b64encode(f.read()).decode()
-                st.markdown(
-                    f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
-                    unsafe_allow_html=True
-                )
-        with text_col:
-            st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
+    with col2:
+        st.markdown("#### Key Capabilities:")
+        st.markdown("""
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Drag-and-drop transformation rules</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+        </ul>
+        """, unsafe_allow_html=True)
 
-with col2:
-    st.markdown("#### Key Capabilities:")
-    st.markdown("""
-    <ul>
-        <li>AI-powered mapping & validation</li>
-        <li>Drag-and-drop transformation rules</li>
-        <li>Real-time preview & profiling</li>
-        <li>Cross-object and row-level validation</li>
-        <li>Export SuccessFactors and S/4HANA ready templates with metadata</li>
-        <li>Licensing controls & role-based access</li>
-        <li>Audit logs, rollback & monitoring</li>
-    </ul>
-    """, unsafe_allow_html=True)
-
-    # --- Blue SAP section ---
+    # --- SAP Highlights Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
@@ -156,6 +154,16 @@ with col2:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+# -------------------- SOLUTIONS --------------------
+elif selected == "Solutions":
+    sol_choice = option_menu(
+        menu_title="Our Solutions",
+        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
+        icons=["cloud-upload", "check2-square", "bar-chart"],
+        orientation="horizontal",
+        key="solutions_nav"
+    )
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

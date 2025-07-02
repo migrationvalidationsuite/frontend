@@ -65,7 +65,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
     # --- Main section (text left, image/video right) ---
-    col1, col2 = st.columns([3, 2.3])
+    col1, col2 = st.columns([3, 2.5])
     with col1:
         st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
         st.markdown("Supports Migration for SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
@@ -93,7 +93,7 @@ if selected == "Home":
 
     # MVS Summary + Icons
     left_col, right_col = st.columns([3, 1])
-    with left_col:
+    with right_col:
         st.markdown("""
         <h3>Why MVS works</h3>
         <p>This tool is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
@@ -110,7 +110,7 @@ if selected == "Home":
         </ul>
         """, unsafe_allow_html=True)
 
-    with right_col:
+    with left_col:
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
             "Template-driven, secure transfers from legacy to SF.",

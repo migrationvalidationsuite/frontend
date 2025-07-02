@@ -169,17 +169,6 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
-
-# -------------------- SOLUTIONS --------------------
-elif selected == "Solutions":
-    sol_choice = option_menu(
-        menu_title="Our Solutions",
-        options=["Data Migration", "Validation", "Discrepancy Analysis Report"],
-        icons=["cloud-upload", "check2-square", "bar-chart"],
-        orientation="horizontal",
-        key="solutions_nav"
-    )
-
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(
@@ -229,25 +218,25 @@ We also **validate and compare payroll results** across systems to ensure accura
         with col1:
             st.markdown("## Ensuring Data Accuracy Between Systems")
             st.markdown("""
-            Our validation services ensure HR data is correctly mapped, transformed, and loaded across every migration stage. We validate data between source systems, load files, and reporting outputs to confirm consistency and production readiness.
+Our validation services ensure HR data is correctly mapped, transformed, and loaded across every migration stage. We validate data between source systems, load files, and reporting outputs to confirm consistency and production readiness.
 
-            **What We Validate:**
-            - Required Fields: Detect missing/null values in critical fields  
-            - Format Compliance: Enforce expected types and structures  
-            - Mapping Accuracy: Verify source-to-target alignment  
-            - Source-to-File Match: Ensure extracted data mirrors load-ready files  
-            - Post-Load Validation: Confirm target system reflects intended records  
-            - Change Monitoring: Identify and isolate high-impact issues  
+**What We Validate:**
+- Required Fields: Detect missing/null values in critical fields  
+- Format Compliance: Enforce expected types and structures  
+- Mapping Accuracy: Verify source-to-target alignment  
+- Source-to-File Match: Ensure extracted data mirrors load-ready files  
+- Post-Load Validation: Confirm target system reflects intended records  
+- Change Monitoring: Identify and isolate high-impact issues  
             """)
 
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Rules-Based Validation Engine  
-            - Categorized Exception Reporting  
-            - Iterative Revalidation Workflow  
-            - Full Audit Logging for Compliance  
-            - Support for all Employee Information  
+- Rules-Based Validation Engine  
+- Categorized Exception Reporting  
+- Iterative Revalidation Workflow  
+- Full Audit Logging for Compliance  
+- Support for all Employee Information  
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
@@ -257,24 +246,24 @@ We also **validate and compare payroll results** across systems to ensure accura
         with col1:
             st.markdown("## Reconciliation Across Systems")
             st.markdown("""
-            Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
+Our monitoring validates accurate data loads post-migration—across platforms like SuccessFactors, S/4HANA, or SAP HCM. It ensures alignment, traceability, and readiness for live HR/payroll processes.
 
-            **What We Monitor:**
-            - **Field-Level Accuracy:** Detect mismatches in critical values  
-            - **Record Completeness:** Spot missing/extra records  
-            - **Business-Critical Fields:** Focus on payroll, time, and org structures  
-            - **Change Tracking:** View changes before/after load  
+**What We Monitor:**
+- **Field-Level Accuracy:** Detect mismatches in critical values  
+- **Record Completeness:** Spot missing/extra records  
+- **Business-Critical Fields:** Focus on payroll, time, and org structures  
+- **Change Tracking:** View changes before/after load  
 
-            We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
-            Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
+We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
+Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
             """)
 
         with col2:
             st.markdown("### Key Features")
             st.markdown("""
-            - Source-to-Target Comparisons  
-            - Discrepancy Summary Reports  
-            - Visual Reconciliation Dashboards  
-            - Logged Issues for Governance & Audit  
+- Source-to-Target Comparisons  
+- Discrepancy Summary Reports  
+- Visual Reconciliation Dashboards  
+- Logged Issues for Governance & Audit  
             """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)

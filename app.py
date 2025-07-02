@@ -92,7 +92,7 @@ if selected == "Home":
         st.video("https://youtu.be/o_PcYfH36TI")
 
     # --- Why MVS Works (Icons LEFT, Capabilities RIGHT) ---
-    col1, col2 = st.columns([2.5, 3])
+    col1, col2 = st.columns([3, 2.2])
     with col1:
         st.markdown("### Why MVS works")
         st.markdown("""

@@ -168,27 +168,19 @@ elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
         st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
-        # Use 3 columns for equal sizing
-        col1, col2, col3 = st.columns(3)
-
-        with col1:
-            if st.button("SAP HCM →\nSuccessFactors", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
-
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            st.markdown("""
-                <div style='padding: 0.75em; border: 1px solid #ccc; border-radius: 8px; text-align: center; color: grey;'>
-                    SAP HCM →<br>S/4HANA<br><small>(coming soon)</small>
-                </div>
-            """, unsafe_allow_html=True)
+            b1, b2, b3 = st.columns(3)
 
-        with col3:
-            st.markdown("""
-                <div style='padding: 0.75em; border: 1px solid #ccc; border-radius: 8px; text-align: center; color: grey;'>
-                    Legacy HR Systems →<br>SAP Cloud or On-Premise<br><small>(coming soon)</small>
-                </div>
-            """, unsafe_allow_html=True)
+            with b1:
+                if st.button("SAP HCM → SuccessFactors"):
+                    st.session_state.demo_page = "sap_to_sf"
 
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
             st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
 
@@ -204,7 +196,7 @@ elif selected == "Launch Demo":
 
         # --- Reusable function ---
         def migration_row(label, key, detail_text):
-            col1, col2 = st.columns([2.5, 3])
+            col1, col2 = st.columns([5, 3.8])
             with col1:
                 st.button(label, key=key, use_container_width=True)
             with col2:
@@ -243,7 +235,7 @@ elif selected == "Launch Demo":
 - Addresses  
         """)
 
-        migration_row("Employee Data", "pd_demo", """
+        migration_row("Position & Employee Data", "pd_demo", """
 - Basic Import  
 - Biographical Information (Person Info)  
 - Employment Info  
@@ -282,6 +274,7 @@ elif selected == "Launch Demo":
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
         """)
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

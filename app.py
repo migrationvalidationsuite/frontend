@@ -63,12 +63,13 @@ with st.sidebar:
             },
             "nav-link-selected": {
                 "background-color": "#a3c2f2",  # darker blue
-                "font-weight": "bold"
+                "font-weight": "bold",
+                "border-radius": "10px",
+                "border": "2px solid #80bfff"
             }
-
-            },
-        }  # ✅ This closing parenthesis was missing
+        }
     )
+
 
 # -------------------- HOME --------------------
 if selected == "Home":

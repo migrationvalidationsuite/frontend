@@ -166,17 +166,17 @@ elif selected == "Launch Demo":
         col1, col2, col3 = st.columns(3)
 
         with col1:
-            if st.button("SAP HCM → SuccessFactors", use_container_width=True):
-                go_to_demo("sap_to_sf")
+            if st.button("SAP HCM → SuccessFactors", key="btn_sfsf", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
 
         with col2:
-            st.button("SAP HCM → S/4HANA (coming soon)", use_container_width=True)
+            st.button("SAP HCM → S/4HANA (coming soon)", key="btn_s4", use_container_width=True)
 
         with col3:
-            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", use_container_width=True)
+            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", use_container_width=True)
 
         # --- Centered image under buttons ---
-        st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
+        st.markdown("<div style='display:flex;justify-content:center;'>", unsafe_allow_html=True)
         st.image("pexels-cookiecutter-1148820 (1).jpg", width=750)
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -184,19 +184,23 @@ elif selected == "Launch Demo":
         # --- Back button at top ---
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Scenarios", use_container_width=True):
-                go_to_demo("main")
+            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+                st.session_state.demo_page = "main"
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
 
-        # --- Button + Info pairs in rows ---
-        row1_col1, row1_col2 = st.columns([2.5, 5])
-        with row1_col1:
-            st.button("Foundation Data", key="fd", use_container_width=True)
-        with row1_col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown("""
+        # --- Reusable function for button + expander ---
+        def migration_row(label, key, detail_text):
+            col1, col2 = st.columns([2.5, 5])
+            with col1:
+                st.button(label, key=key, use_container_width=True)
+            with col2:
+                with st.expander("ℹ️ Details"):
+                    st.markdown(detail_text)
+
+        # --- Each button + info dropdown ---
+        migration_row("Foundation Data", "fd_demo", """
 - Legal entities  
 - Hierarchy structures  
 - Cost centers  
@@ -204,42 +208,27 @@ elif selected == "Launch Demo":
 - Pay scale information  
 - Job functions and classifications  
 - Work schedule objects  
-                """)
+        """)
 
-        row2_col1, row2_col2 = st.columns([2.5, 5])
-        with row2_col1:
-            st.button("Position Data", key="pd", use_container_width=True)
-        with row2_col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown("""
+        migration_row("Position Data", "pd_demo", """
 - Hierarchies  
 - Reporting lines  
 - Position classifications  
 - Relationships  
-                """)
+        """)
 
-        row3_col1, row3_col2 = st.columns([2.5, 5])
-        with row3_col1:
-            st.button("Employee Master Data", key="emd", use_container_width=True)
-        with row3_col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown("""
+        migration_row("Employee Master Data", "emd_demo", """
 - Personal details  
 - Assignments  
 - Job- and pay-related data  
-                """)
+        """)
 
-        row4_col1, row4_col2 = st.columns([2.5, 5])
-        with row4_col1:
-            st.button("Payroll & Time Data", key="ptd", use_container_width=True)
-        with row4_col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown("""
+        migration_row("Payroll & Time Data", "ptd_demo", """
 - Attendance records  
 - Leave balances  
 - Absence details  
 - Payroll-relevant fields  
-                """)
+        """)
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

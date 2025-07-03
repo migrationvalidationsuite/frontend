@@ -181,9 +181,11 @@ elif selected == "Launch Demo":
         st.markdown("</div>", unsafe_allow_html=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
-        # --- Top back button ---
-        if st.button("⬅ Back to Scenarios", use_container_width=True):
-            go_to_demo("main")
+        # --- Back button at top ---
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Scenarios", use_container_width=True):
+                go_to_demo("main")
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -195,13 +197,13 @@ elif selected == "Launch Demo":
         with row1_col2:
             with st.expander("ℹ️ Details"):
                 st.markdown("""
-                - Legal entities  
-                - Hierarchy structures  
-                - Cost centers  
-                - Locations  
-                - Pay scale information  
-                - Job functions and classifications  
-                - Work schedule objects  
+- Legal entities  
+- Hierarchy structures  
+- Cost centers  
+- Locations  
+- Pay scale information  
+- Job functions and classifications  
+- Work schedule objects  
                 """)
 
         row2_col1, row2_col2 = st.columns([2.5, 5])
@@ -210,10 +212,10 @@ elif selected == "Launch Demo":
         with row2_col2:
             with st.expander("ℹ️ Details"):
                 st.markdown("""
-                - Hierarchies  
-                - Reporting lines  
-                - Position classifications  
-                - Relationships  
+- Hierarchies  
+- Reporting lines  
+- Position classifications  
+- Relationships  
                 """)
 
         row3_col1, row3_col2 = st.columns([2.5, 5])
@@ -222,9 +224,9 @@ elif selected == "Launch Demo":
         with row3_col2:
             with st.expander("ℹ️ Details"):
                 st.markdown("""
-                - Personal details  
-                - Assignments  
-                - Job- and pay-related data  
+- Personal details  
+- Assignments  
+- Job- and pay-related data  
                 """)
 
         row4_col1, row4_col2 = st.columns([2.5, 5])
@@ -233,10 +235,10 @@ elif selected == "Launch Demo":
         with row4_col2:
             with st.expander("ℹ️ Details"):
                 st.markdown("""
-                - Attendance records  
-                - Leave balances  
-                - Absence details  
-                - Payroll-relevant fields  
+- Attendance records  
+- Leave balances  
+- Absence details  
+- Payroll-relevant fields  
                 """)
 
 # -------------------- SOLUTIONS --------------------
@@ -273,9 +275,19 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 - Job Classifications  
 - Work Schedule Objects
                     """)
-st.markdown("""
+
+                if st.button("Employee Master Data"):
+                    st.info("""
+- Personal & Contact Information  
+- Employee Assignments  
+- Job and Pay Details  
+- Employment History  
+                    """)
+
+                st.markdown("""
 We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
-            """)
+                """)
+
                 if st.button("Employee Master Data"):
                     st.info("""
 - Personal & Contact Information  

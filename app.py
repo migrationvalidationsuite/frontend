@@ -196,7 +196,7 @@ elif selected == "Launch Demo":
 
         # --- Reusable function ---
         def migration_row(label, key, detail_text):
-            col1, col2 = st.columns([5, 3.8])
+            col1, col2 = st.columns([2.5, 5])
             with col1:
                 st.button(label, key=key, use_container_width=True)
             with col2:
@@ -235,7 +235,7 @@ elif selected == "Launch Demo":
 - Addresses  
         """)
 
-        migration_row("Position & Employee Data", "pd_demo", """
+        migration_row("Employee Data", "pd_demo", """
 - Basic Import  
 - Biographical Information (Person Info)  
 - Employment Info  

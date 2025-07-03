@@ -178,7 +178,7 @@ elif selected == "Launch Demo":
             b1, b2, b3 = st.columns(3)
             with b1:
                 if st.button("SAP HCM → SuccessFactors"):
-                    st.session_state['selected_scenario'] = "SF"
+                    st.session_state.demo_page = "sap_to_sf"
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
             with b3:

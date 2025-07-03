@@ -182,70 +182,76 @@ elif selected == "Solutions":
     )
 
     # --- DATA MIGRATION ---
-    if sol_choice == "Data Migration":
-        col1, col2 = st.columns([2.9, 3])
-        with col1:
-            st.markdown("## End-to-End SAP HR Transformation Journey")
-            st.markdown("""
-            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+# --- DATA MIGRATION ---
+if sol_choice == "Data Migration":
+    col1, col2 = st.columns([2.9, 3])
+    
+    with col1:
+        st.markdown("## End-to-End SAP HR Transformation Journey")
+        st.markdown("""
+        A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-            **Supported Scenarios:**
-            - SAP ECC → SuccessFactors (EC, Time, Payroll)
-            - SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
-            - Legacy/Non-SAP → SAP HCM and SuccessFactors
-            """)
+        **Supported Scenarios:**
+        - SAP ECC → SuccessFactors (EC, Time, Payroll)
+        - SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
+        - Legacy/Non-SAP → SAP HCM and SuccessFactors
+        """)
 
-            st.markdown("### What We Migrate & Validate")
+        st.markdown("### What We Migrate & Validate")
 
-            col_a, col_b = st.columns(2)
+        col_a, col_b = st.columns(2)
 
-            with col_a:
-                if st.button("Foundation Data"):
-                    st.info("""
-                    - Legal Entities  
-                    - Business Units  
-                    - Cost Centers  
-                    - Locations  
-                    - Pay Scales
-                    """)
+        with col_a:
+            if st.button("Foundation Data"):
+                st.info("""
+                - Legal Entities  
+                - Business Units  
+                - Cost Centers  
+                - Locations  
+                - Pay Scales
+                """)
 
-                if st.button("Employee Data"):
-                    st.info("""
-                    - Personal & Contact Details  
-                    - Work Assignments  
-                    - Compensation Details  
-                    - Time, Leave, and Benefits Info
-                    """)
+            if st.button("Employee Data"):
+                st.info("""
+                - Personal & Contact Details  
+                - Work Assignments  
+                - Compensation Details  
+                - Time, Leave, and Benefits Info
+                """)
 
-            with col_b:
-                if st.button("Position Data"):
-                    st.info("""
-                    - Job Structures  
-                    - Org Hierarchies  
-                    - Manager Assignments  
-                    - Vacant Positions
-                    """)
+        with col_b:
+            if st.button("Position Data"):
+                st.info("""
+                - Job Structures  
+                - Org Hierarchies  
+                - Manager Assignments  
+                - Vacant Positions
+                """)
 
-                if st.button("Payroll & Compliance"):
-                    st.info("""
-                    - Bank Details  
-                    - Tax Setup  
-                    - Compliance Fields  
-                    - Country-Specific Attributes
-                    """)
+            if st.button("Payroll & Compliance"):
+                st.info("""
+                - Bank Details  
+                - Tax Setup  
+                - Compliance Fields  
+                - Country-Specific Attributes
+                """)
 
-        with col2:
-            st.image("pexels-divinetechygirl-1181341.jpg", use_column_width=True)
+        st.markdown("### Key Capabilities:")
+        st.markdown("""
+        - AI-powered mapping & validation  
+        - Drag-and-drop transformation rules  
+        - Real-time preview & profiling  
+        - Cross-object and row-level validation  
+        - Export SuccessFactors and S/4HANA ready templates with metadata  
+        - Licensing controls & role-based access  
+        - Audit logs, rollback & monitoring  
+        - Designed to reduce manual effort and shorten project timelines  
+        - Supports stakeholder collaboration with clear audit and status visibility  
+        - Ability to easily create and manage transformation rules with an intuitive, interactive interface
+        """)
 
-
-        with col2:
-            st.markdown("### Key Features")
-            st.markdown("""
-- **Transformation Engine:** Transformation engine with rollback support  
-- **Template Uploads:** Pre-configured mapping, reduced effort
-- **Role-Based Access:** Permission management based on user roles
-- **Validation Reports:** Flags issues across all stages
-- **Rule Engine:** Reusable, localized logic
+    with col2:
+        st.image("pexels-divinetechygirl-1181341.jpg", use_column_width=True)
 
 **Supported Scenarios:**
 - SAP ECC → SuccessFactors (EC, Time, Payroll)

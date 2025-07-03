@@ -189,14 +189,52 @@ elif selected == "Solutions":
             st.markdown("""
 A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-**What We Migrate & Validate:**
-- **Foundation Data:** Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects  
-- **Position Data:** Hierarchies, reporting lines, position classifications, and relationships  
-- **Employee Master Data:** Personal details, assignments, and job- and pay-related data  
-- **Payroll & Time Data:** Including attendance, leave, and absence records  
+import streamlit as st
 
-We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
-            """)
+st.markdown("## What We Migrate & Validate")
+
+# Create columns for buttons
+col1, col2 = st.columns(2)
+
+with col1:
+    if st.button("Foundation Data"):
+        st.info("""
+        - Legal Entities  
+        - Business Units  
+        - Cost Centers  
+        - Locations  
+        - Pay Scales  
+        """)
+
+with col2:
+    if st.button("Position Data"):
+        st.info("""
+        - Job Structures  
+        - Org Hierarchies  
+        - Manager Assignments  
+        - Vacant Positions  
+        """)
+
+col3, col4 = st.columns(2)
+
+with col3:
+    if st.button("Employee Data"):
+        st.info("""
+        - Personal & Contact Details  
+        - Work Assignments  
+        - Compensation Details  
+        - Time, Leave, and Benefits Info  
+        """)
+
+with col4:
+    if st.button("Payroll & Compliance"):
+        st.info("""
+        - Bank Details  
+        - Tax Setup  
+        - Compliance Fields  
+        - Country-Specific Attributes  
+        """)
+
 
         with col2:
             st.markdown("### Key Features")

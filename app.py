@@ -200,7 +200,7 @@ elif selected == "Launch Demo":
                 - Work schedule objects  
                 """)
 
-        col3, col4 = st.columns([2.5, 5])
+        col3, col4 = st.columns([5, 1.8])
         with col3:
             st.button("Position Data")
         with col4:
@@ -212,7 +212,7 @@ elif selected == "Launch Demo":
                 - Relationships  
                 """)
 
-        col5, col6 = st.columns([2.5, 5])
+        col5, col6 = st.columns([5, 1.8])
         with col5:
             st.button("Employee Master Data")
         with col6:
@@ -223,7 +223,7 @@ elif selected == "Launch Demo":
                 - Job- and pay-related data  
                 """)
 
-        col7, col8 = st.columns([2.5, 5])
+        col7, col8 = st.columns([5, 1.8])
         with col7:
             st.button("Payroll & Time Data")
         with col8:

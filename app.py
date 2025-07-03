@@ -168,19 +168,27 @@ elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
         st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns([1, 3, 1])
+        # Use 3 columns for equal sizing
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            if st.button("SAP HCM →\nSuccessFactors", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
+
         with col2:
-            b1, b2, b3 = st.columns(3)
+            st.markdown("""
+                <div style='padding: 0.75em; border: 1px solid #ccc; border-radius: 8px; text-align: center; color: grey;'>
+                    SAP HCM →<br>S/4HANA<br><small>(coming soon)</small>
+                </div>
+            """, unsafe_allow_html=True)
 
-            with b1:
-                if st.button("SAP HCM → SuccessFactors"):
-                    st.session_state.demo_page = "sap_to_sf"
+        with col3:
+            st.markdown("""
+                <div style='padding: 0.75em; border: 1px solid #ccc; border-radius: 8px; text-align: center; color: grey;'>
+                    Legacy HR Systems →<br>SAP Cloud or On-Premise<br><small>(coming soon)</small>
+                </div>
+            """, unsafe_allow_html=True)
 
-            with b2:
-                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
-
-            with b3:
-                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
             st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
 

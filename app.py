@@ -49,7 +49,7 @@ set_background("pexels-googledeepmind-17483873.jpg")
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Solutions", "Launch Demo"],
+        options=["Home", "Solutions", "Launch Pad"],
         icons=["house", "layers", "rocket"],
         default_index=0,
         styles={
@@ -65,7 +65,8 @@ with st.sidebar:
                 "background-color": "#cfe2ff",  # Light blue highlight when selected
                 "font-weight": "bold"
             },
-        }
+        }  # ✅ This closing parenthesis was missing
+    )
 
 # -------------------- HOME --------------------
 if selected == "Home":

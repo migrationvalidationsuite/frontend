@@ -64,6 +64,7 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
+
 # -------------------- HOME --------------------
 if selected == "Home":
     st.markdown("""

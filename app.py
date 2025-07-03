@@ -162,8 +162,7 @@ if selected == "Home":
 elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
         st.title("Select a Migration Scenario")
-        demo_img = Image.open("pexels-cookiecutter-1148820 (1).jpg")
-        st.image(demo_img, use_container_width=True)
+
         col1, col2, col3 = st.columns(3)
 
         with col1:
@@ -176,11 +175,69 @@ elif selected == "Launch Demo":
         with col3:
             st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)")
 
+        # Smaller image placed below buttons
+        demo_img = Image.open("pexels-cookiecutter-1148820 (1).jpg")
+        st.image(demo_img, width=750)
+
     elif st.session_state.demo_page == "sap_to_sf":
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
+
+        # Create button + info grid
+        col1, col2 = st.columns([2.5, 5])
+
+        with col1:
+            st.button("Foundation Data")
+        with col2:
+            with st.expander("ℹ️"):
+                st.markdown("""
+                - Legal entities  
+                - Hierarchy structures  
+                - Cost centers  
+                - Locations  
+                - Pay scale information  
+                - Job functions and classifications  
+                - Work schedule objects  
+                """)
+
+        col3, col4 = st.columns([2.5, 5])
+        with col3:
+            st.button("Position Data")
+        with col4:
+            with st.expander("ℹ️"):
+                st.markdown("""
+                - Hierarchies  
+                - Reporting lines  
+                - Position classifications  
+                - Relationships  
+                """)
+
+        col5, col6 = st.columns([2.5, 5])
+        with col5:
+            st.button("Employee Master Data")
+        with col6:
+            with st.expander("ℹ️"):
+                st.markdown("""
+                - Personal details  
+                - Assignments  
+                - Job- and pay-related data  
+                """)
+
+        col7, col8 = st.columns([2.5, 5])
+        with col7:
+            st.button("Payroll & Time Data")
+        with col8:
+            with st.expander("ℹ️"):
+                st.markdown("""
+                - Attendance records  
+                - Leave balances  
+                - Absence details  
+                - Payroll-relevant fields  
+                """)
+
         if st.button("⬅ Back to Scenarios"):
             go_to_demo("main")
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

@@ -165,6 +165,7 @@ if selected == "Home":
 
 
 # -------------------- DEMO PAGE --------------------
+# -------------------- DEMO PAGE --------------------
 elif selected == "Launch Demo":
     if "demo_page" not in st.session_state:
         st.session_state.demo_page = "main"
@@ -208,7 +209,6 @@ elif selected == "Launch Demo":
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
-
         # --- Each button + info dropdown ---
         migration_row("Foundation Data", "fd_demo", """
             - Org Hierarchy  
@@ -219,7 +219,7 @@ elif selected == "Launch Demo":
             - Work Schedule  
         """)
 
-        migration_row("Position Data", "pd_demo", """
+        migration_row("Position & Employee Data", "pd_demo", """
             - Basic Information  
             - Biographical Information  
             - Job Information  
@@ -251,7 +251,6 @@ elif selected == "Launch Demo":
             - Work Schedule Rules  
             - Cost Center  
         """)
-
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

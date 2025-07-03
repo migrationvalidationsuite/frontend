@@ -165,7 +165,7 @@ if selected == "Home":
 
 
 # -------------------- DEMO PAGE --------------------
-elif selected == "Launch Demo":
+elif selected == "Launch Pad":
     if st.session_state.demo_page == "main":
         st.title("Select a Migration Scenario")
 

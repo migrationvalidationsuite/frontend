@@ -2,7 +2,6 @@ import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
 import os
-from PIL import Image
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
@@ -68,7 +67,6 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
-    # --- Header banner ---
     st.markdown("""
         <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
             <div style='max-width:900px;margin:auto;'>
@@ -85,8 +83,11 @@ if selected == "Home":
         st.markdown("**Power your transformation with:**")
         st.markdown("""
         - **Schema Mapping & Transformation**  
+          Seamlessly aligns and converts source structures into SAP-ready formats across platforms.
         - **Pre-Migration Validation**  
+          Identifies data issues early on through audit trials for cloud and S/4HANA adoption.
         - **Rollback & Audit-Ready Tracking**  
+          Enables safe, reversible data loads with full traceability of rules, configurations, and actions.
         """)
         st.markdown("**Supported Migration Paths:**")
         st.markdown("""
@@ -102,12 +103,17 @@ if selected == "Home":
     col1, col2 = st.columns([3, 2.5])
     with col1:
         st.markdown("### Why MVS?")
+        st.markdown("""
+        <p>MVS is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        """, unsafe_allow_html=True)
+
         icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
         descriptions = [
             "Template-driven, secure transfers between systems.",
             "Detailed checks at the field level to catch issues throughout the migration process.",
             "Automated comparisons between source and target systems."
         ]
+
         for icon, desc in zip(icons, descriptions):
             icon_col, text_col = st.columns([1, 6])
             with icon_col:
@@ -136,7 +142,6 @@ if selected == "Home":
         </ul>
         """, unsafe_allow_html=True)
 
-    # --- SAP Highlights Section ---
     st.markdown("""
     <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
         <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
@@ -157,6 +162,7 @@ if selected == "Home":
         </div>
     </div>
     """, unsafe_allow_html=True)
+
 
 # -------------------- DEMO PAGE --------------------
 elif selected == "Launch Demo":

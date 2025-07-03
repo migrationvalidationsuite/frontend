@@ -209,36 +209,49 @@ elif selected == "Launch Demo":
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
 
-        # --- Each button + info dropdown ---
-        migration_row("Foundation Data", "fd_demo", """
-- Legal entities  
-- Hierarchy structures  
-- Cost centers  
-- Locations  
-- Pay scale information  
-- Job functions and classifications  
-- Work schedule objects  
-        """)
+# --- Each button + info dropdown ---
+migration_row("Foundation Data", "fd_demo", """
+    - Org Hierarchy  
+    - Cost Center  
+    - Location  
+    - Pay Scale Info  
+    - Job Classification  
+    - Work Schedule  
+""")
 
-        migration_row("Position Data", "pd_demo", """
-- Hierarchies  
-- Reporting lines  
-- Position classifications  
-- Relationships  
-        """)
+migration_row("Position Data", "pd_demo", """
+    - Basic Information  
+    - Biographical Information  
+    - Job Information  
+    - Employment Information  
+    - Compensation Info  
+    - Payments  
+    - Superannuation  
+    - Tax Information  
+    - Time  
+    - Address Information  
+    - Email Information  
+    - Work Permit  
+    - Alternative Cost Distribution  
+""")
 
-        migration_row("Employee Master Data", "emd_demo", """
-- Personal details  
-- Assignments  
-- Job- and pay-related data  
-        """)
+migration_row("Time Data", "td_demo", """
+    - Time Type  
+    - Time Account Type  
+    - Time Account (Accrual/Entitlement)  
+    - Time Account Details (Accrual/Entitlement)  
+    - Employee Time (Absences)  
+""")
 
-        migration_row("Payroll & Time Data", "ptd_demo", """
-- Attendance records  
-- Leave balances  
-- Absence details  
-- Payroll-relevant fields  
-        """)
+migration_row("Payroll Data", "ptd_demo", """
+    - Bank Info  
+    - Super Funds  
+    - Daily Work Schedule  
+    - Period Work Schedule  
+    - Work Schedule Rules  
+    - Cost Center  
+""")
+
 
 
 # -------------------- SOLUTIONS --------------------

@@ -235,7 +235,7 @@ elif selected == "Launch Demo":
 - Addresses  
         """, next_page="foundation_data_view")
 
-        migration_row("Position & Employee Data", "pd_demo", """
+        migration_row("Employee Data", "pd_demo", """
 - Basic Import  
 - Biographical Information (Person Info)  
 - Employment Info  

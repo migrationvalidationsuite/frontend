@@ -298,10 +298,11 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 - Location  
 - Pay Scale Info  
 - Job Classification  
-- Work Schedule  
+- Work Schedule
+- Position Data
                     """)
 
-                if st.button("Position & Employee Data", key="pd_btn"):
+                if st.button("Employee Data", key="pd_btn"):
                     st.session_state.show_pd = not st.session_state.show_pd
                 if st.session_state.show_pd:
                     st.info("""

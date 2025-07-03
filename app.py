@@ -187,7 +187,7 @@ elif selected == "Launch Demo":
             st.write("")  # spacing
 
             # Display centered image
-            st.image("your_image.jpg", use_container_width=True)
+            st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
 
 
     elif st.session_state.demo_page == "sap_to_sf":

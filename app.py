@@ -165,25 +165,30 @@ if selected == "Home":
 
 elif selected == "Launch Demo":
     from demo_module import render  # ✅ make sure this is at the top if not already
-
     if st.session_state.demo_page == "main":
-        st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
+    st.markdown("""
+        <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
+            <h2 style='text-align:center;'>🚀 Launch Pad</h2>
+            <h4 style='text-align:center;'>Select a migration scenario to get started</h4>
+        </div>
+    """, unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns([1, 3, 1])
-        with col2:
-            b1, b2, b3 = st.columns(3)
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        b1, b2, b3 = st.columns(3)
 
-            with b1:
-                if st.button("SAP HCM → SuccessFactors"):
-                    st.session_state.demo_page = "sap_to_sf"
+        with b1:
+            if st.button("SAP HCM → SuccessFactors"):
+                st.session_state.demo_page = "sap_to_sf"
 
-            with b2:
-                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+        with b2:
+            st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
 
-            with b3:
-                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
+        with b3:
+            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
-            st.image("dmigimg.jpg", use_container_width=True)
+        st.image("dmigimg.jpg", use_container_width=True)
+
 
     elif st.session_state.demo_page == "sap_to_sf":
         back_col, _ = st.columns([1, 5])

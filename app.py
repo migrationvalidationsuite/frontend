@@ -187,53 +187,55 @@ elif selected == "Solutions":
         with col1:
             st.markdown("## End-to-End SAP HR Transformation Journey")
             st.markdown("""
-A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
+            A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
 
-import streamlit as st
+            **Supported Scenarios:**
+            - SAP ECC → SuccessFactors (EC, Time, Payroll)
+            - SAP ECC → S/4HANA (HCM, Payroll, PA, OM)
+            - Legacy/Non-SAP → SAP HCM and SuccessFactors
+            """)
 
-st.markdown("## What We Migrate & Validate")
+            st.markdown("### What We Migrate & Validate")
 
-# Create columns for buttons
-col1, col2 = st.columns(2)
+            col_a, col_b = st.columns(2)
 
-with col1:
-    if st.button("Foundation Data"):
-        st.info("""
-        - Legal Entities  
-        - Business Units  
-        - Cost Centers  
-        - Locations  
-        - Pay Scales  
-        """)
+            with col_a:
+                if st.button("Foundation Data"):
+                    st.info("""
+                    - Legal Entities  
+                    - Business Units  
+                    - Cost Centers  
+                    - Locations  
+                    - Pay Scales
+                    """)
 
-with col2:
-    if st.button("Position Data"):
-        st.info("""
-        - Job Structures  
-        - Org Hierarchies  
-        - Manager Assignments  
-        - Vacant Positions  
-        """)
+                if st.button("Employee Data"):
+                    st.info("""
+                    - Personal & Contact Details  
+                    - Work Assignments  
+                    - Compensation Details  
+                    - Time, Leave, and Benefits Info
+                    """)
 
-col3, col4 = st.columns(2)
+            with col_b:
+                if st.button("Position Data"):
+                    st.info("""
+                    - Job Structures  
+                    - Org Hierarchies  
+                    - Manager Assignments  
+                    - Vacant Positions
+                    """)
 
-with col3:
-    if st.button("Employee Data"):
-        st.info("""
-        - Personal & Contact Details  
-        - Work Assignments  
-        - Compensation Details  
-        - Time, Leave, and Benefits Info  
-        """)
+                if st.button("Payroll & Compliance"):
+                    st.info("""
+                    - Bank Details  
+                    - Tax Setup  
+                    - Compliance Fields  
+                    - Country-Specific Attributes
+                    """)
 
-with col4:
-    if st.button("Payroll & Compliance"):
-        st.info("""
-        - Bank Details  
-        - Tax Setup  
-        - Compliance Fields  
-        - Country-Specific Attributes  
-        """)
+        with col2:
+            st.image("pexels-divinetechygirl-1181341.jpg", use_column_width=True)
 
 
         with col2:

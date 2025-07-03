@@ -166,6 +166,9 @@ if selected == "Home":
 
 # -------------------- DEMO PAGE --------------------
 elif selected == "Launch Demo":
+    if "demo_page" not in st.session_state:
+        st.session_state.demo_page = "main"
+
     if st.session_state.demo_page == "main":
         st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
@@ -185,10 +188,7 @@ elif selected == "Launch Demo":
                 st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
             st.write("")  # spacing
-
-            # Display centered image
             st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
-
 
     elif st.session_state.demo_page == "sap_to_sf":
         # --- Back button at top ---
@@ -209,49 +209,48 @@ elif selected == "Launch Demo":
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
 
-# --- Each button + info dropdown ---
-migration_row("Foundation Data", "fd_demo", """
-    - Org Hierarchy  
-    - Cost Center  
-    - Location  
-    - Pay Scale Info  
-    - Job Classification  
-    - Work Schedule  
-""")
+        # --- Each button + info dropdown ---
+        migration_row("Foundation Data", "fd_demo", """
+            - Org Hierarchy  
+            - Cost Center  
+            - Location  
+            - Pay Scale Info  
+            - Job Classification  
+            - Work Schedule  
+        """)
 
-migration_row("Position Data", "pd_demo", """
-    - Basic Information  
-    - Biographical Information  
-    - Job Information  
-    - Employment Information  
-    - Compensation Info  
-    - Payments  
-    - Superannuation  
-    - Tax Information  
-    - Time  
-    - Address Information  
-    - Email Information  
-    - Work Permit  
-    - Alternative Cost Distribution  
-""")
+        migration_row("Position Data", "pd_demo", """
+            - Basic Information  
+            - Biographical Information  
+            - Job Information  
+            - Employment Information  
+            - Compensation Info  
+            - Payments  
+            - Superannuation  
+            - Tax Information  
+            - Time  
+            - Address Information  
+            - Email Information  
+            - Work Permit  
+            - Alternative Cost Distribution  
+        """)
 
-migration_row("Time Data", "td_demo", """
-    - Time Type  
-    - Time Account Type  
-    - Time Account (Accrual/Entitlement)  
-    - Time Account Details (Accrual/Entitlement)  
-    - Employee Time (Absences)  
-""")
+        migration_row("Time Data", "td_demo", """
+            - Time Type  
+            - Time Account Type  
+            - Time Account (Accrual/Entitlement)  
+            - Time Account Details (Accrual/Entitlement)  
+            - Employee Time (Absences)  
+        """)
 
-migration_row("Payroll Data", "ptd_demo", """
-    - Bank Info  
-    - Super Funds  
-    - Daily Work Schedule  
-    - Period Work Schedule  
-    - Work Schedule Rules  
-    - Cost Center  
-""")
-
+        migration_row("Payroll Data", "ptd_demo", """
+            - Bank Info  
+            - Super Funds  
+            - Daily Work Schedule  
+            - Period Work Schedule  
+            - Work Schedule Rules  
+            - Cost Center  
+        """)
 
 
 # -------------------- SOLUTIONS --------------------

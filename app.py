@@ -96,7 +96,7 @@ if selected == "Home":
         """)
 
     with col2:
-        st.image("pexels-divinetechygirl-1181263.jpg", use_column_width=True)
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
     col1, col2 = st.columns([3, 2.5])
@@ -163,7 +163,7 @@ elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
         st.title("Select a Migration Scenario")
         demo_img = Image.open("pexels-cookiecutter-1148820 (1).jpg")
-        st.image(demo_img, use_column_width=True)
+        st.image(demo_img, use_container_width=True)
         col1, col2, col3 = st.columns(3)
 
         with col1:

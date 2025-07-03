@@ -62,10 +62,15 @@ with st.sidebar:
                 "--hover-color": "#e6f0ff",
             },
             "nav-link-selected": {
-                "background-color": "#a3c2f2",  # darker blue
+                "background-color": "#a3c2f2",
                 "font-weight": "bold",
                 "border-radius": "10px",
-                "border": "2px solid #80bfff"
+                "border": "2px solid #80bfff",
+                "padding": "8px 12px",
+                "width": "90%",  # ✅ prevents full-width stretching
+                "margin": "auto"  # ✅ centers it
+            }
+
             }
         }
     )

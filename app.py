@@ -184,6 +184,7 @@ elif selected == "Solutions":
     # --- DATA MIGRATION ---
     if sol_choice == "Data Migration":
         col1, col2 = st.columns([2.9, 3])
+
         with col1:
             st.markdown("## End-to-End SAP HR Transformation Journey")
             st.markdown("""
@@ -238,16 +239,6 @@ We also **validate and compare payroll results** across systems to ensure accura
 - Calculation Fields  
                     """)
 
-            # --- KEY FEATURES ---
-            st.markdown("### Key Features")
-            st.markdown("""
-- **Transformation Engine:** Transformation engine with rollback support  
-- **Template Uploads:** Pre-configured mapping, reduced effort  
-- **Role-Based Access:** Permission management based on user roles  
-- **Validation Reports:** Flags issues across all stages  
-- **Rule Engine:** Reusable, localized logic
-            """)
-
         with col2:
             st.image("edmdr.png", use_container_width=True)
 
@@ -258,7 +249,16 @@ We also **validate and compare payroll results** across systems to ensure accura
 - Legacy/Non-SAP → SAP HCM and SuccessFactors
             """)
 
-        # ✅ Add image BELOW the columns, only during Data Migration
+            st.markdown("### Key Features")
+            st.markdown("""
+- **Transformation Engine:** Transformation engine with rollback support  
+- **Template Uploads:** Pre-configured mapping, reduced effort  
+- **Role-Based Access:** Permission management based on user roles  
+- **Validation Reports:** Flags issues across all stages  
+- **Rule Engine:** Reusable, localized logic
+            """)
+
+        # ✅ Bottom banner image
         st.image("datamig_img.png", use_container_width=True)
 
     # --- VALIDATION ---

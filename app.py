@@ -164,29 +164,47 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
 
+elif selected == "Launch Demo":
+    if st.session_state.demo_page == "main":
+        st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
-# -------------------- DEMO PAGE --------------------
-elif st.session_state.demo_page == "sap_to_sf":
-    # --- Back button at top ---
-    back_col, _ = st.columns([1, 5])
-    with back_col:
-        if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
-            st.session_state.demo_page = "main"
-
-    st.title("SAP HCM → SuccessFactors")
-    st.subheader("What do you want to migrate?")
-
-    # --- Reusable function for button + expander ---
-    def migration_row(label, key, detail_text):
-        col1, col2 = st.columns([5, 3.8])
-        with col1:
-            st.button(label, key=key, use_container_width=True)
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown(detail_text)
+            b1, b2, b3 = st.columns(3)
 
-    # --- Each button + info dropdown ---
-    migration_row("Foundation Data", "fd_demo", """
+            with b1:
+                if st.button("SAP HCM → SuccessFactors"):
+                    st.session_state.demo_page = "sap_to_sf"
+
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
+
+            st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
+
+    elif st.session_state.demo_page == "sap_to_sf":
+        # --- Back button ---
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+                st.session_state.demo_page = "main"
+
+        st.title("SAP HCM → SuccessFactors")
+        st.subheader("What do you want to migrate?")
+
+        # --- Reusable function ---
+        def migration_row(label, key, detail_text):
+            col1, col2 = st.columns([5, 3.8])
+            with col1:
+                st.button(label, key=key, use_container_width=True)
+            with col2:
+                with st.expander("ℹ️ Details"):
+                    st.markdown(detail_text)
+
+        # --- Each section ---
+        migration_row("Foundation Data", "fd_demo", """
 - Pay Scale Level  
 - Pay Scale Level - Pay Component Assignment  
 - Pay Scale Group  
@@ -215,9 +233,9 @@ elif st.session_state.demo_page == "sap_to_sf":
 - Cost Centre  
 - Positions  
 - Addresses  
-    """)
+        """)
 
-    migration_row("Position & Employee Data", "pd_demo", """
+        migration_row("Position & Employee Data", "pd_demo", """
 - Basic Import  
 - Biographical Information (Person Info)  
 - Employment Info  
@@ -239,23 +257,23 @@ elif st.session_state.demo_page == "sap_to_sf":
 - Position - Compliance Requirements  
 - Alternative Cost Distribution  
 - Alternative Cost Distribution for Time  
-    """)
+        """)
 
-    migration_row("Time Data", "td_demo", """
+        migration_row("Time Data", "td_demo", """
 - Time Type  
 - Time Account Type  
 - Time Account (Accrual/Entitlement)  
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
-    """)
+        """)
 
-    migration_row("Payroll Data", "ptd_demo", """
+        migration_row("Payroll Data", "ptd_demo", """
 - Time Type  
 - Time Account Type  
 - Time Account (Accrual/Entitlement)  
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
-    """)
+        """)
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

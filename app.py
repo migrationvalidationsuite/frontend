@@ -182,9 +182,15 @@ elif selected == "Launch Demo":
             st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", use_container_width=True)
 
         # --- Centered image under buttons ---
-        st.markdown("<div style='display:flex;justify-content:center;'>", unsafe_allow_html=True)
-        st.image("pexels-cookiecutter-1148820 (1).jpg", width=750)
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div style="display: flex; justify-content: center;">
+                <img src="https://raw.githubusercontent.com/your-repo/your-image-path/pexels-cookiecutter-1148820%20(1).jpg" width="750" style="border-radius: 10px;">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
 
     elif st.session_state.demo_page == "sap_to_sf":
         # --- Back button at top ---

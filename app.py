@@ -163,8 +163,9 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
-
 elif selected == "Launch Demo":
+    from demo_module import render  # ✅ make sure this is at the top if not already
+
     if st.session_state.demo_page == "main":
         st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
@@ -184,26 +185,26 @@ elif selected == "Launch Demo":
 
             st.image("dmigimg.jpg", use_container_width=True)
 
-elif st.session_state.demo_page == "sap_to_sf":
-    back_col, _ = st.columns([1, 5])
-    with back_col:
-        if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
-            st.session_state.demo_page = "main"
+    elif st.session_state.demo_page == "sap_to_sf":
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+                st.session_state.demo_page = "main"
 
-    st.title("SAP HCM → SuccessFactors")
-    st.subheader("What do you want to migrate?")
+        st.title("SAP HCM → SuccessFactors")
+        st.subheader("What do you want to migrate?")
 
-    def migration_row(label, key, detail_text, next_page=None):
-        col1, col2 = st.columns([5, 3.8])
-        with col1:
-            if st.button(label, key=key, use_container_width=True):
-                if next_page:
-                    st.session_state.demo_page = next_page
-        with col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown(detail_text)
+        def migration_row(label, key, detail_text, next_page=None):
+            col1, col2 = st.columns([5, 3.8])
+            with col1:
+                if st.button(label, key=key, use_container_width=True):
+                    if next_page:
+                        st.session_state.demo_page = next_page
+            with col2:
+                with st.expander("ℹ️ Details"):
+                    st.markdown(detail_text)
 
-    migration_row("Foundation Data", "fd_demo", """
+        migration_row("Foundation Data", "fd_demo", """
 - Pay Scale Level  
 - Pay Scale Level - Pay Component Assignment  
 - Pay Scale Group  
@@ -232,9 +233,9 @@ elif st.session_state.demo_page == "sap_to_sf":
 - Cost Centre  
 - Positions  
 - Addresses  
-    """, next_page="foundation_data_view")
+        """, next_page="foundation_data_view")
 
-    migration_row("Position & Employee Data", "pd_demo", """
+        migration_row("Position & Employee Data", "pd_demo", """
 - Basic Import  
 - Biographical Information (Person Info)  
 - Employment Info  
@@ -256,39 +257,32 @@ elif st.session_state.demo_page == "sap_to_sf":
 - Position - Compliance Requirements  
 - Alternative Cost Distribution  
 - Alternative Cost Distribution for Time  
-    """)
+        """)
 
-    migration_row("Time Data", "td_demo", """
+        migration_row("Time Data", "td_demo", """
 - Time Type  
 - Time Account Type  
 - Time Account (Accrual/Entitlement)  
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
-    """)
+        """)
 
-    migration_row("Payroll Data", "ptd_demo", """
+        migration_row("Payroll Data", "ptd_demo", """
 - Time Type  
 - Time Account Type  
 - Time Account (Accrual/Entitlement)  
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
-    """)
-elif st.session_state.demo_page == "foundation_data_view":
-    import streamlit.components.v1 as components
+        """)
 
-    back_col, _ = st.columns([1, 5])
-    with back_col:
-        if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
-            st.session_state.demo_page = "sap_to_sf"
+    elif st.session_state.demo_page == "foundation_data_view":
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
 
-    st.markdown("### Foundation Data – Interactive View")
-
-    # 🔁 Replace with your actual Streamlit app URL
-    components.iframe(
-        src="https://your-other-streamlit-app-url.streamlit.app",
-        height=850,
-        width=1100
-    )
+        st.markdown("### Foundation Data – Interactive View")
+        render()
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

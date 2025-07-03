@@ -166,91 +166,96 @@ if selected == "Home":
 
 
 # -------------------- DEMO PAGE --------------------
-elif selected == "Launch Demo":
-    if "demo_page" not in st.session_state:
-        st.session_state.demo_page = "main"
+elif st.session_state.demo_page == "sap_to_sf":
+    # --- Back button at top ---
+    back_col, _ = st.columns([1, 5])
+    with back_col:
+        if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+            st.session_state.demo_page = "main"
 
-    if st.session_state.demo_page == "main":
-        st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
+    st.title("SAP HCM → SuccessFactors")
+    st.subheader("What do you want to migrate?")
 
-        # Center content using columns
-        col1, col2, col3 = st.columns([1, 3, 1])
-
+    # --- Reusable function for button + expander ---
+    def migration_row(label, key, detail_text):
+        col1, col2 = st.columns([5, 3.8])
+        with col1:
+            st.button(label, key=key, use_container_width=True)
         with col2:
-            st.write("")  # spacing
-            # Buttons in one row using columns
-            b1, b2, b3 = st.columns(3)
-            with b1:
-                if st.button("SAP HCM → SuccessFactors"):
-                    st.session_state.demo_page = "sap_to_sf"
-            with b2:
-                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
-            with b3:
-                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
+            with st.expander("ℹ️ Details"):
+                st.markdown(detail_text)
 
-            st.write("")  # spacing
-            st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
+    # --- Each button + info dropdown ---
+    migration_row("Foundation Data", "fd_demo", """
+- Pay Scale Level  
+- Pay Scale Level - Pay Component Assignment  
+- Pay Scale Group  
+- Pay Scale Area  
+- Pay Scale Type  
+- Pay Calendar  
+- Pay Calendar - Pay Period  
+- PayComponent  
+- Holiday  
+- Holiday Calendar  
+- Work Schedule  
+- Work Schedule Day Model  
+- Legal Entity (Company)  
+- Business Unit  
+- Business Unit - Legal Entity  
+- Division  
+- Division - Business Unit  
+- Department  
+- Department - Division  
+- Team  
+- Team - Department  
+- Job Family (Job Function)  
+- Job Classification  
+- Job Classification AUS  
+- Location  
+- Cost Centre  
+- Positions  
+- Addresses  
+    """)
 
-    elif st.session_state.demo_page == "sap_to_sf":
-        # --- Back button at top ---
-        back_col, _ = st.columns([1, 5])
-        with back_col:
-            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
-                st.session_state.demo_page = "main"
+    migration_row("Position & Employee Data", "pd_demo", """
+- Basic Import  
+- Biographical Information (Person Info)  
+- Employment Info  
+- Job Information  
+- Personal Info (Hire Date)  
+- National ID Information  
+- Compensation Info  
+- Payment Information  
+- Payment Information - Details  
+- Recurring Payments and Allowances  
+- Recurring Deductions (Parent)  
+- Recurring Deductions - Recurring Items (Child) (with end date)  
+- Non Recurring Payments and Allowances  
+- Super Fund Code  
+- Emergency Contact  
+- Phone Information  
+- Email Information  
+- Work Permit Information  
+- Position - Compliance Requirements  
+- Alternative Cost Distribution  
+- Alternative Cost Distribution for Time  
+    """)
 
-        st.title("SAP HCM → SuccessFactors")
-        st.subheader("What do you want to migrate?")
+    migration_row("Time Data", "td_demo", """
+- Time Type  
+- Time Account Type  
+- Time Account (Accrual/Entitlement)  
+- Time Account Details (Accrual/Entitlement)  
+- Employee Time (Absences)  
+    """)
 
-        # --- Reusable function for button + expander ---
-        def migration_row(label, key, detail_text):
-            col1, col2 = st.columns([5, 3.8])
-            with col1:
-                st.button(label, key=key, use_container_width=True)
-            with col2:
-                with st.expander("ℹ️ Details"):
-                    st.markdown(detail_text)
-        # --- Each button + info dropdown ---
-        migration_row("Foundation Data", "fd_demo", """
-            - Org Hierarchy  
-            - Cost Center  
-            - Location  
-            - Pay Scale Info  
-            - Job Classification  
-            - Work Schedule  
-        """)
-
-        migration_row("Position & Employee Data", "pd_demo", """
-            - Basic Information  
-            - Biographical Information  
-            - Job Information  
-            - Employment Information  
-            - Compensation Info  
-            - Payments  
-            - Superannuation  
-            - Tax Information  
-            - Time  
-            - Address Information  
-            - Email Information  
-            - Work Permit  
-            - Alternative Cost Distribution  
-        """)
-
-        migration_row("Time Data", "td_demo", """
-            - Time Type  
-            - Time Account Type  
-            - Time Account (Accrual/Entitlement)  
-            - Time Account Details (Accrual/Entitlement)  
-            - Employee Time (Absences)  
-        """)
-
-        migration_row("Payroll Data", "ptd_demo", """
-            - Bank Info  
-            - Super Funds  
-            - Daily Work Schedule  
-            - Period Work Schedule  
-            - Work Schedule Rules  
-            - Cost Center  
-        """)
+    migration_row("Payroll Data", "ptd_demo", """
+- Time Type  
+- Time Account Type  
+- Time Account (Accrual/Entitlement)  
+- Time Account Details (Accrual/Entitlement)  
+- Employee Time (Absences)  
+    """)
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
@@ -263,44 +268,34 @@ elif selected == "Solutions":
     )
 
     # --- DATA MIGRATION ---
-if sol_choice == "Data Migration":
-    col1, col2 = st.columns([2.9, 3])
+# --- INTERACTIVE BUTTONS WITH TOGGLE ---
+if "show_fd" not in st.session_state:
+    st.session_state.show_fd = False
+if "show_emd" not in st.session_state:
+    st.session_state.show_emd = False
+if "show_pd" not in st.session_state:
+    st.session_state.show_pd = False
+if "show_ptd" not in st.session_state:
+    st.session_state.show_ptd = False
 
-    with col1:
-        st.markdown("## End-to-End SAP HR Transformation Journey")
-        st.markdown("""
-A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
-        """)
-
-        # --- INTERACTIVE BUTTONS WITH TOGGLE ---
-        if "show_fd" not in st.session_state:
-            st.session_state.show_fd = False
-        if "show_emd" not in st.session_state:
-            st.session_state.show_emd = False
-        if "show_pd" not in st.session_state:
-            st.session_state.show_pd = False
-        if "show_ptd" not in st.session_state:
-            st.session_state.show_ptd = False
-
-        col_a, col_b = st.columns(2)
-        with col_a:
-            if st.button("Foundation Data", key="fd_btn"):
-                st.session_state.show_fd = not st.session_state.show_fd
-            if st.session_state.show_fd:
-                st.info("""
+col_a, col_b = st.columns(2)
+with col_a:
+    if st.button("Foundation Data", key="fd_btn"):
+        st.session_state.show_fd = not st.session_state.show_fd
+    if st.session_state.show_fd:
+        st.info("""
 - Org Hierarchy  
 - Cost Center  
 - Location  
 - Pay Scale Info  
 - Job Classification  
-- Work Schedule
-- Position Data
-                """)
+- Work Schedule  
+        """)
 
-            if st.button("Employee Data", key="pd_btn"):
-                st.session_state.show_pd = not st.session_state.show_pd
-            if st.session_state.show_pd:
-                st.info("""
+    if st.button("Position & Employee Data", key="pd_btn"):
+        st.session_state.show_pd = not st.session_state.show_pd
+    if st.session_state.show_pd:
+        st.info("""
 - Basic Information  
 - Biographical Information  
 - Job Information  
@@ -314,31 +309,31 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 - Email Information  
 - Work Permit  
 - Alternative Cost Distribution  
-                """)
+        """)
 
-        with col_b:
-            if st.button("Time Data", key="emd_btn"):
-                st.session_state.show_emd = not st.session_state.show_emd
-            if st.session_state.show_emd:
-                st.info("""
+with col_b:
+    if st.button("Time Data", key="emd_btn"):
+        st.session_state.show_emd = not st.session_state.show_emd
+    if st.session_state.show_emd:
+        st.info("""
 - Time Type  
 - Time Account Type  
 - Time Account (Accrual/Entitlement)  
 - Time Account Details (Accrual/Entitlement)  
 - Employee Time (Absences)  
-                """)
+        """)
 
-            if st.button("Payroll Data", key="ptd_btn"):
-                st.session_state.show_ptd = not st.session_state.show_ptd
-            if st.session_state.show_ptd:
-                st.info("""
+    if st.button("Payroll Data", key="ptd_btn"):
+        st.session_state.show_ptd = not st.session_state.show_ptd
+    if st.session_state.show_ptd:
+        st.info("""
 - Bank Info  
 - Super Funds  
 - Daily Work Schedule  
 - Period Work Schedule  
 - Work Schedule Rules  
 - Cost Center  
-                """)
+        """)
 
     with col2:
         st.image("edmdr.png", use_container_width=True)

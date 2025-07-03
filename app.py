@@ -257,14 +257,6 @@ elif selected == "Solutions":
             st.markdown("## End-to-End SAP HR Transformation Journey")
             st.markdown("""
 A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
-
-**What We Migrate & Validate:**
-- **Foundation Data:** Legal entities, hierarchy structures, cost centers, locations, pay scale information, job functions and classifications, and work schedule objects  
-- **Position Data:** Hierarchies, reporting lines, position classifications, and relationships  
-- **Employee Master Data:** Personal details, assignments, and job- and pay-related data  
-- **Payroll & Time Data:** Including attendance, leave, and absence records  
-
-We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
             """)
 
             # --- INTERACTIVE BUTTONS ---
@@ -281,7 +273,9 @@ We also **validate and compare payroll results** across systems to ensure accura
 - Job Classifications  
 - Work Schedule Objects
                     """)
-
+st.markdown("""
+We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
+            """)
                 if st.button("Employee Master Data"):
                     st.info("""
 - Personal & Contact Information  

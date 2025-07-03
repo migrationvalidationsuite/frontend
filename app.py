@@ -198,6 +198,47 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
             """)
 
+            # --- INTERACTIVE BUTTONS ---
+            col_a, col_b = st.columns(2)
+
+            with col_a:
+                if st.button("Foundation Data"):
+                    st.info("""
+- Legal Entities  
+- Business Units  
+- Cost Centers  
+- Locations  
+- Pay Scales  
+- Job Classifications  
+- Work Schedule Objects
+                    """)
+
+                if st.button("Employee Master Data"):
+                    st.info("""
+- Personal & Contact Information  
+- Employee Assignments  
+- Job and Pay Details  
+- Employment History  
+                    """)
+
+            with col_b:
+                if st.button("Position Data"):
+                    st.info("""
+- Hierarchies and Structures  
+- Reporting Lines  
+- Position Types and Groups  
+- Relationships and Dependencies  
+                    """)
+
+                if st.button("Payroll & Time Data"):
+                    st.info("""
+- Attendance and Leave Balances  
+- Absence Records  
+- Payroll Fields  
+- Calculation Fields  
+                    """)
+
+            # --- KEY FEATURES ---
             st.markdown("### Key Features")
             st.markdown("""
 - **Transformation Engine:** Transformation engine with rollback support  

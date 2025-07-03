@@ -64,7 +64,7 @@ with st.sidebar:
             "nav-link-selected": {
                 "background-color": "#a3c2f2",  # darker blue
                 "font-weight": "bold"
-}
+            }
 
             },
         }  # ✅ This closing parenthesis was missing

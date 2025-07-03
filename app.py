@@ -167,24 +167,27 @@ if selected == "Home":
 # -------------------- DEMO PAGE --------------------
 elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
-        st.title("Select a Migration Scenario")
+        st.markdown("## Select a Migration Scenario", unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns(3)
-
-        with col1:
-            if st.button("SAP HCM → SuccessFactors", key="btn_sfsf", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
+        # Center content using columns
+        col1, col2, col3 = st.columns([1, 3, 1])
 
         with col2:
-            st.button("SAP HCM → S/4HANA (coming soon)", key="btn_s4", use_container_width=True)
+            st.write("")  # spacing
+            # Buttons in one row using columns
+            b1, b2, b3 = st.columns(3)
+            with b1:
+                if st.button("SAP HCM → SuccessFactors"):
+                    st.session_state['selected_scenario'] = "SF"
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
-        with col3:
-            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", use_container_width=True)
+            st.write("")  # spacing
 
-        # --- Centered image under buttons ---
-        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
-        st.image("pexels-cookiecutter-1148820 (1).jpg", width=750)
-        st.markdown("</div>", unsafe_allow_html=True)
+            # Display centered image
+            st.image("your_image.jpg", use_column_width=True)
 
 
     elif st.session_state.demo_page == "sap_to_sf":

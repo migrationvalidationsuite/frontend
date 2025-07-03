@@ -202,7 +202,7 @@ elif selected == "Launch Demo":
 
         # --- Reusable function for button + expander ---
         def migration_row(label, key, detail_text):
-            col1, col2 = st.columns([5, 3])
+            col1, col2 = st.columns([5, 3.8])
             with col1:
                 st.button(label, key=key, use_container_width=True)
             with col2:

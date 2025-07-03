@@ -184,7 +184,7 @@ elif selected == "Launch Demo":
         st.subheader("What do you want to migrate?")
 
         # Create button + info grid
-        col1, col2 = st.columns([5, 1])
+        col1, col2 = st.columns([5, 1.8])
 
         with col1:
             st.button("Foundation Data")

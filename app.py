@@ -196,7 +196,7 @@ elif selected == "Launch Demo":
 
         # --- Reusable function ---
         def migration_row(label, key, detail_text):
-            col1, col2 = st.columns([2.5, 5])
+            col1, col2 = st.columns([2.5, 3])
             with col1:
                 st.button(label, key=key, use_container_width=True)
             with col2:

@@ -61,9 +61,11 @@ with st.sidebar:
                 "margin": "5px",
                 "--hover-color": "#e6f0ff",
             },
-            "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
-        },
-    )
+            "nav-link-selected": {
+                "background-color": "#cfe2ff",  # Light blue highlight when selected
+                "font-weight": "bold"
+            },
+        }
 
 # -------------------- HOME --------------------
 if selected == "Home":

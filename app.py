@@ -62,12 +62,10 @@ with st.sidebar:
                 "--hover-color": "#e6f0ff",
             },
             "nav-link-selected": {
-                "background-color": "#a3c2f2",  # darker blue
-                "font-weight": "bold",
-                "border-radius": "10px",
-                "border": "2px solid #80bfff"
-            }
-        }
+                "background-color": "#cfe2ff",  # Light blue highlight when selected
+                "font-weight": "bold"
+            },
+        }  # ✅ This closing parenthesis was missing
     )
 
 # -------------------- HOME --------------------

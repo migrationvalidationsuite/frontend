@@ -279,18 +279,6 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 - Employment History  
                     """)
 
-                st.markdown("""
-We also **validate and compare payroll results** across systems to ensure accuracy and consistency post-migration.
-                """)
-
-                if st.button("Employee Master Data"):
-                    st.info("""
-- Personal & Contact Information  
-- Employee Assignments  
-- Job and Pay Details  
-- Employment History  
-                    """)
-
             with col_b:
                 if st.button("Position Data"):
                     st.info("""

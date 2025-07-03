@@ -164,7 +164,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
 
-# -------------------- DEMO PAGE --------------------
+
 # -------------------- DEMO PAGE --------------------
 elif selected == "Launch Demo":
     if "demo_page" not in st.session_state:
@@ -263,92 +263,104 @@ elif selected == "Solutions":
     )
 
     # --- DATA MIGRATION ---
-    if sol_choice == "Data Migration":
-        col1, col2 = st.columns([2.9, 3])
+if sol_choice == "Data Migration":
+    col1, col2 = st.columns([2.9, 3])
 
-        with col1:
-            st.markdown("## End-to-End SAP HR Transformation Journey")
-            st.markdown("""
+    with col1:
+        st.markdown("## End-to-End SAP HR Transformation Journey")
+        st.markdown("""
 A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
-            """)
+        """)
 
-            # --- INTERACTIVE BUTTONS WITH TOGGLE ---
-            if "show_fd" not in st.session_state:
-                st.session_state.show_fd = False
-            if "show_emd" not in st.session_state:
-                st.session_state.show_emd = False
-            if "show_pd" not in st.session_state:
-                st.session_state.show_pd = False
-            if "show_ptd" not in st.session_state:
-                st.session_state.show_ptd = False
+        # --- INTERACTIVE BUTTONS WITH TOGGLE ---
+        if "show_fd" not in st.session_state:
+            st.session_state.show_fd = False
+        if "show_emd" not in st.session_state:
+            st.session_state.show_emd = False
+        if "show_pd" not in st.session_state:
+            st.session_state.show_pd = False
+        if "show_ptd" not in st.session_state:
+            st.session_state.show_ptd = False
 
-            col_a, col_b = st.columns(2)
-            with col_a:
-                if st.button("Foundation Data", key="fd_btn"):
-                    st.session_state.show_fd = not st.session_state.show_fd
-                if st.session_state.show_fd:
-                    st.info("""
-- Legal Entities  
-- Business Units  
-- Cost Centers  
-- Locations  
-- Pay Scales  
-- Job Classifications  
-- Work Schedule Objects
-                    """)
+        col_a, col_b = st.columns(2)
+        with col_a:
+            if st.button("Foundation Data", key="fd_btn"):
+                st.session_state.show_fd = not st.session_state.show_fd
+            if st.session_state.show_fd:
+                st.info("""
+- Org Hierarchy  
+- Cost Center  
+- Location  
+- Pay Scale Info  
+- Job Classification  
+- Work Schedule
+- Position Data
+                """)
 
-                if st.button("Employee Master Data", key="emd_btn"):
-                    st.session_state.show_emd = not st.session_state.show_emd
-                if st.session_state.show_emd:
-                    st.info("""
-- Personal & Contact Information  
-- Employee Assignments  
-- Job and Pay Details  
-- Employment History
-                    """)
+            if st.button("Employee Data", key="pd_btn"):
+                st.session_state.show_pd = not st.session_state.show_pd
+            if st.session_state.show_pd:
+                st.info("""
+- Basic Information  
+- Biographical Information  
+- Job Information  
+- Employment Information  
+- Compensation Info  
+- Payments  
+- Superannuation  
+- Tax Information  
+- Time  
+- Address Information  
+- Email Information  
+- Work Permit  
+- Alternative Cost Distribution  
+                """)
 
-            with col_b:
-                if st.button("Position Data", key="pd_btn"):
-                    st.session_state.show_pd = not st.session_state.show_pd
-                if st.session_state.show_pd:
-                    st.info("""
-- Hierarchies and Structures  
-- Reporting Lines  
-- Position Types and Groups  
-- Relationships and Dependencies
-                    """)
+        with col_b:
+            if st.button("Time Data", key="emd_btn"):
+                st.session_state.show_emd = not st.session_state.show_emd
+            if st.session_state.show_emd:
+                st.info("""
+- Time Type  
+- Time Account Type  
+- Time Account (Accrual/Entitlement)  
+- Time Account Details (Accrual/Entitlement)  
+- Employee Time (Absences)  
+                """)
 
-                if st.button("Payroll & Time Data", key="ptd_btn"):
-                    st.session_state.show_ptd = not st.session_state.show_ptd
-                if st.session_state.show_ptd:
-                    st.info("""
-- Attendance and Leave Balances  
-- Absence Records  
-- Payroll Fields  
-- Calculation Fields
-                    """)
+            if st.button("Payroll Data", key="ptd_btn"):
+                st.session_state.show_ptd = not st.session_state.show_ptd
+            if st.session_state.show_ptd:
+                st.info("""
+- Bank Info  
+- Super Funds  
+- Daily Work Schedule  
+- Period Work Schedule  
+- Work Schedule Rules  
+- Cost Center  
+                """)
 
-        with col2:
-            st.image("edmdr.png", use_container_width=True)
+    with col2:
+        st.image("edmdr.png", use_container_width=True)
 
-            st.markdown("### Supported Scenarios")
-            st.markdown("""
+        st.markdown("### Supported Scenarios")
+        st.markdown("""
 - SAP ECC → SuccessFactors (EC, Time, Payroll)  
 - SAP ECC → S/4HANA (HCM, Payroll, PA (Personnel Administration), OM (Organizational Management))  
 - Legacy/Non-SAP → SAP HCM and SuccessFactors
-            """)
+        """)
 
-            st.markdown("### Key Features")
-            st.markdown("""
+        st.markdown("### Key Features")
+        st.markdown("""
 - **Transformation Engine:** Transformation engine with rollback support  
 - **Template Uploads:** Pre-configured mapping, reduced effort  
 - **Role-Based Access:** Permission management based on user roles  
 - **Validation Reports:** Flags issues across all stages  
 - **Rule Engine:** Reusable, localized logic
-            """)
+        """)
 
-        # ✅ Bottom banner image
-        st.image("datamig_img.png", use_container_width=True)
+    # ✅ Bottom banner image
+    st.image("datamig_img.png", use_container_width=True)
 
     # --- VALIDATION ---
     elif sol_choice == "Validation":

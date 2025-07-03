@@ -1,15 +1,242 @@
+import streamlit as st
+import base64
+from streamlit_option_menu import option_menu
+import os
+
+st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+
+# --- SESSION STATE FOR DEMO NAVIGATION ---
+if 'demo_page' not in st.session_state:
+    st.session_state.demo_page = "main"
+
+def go_to_demo(page):
+    st.session_state.demo_page = page
+
+# --- REMOVE TOP WHITE SPACE & MAKE RESPONSIVE ---
+st.markdown("""
+    <style>
+        .block-container {
+            padding-top: 0.5rem !important;
+        }
+        @media (max-width: 768px) {
+            .block-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- BACKGROUND IMAGE SETUP ---
+def set_background(image_file):
+    with open(image_file, "rb") as f:
+        data = base64.b64encode(f.read()).decode()
+    st.markdown(f"""
+        <style>
+            .stApp {{
+                background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
+                            url("data:image/jpeg;base64,{data}");
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }}
+        </style>
+    """, unsafe_allow_html=True)
+
+set_background("pexels-googledeepmind-17483873.jpg")
+
+# --- SIDEBAR NAVIGATION ---
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Solutions", "Launch Pad"],  # ✅ renamed
+        options=["Home", "Solutions", "Launch Demo"],
         icons=["house", "layers", "rocket"],
         default_index=0,
-        styles={...}
+        styles={
+            "container": {"padding": "5px", "background-color": "#f8f9fa"},
+            "icon": {"color": "#003366", "font-size": "18px"},
+            "nav-link": {
+                "font-size": "16px",
+                "text-align": "left",
+                "margin": "5px",
+                "--hover-color": "#e6f0ff",
+            },
+            "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
+        },
     )
 
-# ✅ Reset to main scenario selector whenever Launch Pad is selected
-if selected == "Launch Pad":
-    st.session_state.demo_page = "main"
+# -------------------- HOME --------------------
+if selected == "Home":
+    st.markdown("""
+        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+            <div style='max-width:900px;margin:auto;'>
+                <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
+                <h3 style='text-align:center;'>MVS (Migration & Validation Suite)</h3> 
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns([3, 2.5])
+    with col1:
+        st.markdown("### Enable secure, scalable, and audit-ready HR data migration across SAP landscapes")
+        st.markdown("Supports Migration for SAP HCM (on-premise and cloud), SAP S/4HANA, and legacy HR systems.")
+        st.markdown("**Power your transformation with:**")
+        st.markdown("""
+        - **Schema Mapping & Transformation**  
+          Seamlessly aligns and converts source structures into SAP-ready formats across platforms.
+        - **Pre-Migration Validation**  
+          Identifies data issues early on through audit trials for cloud and S/4HANA adoption.
+        - **Rollback & Audit-Ready Tracking**  
+          Enables safe, reversible data loads with full traceability of rules, configurations, and actions.
+        """)
+        st.markdown("**Supported Migration Paths:**")
+        st.markdown("""
+        - SAP HCM → SuccessFactors  
+        - SAP HCM → S/4HANA  
+        - Legacy HR Systems → SAP Cloud or On-Premise
+        """)
+
+    with col2:
+        st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
+        st.video("https://youtu.be/o_PcYfH36TI")
+
+    col1, col2 = st.columns([3, 2.5])
+    with col1:
+        st.markdown("### Why MVS?")
+        st.markdown("""
+        <p>MVS is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        """, unsafe_allow_html=True)
+
+        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+        descriptions = [
+            "Template-driven, secure transfers between systems.",
+            "Detailed checks at the field level to catch issues throughout the migration process.",
+            "Automated comparisons between source and target systems."
+        ]
+
+        for icon, desc in zip(icons, descriptions):
+            icon_col, text_col = st.columns([1, 6])
+            with icon_col:
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    st.markdown(
+                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
+                        unsafe_allow_html=True
+                    )
+            with text_col:
+                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("#### Key Capabilities:")
+        st.markdown("""
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+            <li>Designed to reduce manual effort and shorten project timelines</li>
+            <li>Supports stakeholder collaboration with clear audit and status visibility</li>
+            <li>Ability to easily create and manage transformation rules with an intuitive, interactive interface</li>
+        </ul>
+        """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
+        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Migration Made Easy</h4>
+                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Integrity & Compliance</h4>
+                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Document-Ready Migrations</h4>
+                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+# -------------------- DEMO PAGE --------------------
+elif selected == "Launch Demo":
+    if st.session_state.demo_page == "main":
+        st.title("Select a Migration Scenario")
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            if st.button("SAP HCM → SuccessFactors", key="btn_sfsf", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
+
+        with col2:
+            st.button("SAP HCM → S/4HANA (coming soon)", key="btn_s4", use_container_width=True)
+
+        with col3:
+            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", use_container_width=True)
+
+        # --- Centered image under buttons ---
+        st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+        st.image("pexels-cookiecutter-1148820 (1).jpg", width=750)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+
+    elif st.session_state.demo_page == "sap_to_sf":
+        # --- Back button at top ---
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+                st.session_state.demo_page = "main"
+
+        st.title("SAP HCM → SuccessFactors")
+        st.subheader("What do you want to migrate?")
+
+        # --- Reusable function for button + expander ---
+        def migration_row(label, key, detail_text):
+            col1, col2 = st.columns([2.5, 5])
+            with col1:
+                st.button(label, key=key, use_container_width=True)
+            with col2:
+                with st.expander("ℹ️ Details"):
+                    st.markdown(detail_text)
+
+        # --- Each button + info dropdown ---
+        migration_row("Foundation Data", "fd_demo", """
+- Legal entities  
+- Hierarchy structures  
+- Cost centers  
+- Locations  
+- Pay scale information  
+- Job functions and classifications  
+- Work schedule objects  
+        """)
+
+        migration_row("Position Data", "pd_demo", """
+- Hierarchies  
+- Reporting lines  
+- Position classifications  
+- Relationships  
+        """)
+
+        migration_row("Employee Master Data", "emd_demo", """
+- Personal details  
+- Assignments  
+- Job- and pay-related data  
+        """)
+
+        migration_row("Payroll & Time Data", "ptd_demo", """
+- Attendance records  
+- Leave balances  
+- Absence details  
+- Payroll-relevant fields  
+        """)
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

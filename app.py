@@ -53,13 +53,19 @@ with st.sidebar:
         icons=["house", "layers", "rocket"],
         default_index=0,
         styles={
-            "container": {"padding": "5px", "background-color": "#f8f9fa"},
-            "icon": {"color": "#003366", "font-size": "18px"},
+            "container": {
+                "padding": "5px",
+                "background-color": "#f8f9fa"
+            },
+            "icon": {
+                "color": "#003366",
+                "font-size": "18px"
+            },
             "nav-link": {
                 "font-size": "16px",
                 "text-align": "left",
                 "margin": "5px",
-                "--hover-color": "#e6f0ff",
+                "--hover-color": "#e6f0ff"
             },
             "nav-link-selected": {
                 "background-color": "#a3c2f2",
@@ -67,14 +73,11 @@ with st.sidebar:
                 "border-radius": "10px",
                 "border": "2px solid #80bfff",
                 "padding": "8px 12px",
-                "width": "90%",  # ✅ prevents full-width stretching
-                "margin": "auto"  # ✅ centers it
-            }
-
+                "width": "90%",
+                "margin": "auto"
             }
         }
     )
-
 
 # -------------------- HOME --------------------
 if selected == "Home":

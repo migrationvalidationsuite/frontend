@@ -182,7 +182,7 @@ elif selected == "Launch Demo":
             with b3:
                 st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
-            st.image("pexels-cookiecutter-1148820 (1).jpg", use_container_width=True)
+            st.image("datamigimgjpg", use_container_width=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
         # --- Back button ---

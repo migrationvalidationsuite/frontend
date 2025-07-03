@@ -49,8 +49,8 @@ set_background("pexels-googledeepmind-17483873.jpg")
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
-        options=["Home", "Solutions", "Launch Demo"],
-        icons=["house", "layers", "rocket"],
+        options=["Home", "Solutions"],
+        icons=["house", "layers"],
         default_index=0,
         styles={
             "container": {"padding": "5px", "background-color": "#f8f9fa"},

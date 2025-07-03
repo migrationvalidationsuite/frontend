@@ -1,21 +1,28 @@
+# demo_module.py
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-def render_demo():
+def render():
     st.subheader("🚀 Unified User Processing App")
 
-    uploaded_files = st.sidebar.file_uploader("Upload files", type=["xlsx"], accept_multiple_files=True)
+    uploaded_files = st.file_uploader("Upload files", type=["xlsx"], accept_multiple_files=True)
 
-    st.sidebar.markdown("### 🛠️ Default Values")
-    default_position = st.sidebar.text_input("Default Position", "SPECIALIST")
-    default_org_unit = st.sidebar.text_input("Default Org Unit", "10202155")
-    default_location_code = st.sidebar.text_input("Default Location Code", "AL")
-    default_country = st.sidebar.selectbox("Country", ["Australia", "India", "USA"], index=0)
-    default_state = st.sidebar.selectbox("State", ["NSW", "VIC", "QLD", "ACT"], index=0)
-    default_timezone = st.sidebar.selectbox("Timezone", ["AEST", "IST", "PST", "UTC"], index=0)
+    st.markdown("### 🛠️ Default Values")
+    default_position = st.text_input("Default Position", "SPECIALIST")
+    default_org_unit = st.text_input("Default Org Unit", "10202155")
+    default_location_code = st.text_input("Default Location Code", "AL")
+    default_country = st.selectbox("Country", ["Australia", "India", "USA"], index=0)
+    default_state = st.selectbox("State", ["NSW", "VIC", "QLD", "ACT"], index=0)
+    default_timezone = st.selectbox("Timezone", ["AEST", "IST", "PST", "UTC"], index=0)
 
-    tab1, tab2, tab3, tab4 = st.tabs(["Basic Generator Panel", "Validation Panel", "Statistics Summary", "Dashboard Builder"])
+    tab1, tab2, tab3, tab4 = st.tabs([
+        "Basic Generator Panel", 
+        "Validation Panel", 
+        "Statistics Summary", 
+        "Dashboard Builder"
+    ])
     combined_df = pd.DataFrame()
 
     def clean_columns(df):
@@ -65,4 +72,4 @@ def render_demo():
             else:
                 st.info("Upload data to build dashboard.")
     else:
-        st.info("⬅️ Please upload at least one .xlsx file from the left panel.")
+        st.info("⬅️ Please upload at least one .xlsx file.")

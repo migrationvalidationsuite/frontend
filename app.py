@@ -256,11 +256,21 @@ elif selected == "Solutions":
 A secure, scalable, audit-ready solution for migrating HR data across SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.
             """)
 
-            # --- INTERACTIVE BUTTONS ---
-            col_a, col_b = st.columns(2)
+            # --- INTERACTIVE BUTTONS WITH TOGGLE ---
+            if "show_fd" not in st.session_state:
+                st.session_state.show_fd = False
+            if "show_emd" not in st.session_state:
+                st.session_state.show_emd = False
+            if "show_pd" not in st.session_state:
+                st.session_state.show_pd = False
+            if "show_ptd" not in st.session_state:
+                st.session_state.show_ptd = False
 
+            col_a, col_b = st.columns(2)
             with col_a:
-                if st.button("Foundation Data"):
+                if st.button("Foundation Data", key="fd_btn"):
+                    st.session_state.show_fd = not st.session_state.show_fd
+                if st.session_state.show_fd:
                     st.info("""
 - Legal Entities  
 - Business Units  
@@ -271,29 +281,35 @@ A secure, scalable, audit-ready solution for migrating HR data across SAP On-Pre
 - Work Schedule Objects
                     """)
 
-                if st.button("Employee Master Data"):
+                if st.button("Employee Master Data", key="emd_btn"):
+                    st.session_state.show_emd = not st.session_state.show_emd
+                if st.session_state.show_emd:
                     st.info("""
 - Personal & Contact Information  
 - Employee Assignments  
 - Job and Pay Details  
-- Employment History  
+- Employment History
                     """)
 
             with col_b:
-                if st.button("Position Data"):
+                if st.button("Position Data", key="pd_btn"):
+                    st.session_state.show_pd = not st.session_state.show_pd
+                if st.session_state.show_pd:
                     st.info("""
 - Hierarchies and Structures  
 - Reporting Lines  
 - Position Types and Groups  
-- Relationships and Dependencies  
+- Relationships and Dependencies
                     """)
 
-                if st.button("Payroll & Time Data"):
+                if st.button("Payroll & Time Data", key="ptd_btn"):
+                    st.session_state.show_ptd = not st.session_state.show_ptd
+                if st.session_state.show_ptd:
                     st.info("""
 - Attendance and Leave Balances  
 - Absence Records  
 - Payroll Fields  
-- Calculation Fields  
+- Calculation Fields
                     """)
 
         with col2:
@@ -332,7 +348,7 @@ Our validation services ensure HR data is correctly mapped, transformed, and loa
 - Mapping Accuracy: Verify source-to-target alignment  
 - Source-to-File Match: Ensure extracted data mirrors load-ready files  
 - Post-Load Validation: Confirm target system reflects intended records  
-- Change Monitoring: Identify and isolate high-impact issues  
+- Change Monitoring: Identify and isolate high-impact issues
             """)
 
         with col2:
@@ -342,7 +358,7 @@ Our validation services ensure HR data is correctly mapped, transformed, and loa
 - Categorized Exception Reporting  
 - Iterative Revalidation Workflow  
 - Full Audit Logging for Compliance  
-- Support for all Employee Information  
+- Support for all Employee Information
             """)
             st.image("validation_lifecycle.png", use_container_width=False, width=350)
 
@@ -358,7 +374,7 @@ Our monitoring validates accurate data loads post-migration–across platforms l
 - **Field-Level Accuracy:** Detect mismatches in critical values  
 - **Record Completeness:** Spot missing/extra records  
 - **Business-Critical Fields:** Focus on payroll, time, and org structures  
-- **Change Tracking:** View changes before/after load  
+- **Change Tracking:** View changes before/after load
 
 We cover field-level, record-level, and format-level checks to ensure clean post-migration integrity across HR modules.  
 Visual dashboards and summary reports offer real-time reconciliation status for faster resolution and compliance.
@@ -370,6 +386,7 @@ Visual dashboards and summary reports offer real-time reconciliation status for 
 - Source-to-Target Comparisons  
 - Discrepancy Summary Reports  
 - Visual Reconciliation Dashboards  
-- Logged Issues for Governance & Audit  
+- Logged Issues for Governance & Audit
             """)
             st.image("pexels-divinetechygirl-1181341.jpg", use_container_width=False, width=350)
+

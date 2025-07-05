@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import re
 from utils.validation_utils import validate_data
 from utils.nlp_utils import explain_validation_error, generate_llm_explanation

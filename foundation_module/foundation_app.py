@@ -18,6 +18,7 @@ from foundation_module.panels.statistics_panel import show_statistics_panel
 from foundation_module.panels.dashboard_panel import show_dashboard_panel
 from foundation_module.panels.transformation_logger import TransformationLogger
 
+
 def render():
     st.markdown("""
         <style>

@@ -1,11 +1,11 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))  # <-- Add this line
+import sys, os
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
 from foundation_module.foundation_app import render as render_foundation
+import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 

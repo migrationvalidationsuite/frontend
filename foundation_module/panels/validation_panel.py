@@ -4,8 +4,8 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import re
-from utils.validation_utils import validate_data
-from utils.nlp_utils import explain_validation_error, generate_llm_explanation
+from foundation_module.utils.validation_utils import validate_data
+from foundation_module.utils.nlp_utils import explain_validation_error, generate_llm_explanation
 
 def show_validation_panel(state):
     st.header("Data Validation Center")

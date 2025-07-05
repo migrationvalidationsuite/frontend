@@ -106,7 +106,7 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
-    col1, col2 = st.columns([3, 2.5])
+    col1, col2 = st.columns([3, 3])
     with col1:
         st.markdown("### Why MVS?")
         st.markdown("""

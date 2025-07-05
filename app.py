@@ -106,6 +106,69 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
+    col1, col2 = st.columns([3, 2.5])
+    with col1:
+        st.markdown("### Why MVS?")
+        st.markdown("""
+        <p>MVS is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
+        """, unsafe_allow_html=True)
+
+        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
+        descriptions = [
+            "Template-driven, secure transfers between systems.",
+            "Detailed checks at the field level to catch issues throughout the migration process.",
+            "Automated comparisons between source and target systems."
+        ]
+
+        for icon, desc in zip(icons, descriptions):
+            icon_col, text_col = st.columns([1, 6])
+            with icon_col:
+                if os.path.exists(icon):
+                    with open(icon, "rb") as f:
+                        img_data = base64.b64encode(f.read()).decode()
+                    st.markdown(
+                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
+                        unsafe_allow_html=True
+                    )
+            with text_col:
+                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("#### Key Capabilities:")
+        st.markdown("""
+        <ul>
+            <li>AI-powered mapping & validation</li>
+            <li>Real-time preview & profiling</li>
+            <li>Cross-object and row-level validation</li>
+            <li>Licensing controls & role-based access</li>
+            <li>Audit logs, rollback & monitoring</li>
+            <li>Designed to reduce manual effort and shorten project timelines</li>
+            <li>Supports stakeholder collaboration with clear audit and status visibility</li>
+            <li>Ability to easily create and manage transformation rules with an intuitive, interactive interface</li>
+        </ul>
+        """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
+        <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
+        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
+        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Migration Made Easy</h4>
+                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Data Integrity & Compliance</h4>
+                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
+            </div>
+            <div style='width:30%;text-align:center;'>
+                <h4 style='color:white;'>Document-Ready Migrations</h4>
+                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":

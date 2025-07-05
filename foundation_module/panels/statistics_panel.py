@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-from utils.statistics_utils import calculate_statistics
+from foundation_module.utils.statistics_utils import calculate_statistics
 
 def show_statistics_panel(state):
     st.header("Advanced Organizational Analytics")
@@ -86,52 +86,49 @@ def show_statistics_panel(state):
                     }),
                     use_container_width=True
                 )
-        
-        # Enhanced Temporal Analysis with Data Validation
-if 'date_ranges' in state['statistics'] and isinstance(state['statistics']['date_ranges'], pd.DataFrame):
-    st.subheader("Temporal Analysis")
-    st.write("Organizational Growth Over Time")
-    
-    # Ensure required columns exist
-    if all(col in state['statistics']['date_ranges'].columns for col in ['Start Year', 'Count']):
-        temp_col1, temp_col2 = st.columns([2, 1])
-        
-        with temp_col1:
-            try:
-                fig = px.area(
-                    state['statistics']['date_ranges'],
-                    x='Start Year',
-                    y='Count',
-                    title="Cumulative Organizational Growth",
-                    markers=True,
-                    line_shape='spline'
-                )
-                st.plotly_chart(fig, use_container_width=True)
-            except Exception as e:
-                st.error(f"Error generating growth chart: {str(e)}")
-                st.write("Debug Data:")
-                st.write(state['statistics']['date_ranges'].head())
-        
-        with temp_col2:
-            try:
-                yearly_stats = state['statistics']['date_ranges'].copy()
-                yearly_stats['YoY Growth'] = yearly_stats['Count'].pct_change() * 100
-                st.dataframe(
-                    yearly_stats.style.format({
-                        'Count': '{:.0f}',
-                        'YoY Growth': '{:.1f}%'
-                    }),
-                    use_container_width=True
-                )
-            except Exception as e:
-                st.error(f"Error calculating growth metrics: {str(e)}")
-    else:
-        st.warning("Temporal analysis data missing required columns ('Start Year' and/or 'Count')")
-        st.write("Available columns:", state['statistics']['date_ranges'].columns.tolist())
-else:
-    st.warning("No temporal analysis data available or data is in incorrect format")
-        
-        # Level Composition Analysis
+
+        # Temporal Analysis
+        if 'date_ranges' in state['statistics'] and isinstance(state['statistics']['date_ranges'], pd.DataFrame):
+            st.subheader("Temporal Analysis")
+            st.write("Organizational Growth Over Time")
+            
+            if all(col in state['statistics']['date_ranges'].columns for col in ['Start Year', 'Count']):
+                temp_col1, temp_col2 = st.columns([2, 1])
+                
+                with temp_col1:
+                    try:
+                        fig = px.area(
+                            state['statistics']['date_ranges'],
+                            x='Start Year',
+                            y='Count',
+                            title="Cumulative Organizational Growth",
+                            markers=True,
+                            line_shape='spline'
+                        )
+                        st.plotly_chart(fig, use_container_width=True)
+                    except Exception as e:
+                        st.error(f"Error generating growth chart: {str(e)}")
+                        st.write(state['statistics']['date_ranges'].head())
+                
+                with temp_col2:
+                    try:
+                        yearly_stats = state['statistics']['date_ranges'].copy()
+                        yearly_stats['YoY Growth'] = yearly_stats['Count'].pct_change() * 100
+                        st.dataframe(
+                            yearly_stats.style.format({
+                                'Count': '{:.0f}',
+                                'YoY Growth': '{:.1f}%'
+                            }),
+                            use_container_width=True
+                        )
+                    except Exception as e:
+                        st.error(f"Error calculating growth metrics: {str(e)}")
+            else:
+                st.warning("Temporal data missing 'Start Year' and/or 'Count' columns")
+        else:
+            st.warning("No temporal analysis data available or invalid format")
+
+        # Composition Analysis
         st.subheader("Level Composition Analysis")
         comp_col1, comp_col2 = st.columns([2, 1])
         
@@ -167,7 +164,7 @@ else:
                     use_container_width=True
                 )
         
-        # Compensation Analysis (if available)
+        # Compensation
         if 'Salary' in state['hrp1000'].columns:
             st.subheader("Compensation Structure")
             comp_col1, comp_col2 = st.columns([2, 1])
@@ -195,13 +192,12 @@ else:
                     use_container_width=True
                 )
         
-        # Detailed statistics table
         st.subheader("Complete Statistical Summary")
         st.dataframe(
             state['statistics'].get('detailed_stats', pd.DataFrame()),
             use_container_width=True,
             height=400
         )
-        
+    
     except Exception as e:
         st.error(f"Error generating statistics: {str(e)}")

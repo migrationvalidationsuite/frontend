@@ -1,11 +1,19 @@
 # foundation_module/foundation_app.py
 
 import streamlit as st
+import pandas as pd
 import sys
 import os
 
+# Add parent directory to path to access 'panels' and others
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import pandas as pd
+
+from panels.hierarchy_panel import show_hierarchy_panel
+from panels.transformation_panel import show_transformation_panel, TransformationLogger
+from panels.validation_panel import show_validation_panel
+from panels.statistics_panel import show_statistics_panel
+from panels.dashboard_panel import show_dashboard_panel
+
 
 def render():
     # Configure page layout (only safe if not already set by main app)

@@ -167,8 +167,14 @@ if selected == "Home":
     </div>
     """, unsafe_allow_html=True)
 
+# -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
-    
+    if 'demo_page' not in st.session_state:
+        st.session_state.demo_page = "main"
+
+    def go_to_demo(page):
+        st.session_state.demo_page = page
+
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
@@ -179,26 +185,20 @@ elif selected == "Launch Demo":
 
         col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            b1, b2, b3 = st.columns(3)
+            if st.button("SAP HCM → SuccessFactors", key="btn_sf"):
+                st.session_state.demo_page = "sap_to_sf"
+                st.experimental_rerun()
 
-            with b1:
-                if st.button("SAP HCM → SuccessFactors"):
-                    st.session_state.demo_page = "sap_to_sf"
-
-            with b2:
-                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
-
-            with b3:
-                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
-
+            st.button("SAP HCM → S/4HANA (coming soon)", key="btn_s4", disabled=True)
+            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", disabled=True)
             st.image("dmigimg.jpg", use_container_width=True)
-
 
     elif st.session_state.demo_page == "sap_to_sf":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+            if st.button("⬅ Back to Scenarios", key="btn_back"):
                 st.session_state.demo_page = "main"
+                st.experimental_rerun()
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -206,9 +206,10 @@ elif selected == "Launch Demo":
         def migration_row(label, key, detail_text, next_page=None):
             col1, col2 = st.columns([5, 3.8])
             with col1:
-                if st.button(label, key=key, use_container_width=True):
+                if st.button(label, key=key):
                     if next_page:
                         st.session_state.demo_page = next_page
+                        st.experimental_rerun()
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
@@ -244,55 +245,19 @@ elif selected == "Launch Demo":
 - Addresses  
         """, next_page="foundation_data_view")
 
-        migration_row("Employee Data", "pd_demo", """
-- Basic Import  
-- Biographical Information (Person Info)  
-- Employment Info  
-- Job Information  
-- Personal Info (Hire Date)  
-- National ID Information  
-- Compensation Info  
-- Payment Information  
-- Payment Information - Details  
-- Recurring Payments and Allowances  
-- Recurring Deductions (Parent)  
-- Recurring Deductions - Recurring Items (Child) (with end date)  
-- Non Recurring Payments and Allowances  
-- Super Fund Code  
-- Emergency Contact  
-- Phone Information  
-- Email Information  
-- Work Permit Information  
-- Position - Compliance Requirements  
-- Alternative Cost Distribution  
-- Alternative Cost Distribution for Time  
-        """)
-
-        migration_row("Time Data", "td_demo", """
-- Time Type  
-- Time Account Type  
-- Time Account (Accrual/Entitlement)  
-- Time Account Details (Accrual/Entitlement)  
-- Employee Time (Absences)  
-        """)
-
-        migration_row("Payroll Data", "ptd_demo", """
-- Time Type  
-- Time Account Type  
-- Time Account (Accrual/Entitlement)  
-- Time Account Details (Accrual/Entitlement)  
-- Employee Time (Absences)  
-        """)
+        migration_row("Employee Data", "pd_demo", "…")
+        migration_row("Time Data", "td_demo", "…")
+        migration_row("Payroll Data", "ptd_demo", "…")
 
     elif st.session_state.demo_page == "foundation_data_view":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
+            if st.button("⬅ Back to Demo", key="back_from_foundation"):
                 st.session_state.demo_page = "sap_to_sf"
+                st.experimental_rerun()
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()
-
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

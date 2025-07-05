@@ -2,8 +2,12 @@ import streamlit as st
 import pandas as pd
 import json
 import os
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from datetime import datetime
 from utils.file_utils import create_download_button
+from panels.transformation_panel import show_transformation_panel, TransformationLogger
+
 
 class TransformationLogger:
     def __init__(self):

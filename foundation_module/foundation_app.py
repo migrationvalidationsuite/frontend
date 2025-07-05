@@ -1,11 +1,10 @@
 # foundation_module/foundation_app.py
 
 import streamlit as st
-from panels.hierarchy_panel import show_hierarchy_panel
-from panels.transformation_panel import show_transformation_panel, TransformationLogger
-from panels.validation_panel import show_validation_panel
-from panels.statistics_panel import show_statistics_panel
-from panels.dashboard_panel import show_dashboard_panel
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import pandas as pd
 
 def render():

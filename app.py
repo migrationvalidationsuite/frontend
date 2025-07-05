@@ -1,3 +1,4 @@
+
 import sys, os
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
@@ -5,7 +6,6 @@ import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
 from foundation_module.foundation_app import render as render_foundation
-import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
@@ -15,6 +15,7 @@ if 'demo_page' not in st.session_state:
 
 def go_to_demo(page):
     st.session_state.demo_page = page
+    st.rerun()
 
 # --- REMOVE TOP WHITE SPACE & MAKE RESPONSIVE ---
 st.markdown("""
@@ -71,14 +72,16 @@ with st.sidebar:
 
 # -------------------- HOME --------------------
 if selected == "Home":
-    st.markdown("""
-        <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
-            <div style='max-width:900px;margin:auto;'>
-                <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
-                <h3 style='text-align:center;'>MVS (Migration & Validation Suite)</h3> 
+    col_banner, _ = st.columns([1.0, 0.1])
+    with col_banner:
+        st.markdown("""
+            <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+                <div style='max-width:900px;margin:auto;'>
+                    <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
+                    <h3 style='text-align:center;'>MVS (Migration & Validation Suite)</h3> 
+                </div>
             </div>
-        </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([3, 2.5])
     with col1:
@@ -104,77 +107,8 @@ if selected == "Home":
         st.image("pexels-divinetechygirl-1181263.jpg", use_container_width=True)
         st.video("https://youtu.be/o_PcYfH36TI")
 
-    col1, col2 = st.columns([3, 2.5])
-    with col1:
-        st.markdown("### Why MVS?")
-        st.markdown("""
-        <p>MVS is a robust solution for orchestrating HR data migration across hybrid environments, including SAP On-Premise, S/4HANA, SuccessFactors, and legacy systems.</p>
-        """, unsafe_allow_html=True)
-
-        icons = ["data_icon.png", "check_icon.png", "chart_icon.png"]
-        descriptions = [
-            "Template-driven, secure transfers between systems.",
-            "Detailed checks at the field level to catch issues throughout the migration process.",
-            "Automated comparisons between source and target systems."
-        ]
-
-        for icon, desc in zip(icons, descriptions):
-            icon_col, text_col = st.columns([1, 6])
-            with icon_col:
-                if os.path.exists(icon):
-                    with open(icon, "rb") as f:
-                        img_data = base64.b64encode(f.read()).decode()
-                    st.markdown(
-                        f"""<img src="data:image/png;base64,{img_data}" width="40" style="margin-top:10px;">""",
-                        unsafe_allow_html=True
-                    )
-            with text_col:
-                st.markdown(f"<p style='margin-top:18px;'>{desc}</p>", unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("#### Key Capabilities:")
-        st.markdown("""
-        <ul>
-            <li>AI-powered mapping & validation</li>
-            <li>Real-time preview & profiling</li>
-            <li>Cross-object and row-level validation</li>
-            <li>Licensing controls & role-based access</li>
-            <li>Audit logs, rollback & monitoring</li>
-            <li>Designed to reduce manual effort and shorten project timelines</li>
-            <li>Supports stakeholder collaboration with clear audit and status visibility</li>
-            <li>Ability to easily create and manage transformation rules with an intuitive, interactive interface</li>
-        </ul>
-        """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div style='background-color:#002b5c;padding:40px;margin-top:50px;border-radius:10px;'>
-        <h3 style='color:white;text-align:center;'>Built for SAP Cloud & On-Premise</h3>
-        <p style='color:white;text-align:center;'>Our platform is designed to simplify, safeguard, and speed up your transformation journey.</p>
-        <div style='display:flex;justify-content:space-around;margin-top:30px;'>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Migration Made Easy</h4>
-                <p style='color:white;'>Supports smooth data preparation and migration for SAP environments.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Data Integrity & Compliance</h4>
-                <p style='color:white;'>Field-level validation ensures readiness for audits and continuity.</p>
-            </div>
-            <div style='width:30%;text-align:center;'>
-                <h4 style='color:white;'>Document-Ready Migrations</h4>
-                <p style='color:white;'>Generate structured output files ready for upload and compliance.</p>
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
-    if 'demo_page' not in st.session_state:
-        st.session_state.demo_page = "main"
-
-    def go_to_demo(page):
-        st.session_state.demo_page = page
-
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
@@ -185,20 +119,23 @@ elif selected == "Launch Demo":
 
         col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            if st.button("SAP HCM → SuccessFactors", key="btn_sf"):
-                st.session_state.demo_page = "sap_to_sf"
-                st.experimental_rerun()
-
-            st.button("SAP HCM → S/4HANA (coming soon)", key="btn_s4", disabled=True)
-            st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", key="btn_legacy", disabled=True)
+            b1, b2, b3 = st.columns(3)
+            with b1:
+                if st.button("SAP HCM → SuccessFactors"):
+                    st.session_state.demo_page = "sap_to_sf"
+                    st.rerun()
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
             st.image("dmigimg.jpg", use_container_width=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Scenarios", key="btn_back"):
+            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
                 st.session_state.demo_page = "main"
-                st.experimental_rerun()
+                st.rerun()
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -206,55 +143,25 @@ elif selected == "Launch Demo":
         def migration_row(label, key, detail_text, next_page=None):
             col1, col2 = st.columns([5, 3.8])
             with col1:
-                if st.button(label, key=key):
+                if st.button(label, key=key, use_container_width=True):
                     if next_page:
                         st.session_state.demo_page = next_page
-                        st.experimental_rerun()
+                        st.rerun()
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
 
-        migration_row("Foundation Data", "fd_demo", """
-- Pay Scale Level  
-- Pay Scale Level - Pay Component Assignment  
-- Pay Scale Group  
-- Pay Scale Area  
-- Pay Scale Type  
-- Pay Calendar  
-- Pay Calendar - Pay Period  
-- PayComponent  
-- Holiday  
-- Holiday Calendar  
-- Work Schedule  
-- Work Schedule Day Model  
-- Legal Entity (Company)  
-- Business Unit  
-- Business Unit - Legal Entity  
-- Division  
-- Division - Business Unit  
-- Department  
-- Department - Division  
-- Team  
-- Team - Department  
-- Job Family (Job Function)  
-- Job Classification  
-- Job Classification AUS  
-- Location  
-- Cost Centre  
-- Positions  
-- Addresses  
-        """, next_page="foundation_data_view")
-
-        migration_row("Employee Data", "pd_demo", "…")
-        migration_row("Time Data", "td_demo", "…")
-        migration_row("Payroll Data", "ptd_demo", "…")
+        migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
+        migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")
+        migration_row("Time Data", "td_demo", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+        migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...")
 
     elif st.session_state.demo_page == "foundation_data_view":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Demo", key="back_from_foundation"):
+            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
-                st.experimental_rerun()
+                st.rerun()
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

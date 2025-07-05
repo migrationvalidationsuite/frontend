@@ -1,7 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-from utils.statistics_utils import calculate_statistics
+from foundation_module.utils.statistics_utils import calculate_statistics
 
 def show_dashboard_panel(state):
     st.header("Interactive Organizational Dashboard")

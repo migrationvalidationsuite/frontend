@@ -1,5 +1,9 @@
 import streamlit as st
 import pandas as pd
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from foundation_module.utils.file_utils import load_data, create_download_button
 from foundation_module.utils.hierarchy_utils import build_hierarchy, optimize_table_display
 

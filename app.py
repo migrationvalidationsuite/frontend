@@ -15,7 +15,6 @@ if 'demo_page' not in st.session_state:
 
 def go_to_demo(page):
     st.session_state.demo_page = page
-    st.rerun()
 
 # --- REMOVE TOP WHITE SPACE & MAKE RESPONSIVE ---
 st.markdown("""
@@ -123,7 +122,6 @@ elif selected == "Launch Demo":
             with b1:
                 if st.button("SAP HCM → SuccessFactors"):
                     st.session_state.demo_page = "sap_to_sf"
-                    st.rerun()
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
             with b3:
@@ -135,7 +133,6 @@ elif selected == "Launch Demo":
         with back_col:
             if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
                 st.session_state.demo_page = "main"
-                st.rerun()
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -160,7 +157,6 @@ elif selected == "Launch Demo":
         with back_col:
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
-                st.rerun()
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

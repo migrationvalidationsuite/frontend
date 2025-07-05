@@ -119,20 +119,26 @@ elif selected == "Launch Demo":
         col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
             b1, b2, b3 = st.columns(3)
+
             with b1:
-                if st.button("SAP HCM → SuccessFactors"):
+                if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
                     st.session_state.demo_page = "sap_to_sf"
+                    st.rerun()  # ✅ ensures single-click transition
+
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+
             with b3:
                 st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
+
             st.image("dmigimg.jpg", use_container_width=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Scenarios", key="btn_back", use_container_width=True):
+            if st.button("⬅ Back to Scenarios", key="btn_back_scenarios", use_container_width=True):
                 st.session_state.demo_page = "main"
+                st.rerun()  # ✅ ensures single-click back
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -143,11 +149,10 @@ elif selected == "Launch Demo":
                 if st.button(label, key=key, use_container_width=True):
                     if next_page:
                         st.session_state.demo_page = next_page
-                        st.rerun()  # ✅ force rerun so user doesn't have to click twice
+                        st.rerun()  # ✅ rerun here too
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
-
 
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")
@@ -159,6 +164,7 @@ elif selected == "Launch Demo":
         with back_col:
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
+                st.rerun()  # ✅ rerun again
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

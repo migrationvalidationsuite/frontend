@@ -165,8 +165,7 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
 elif selected == "Launch Demo":
-    from demo_module import render  # ✅ make sure this is imported
-
+    
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>

@@ -1,6 +1,7 @@
 import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
+from foundation_module.foundation_app import render as render_foundation
 import os
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
@@ -288,7 +289,8 @@ elif selected == "Launch Demo":
                 st.session_state.demo_page = "sap_to_sf"
 
         st.markdown("### Foundation Data – Interactive View")
-        render()
+        render_foundation()
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

@@ -1,3 +1,5 @@
+# foundation_module/foundation_app.py
+
 import streamlit as st
 import pandas as pd
 import os
@@ -8,7 +10,7 @@ from datetime import datetime
 # Append root directory to sys.path for absolute imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# --- FIXED IMPORTS ---
+# ✅ FIXED IMPORTS
 from foundation_module.panels.hierarchy_panel import show_hierarchy_panel
 from foundation_module.panels.transformation_panel import show_transformation_panel
 from foundation_module.panels.validation_panel import show_validation_panel
@@ -17,7 +19,6 @@ from foundation_module.panels.dashboard_panel import show_dashboard_panel
 from foundation_module.panels.transformation_logger import TransformationLogger
 
 def render():
-    # Optional layout config styles
     st.markdown("""
         <style>
             .stDataFrame { width: 100% !important; }
@@ -44,7 +45,7 @@ def render():
             'pending_transforms': []
         }
 
-    # Local Navigation
+    # Local Sidebar Navigation
     with st.sidebar:
         st.markdown("### Foundation Module")
         panel = st.radio(

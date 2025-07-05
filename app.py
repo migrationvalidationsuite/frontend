@@ -143,7 +143,7 @@ elif selected == "Launch Demo":
                 if st.button(label, key=key, use_container_width=True):
                     if next_page:
                         st.session_state.demo_page = next_page
-                s        t.rerun()  # ✅ force rerun so user doesn't have to click twice
+                        st.rerun()  # ✅ force rerun so user doesn't have to click twice
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)

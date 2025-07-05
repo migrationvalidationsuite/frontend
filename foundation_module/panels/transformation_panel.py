@@ -6,7 +6,7 @@ import sys, os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from datetime import datetime
 from utils.file_utils import create_download_button
-from panels.transformation_panel import show_transformation_panel, TransformationLogger
+from panels.transformation_logger import TransformationLogger
 
 
 class TransformationLogger:

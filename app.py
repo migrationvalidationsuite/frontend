@@ -143,9 +143,11 @@ elif selected == "Launch Demo":
                 if st.button(label, key=key, use_container_width=True):
                     if next_page:
                         st.session_state.demo_page = next_page
+                s        t.rerun()  # ✅ force rerun so user doesn't have to click twice
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
+
 
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")

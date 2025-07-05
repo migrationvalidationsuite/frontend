@@ -2,17 +2,21 @@
 
 import streamlit as st
 import pandas as pd
-import sys
 import os
+import sys
+import json
+from datetime import datetime
 
-# Add parent directory to path to access 'panels' and others
+# Append parent dir for panel imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from panels.hierarchy_panel import show_hierarchy_panel
-from panels.transformation_panel import show_transformation_panel, TransformationLogger
+from panels.transformation_panel import show_transformation_panel
 from panels.validation_panel import show_validation_panel
 from panels.statistics_panel import show_statistics_panel
 from panels.dashboard_panel import show_dashboard_panel
+from panels.transformation_logger import TransformationLogger  # ✅ Add this line
+
 
 
 def render():

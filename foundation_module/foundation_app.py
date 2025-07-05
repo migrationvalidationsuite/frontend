@@ -2,23 +2,19 @@
 
 import streamlit as st
 import pandas as pd
-import os
-import sys
 import json
 from datetime import datetime
 
-# Append parent dir for panel imports
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from panels.hierarchy_panel import show_hierarchy_panel
-from panels.transformation_panel import show_transformation_panel
-from panels.validation_panel import show_validation_panel
-from panels.statistics_panel import show_statistics_panel
-from panels.dashboard_panel import show_dashboard_panel
-from panels.transformation_logger import TransformationLogger
+# Panel and Utility Imports (using full paths for Streamlit Cloud compatibility)
+from foundation_module.panels.hierarchy_panel import show_hierarchy_panel
+from foundation_module.panels.transformation_panel import show_transformation_panel
+from foundation_module.panels.validation_panel import show_validation_panel
+from foundation_module.panels.statistics_panel import show_statistics_panel
+from foundation_module.panels.dashboard_panel import show_dashboard_panel
+from foundation_module.panels.transformation_logger import TransformationLogger
 
 def render():
-    # Configure page layout (only safe if not already set by main app)
+    # --- Custom Layout Styling ---
     st.markdown("""
         <style>
             .stDataFrame {
@@ -41,9 +37,6 @@ def render():
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-            .css-1v0mbdj {
-                max-width: 100%;
-            }
             .block-container {
                 padding-top: 2rem;
                 padding-bottom: 2rem;
@@ -55,7 +48,7 @@ def render():
         </style>
     """, unsafe_allow_html=True)
 
-    # Initialize session state
+    # --- Session State Initialization ---
     if 'state' not in st.session_state:
         st.session_state.state = {
             'hrp1000': None,
@@ -69,7 +62,7 @@ def render():
             'pending_transforms': []
         }
 
-    # Sidebar navigation (internal to this module, not conflicting with global sidebar)
+    # --- Internal Sidebar Navigation ---
     with st.sidebar:
         st.markdown("### Foundation Module")
         panel = st.radio(
@@ -79,7 +72,7 @@ def render():
             key="foundation_nav"
         )
 
-    # Main content
+    # --- Main Area Rendering ---
     st.title("Org Hierarchy Visual Explorer v2.3")
 
     if panel == "Hierarchy":

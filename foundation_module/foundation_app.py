@@ -1,18 +1,19 @@
-# foundation_module/foundation_app.py
-
 import streamlit as st
 import pandas as pd
+import os
+import sys
 import json
 from datetime import datetime
 
-# Panel and Utility Imports (using full paths for Streamlit Cloud compatibility)
+# Ensure proper import paths
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from foundation_module.panels.hierarchy_panel import show_hierarchy_panel
 from foundation_module.panels.transformation_panel import show_transformation_panel
 from foundation_module.panels.validation_panel import show_validation_panel
 from foundation_module.panels.statistics_panel import show_statistics_panel
 from foundation_module.panels.dashboard_panel import show_dashboard_panel
 from foundation_module.panels.transformation_logger import TransformationLogger
-
 
 def render():
     # --- Custom Layout Styling ---

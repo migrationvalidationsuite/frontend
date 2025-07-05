@@ -2,12 +2,15 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-import sys, os
+import sys
+from datetime import datetime
+
+# Fix sys.path for local dev (not needed in Streamlit Cloud if modules are structured)
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from datetime import datetime
-from utils.file_utils import create_download_button
-from panels.transformation_logger import TransformationLogger
+# ✅ FIXED IMPORTS
+from foundation_module.utils.file_utils import create_download_button
+from foundation_module.panels.transformation_logger import TransformationLogger
 
 
 class TransformationLogger:

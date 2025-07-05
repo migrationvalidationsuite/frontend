@@ -10,15 +10,12 @@ from datetime import datetime
 # Append parent dir for panel imports
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from foundation_module.panels.hierarchy_panel import show_hierarchy_panel
-from foundation_module.panels.transformation_panel import show_transformation_panel
-from foundation_module.panels.validation_panel import show_validation_panel
-from foundation_module.panels.statistics_panel import show_statistics_panel
-from foundation_module.panels.dashboard_panel import show_dashboard_panel
-from foundation_module.panels.transformation_logger import TransformationLogger
-
-
-
+from panels.hierarchy_panel import show_hierarchy_panel
+from panels.transformation_panel import show_transformation_panel
+from panels.validation_panel import show_validation_panel
+from panels.statistics_panel import show_statistics_panel
+from panels.dashboard_panel import show_dashboard_panel
+from panels.transformation_logger import TransformationLogger
 
 def render():
     # Configure page layout (only safe if not already set by main app)

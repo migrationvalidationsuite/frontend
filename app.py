@@ -232,6 +232,9 @@ elif selected == "Launch Demo":
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
 
+    # ✅ This actually loads your payroll Streamlit tool
+        payroll_app.render_payroll_tool()
+
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()
 

@@ -71,12 +71,6 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
-    # Reset demo page when Launch Demo is re-clicked from sidebar
-    if selected == "Launch Demo":
-        if st.session_state.demo_page != "main":
-            st.session_state.demo_page = "main"
-            st.rerun()
-
 
 # -------------------- HOME --------------------
 if selected == "Home":
@@ -180,12 +174,6 @@ if selected == "Home":
 
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
-    if "demo_page" not in st.session_state:
-        st.session_state.demo_page = "main"
-
-    # DEBUG: Display current state
-    st.write("DEBUG - Current demo_page:", st.session_state.demo_page)
-
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
@@ -201,7 +189,7 @@ elif selected == "Launch Demo":
             with b1:
                 if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
                     st.session_state.demo_page = "sap_to_sf"
-                    st.rerun()
+                    st.rerun()  # ✅ ensures single-click transition
 
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
@@ -267,6 +255,7 @@ elif selected == "Launch Demo":
 
         st.markdown("### Employee Data – Interactive View")
         render_employee_tool()
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

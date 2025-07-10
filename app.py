@@ -75,8 +75,7 @@ with st.sidebar:
     if selected == "Launch Demo":
         if st.session_state.demo_page != "main":
             st.session_state.demo_page = "main"
-            st.experimental_rerun()
-
+            st.rerun()
 
 
 # -------------------- HOME --------------------

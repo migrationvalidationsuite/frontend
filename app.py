@@ -232,17 +232,15 @@ elif selected == "Launch Demo":
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
 
-    # ✅ This actually loads your payroll Streamlit tool
+        # ✅ This actually loads your payroll Streamlit tool
         payroll_app.render_payroll_tool()
+
     elif st.session_state.demo_page == "foundation_data_view":
         back_col, _ = st.columns([1, 5])
         with back_col:
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
-                st.rerun()  # ✅ rerun again
-
-    st.markdown("### Foundation Data – Interactive View")
-    render_foundation()
+                st.rerun()
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

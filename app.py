@@ -256,9 +256,6 @@ elif selected == "Launch Demo":
         st.markdown("### Employee Data – Interactive View")
         render_employee_tool()
 
-        st.markdown("### Foundation Data – Interactive View")
-        render_foundation()
-
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
     sol_choice = option_menu(

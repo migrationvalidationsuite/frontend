@@ -242,7 +242,10 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
- 
+    
+    st.markdown("### Foundation Data – Interactive View")
+    render_foundation()
+
     elif st.session_state.demo_page == "employee_data_tool":
         back_col, _ = st.columns([1, 5])
         with back_col:

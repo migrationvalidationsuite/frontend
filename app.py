@@ -203,12 +203,6 @@ elif selected == "Launch Demo":
         with back_col:
             if st.button("⬅ Back to Scenarios", key="btn_back_scenarios", use_container_width=True):
                 st.session_state.demo_page = "main"
-                st.rerun()  # ✅ ensures single-click back
-    elif st.session_state.demo_page == "sap_to_sf":
-        back_col, _ = st.columns([1, 5])
-        with back_col:
-            if st.button("⬅ Back to Scenarios", key="btn_back_scenarios", use_container_width=True):
-                st.session_state.demo_page = "main"
                 st.rerun()
 
         st.title("SAP HCM → SuccessFactors")
@@ -237,9 +231,6 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_payroll", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
-
-        payroll_app.render_payroll_tool()
-
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

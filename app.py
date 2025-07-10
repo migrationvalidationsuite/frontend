@@ -6,6 +6,8 @@ import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
 from foundation_module.foundation_app import render as render_foundation
+from payroll import app as payroll_app
+
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
@@ -223,16 +225,21 @@ elif selected == "Launch Demo":
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")
         migration_row("Time Data", "td_demo", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+        migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
+
     if st.button("Payroll Data", key="ptd_demo", use_container_width=True):
         st.session_state.demo_page = "payroll_data_tool"
         st.rerun()
 
-    elif st.session_state.demo_page == "foundation_data_view":
+    elif st.session_state.demo_page == "payroll_data_tool":
         back_col, _ = st.columns([1, 5])
         with back_col:
-            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
+            if st.button("⬅ Back to Demo", key="back_from_payroll", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
-                st.rerun()  # ✅ rerun again
+                st.rerun()
+
+        payroll_app.render_payroll_tool()
+
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

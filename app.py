@@ -7,6 +7,7 @@ import base64
 from streamlit_option_menu import option_menu
 from foundation_module.foundation_app import render as render_foundation
 from payroll import app as payroll_app
+from employee_app import render_employee_tool
 
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
@@ -223,6 +224,7 @@ elif selected == "Launch Demo":
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")
         migration_row("Time Data", "td_demo", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
+        migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
 
 
     elif st.session_state.demo_page == "payroll_data_tool":
@@ -241,6 +243,16 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
+ 
+    elif st.session_state.demo_page == "employee_data_tool":
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Demo", key="back_from_employee", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
+                st.rerun()
+
+        st.markdown("### Employee Data – Interactive View")
+        render_employee_tool()
 
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()

@@ -180,9 +180,13 @@ if selected == "Home":
 
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
-    if st.session_state.demo_page == "main":
-        # ✅ This block is the Launch Pad screen
+    if "demo_page" not in st.session_state:
+        st.session_state.demo_page = "main"
 
+    # DEBUG: Display current state
+    st.write("DEBUG - Current demo_page:", st.session_state.demo_page)
+
+    if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
                 <h2 style='text-align:center;'>🚀 Launch Pad</h2>

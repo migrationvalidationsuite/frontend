@@ -560,5 +560,5 @@ def show_mapping_page():
         st.session_state.current_step = 'validation'
         st.rerun()
 
-if __name__ == "__main__":
+def render_employee_tool():
     main()

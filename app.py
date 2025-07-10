@@ -202,6 +202,9 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Scenarios", key="btn_back_scenarios", use_container_width=True):
                 st.session_state.demo_page = "main"
                 st.rerun()  # ✅ ensures single-click back
+    elif st.session_state.demo_page == "payroll_data_tool":
+        from payroll import app as payroll_app
+        payroll_app.render_payroll_tool()
 
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
@@ -220,7 +223,9 @@ elif selected == "Launch Demo":
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...")
         migration_row("Time Data", "td_demo", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
-        migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...")
+    if st.button("Payroll Data", key="ptd_demo", use_container_width=True):
+        st.session_state.demo_page = "payroll_data_tool"
+        st.rerun()
 
     elif st.session_state.demo_page == "foundation_data_view":
         back_col, _ = st.columns([1, 5])

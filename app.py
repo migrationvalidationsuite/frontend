@@ -194,7 +194,7 @@ elif selected == "Launch Demo":
             with b1:
                 if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
                     st.session_state.demo_page = "sap_to_sf"
-                    st.rerun()  # ✅ ensures single-click transition
+                    st.rerun()
 
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)

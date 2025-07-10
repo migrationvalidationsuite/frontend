@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-import difflib
-from io import StringIO
 
-# Optional: Import LLM if available
+# Optional: LLM support
 try:
     from langchain.llms import Ollama
     from langchain.chains import LLMChain
@@ -14,25 +12,11 @@ try:
 except:
     llm_enabled = False
 
-st.set_page_config(page_title="Enhanced Payroll Mapper", layout="wide")
-st.title("🔍 Enhanced Payroll Mapping & Cleansing Tool")
-
-# === Sidebar Cleansing Options ===
-with st.sidebar:
-    st.header("Cleansing Options")
-    trim_whitespace = st.checkbox("Trim Whitespace", True)
-    lowercase = st.checkbox("Standardize Casing (lowercase)", True)
-    empty_to_nan = st.checkbox("Convert empty to NaN", True)
-    drop_null_rows = st.checkbox("Drop rows with missing required fields", False)
-
-uploaded_0008 = st.file_uploader("Upload PA0008.xlsx", type=["xlsx"])
-uploaded_0014 = st.file_uploader("Upload PA0014.xlsx", type=["xlsx"])
-
 @st.cache_data
 def load_data(file):
     return pd.read_excel(file)
 
-def cleanse_dataframe(df):
+def cleanse_dataframe(df, trim_whitespace=True, lowercase=True, empty_to_nan=True, drop_null_rows=False):
     df_clean = df.copy()
     for col in df_clean.columns:
         if df_clean[col].dtype == 'object':
@@ -55,11 +39,6 @@ def show_comparison(original, cleansed):
 
 def display_metadata(df, label):
     st.subheader(f"🧾 Metadata for {label}")
-    st.markdown("""
-    - **Data Types** show what kind of values each column holds (e.g., string, integer).
-    - **Null Count** helps identify where data is missing.
-    - **Unique Values** tells you the variety in each column.
-    """)
     st.write("**Data Types:**")
     st.write(df.dtypes)
     st.write("**Null Count:**")
@@ -68,54 +47,43 @@ def display_metadata(df, label):
     st.write(df.nunique())
 
 def show_dashboard(df):
-    st.subheader("📊 Dashboard: Visual Overview of Cleansing Impact")
-    selected_col = st.selectbox("Select column to explore:", df.columns)
-
-    st.markdown("**Null Count Chart**")
+    st.subheader("📊 Dashboard")
+    selected_col = st.selectbox("Select column:", df.columns)
     nulls = df.isnull().sum()
-    fig = px.bar(x=nulls.index, y=nulls.values, labels={"x": "Field", "y": "Null Count"}, title="Nulls per Column")
+    fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column")
     st.plotly_chart(fig)
 
     st.markdown("**Value Distribution**")
     if pd.api.types.is_numeric_dtype(df[selected_col]):
         fig2 = px.histogram(df, x=selected_col, title=f"{selected_col} Distribution")
-        st.plotly_chart(fig2)
     else:
         top_vals = df[selected_col].value_counts().nlargest(10)
         fig2 = px.bar(x=top_vals.index, y=top_vals.values, title=f"Top Values in {selected_col}")
-        st.plotly_chart(fig2)
+    st.plotly_chart(fig2)
 
 def descriptive_statistics(df):
-    st.subheader("📈 Descriptive Statistics")
-    st.markdown("This table summarizes the key metrics across your data, including count, mean, std deviation etc.")
+    st.subheader("📈 Descriptive Stats")
     st.dataframe(df.describe(include='all'))
 
 def show_validation(df):
     st.subheader("✅ Validation Panel")
-    st.markdown("We validate your cleansed data by highlighting common issues like missing values or negatives.")
-
-    st.write("**Missing Values Summary**")
     st.dataframe(df.isnull().sum())
-
     if 'amount' in df.columns:
-        st.write("**Negative Amounts (if any):**")
+        st.write("Negative Amounts:")
         st.dataframe(df[df['amount'] < 0])
-
-    st.markdown("**Data Lineage Note:**")
-    st.info("All cleansed columns were transformed based on options selected in the sidebar. Values were stripped, lowercased, and cleaned before validation.")
 
 def get_nlp_answer(query, df):
     if not llm_enabled:
-        return "❌ Ollama not available. Please install LangChain and run `ollama run mistral` locally."
+        return "❌ Ollama not available."
     llm = Ollama(model="mistral")
-    context = f"Data columns: {', '.join(df.columns)}\nPreview:\n{df.head().to_string()}"
+    context = f"Columns: {', '.join(df.columns)}\nPreview:\n{df.head().to_string()}"
     prompt = PromptTemplate(
         input_variables=["question", "context"],
-        template="""You are a helpful data assistant. Given the following data context:
+        template="""You are a helpful data assistant. Given the context below:
 
 {context}
 
-Answer the following question in detail:
+Answer this:
 
 {question}
 """
@@ -123,51 +91,66 @@ Answer the following question in detail:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"question": query, "context": context})
 
-# === MAIN LOGIC ===
-if uploaded_0008 and uploaded_0014:
-    df_0008 = load_data(uploaded_0008)
-    df_0014 = load_data(uploaded_0014)
+# ========== ENTRY POINT ==========
 
-    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Cleanse", "Metadata", "Validation", "Dashboard", "Statistics", "Ask Your Data"])
+def render_payroll_tool():
+    st.title("🔍 Enhanced Payroll Mapping & Cleansing Tool")
 
-    with tab1:
-        st.subheader("🧹 Cleanse & Compare")
-        df_0008_clean = cleanse_dataframe(df_0008)
-        df_0014_clean = cleanse_dataframe(df_0014)
+    with st.sidebar:
+        st.header("Cleansing Options")
+        trim = st.checkbox("Trim Whitespace", True)
+        lower = st.checkbox("Lowercase", True)
+        empty_nan = st.checkbox("Empty → NaN", True)
+        drop_null = st.checkbox("Drop Null Rows", False)
 
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("**PA0008 - Original**")
-            st.dataframe(df_0008)
-        with col2:
-            st.markdown("**PA0008 - Cleansed**")
-            st.dataframe(show_comparison(df_0008, df_0008_clean))
+    uploaded_0008 = st.file_uploader("Upload PA0008.xlsx", type=["xlsx"])
+    uploaded_0014 = st.file_uploader("Upload PA0014.xlsx", type=["xlsx"])
 
-        col3, col4 = st.columns(2)
-        with col3:
-            st.markdown("**PA0014 - Original**")
-            st.dataframe(df_0014)
-        with col4:
-            st.markdown("**PA0014 - Cleansed**")
-            st.dataframe(show_comparison(df_0014, df_0014_clean))
+    if uploaded_0008 and uploaded_0014:
+        df_8 = load_data(uploaded_0008)
+        df_14 = load_data(uploaded_0014)
 
-    with tab2:
-        display_metadata(df_0008_clean, "PA0008")
-        display_metadata(df_0014_clean, "PA0014")
+        df_8_clean = cleanse_dataframe(df_8, trim, lower, empty_nan, drop_null)
+        df_14_clean = cleanse_dataframe(df_14, trim, lower, empty_nan, drop_null)
 
-    with tab3:
-        show_validation(df_0008_clean)
+        tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
+            "Cleanse", "Metadata", "Validation", "Dashboard", "Stats", "Ask Your Data"
+        ])
 
-    with tab4:
-        show_dashboard(df_0008_clean)
+        with tab1:
+            st.subheader("🧹 Cleanse & Compare")
+            col1, col2 = st.columns(2)
+            with col1:
+                st.write("PA0008 – Original")
+                st.dataframe(df_8)
+            with col2:
+                st.write("PA0008 – Cleansed")
+                st.dataframe(show_comparison(df_8, df_8_clean))
 
-    with tab5:
-        descriptive_statistics(df_0008_clean)
+            col3, col4 = st.columns(2)
+            with col3:
+                st.write("PA0014 – Original")
+                st.dataframe(df_14)
+            with col4:
+                st.write("PA0014 – Cleansed")
+                st.dataframe(show_comparison(df_14, df_14_clean))
 
-    with tab6:
-        st.subheader("💬 Ask Your Data")
-        user_query = st.text_input("Ask a question about the data:")
-        if user_query:
-            answer = get_nlp_answer(user_query, df_0008_clean)
-            st.markdown("**Answer:**")
-            st.write(answer)
+        with tab2:
+            display_metadata(df_8_clean, "PA0008")
+            display_metadata(df_14_clean, "PA0014")
+
+        with tab3:
+            show_validation(df_8_clean)
+
+        with tab4:
+            show_dashboard(df_8_clean)
+
+        with tab5:
+            descriptive_statistics(df_8_clean)
+
+        with tab6:
+            st.subheader("💬 Ask Your Data")
+            query = st.text_input("Ask a question:")
+            if query:
+                st.markdown("**Answer:**")
+                st.write(get_nlp_answer(query, df_8_clean))

@@ -72,9 +72,11 @@ with st.sidebar:
         },
     )
     # Reset demo page when Launch Demo is re-clicked from sidebar
-    if selected == "Launch Demo" and st.session_state.demo_page != "main":
-        st.session_state.demo_page = "main"
-        st.rerun()
+    if selected == "Launch Demo":
+        if st.session_state.demo_page != "main":
+            st.session_state.demo_page = "main"
+            st.experimental_rerun()
+
 
 
 # -------------------- HOME --------------------
@@ -180,6 +182,8 @@ if selected == "Home":
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
     if st.session_state.demo_page == "main":
+        # ✅ This block is the Launch Pad screen
+
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
                 <h2 style='text-align:center;'>🚀 Launch Pad</h2>

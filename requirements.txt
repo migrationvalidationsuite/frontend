@@ -9,3 +9,5 @@ networkx
 regex
 scikit-learn
 matplotlib
+chardet
+

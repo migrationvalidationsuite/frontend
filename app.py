@@ -71,6 +71,11 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
+    # Reset demo page when Launch Demo is re-clicked from sidebar
+    if selected == "Launch Demo" and st.session_state.demo_page != "main":
+        st.session_state.demo_page = "main"
+        st.rerun()
+
 
 # -------------------- HOME --------------------
 if selected == "Home":

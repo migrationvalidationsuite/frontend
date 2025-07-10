@@ -243,8 +243,8 @@ elif selected == "Launch Demo":
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
     
-    st.markdown("### Foundation Data – Interactive View")
-    render_foundation()
+        st.markdown("### Foundation Data – Interactive View")
+        render_foundation()
 
     elif st.session_state.demo_page == "employee_data_tool":
         back_col, _ = st.columns([1, 5])

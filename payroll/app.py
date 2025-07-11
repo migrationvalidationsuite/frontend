@@ -30,6 +30,21 @@ def cleanse_dataframe(df, trim_whitespace=True, lowercase=True, empty_to_nan=Tru
         df_clean.dropna(inplace=True)
     return df_clean
 
+def standardize_dates(df, date_columns):
+    def try_parse(val):
+        for fmt in ("%d.%m.%Y", "%d/%m/%Y", "%Y-%m-%d"):
+            try:
+                return pd.to_datetime(val, format=fmt)
+            except:
+                continue
+        return pd.NaT
+
+    df_copy = df.copy()
+    for col in date_columns:
+        if col in df_copy.columns:
+            df_copy[col] = df_copy[col].apply(try_parse)
+    return df_copy
+
 def show_comparison(original, cleansed):
     diff_df = original.copy()
     for col in original.columns:
@@ -51,13 +66,13 @@ def show_dashboard(df):
     selected_col = st.selectbox("Select column:", df.columns)
 
     nulls = df.isnull().sum()
-    nulls = nulls[nulls > 0]  # only plot non-zero nulls
+    nulls = nulls[nulls > 0]
 
     if nulls.empty:
         st.info("✅ No missing values detected.")
     else:
-        fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column")
-        st.plotly_chart(fig)
+        fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column", labels={'x': 'Column', 'y': 'Nulls'})
+        st.plotly_chart(fig, use_container_width=True)
 
     st.markdown("**Value Distribution**")
     if pd.api.types.is_numeric_dtype(df[selected_col]):
@@ -73,7 +88,10 @@ def descriptive_statistics(df):
 
 def show_validation(df):
     st.subheader("✅ Validation Panel")
-    st.dataframe(df.isnull().sum())
+    null_summary = df.isnull().sum().reset_index()
+    null_summary.columns = ["Column", "Null Count"]
+    st.dataframe(null_summary, use_container_width=True)
+
     if 'amount' in df.columns:
         st.write("Negative Amounts:")
         st.dataframe(df[df['amount'] < 0])
@@ -97,8 +115,6 @@ Answer this:
     chain = LLMChain(llm=llm, prompt=prompt)
     return chain.run({"question": query, "context": context})
 
-# ========== ENTRY POINT ==========
-
 def render_payroll_tool():
     st.title("🔍 Enhanced Payroll Mapping & Cleansing Tool")
 
@@ -118,6 +134,9 @@ def render_payroll_tool():
 
         df_8_clean = cleanse_dataframe(df_8, trim, lower, empty_nan, drop_null)
         df_14_clean = cleanse_dataframe(df_14, trim, lower, empty_nan, drop_null)
+
+        df_8_clean = standardize_dates(df_8_clean, ["Start date", "End Date"])
+        df_14_clean = standardize_dates(df_14_clean, ["Start date", "End Date"])
 
         tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
             "Cleanse", "Metadata", "Validation", "Dashboard", "Stats", "Ask Your Data"

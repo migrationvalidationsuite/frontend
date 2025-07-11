@@ -49,9 +49,15 @@ def display_metadata(df, label):
 def show_dashboard(df):
     st.subheader("📊 Dashboard")
     selected_col = st.selectbox("Select column:", df.columns)
+
     nulls = df.isnull().sum()
-    fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column")
-    st.plotly_chart(fig)
+    nulls = nulls[nulls > 0]  # only plot non-zero nulls
+
+    if nulls.empty:
+        st.info("✅ No missing values detected.")
+    else:
+        fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column")
+        st.plotly_chart(fig)
 
     st.markdown("**Value Distribution**")
     if pd.api.types.is_numeric_dtype(df[selected_col]):

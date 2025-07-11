@@ -155,7 +155,7 @@ df1000['New_Column'] = df1000['Client'].astype(str) + '_' + df1000['Object ID'].
                     
             elif transform_type == "Standardize Dates":
                 for col in date_cols:
-                    preview_df[col] = pd.to_datetime(preview_df[col], format='%d/%m/%Y', errors='coerce')
+                    preview_df[col] = pd.to_datetime(..., format='%d.%m.%Y', errors='coerce')
                     
             elif transform_type == "Remove Test Data":
                 keywords = [k.strip().lower() for k in test_keywords.split(",")]

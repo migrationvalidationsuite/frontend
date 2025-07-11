@@ -14,7 +14,14 @@ except:
 
 @st.cache_data
 def load_data(file):
-    return pd.read_excel(file)
+    df = pd.read_excel(file)
+    for col in df.columns:
+        if "start" in col.lower() or "end" in col.lower():
+            try:
+                df[col] = pd.to_datetime(df[col], errors='coerce')
+            except:
+                pass  # If parsing fails, keep original
+    return df
 
 def cleanse_dataframe(df, trim_whitespace=True, lowercase=True, empty_to_nan=True, drop_null_rows=False):
     df_clean = df.copy()
@@ -34,7 +41,10 @@ def show_comparison(original, cleansed):
     diff_df = original.copy()
     for col in original.columns:
         if col in cleansed.columns:
-            diff_df[col] = np.where(original[col] != cleansed[col], "🟡 " + cleansed[col].astype(str), cleansed[col])
+            try:
+                diff_df[col] = np.where(original[col] != cleansed[col], "🟡 " + cleansed[col].astype(str), cleansed[col])
+            except:
+                diff_df[col] = cleansed[col]
     return diff_df
 
 def display_metadata(df, label):
@@ -48,23 +58,25 @@ def display_metadata(df, label):
 
 def show_dashboard(df):
     st.subheader("📊 Dashboard")
-    selected_col = st.selectbox("Select column:", df.columns)
+    if df.empty:
+        st.warning("No data available.")
+        return
 
     nulls = df.isnull().sum()
     nulls = nulls[nulls > 0]  # only plot non-zero nulls
-
     if nulls.empty:
         st.info("✅ No missing values detected.")
     else:
-        fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column")
+        fig = px.bar(x=nulls.index, y=nulls.values, title="Nulls per Column", labels={"x": "Column", "y": "Null Count"})
         st.plotly_chart(fig)
 
     st.markdown("**Value Distribution**")
+    selected_col = st.selectbox("Select column:", df.columns)
     if pd.api.types.is_numeric_dtype(df[selected_col]):
         fig2 = px.histogram(df, x=selected_col, title=f"{selected_col} Distribution")
     else:
         top_vals = df[selected_col].value_counts().nlargest(10)
-        fig2 = px.bar(x=top_vals.index, y=top_vals.values, title=f"Top Values in {selected_col}")
+        fig2 = px.bar(x=top_vals.index.astype(str), y=top_vals.values, title=f"Top Values in {selected_col}")
     st.plotly_chart(fig2)
 
 def descriptive_statistics(df):

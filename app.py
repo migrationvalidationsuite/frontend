@@ -11,20 +11,25 @@ from employee_app import render_employee_tool
 # 🔧 Inject custom CSS for better dark mode support
 st.markdown("""
     <style>
-    /* Fix text visibility for both themes */
-    .stApp {
-        background-color: transparent;
-        color: var(--text-color);
+    html, body, [class*="css"] {
+        color: white !important;
     }
 
-    /* Optional: Make white text more readable on background image */
+    @media (prefers-color-scheme: light) {
+        html, body, [class*="css"] {
+            color: black !important;
+        }
+    }
+
+    /* Optional: add dark overlay on background image for better contrast */
     .main > div {
-        background-color: rgba(0, 0, 0, 0.4);  /* semi-transparent black overlay */
+        background-color: rgba(0, 0, 0, 0.5); 
         padding: 1rem;
         border-radius: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 

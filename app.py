@@ -32,6 +32,30 @@ st.markdown("""
 
 
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+st.markdown("""
+<style>
+/* Match text color to theme (light or dark) */
+html, body, [class*="st-"], [class*="css"] {
+    color: inherit !important;
+}
+
+/* Optional: transparent main background with better text contrast */
+section.main > div {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 1.2rem;
+    border-radius: 12px;
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    section.main > div {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
 
 # --- SESSION STATE FOR DEMO NAVIGATION ---
 if 'demo_page' not in st.session_state:

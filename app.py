@@ -8,38 +8,18 @@ from foundation_module.foundation_app import render as render_foundation
 from payroll import app as payroll_app
 from employee_app import render_employee_tool
 
-# 🔧 Inject custom CSS for better dark mode support
-st.markdown("""
-    <style>
-    html, body, [class*="css"] {
-        color: white !important;
-    }
-
-    @media (prefers-color-scheme: light) {
-        html, body, [class*="css"] {
-            color: black !important;
-        }
-    }
-
-    /* Optional: add dark overlay on background image for better contrast */
-    .main > div {
-        background-color: rgba(0, 0, 0, 0.5); 
-        padding: 1rem;
-        border-radius: 10px;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
-
+# ✅ Set page config early
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
+
+# ✅ CSS that works with both dark and light mode
 st.markdown("""
 <style>
-/* Match text color to theme (light or dark) */
+/* Let Streamlit control the color theme properly */
 html, body, [class*="st-"], [class*="css"] {
     color: inherit !important;
 }
 
-/* Optional: transparent main background with better text contrast */
+/* Add a transparent overlay only to content area for readability */
 section.main > div {
     background-color: rgba(255, 255, 255, 0.85);
     padding: 1.2rem;
@@ -55,6 +35,7 @@ section.main > div {
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # --- SESSION STATE FOR DEMO NAVIGATION ---

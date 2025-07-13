@@ -11,74 +11,55 @@ from employee_app import render_employee_tool
 # ✅ Set page config early
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
+# ✅ GLOBAL CSS for adaptive theme styling
 st.markdown("""
 <style>
-/* Let body and main adapt to dark mode */
-html, body, [class*="st-"], [class*="css"] {
-    color: inherit !important;
-}
-
-/* Style container for all sections */
+/* Make all content blocks readable */
 section.main > div, .block-container {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
     color: black;
 }
 
-/* Force dark theme overrides */
+/* Handle dark mode */
 @media (prefers-color-scheme: dark) {
     section.main > div, .block-container {
         background-color: rgba(0, 0, 0, 0.6) !important;
         color: white !important;
     }
 
-    /* EXCEPTION: Sidebar and main title remain black */
-    .css-1v0mbdj, .css-10trblm, .css-1d391kg, .css-1oe5cao, .css-1lcbmhc, .css-eczf16 {
-        color: black !important;
-    }
-
-    /* Optional: sidebar icons & nav text stay black */
+    /* EXCEPTIONS: Sidebar + title text stays black */
+    .css-1v0mbdj, .css-10trblm, .css-1d391kg, .css-1oe5cao, .css-1lcbmhc, .css-eczf16,
     .css-6qob1r, .css-1b0udgb, .css-1xarl3l {
         color: black !important;
     }
-
-    /* Optional: buttons */
-    .stButton > button {
-        color: white !important;
-        background-color: #333 !important;
-        border: 1px solid #aaa;
-    }
 }
 </style>
 """, unsafe_allow_html=True)
 
-
-# ✅ CSS that works with both dark and light mode
+# ✅ FULL-WIDTH HEADER BANNER
 st.markdown("""
 <style>
-/* Let Streamlit control the color theme properly */
-html, body, [class*="st-"], [class*="css"] {
-    color: inherit !important;
-}
-
-/* Add a transparent overlay only to content area for readability */
-section.main > div {
-    background-color: rgba(255, 255, 255, 0.85);
-    padding: 1.2rem;
-    border-radius: 12px;
-    color: black;
-}
-
-@media (prefers-color-scheme: dark) {
-    section.main > div {
-        background-color: rgba(0, 0, 0, 0.6);
-        color: white;
-    }
+.header-banner {
+    width: 100% !important;
+    background-color: #eaf2ff;
+    padding: 1.5rem 1rem;
+    border-radius: 18px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 1.5rem;
 }
 </style>
-""", unsafe_allow_html=True)
 
+<div class="header-banner">
+    Effortless Data Migration, Done Right<br>
+    <span style="font-size:22px; font-weight: 500;">
+        MVS (Migration & Validation Suite)
+    </span>
+</div>
+""", unsafe_allow_html=True)
 
 
 # --- SESSION STATE FOR DEMO NAVIGATION ---

@@ -13,42 +13,41 @@ st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
 st.markdown("""
 <style>
-/* Ensure default text color adapts to theme */
+/* Let body and main adapt to dark mode */
 html, body, [class*="st-"], [class*="css"] {
     color: inherit !important;
 }
 
-/* Adjust text color for custom sections */
+/* Style container for all sections */
 section.main > div, .block-container {
-    color: black;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem;
     border-radius: 10px;
+    color: black;
 }
 
-/* Override for dark mode */
+/* Force dark theme overrides */
 @media (prefers-color-scheme: dark) {
     section.main > div, .block-container {
-        color: white !important;
-        background-color: rgba(0,0,0,0.6) !important;
-    }
-
-    h1, h2, h3, h4, h5, h6, p, li, span, div {
+        background-color: rgba(0, 0, 0, 0.6) !important;
         color: white !important;
     }
 
-    .css-1v0mbdj, .css-10trblm, .css-1d391kg {  /* headings and buttons */
-        color: white !important;
+    /* EXCEPTION: Sidebar and main title remain black */
+    .css-1v0mbdj, .css-10trblm, .css-1d391kg, .css-1oe5cao, .css-1lcbmhc, .css-eczf16 {
+        color: black !important;
     }
 
+    /* Optional: sidebar icons & nav text stay black */
+    .css-6qob1r, .css-1b0udgb, .css-1xarl3l {
+        color: black !important;
+    }
+
+    /* Optional: buttons */
     .stButton > button {
         color: white !important;
         background-color: #333 !important;
         border: 1px solid #aaa;
-    }
-
-    .stMarkdown {
-        color: white !important;
     }
 }
 </style>

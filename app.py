@@ -11,6 +11,50 @@ from employee_app import render_employee_tool
 # ✅ Set page config early
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
+st.markdown("""
+<style>
+/* Ensure default text color adapts to theme */
+html, body, [class*="st-"], [class*="css"] {
+    color: inherit !important;
+}
+
+/* Adjust text color for custom sections */
+section.main > div, .block-container {
+    color: black;
+    background-color: rgba(255,255,255,0.9);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Override for dark mode */
+@media (prefers-color-scheme: dark) {
+    section.main > div, .block-container {
+        color: white !important;
+        background-color: rgba(0,0,0,0.6) !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, p, li, span, div {
+        color: white !important;
+    }
+
+    .css-1v0mbdj, .css-10trblm, .css-1d391kg {  /* headings and buttons */
+        color: white !important;
+    }
+
+    .stButton > button {
+        color: white !important;
+        background-color: #333 !important;
+        border: 1px solid #aaa;
+    }
+
+    .stMarkdown {
+        color: white !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 # ✅ CSS that works with both dark and light mode
 st.markdown("""
 <style>

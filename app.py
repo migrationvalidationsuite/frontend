@@ -1,6 +1,4 @@
-import sys, os
-sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-
+import os, sys
 import streamlit as st
 import base64
 from streamlit_option_menu import option_menu
@@ -8,58 +6,83 @@ from foundation_module.foundation_app import render as render_foundation
 from payroll import app as payroll_app
 from employee_app import render_employee_tool
 
-# ✅ Set page config early
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
+
+# ✅ Configure page
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# ✅ GLOBAL CSS for adaptive theme styling
+# ✅ CSS for dark/light support and component control
 st.markdown("""
 <style>
-/* Make all content blocks readable */
+/* General adaptive text */
+html, body, [class*="st-"], [class*="css"] {
+    color: inherit !important;
+}
+
+/* Light & dark content background */
 section.main > div, .block-container {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: 10px;
     color: black;
 }
 
-/* Handle dark mode */
 @media (prefers-color-scheme: dark) {
     section.main > div, .block-container {
         background-color: rgba(0, 0, 0, 0.6) !important;
         color: white !important;
     }
 
-    /* EXCEPTIONS: Sidebar + title text stays black */
-    .css-1v0mbdj, .css-10trblm, .css-1d391kg, .css-1oe5cao, .css-1lcbmhc, .css-eczf16,
-    .css-6qob1r, .css-1b0udgb, .css-1xarl3l {
+    /* EXCEPTIONS: Sidebar and top title remain black */
+    .css-6qob1r, .css-1v0mbdj, .css-10trblm, .css-1xarl3l, .css-eczf16, .css-1b0udgb {
         color: black !important;
     }
 }
-</style>
-""", unsafe_allow_html=True)
 
-# ✅ FULL-WIDTH HEADER BANNER
-st.markdown("""
-<style>
-.header-banner {
-    width: 100% !important;
-    background-color: #eaf2ff;
-    padding: 1.5rem 1rem;
-    border-radius: 18px;
+/* Make the banner full-width and readable */
+.full-width-banner {
+    width: 100%;
+    background-color: #e3f0ff;
     text-align: center;
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 28px;
-    margin-bottom: 1.5rem;
+}
+.sub-banner {
+    font-size: 1.2rem;
+    font-weight: 400;
 }
 </style>
-
-<div class="header-banner">
-    Effortless Data Migration, Done Right<br>
-    <span style="font-size:22px; font-weight: 500;">
-        MVS (Migration & Validation Suite)
-    </span>
-</div>
 """, unsafe_allow_html=True)
+
+# ✅ Track selected page
+if 'selected' not in st.session_state:
+    st.session_state.selected = "Home"
+
+# ✅ Sidebar Navigation
+with st.sidebar:
+    selected = option_menu(
+        menu_title="Navigation",
+        options=["Home", "Solutions", "Launch Demo"],
+        icons=["house", "layers", "rocket"],
+        default_index=0,
+        key="nav",
+    )
+    st.session_state.selected = selected
+
+# ✅ Show banner only on Home
+if selected == "Home":
+    st.markdown('<div class="full-width-banner">Effortless Data Migration, Done Right<br><span class="sub-banner">MVS (Migration & Validation Suite)</span></div>', unsafe_allow_html=True)
+
+# 🔁 Continue rendering your actual pages like before
+# Example:
+# if selected == "Home":
+#     render_home()
+# elif selected == "Solutions":
+#     render_solutions()
+# etc.
 
 
 # --- SESSION STATE FOR DEMO NAVIGATION ---

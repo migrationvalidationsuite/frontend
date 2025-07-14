@@ -272,6 +272,7 @@ elif selected == "Launch Demo":
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
 
+        # 🔧 FIXED reusable row function
         def migration_row(label, key, detail_text, next_page=None, disabled=False):
             col1, col2 = st.columns([5, 3.8])
             with col1:
@@ -283,12 +284,24 @@ elif selected == "Launch Demo":
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
 
+            # 🔒 Custom disabled button styling
+            if disabled:
+                st.markdown(f"""
+                <style>
+                button[data-testid="baseButton-{key}"] {{
+                    background-color: #ddd !important;
+                    color: #888 !important;
+                    cursor: not-allowed !important;
+                }}
+                </style>
+                """, unsafe_allow_html=True)
+
+        # ✅ Final rows
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Time Data", "td_demo_disabled", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...", disabled=True)
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
         migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
-
         st.markdown("""
             <style>
             button[data-testid="baseButton-td_demo_disabled"] {

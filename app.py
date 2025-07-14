@@ -5,6 +5,7 @@ from streamlit_option_menu import option_menu
 from foundation_module.foundation_app import render as render_foundation
 from payroll import app as payroll_app
 from employee_app import render_employee_tool
+from employeedata import render_employee_v2
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
@@ -287,6 +288,7 @@ elif selected == "Launch Demo":
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
 
         # Employee Data V2 — new button
+        migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
         col1, col2 = st.columns([5, 3.8])
         with col1:
             if st.button("Employee Data V2", key="pd_demo_v2", use_container_width=True):
@@ -326,6 +328,17 @@ elif selected == "Launch Demo":
 
         st.markdown("### Employee Data – Interactive View")
         render_employee_tool()
+    
+    elif st.session_state.demo_page == "employee_data_v2":
+    back_col, _ = st.columns([1, 5])
+    with back_col:
+        if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
+            st.session_state.demo_page = "sap_to_sf"
+            st.rerun()
+
+        st.markdown("### Employee Data V2 – Interactive Migration Tool")
+        render_employee_v2()
+
 
 
 # -------------------- SOLUTIONS --------------------

@@ -252,7 +252,7 @@ elif selected == "Launch Demo":
             with b1:
                 if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
                     st.session_state.demo_page = "sap_to_sf"
-                    st.rerun()
+                    st.rerun()  # ✅ ensures single-click transition
 
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
@@ -272,48 +272,49 @@ elif selected == "Launch Demo":
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
 
-        def migration_row(label, key, detail_text, next_page=None, disabled=False):
+        def migration_row(label, key, detail_text, next_page=None):
             col1, col2 = st.columns([5, 3.8])
             with col1:
-                if disabled:
-                    st.markdown(f"""
-                        <div style="
-                            width: 100%;
-                            background-color: #ddd;
-                            color: #888;
-                            padding: 0.6em;
-                            text-align: center;
-                            border-radius: 5px;
-                            cursor: not-allowed;
-                            font-weight: 600;
-                            border: 1px solid #ccc;
-                        ">
-                            {label}
-                        </div>
-                    """, unsafe_allow_html=True)
-                else:
-                    if st.button(label, key=key, use_container_width=True):
-                        if next_page:
-                            st.session_state.demo_page = next_page
-                            st.rerun()
+                if st.button(label, key=key, use_container_width=True):
+                    if next_page:
+                        st.session_state.demo_page = next_page
+                        st.rerun()
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
-
-        # Foundation
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
 
-        # Time Data (disabled)
-        migration_row("Time Data", "td_demo_disabled", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...", disabled=True)
+        # Time Data — grayed out and disabled
+        col1, col2 = st.columns([5, 3.8])
+        with col1:
+            st.button("Time Data", key="td_demo_disabled", disabled=True, use_container_width=True)
+        with col2:
+            with st.expander("ℹ️ Details"):
+                st.markdown("- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+        st.markdown("""
+            <style>
+            button[data-testid="baseButton-td_demo_disabled"] {
+                background-color: #ddd !important;
+                color: #888 !important;
+                cursor: not-allowed !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
-        # Payroll
+        # Payroll Data
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
 
-        # Employee original
+        # Employee Data original
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
 
-        # Employee v2
-        migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
+        # Employee Data V2 — single version only
+        migration_row(
+            "Employee Data V2",
+            "pd2_demo",
+            "- Advanced validation and transformation with AI-assisted checks",
+            next_page="employee_data_v2"
+        )
+
 
     elif st.session_state.demo_page == "payroll_data_tool":
         back_col, _ = st.columns([1, 5])
@@ -321,6 +322,8 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_payroll", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
+
+        # ✅ This actually loads your payroll Streamlit tool
         payroll_app.render_payroll_tool()
 
     elif st.session_state.demo_page == "foundation_data_view":
@@ -329,6 +332,7 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
+    
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()
 
@@ -338,17 +342,21 @@ elif selected == "Launch Demo":
             if st.button("⬅ Back to Demo", key="back_from_employee", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
+
         st.markdown("### Employee Data – Interactive View")
         render_employee_tool()
-
+    
     elif st.session_state.demo_page == "employee_data_v2":
         back_col, _ = st.columns([1, 5])
         with back_col:
             if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
+
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
         render_employee_v2()
+
+
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

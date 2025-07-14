@@ -7,6 +7,9 @@ from payroll import app as payroll_app
 from employee_app import render_employee_tool
 from employeedata.data_migration_tool import render_employee_v2
 
+if "page" not in st.session_state:
+    st.session_state.page = "Home"
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 # ✅ Page setup

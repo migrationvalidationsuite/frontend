@@ -343,13 +343,6 @@ elif selected == "Launch Demo":
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
         # ✅ This controls the entire routing based on selected nav or demo page
 
-if st.session_state.page == "Home":
-    
-elif st.session_state.page == "Solutions":
-    render_solutions()
-elif st.session_state.page == "Launch Demo":
-    render_demo()
-
 # ➕ Add handler for the new employee data v2 page
 if st.session_state.get("demo_page") == "employee_data_v2":
     back_col, _ = st.columns([1, 5])

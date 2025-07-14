@@ -261,11 +261,40 @@ elif selected == "Launch Demo":
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
-
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
-        migration_row("Time Data", "td_demo", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+
+        # Time Data — grayed out and disabled
+        col1, col2 = st.columns([5, 3.8])
+        with col1:
+            st.button("Time Data", key="td_demo_disabled", disabled=True, use_container_width=True)
+        with col2:
+            with st.expander("ℹ️ Details"):
+                st.markdown("- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+        st.markdown("""
+            <style>
+            button[data-testid="baseButton-td_demo_disabled"] {
+                background-color: #ddd !important;
+                color: #888 !important;
+                cursor: not-allowed !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        # Payroll Data
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
+
+        # Employee Data original
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
+
+        # Employee Data V2 — new button
+        col1, col2 = st.columns([5, 3.8])
+        with col1:
+            if st.button("Employee Data V2", key="pd_demo_v2", use_container_width=True):
+                st.session_state.demo_page = "employee_data_tool_v2"
+                st.rerun()
+        with col2:
+            with st.expander("ℹ️ Details"):
+                st.markdown("This version includes experimental mappings, additional time splits, and draft fields for future SuccessFactors support.")
 
 
     elif st.session_state.demo_page == "payroll_data_tool":

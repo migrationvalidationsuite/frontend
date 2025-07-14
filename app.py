@@ -102,9 +102,6 @@ with st.sidebar:
     )
     st.session_state.selected = selected
 
-if st.session_state.selected == "Launch Demo":
-    st.session_state.demo_page = "main"
-
 # ✅ Remove top white space
 st.markdown("""
 <style>
@@ -245,18 +242,20 @@ elif selected == "Launch Demo":
             </div>
         """, unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns([1, 1, 1])
-        with col1:
-            if st.button("SAP HCM → SuccessFactors", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
-                st.rerun()
-
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            st.button("SAP HCM → S/4HANA\n(coming soon)", disabled=True, use_container_width=True)
+            b1, b2, b3 = st.columns(3)
 
-        with col3:
-            st.button("Legacy HR Systems → SAP Cloud or On-Premise\n(coming soon)", disabled=True, use_container_width=True)
+            with b1:
+                if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
+                    st.session_state.demo_page = "sap_to_sf"
+                    st.rerun()  # ✅ ensures single-click transition
 
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
             st.image("dmigimg.jpg", use_container_width=True)
 
@@ -273,11 +272,13 @@ elif selected == "Launch Demo":
         def migration_row(label, key, detail_text, next_page=None):
             col1, col2 = st.columns([5, 3.8])
             with col1:
-                st.button("Time Data", key="td_demo_disabled", disabled=True, use_container_width=True)
+                if st.button(label, key=key, use_container_width=True):
+                    if next_page:
+                        st.session_state.demo_page = next_page
+                        st.rerun()
             with col2:
                 with st.expander("ℹ️ Details"):
-                    st.markdown("- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
-
+                    st.markdown(detail_text)
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
 
         # Time Data — grayed out and disabled

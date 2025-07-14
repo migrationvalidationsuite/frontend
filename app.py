@@ -237,11 +237,6 @@ if selected == "Home":
 
 # -------------------- LAUNCH DEMO --------------------
 elif selected == "Launch Demo":
-    # Always reset to main view when Launch Demo is clicked
-    if st.session_state.demo_page != "main":
-        st.session_state.demo_page = "main"
-        st.rerun()
-
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
@@ -250,38 +245,24 @@ elif selected == "Launch Demo":
             </div>
         """, unsafe_allow_html=True)
 
-        col1, col2, col3 = st.columns([1, 1, 1])
-        with col1:
-            if st.button("SAP HCM → SuccessFactors", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
-                st.rerun()
+        col1, col2, col3 = st.columns([1, 3, 1])
         with col2:
-            st.markdown("""
-                <button style='width:100%; padding:0.8rem; border:none; background:#ddd; color:#888; font-size:1rem; border-radius:6px;' disabled>
-                    SAP HCM → S/4HANA<br><span style='font-size:0.9rem;'>(coming soon)</span>
-                </button>
-            """, unsafe_allow_html=True)
-        with col3:
-            st.markdown("""
-                <button style='width:100%; padding:0.8rem; border:none; background:#ddd; color:#888; font-size:1rem; border-radius:6px;' disabled>
-                    Legacy HR Systems → SAP Cloud or On-Premise<br><span style='font-size:0.9rem;'>(coming soon)</span>
-                </button>
-            """, unsafe_allow_html=True)
+            b1, b2, b3 = st.columns(3)
 
-        st.image("dmigimg.jpg", use_container_width=True)
+            with b1:
+                if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
+                    st.session_state.demo_page = "sap_to_sf"
+                    st.rerun()
+
+            with b2:
+                st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
+
+            with b3:
+                st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
+
+            st.image("dmigimg.jpg", use_container_width=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
-        def migration_row(label, key, detail_text, next_page=None, disabled=False):
-            col1, col2 = st.columns([5, 3.8])
-            with col1:
-                clicked = st.button(label, key=key, disabled=disabled, use_container_width=True)
-                if clicked and not disabled:
-                    st.session_state.demo_page = next_page
-                    st.rerun()
-            with col2:
-                with st.expander("ℹ️ Details"):
-                    st.markdown(detail_text)
-
         back_col, _ = st.columns([1, 5])
         with back_col:
             if st.button("⬅ Back to Scenarios", key="btn_back_scenarios", use_container_width=True):
@@ -291,12 +272,32 @@ elif selected == "Launch Demo":
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
 
-        # All migration rows
+        def migration_row(label, key, detail_text, next_page=None, disabled=False):
+            col1, col2 = st.columns([5, 3.8])
+            with col1:
+                clicked = st.button(label, key=key, disabled=disabled, use_container_width=True)
+                if clicked and not disabled and next_page:
+                    st.session_state.demo_page = next_page
+                    st.rerun()
+            with col2:
+                with st.expander("ℹ️ Details"):
+                    st.markdown(detail_text)
+
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
         migration_row("Time Data", "td_demo_disabled", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...", disabled=True)
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
         migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
+
+        st.markdown("""
+            <style>
+            button[data-testid="baseButton-td_demo_disabled"] {
+                background-color: #ddd !important;
+                color: #888 !important;
+                cursor: not-allowed !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
 
     elif st.session_state.demo_page == "payroll_data_tool":
         back_col, _ = st.columns([1, 5])
@@ -332,7 +333,6 @@ elif selected == "Launch Demo":
                 st.rerun()
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
         render_employee_v2()
-
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":

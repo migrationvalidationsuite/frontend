@@ -290,16 +290,13 @@ elif selected == "Launch Demo":
         # Employee Data original
         migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
 
-        # Employee Data V2 — new button
-        migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
-        col1, col2 = st.columns([5, 3.8])
-        with col1:
-            if st.button("Employee Data V2", key="pd_demo_v2", use_container_width=True):
-                st.session_state.demo_page = "employee_data_tool_v2"
-                st.rerun()
-        with col2:
-            with st.expander("ℹ️ Details"):
-                st.markdown("This version includes experimental mappings, additional time splits, and draft fields for future SuccessFactors support.")
+        # Employee Data V2 — single version only
+        migration_row(
+            "Employee Data V2",
+            "pd2_demo",
+            "- Advanced validation and transformation with AI-assisted checks",
+            next_page="employee_data_v2"
+        )
 
 
     elif st.session_state.demo_page == "payroll_data_tool":
@@ -332,7 +329,6 @@ elif selected == "Launch Demo":
         st.markdown("### Employee Data – Interactive View")
         render_employee_tool()
     
-
     elif st.session_state.demo_page == "employee_data_v2":
         back_col, _ = st.columns([1, 5])
         with back_col:
@@ -341,19 +337,7 @@ elif selected == "Launch Demo":
                 st.rerun()
 
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
-        # ✅ This controls the entire routing based on selected nav or demo page
-
-# ➕ Add handler for the new employee data v2 page
-if st.session_state.get("demo_page") == "employee_data_v2":
-    back_col, _ = st.columns([1, 5])
-    with back_col:
-        if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
-            st.session_state.demo_page = "sap_to_sf"
-            st.rerun()
-
-    st.markdown("### Employee Data V2 – Interactive Migration Tool")
-    render_employee_v2()
-
+        render_employee_v2()
 
 
 # -------------------- SOLUTIONS --------------------

@@ -120,16 +120,30 @@ st.markdown("""
 
 # -------------------- HOME --------------------
 if selected == "Home":
-    col_banner, _ = st.columns([1.0, 0.1])
-    with col_banner:
-        st.markdown("""
-            <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
-                <div style='max-width:1000px;margin:auto;'>
-                    <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
-                    <h3 style='text-align:center;'>MVS (Migration & Validation Suite)</h3> 
-                </div>
-            </div>
-        """, unsafe_allow_html=True)
+    st.markdown("""
+        <style>
+        .full-width-banner {
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw;
+            background-color: #e6f0ff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            border-radius: 0;
+        }
+        </style>
+
+        <div class="full-width-banner">
+            Effortless Data Migration, Done Right<br>
+            <span style="font-size: 1.4rem; font-weight: normal;">MVS (Migration & Validation Suite)</span>
+        </div>
+    """, unsafe_allow_html=True)
+
 
     col1, col2 = st.columns([3, 2.5])
     with col1:

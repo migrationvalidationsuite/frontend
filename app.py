@@ -123,7 +123,7 @@ if selected == "Home":
     col_banner, _ = st.columns([1.0, 0.1])
     with col_banner:
         st.markdown("""
-            <div style='background-color:#e6f0ff;padding:15px;border-radius:10px;margin-bottom:20px;'>
+            <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
                 <div style='max-width:1000px;margin:auto;'>
                     <h2 style='text-align:center;'>Effortless Data Migration, Done Right</h2>
                     <h3 style='text-align:center;'>MVS (Migration & Validation Suite)</h3> 

@@ -344,7 +344,7 @@ elif selected == "Launch Demo":
         # ✅ This controls the entire routing based on selected nav or demo page
 
 if st.session_state.page == "Home":
-    render_homepage()
+    
 elif st.session_state.page == "Solutions":
     render_solutions()
 elif st.session_state.page == "Launch Demo":

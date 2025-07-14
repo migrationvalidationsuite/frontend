@@ -272,36 +272,26 @@ elif selected == "Launch Demo":
         st.title("SAP HCM → SuccessFactors")
         st.subheader("What do you want to migrate?")
 
-        # 🔧 FIXED reusable row function
-        def migration_row(label, key, detail_text, next_page=None, disabled=False):
+        def migration_row(label, key, detail_text, next_page=None):
             col1, col2 = st.columns([5, 3.8])
             with col1:
-                clicked = st.button(label, key=key, disabled=disabled, use_container_width=True)
-                if clicked and not disabled and next_page:
-                    st.session_state.demo_page = next_page
-                    st.rerun()
+                if st.button(label, key=key, use_container_width=True):
+                    if next_page:
+                        st.session_state.demo_page = next_page
+                        st.rerun()
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
 
-            # 🔒 Custom disabled button styling
-            if disabled:
-                st.markdown(f"""
-                <style>
-                button[data-testid="baseButton-{key}"] {{
-                    background-color: #ddd !important;
-                    color: #888 !important;
-                    cursor: not-allowed !important;
-                }}
-                </style>
-                """, unsafe_allow_html=True)
-
-        # ✅ Final rows
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
-        migration_row("Time Data", "td_demo_disabled", "- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...", disabled=True)
-        migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
-        migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
-        migration_row("Employee Data V2", "pd2_demo", "- Advanced validation and transformation with AI-assisted checks", next_page="employee_data_v2")
+
+        # Time Data — grayed out and disabled
+        col1, col2 = st.columns([5, 3.8])
+        with col1:
+            st.button("Time Data", key="td_demo_disabled", disabled=True, use_container_width=True)
+        with col2:
+            with st.expander("ℹ️ Details"):
+                st.markdown("- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
         st.markdown("""
             <style>
             button[data-testid="baseButton-td_demo_disabled"] {
@@ -311,6 +301,20 @@ elif selected == "Launch Demo":
             }
             </style>
         """, unsafe_allow_html=True)
+
+        # Payroll Data
+        migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
+
+        # Employee Data original
+        migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
+
+        # Employee Data V2
+        migration_row(
+            "Employee Data V2",
+            "pd2_demo",
+            "- Advanced validation and transformation with AI-assisted checks",
+            next_page="employee_data_v2"
+        )
 
     elif st.session_state.demo_page == "payroll_data_tool":
         back_col, _ = st.columns([1, 5])

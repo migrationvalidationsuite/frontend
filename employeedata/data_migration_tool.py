@@ -9,7 +9,7 @@ import plotly.express as px
 from employeedata.app.utils.transformations import apply_transformations
 from employeedata.app.utils.validation import build_validation_panel, build_statistics_panel
 
-st.set_page_config(page_title="Data Migration & Transformation Tool", layout="wide")
+
 st.title("🔄 Data Migration & Transformation Tool")
 
 # ------------------ MODE SELECTION ------------------
@@ -109,5 +109,4 @@ def render_employee_v2():
         # You can then parse and process the file
 
 # Only run if this is executed directly (for dev/test)
-if __name__ == "__main__":
-    render_employee_v2()
+

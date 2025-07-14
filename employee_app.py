@@ -5,6 +5,29 @@ import numpy as np
 from io import StringIO, BytesIO
 from typing import Dict, List, Optional, Tuple
 
+def init_employee_session_state():
+    defaults = {
+        'current_step': 'validation',
+        'file_reviews': {},
+        'cleansed_files': {},
+        'target_data': None,
+        'default_values': {
+            'STATUS': 'Active', 'HR': 'NO_HR', 
+            'TIMEZONE': 'Australia/Melbourne', 'STATE': 'VIC',
+            'COUNTRY': 'Australia', 'REVIEW_FREQ': 'Annual'
+        },
+        'gender_mapping': {'1': 'Male', '2': 'Female', 'Other': 'Others'},
+        'manager_blank_action': "Set to 'NO_MANAGER'",
+        'manager_copy_field': None,
+        'custom_transforms': {}
+    }
+    for key, value in defaults.items():
+        if key not in st.session_state:
+            st.session_state[key] = value
+
+# ✅ Call it immediately after defining
+init_employee_session_state()
+
 # Initialize session state
 if 'current_step' not in st.session_state:
     st.session_state.current_step = 'validation'

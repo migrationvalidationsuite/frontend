@@ -6,8 +6,8 @@ import os
 import traceback
 import plotly.express as px
 
-from utils.transformations import apply_transformations
-from utils.validation import build_validation_panel, build_statistics_panel
+from employeedata.transformations import apply_transformations
+from employeedata.validation import build_validation_panel, build_statistics_panel
 
 st.set_page_config(page_title="Data Migration & Transformation Tool", layout="wide")
 st.title("🔄 Data Migration & Transformation Tool")

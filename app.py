@@ -338,7 +338,26 @@ elif selected == "Launch Demo":
                 st.rerun()
 
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
-        render_employee_v2()
+        # ✅ This controls the entire routing based on selected nav or demo page
+
+if st.session_state.page == "Home":
+    render_homepage()
+elif st.session_state.page == "Solutions":
+    render_solutions()
+elif st.session_state.page == "Launch Demo":
+    render_demo()
+
+# ➕ Add handler for the new employee data v2 page
+if st.session_state.get("demo_page") == "employee_data_v2":
+    back_col, _ = st.columns([1, 5])
+    with back_col:
+        if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
+            st.session_state.demo_page = "sap_to_sf"
+            st.rerun()
+
+    st.markdown("### Employee Data V2 – Interactive Migration Tool")
+    render_employee_v2()
+
 
 
 # -------------------- SOLUTIONS --------------------

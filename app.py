@@ -310,12 +310,9 @@ elif selected == "Launch Demo":
         # Payroll Data
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
 
-        # Employee Data original
-        migration_row("Employee Data", "pd_demo", "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...", next_page="employee_data_tool")
-
         # Employee Data V2 — single version only
         migration_row(
-            "Employee Data V2",
+            "Employee Data",
             "pd2_demo",
             "- Advanced validation and transformation with AI-assisted checks",
             next_page="employee_data_v2"
@@ -342,16 +339,7 @@ elif selected == "Launch Demo":
         st.markdown("### Foundation Data – Interactive View")
         render_foundation()
 
-    elif st.session_state.demo_page == "employee_data_tool":
-        back_col, _ = st.columns([1, 5])
-        with back_col:
-            if st.button("⬅ Back to Demo", key="back_from_employee", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
-                st.rerun()
 
-        st.markdown("### Employee Data – Interactive View")
-        render_employee_tool()
-    
     elif st.session_state.demo_page == "employee_data_v2":
         back_col, _ = st.columns([1, 5])
         with back_col:

@@ -93,3 +93,21 @@ if uploaded_files:
 
 else:
     st.info("📎 Please upload source files to begin transformation.")
+import streamlit as st
+
+def render_employee_v2():
+    st.title("Employee Data V2 – Advanced Tool")
+
+    # 👉 Your existing logic goes here, for example:
+    st.markdown("Upload files, validate data, run transformations below:")
+
+    # Your upload, transformation, validation logic
+    # Example:
+    uploaded_file = st.file_uploader("Upload Employee Master File", type=["csv", "xlsx"])
+    if uploaded_file:
+        st.success("File uploaded successfully!")
+        # You can then parse and process the file
+
+# Only run if this is executed directly (for dev/test)
+if __name__ == "__main__":
+    render_employee_v2()

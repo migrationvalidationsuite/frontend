@@ -8,18 +8,16 @@ from employee_app import render_employee_tool
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-# ✅ Configure page
+# ✅ Page setup
 st.set_page_config(layout="wide", page_title="MVS", page_icon="📊")
 
-# ✅ CSS for dark/light support and component control
+# ✅ CSS styling (light/dark mode fix + banner)
 st.markdown("""
 <style>
-/* General adaptive text */
 html, body, [class*="st-"], [class*="css"] {
     color: inherit !important;
 }
 
-/* Light & dark content background */
 section.main > div, .block-container {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 1rem;
@@ -33,13 +31,11 @@ section.main > div, .block-container {
         color: white !important;
     }
 
-    /* EXCEPTIONS: Sidebar and top title remain black */
     .css-6qob1r, .css-1v0mbdj, .css-10trblm, .css-1xarl3l, .css-eczf16, .css-1b0udgb {
         color: black !important;
     }
 }
 
-/* Make the banner full-width and readable */
 .full-width-banner {
     width: 100%;
     background-color: #e3f0ff;
@@ -57,64 +53,14 @@ section.main > div, .block-container {
 </style>
 """, unsafe_allow_html=True)
 
-# ✅ Track selected page
-if 'selected' not in st.session_state:
-    st.session_state.selected = "Home"
-
-# ✅ Sidebar Navigation
-with st.sidebar:
-    selected = option_menu(
-        menu_title="Navigation",
-        options=["Home", "Solutions", "Launch Demo"],
-        icons=["house", "layers", "rocket"],
-        default_index=0,
-        key="nav",
-    )
-    st.session_state.selected = selected
-
-# ✅ Show banner only on Home
-if selected == "Home":
-    st.markdown('<div class="full-width-banner">Effortless Data Migration, Done Right<br><span class="sub-banner">MVS (Migration & Validation Suite)</span></div>', unsafe_allow_html=True)
-
-# 🔁 Continue rendering your actual pages like before
-# Example:
-# if selected == "Home":
-#     render_home()
-# elif selected == "Solutions":
-#     render_solutions()
-# etc.
-
-
-# --- SESSION STATE FOR DEMO NAVIGATION ---
-if 'demo_page' not in st.session_state:
-    st.session_state.demo_page = "main"
-
-def go_to_demo(page):
-    st.session_state.demo_page = page
-
-# --- REMOVE TOP WHITE SPACE & MAKE RESPONSIVE ---
-st.markdown("""
-    <style>
-        .block-container {
-            padding-top: 0.5rem !important;
-        }
-        @media (max-width: 768px) {
-            .block-container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-        }
-    </style>
-""", unsafe_allow_html=True)
-
-# --- BACKGROUND IMAGE SETUP ---
+# ✅ Background image setup
 def set_background(image_file):
     with open(image_file, "rb") as f:
         data = base64.b64encode(f.read()).decode()
     st.markdown(f"""
         <style>
             .stApp {{
-                background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), 
+                background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
                             url("data:image/jpeg;base64,{data}");
                 background-size: cover;
                 background-attachment: fixed;
@@ -125,7 +71,13 @@ def set_background(image_file):
 
 set_background("pexels-googledeepmind-17483873.jpg")
 
-# --- SIDEBAR NAVIGATION ---
+# ✅ Session state
+if "selected" not in st.session_state:
+    st.session_state.selected = "Home"
+if "demo_page" not in st.session_state:
+    st.session_state.demo_page = "main"
+
+# ✅ Sidebar navigation
 with st.sidebar:
     selected = option_menu(
         menu_title="Navigation",
@@ -144,6 +96,23 @@ with st.sidebar:
             "nav-link-selected": {"background-color": "#cfe2ff", "font-weight": "bold"},
         },
     )
+    st.session_state.selected = selected
+
+# ✅ Remove top white space
+st.markdown("""
+<style>
+    .block-container {
+        padding-top: 0.5rem !important;
+    }
+    @media (max-width: 768px) {
+        .block-container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
+
 
 # -------------------- HOME --------------------
 if selected == "Home":

@@ -313,9 +313,9 @@ elif selected == "Launch Demo":
         # Employee Data V2 — single version only
         migration_row(
             "Employee Data",
-            "pd2_demo",
-            "- Advanced validation and transformation with AI-assisted checks",
-            next_page="employee_data_v2"
+            "pd_demo",
+            "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...",
+            next_page="employee_data_tool"
         )
 
 

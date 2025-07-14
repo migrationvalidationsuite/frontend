@@ -330,11 +330,11 @@ elif selected == "Launch Demo":
         render_employee_tool()
     
     elif st.session_state.demo_page == "employee_data_v2":
-    back_col, _ = st.columns([1, 5])
-    with back_col:
-        if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
-            st.session_state.demo_page = "sap_to_sf"
-            st.rerun()
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Demo", key="back_from_empv2", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
+                st.rerun()
 
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
         render_employee_v2()

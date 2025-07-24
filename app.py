@@ -242,7 +242,9 @@ if selected == "Home":
     """, unsafe_allow_html=True)
 
 # -------------------- LAUNCH DEMO --------------------
-elif selected == "Launch Demo":
+# -------------------- LAUNCH DEMO --------------------
+elif st.session_state.get("selected") == "Launch Demo":
+
     if st.session_state.demo_page == "main":
         st.markdown("""
             <div style='background-color:#e6f0ff;padding:20px;border-radius:10px;margin-bottom:20px;'>
@@ -258,7 +260,7 @@ elif selected == "Launch Demo":
             with b1:
                 if st.button("SAP HCM → SuccessFactors", key="btn_sap_sf"):
                     st.session_state.demo_page = "sap_to_sf"
-                    st.rerun()  # ✅ ensures single-click transition
+                    st.rerun()
 
             with b2:
                 st.button("SAP HCM → S/4HANA (coming soon)", disabled=True)
@@ -266,7 +268,7 @@ elif selected == "Launch Demo":
             with b3:
                 st.button("Legacy HR Systems → SAP Cloud or On-Premise (coming soon)", disabled=True)
 
-            st.image("dmigimg.jpg", use_container_width=True)
+        st.image("dmigimg.jpg", use_container_width=True)
 
     elif st.session_state.demo_page == "sap_to_sf":
         back_col, _ = st.columns([1, 5])
@@ -288,15 +290,18 @@ elif selected == "Launch Demo":
             with col2:
                 with st.expander("ℹ️ Details"):
                     st.markdown(detail_text)
+
+        # Foundation Data
         migration_row("Foundation Data", "fd_demo", "- Legal Entity\n- Job Classification\n- Location\n- Org Units\n...", next_page="foundation_data_view")
 
-        # Time Data — grayed out and disabled
+        # Time Data (disabled)
         col1, col2 = st.columns([5, 3.8])
         with col1:
             st.button("Time Data", key="td_demo_disabled", disabled=True, use_container_width=True)
         with col2:
             with st.expander("ℹ️ Details"):
                 st.markdown("- Time Type\n- Accruals\n- Time Accounts\n- Absences\n...")
+
         st.markdown("""
             <style>
             button[data-testid="baseButton-td_demo_disabled"] {
@@ -310,14 +315,23 @@ elif selected == "Launch Demo":
         # Payroll Data
         migration_row("Payroll Data", "ptd_demo", "- Payment Info\n- Super Funds\n- Cost Allocations\n...", next_page="payroll_data_tool")
 
-        # Employee Data V2 — single version only
+        # Employee Data V2
         migration_row(
             "Employee Data",
             "pd_demo",
             "- Personal Info\n- Employment Info\n- Compensation Info\n- Time Info\n...",
-            next_page="employee_data_tool"
+            next_page="employee_data_v2"
         )
 
+    elif st.session_state.demo_page == "foundation_data_view":
+        back_col, _ = st.columns([1, 5])
+        with back_col:
+            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
+                st.session_state.demo_page = "sap_to_sf"
+                st.rerun()
+
+        st.markdown("### Foundation Data – Interactive View")
+        render_foundation()
 
     elif st.session_state.demo_page == "payroll_data_tool":
         back_col, _ = st.columns([1, 5])
@@ -326,19 +340,7 @@ elif selected == "Launch Demo":
                 st.session_state.demo_page = "sap_to_sf"
                 st.rerun()
 
-        # ✅ This actually loads your payroll Streamlit tool
         payroll_app.render_payroll_tool()
-
-    elif st.session_state.demo_page == "foundation_data_view":
-        back_col, _ = st.columns([1, 5])
-        with back_col:
-            if st.button("⬅ Back to Demo", key="back_from_foundation", use_container_width=True):
-                st.session_state.demo_page = "sap_to_sf"
-                st.rerun()
-    
-        st.markdown("### Foundation Data – Interactive View")
-        render_foundation()
-
 
     elif st.session_state.demo_page == "employee_data_v2":
         back_col, _ = st.columns([1, 5])
@@ -349,7 +351,6 @@ elif selected == "Launch Demo":
 
         st.markdown("### Employee Data V2 – Interactive Migration Tool")
         render_employee_v2()
-
 
 # -------------------- SOLUTIONS --------------------
 elif selected == "Solutions":
